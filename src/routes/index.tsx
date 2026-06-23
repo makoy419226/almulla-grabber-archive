@@ -66,18 +66,6 @@ function Home() {
               </Link>
             </div>
 
-            <div className="reveal-up reveal-delay-3 mt-10 grid max-w-xl grid-cols-3 gap-3">
-              {[
-                { value: "2", label: "Core sectors" },
-                { value: "Dubai", label: "Headquarters" },
-                { value: "24/7", label: "Availability" },
-              ].map((item) => (
-                <div key={item.label} className="surface-card rounded-2xl px-4 py-4">
-                  <div className="text-2xl font-bold text-primary">{item.value}</div>
-                  <div className="mt-1 text-xs uppercase tracking-[0.2em] text-foreground/55">{item.label}</div>
-                </div>
-              ))}
-            </div>
           </div>
 
           <div className="self-center">

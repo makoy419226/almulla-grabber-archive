@@ -15,15 +15,15 @@ export function AlmullaLogo({
       <div
         className={cn(
           "shrink-0 overflow-hidden",
-          compact ? "h-12 w-12 rounded-xl" : "h-[3.1rem] w-[8.9rem]",
+          compact ? "h-12 w-9" : "h-[3.1rem] w-[8.9rem]",
         )}
       >
         <img
           src={logoImg}
           alt="AlMulla Holding"
           className={cn(
-            "h-full w-full select-none",
-            compact ? "object-cover object-[left_center]" : "object-contain",
+            "select-none",
+            compact ? "h-full w-auto max-w-none" : "h-full w-full object-contain",
           )}
           draggable={false}
         />

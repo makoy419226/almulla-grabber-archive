@@ -9,38 +9,108 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ContactUsRouteImport } from './routes/contact-us'
+import { Route as AboutUsRouteImport } from './routes/about-us'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BusinessesHospitalityRouteImport } from './routes/businesses.hospitality'
+import { Route as BusinessesHealthcareRouteImport } from './routes/businesses.healthcare'
 
+const ContactUsRoute = ContactUsRouteImport.update({
+  id: '/contact-us',
+  path: '/contact-us',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutUsRoute = AboutUsRouteImport.update({
+  id: '/about-us',
+  path: '/about-us',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BusinessesHospitalityRoute = BusinessesHospitalityRouteImport.update({
+  id: '/businesses/hospitality',
+  path: '/businesses/hospitality',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BusinessesHealthcareRoute = BusinessesHealthcareRouteImport.update({
+  id: '/businesses/healthcare',
+  path: '/businesses/healthcare',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about-us': typeof AboutUsRoute
+  '/contact-us': typeof ContactUsRoute
+  '/businesses/healthcare': typeof BusinessesHealthcareRoute
+  '/businesses/hospitality': typeof BusinessesHospitalityRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about-us': typeof AboutUsRoute
+  '/contact-us': typeof ContactUsRoute
+  '/businesses/healthcare': typeof BusinessesHealthcareRoute
+  '/businesses/hospitality': typeof BusinessesHospitalityRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about-us': typeof AboutUsRoute
+  '/contact-us': typeof ContactUsRoute
+  '/businesses/healthcare': typeof BusinessesHealthcareRoute
+  '/businesses/hospitality': typeof BusinessesHospitalityRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about-us'
+    | '/contact-us'
+    | '/businesses/healthcare'
+    | '/businesses/hospitality'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about-us'
+    | '/contact-us'
+    | '/businesses/healthcare'
+    | '/businesses/hospitality'
+  id:
+    | '__root__'
+    | '/'
+    | '/about-us'
+    | '/contact-us'
+    | '/businesses/healthcare'
+    | '/businesses/hospitality'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutUsRoute: typeof AboutUsRoute
+  ContactUsRoute: typeof ContactUsRoute
+  BusinessesHealthcareRoute: typeof BusinessesHealthcareRoute
+  BusinessesHospitalityRoute: typeof BusinessesHospitalityRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/contact-us': {
+      id: '/contact-us'
+      path: '/contact-us'
+      fullPath: '/contact-us'
+      preLoaderRoute: typeof ContactUsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about-us': {
+      id: '/about-us'
+      path: '/about-us'
+      fullPath: '/about-us'
+      preLoaderRoute: typeof AboutUsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +118,29 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/businesses/hospitality': {
+      id: '/businesses/hospitality'
+      path: '/businesses/hospitality'
+      fullPath: '/businesses/hospitality'
+      preLoaderRoute: typeof BusinessesHospitalityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/businesses/healthcare': {
+      id: '/businesses/healthcare'
+      path: '/businesses/healthcare'
+      fullPath: '/businesses/healthcare'
+      preLoaderRoute: typeof BusinessesHealthcareRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutUsRoute: AboutUsRoute,
+  ContactUsRoute: ContactUsRoute,
+  BusinessesHealthcareRoute: BusinessesHealthcareRoute,
+  BusinessesHospitalityRoute: BusinessesHospitalityRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

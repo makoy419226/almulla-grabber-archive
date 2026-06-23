@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
+import { AlmullaLogo } from "@/components/AlmullaLogo";
 import { ArrowUpRight, HeartPulse, Stethoscope, Building2, Microscope } from "lucide-react";
 import healthcareImg from "@/assets/healthcare.jpg";
 
@@ -7,9 +8,16 @@ export const Route = createFileRoute("/businesses/healthcare")({
   head: () => ({
     meta: [
       { title: "Chicago Healthcare — AlMulla Holding Group" },
-      { name: "description", content: "Chicago Healthcare invests in and operates premium healthcare ventures in Dubai, partnering with world-class medical experts." },
+      {
+        name: "description",
+        content:
+          "Chicago Healthcare invests in and operates premium healthcare ventures in Dubai, partnering with world-class medical experts.",
+      },
       { property: "og:title", content: "Chicago Healthcare" },
-      { property: "og:description", content: "Quality healthcare projects with top medical experts." },
+      {
+        property: "og:description",
+        content: "Quality healthcare projects with top medical experts.",
+      },
       { property: "og:image", content: healthcareImg },
     ],
   }),
@@ -23,10 +31,26 @@ const stats = [
 ];
 
 const pillars = [
-  { icon: Stethoscope, title: "Clinical Excellence", body: "Partnerships with leading specialists across cardiology, oncology, and advanced diagnostics." },
-  { icon: Microscope, title: "Advanced Technology", body: "Investment in the latest medical equipment and digital health infrastructure." },
-  { icon: Building2, title: "World-Class Facilities", body: "Premium environments designed around patient dignity, comfort, and outcomes." },
-  { icon: HeartPulse, title: "Community Impact", body: "Programs that elevate standards of care across Dubai and the wider region." },
+  {
+    icon: Stethoscope,
+    title: "Clinical Excellence",
+    body: "Partnerships with leading specialists across cardiology, oncology, and advanced diagnostics.",
+  },
+  {
+    icon: Microscope,
+    title: "Advanced Technology",
+    body: "Investment in the latest medical equipment and digital health infrastructure.",
+  },
+  {
+    icon: Building2,
+    title: "World-Class Facilities",
+    body: "Premium environments designed around patient dignity, comfort, and outcomes.",
+  },
+  {
+    icon: HeartPulse,
+    title: "Community Impact",
+    body: "Programs that elevate standards of care across Dubai and the wider region.",
+  },
 ];
 
 function Healthcare() {
@@ -43,25 +67,33 @@ function Healthcare() {
           }}
           aria-hidden
         />
-        <div className="absolute inset-0 bg-gradient-to-tr from-primary via-primary/90 to-transparent" aria-hidden />
+        <div
+          className="absolute inset-0 bg-gradient-to-tr from-primary via-primary/90 to-transparent"
+          aria-hidden
+        />
         <div className="relative max-w-7xl mx-auto px-6 lg:px-10 pt-28 pb-32 lg:pt-40 lg:pb-48">
-          <div className="flex items-center gap-3 text-xs uppercase tracking-[0.3em] text-[var(--gold)] mb-8">
+          <div className="motion-flip-bottom mb-8 flex h-20 w-20 items-center justify-center rounded-full bg-white/95 shadow-2xl shadow-black/20">
+            <AlmullaLogo compact />
+          </div>
+          <div className="motion-flip-bottom motion-delay-1 flex items-center gap-3 text-xs uppercase tracking-[0.3em] text-[var(--gold)] mb-8">
             <span className="h-px w-10 bg-[var(--gold)]" />
             Sector · Healthcare
           </div>
-          <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl leading-[0.95] max-w-5xl">
+          <h1 className="motion-flip-bottom motion-delay-2 font-serif text-5xl md:text-7xl lg:text-8xl leading-[0.95] max-w-5xl">
             Chicago <span className="italic text-[var(--gold)]">Healthcare</span>
           </h1>
-          <p className="mt-8 max-w-2xl text-lg text-primary-foreground/80 leading-relaxed">
-            Investing in the care and improvement of human life — through premium clinical
-            ventures, leading specialists, and the technology that defines modern medicine.
+          <p className="motion-slide-bottom motion-delay-3 mt-8 max-w-2xl text-lg text-primary-foreground/80 leading-relaxed">
+            Investing in the care and improvement of human life — through premium clinical ventures,
+            leading specialists, and the technology that defines modern medicine.
           </p>
 
-          <div className="mt-14 grid grid-cols-3 gap-6 max-w-2xl border-t border-primary-foreground/20 pt-8">
+          <div className="motion-slide-bottom motion-delay-4 mt-14 grid grid-cols-3 gap-6 max-w-2xl border-t border-primary-foreground/20 pt-8">
             {stats.map((s) => (
               <div key={s.label}>
                 <div className="font-serif text-3xl md:text-4xl text-[var(--gold)]">{s.value}</div>
-                <div className="mt-2 text-xs uppercase tracking-widest text-primary-foreground/70">{s.label}</div>
+                <div className="mt-2 text-xs uppercase tracking-widest text-primary-foreground/70">
+                  {s.label}
+                </div>
               </div>
             ))}
           </div>
@@ -71,9 +103,11 @@ function Healthcare() {
       {/* Intro / Mission split */}
       <section className="bg-background">
         <div className="max-w-7xl mx-auto px-6 lg:px-10 -mt-20 relative z-10">
-          <div className="grid lg:grid-cols-12 gap-8">
+          <div className="motion-slide-bottom grid lg:grid-cols-12 gap-8">
             <div className="lg:col-span-7 bg-card rounded-2xl shadow-[0_30px_60px_-30px_oklch(0_0_0/0.25)] p-10 lg:p-14">
-              <div className="text-xs uppercase tracking-[0.3em] text-[var(--gold)] mb-5">Our Mission</div>
+              <div className="text-xs uppercase tracking-[0.3em] text-[var(--gold)] mb-5">
+                Our Mission
+              </div>
               <h2 className="font-serif text-3xl md:text-4xl text-primary leading-tight">
                 A commitment to the care and improvement of human life.
               </h2>
@@ -84,19 +118,21 @@ function Healthcare() {
                   measurable patient outcomes and uncompromising clinical standards.
                 </p>
                 <p>
-                  We bring the highest standards of service to our local communities through
-                  the latest medical equipment and close partnerships with respected
-                  institutions — helping establish Dubai as a healthcare hub for the region.
+                  We bring the highest standards of service to our local communities through the
+                  latest medical equipment and close partnerships with respected institutions —
+                  helping establish Dubai as a healthcare hub for the region.
                 </p>
               </div>
             </div>
 
             <aside className="lg:col-span-5 bg-primary text-primary-foreground rounded-2xl p-10 lg:p-14 flex flex-col justify-between">
               <div>
-                <div className="text-xs uppercase tracking-[0.3em] text-[var(--gold)] mb-5">Values</div>
+                <div className="text-xs uppercase tracking-[0.3em] text-[var(--gold)] mb-5">
+                  Values
+                </div>
                 <p className="font-serif text-2xl leading-snug">
-                  "These values are essential and timeless — guiding every investment,
-                  partnership, and patient experience we touch."
+                  "These values are essential and timeless — guiding every investment, partnership,
+                  and patient experience we touch."
                 </p>
               </div>
               <Link
@@ -116,14 +152,16 @@ function Healthcare() {
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
           <div className="flex items-end justify-between flex-wrap gap-6 mb-14">
             <div>
-              <div className="text-xs uppercase tracking-[0.3em] text-[var(--gold)] mb-4">What we build</div>
+              <div className="text-xs uppercase tracking-[0.3em] text-[var(--gold)] mb-4">
+                What we build
+              </div>
               <h2 className="font-serif text-4xl md:text-5xl text-primary max-w-2xl leading-tight">
                 Four pillars guiding every investment.
               </h2>
             </div>
             <div className="text-muted-foreground max-w-sm text-[15px]">
-              From clinical partnerships to facility design, our portfolio is structured
-              around what matters most to patients and practitioners.
+              From clinical partnerships to facility design, our portfolio is structured around what
+              matters most to patients and practitioners.
             </div>
           </div>
 
@@ -151,11 +189,13 @@ function Healthcare() {
       <section className="bg-secondary">
         <div className="max-w-7xl mx-auto px-6 lg:px-10 py-20 lg:py-24 grid lg:grid-cols-2 gap-10 items-center">
           <h2 className="font-serif text-3xl md:text-4xl text-primary leading-tight">
-            Building Dubai's next chapter in healthcare — together with the region's most
-            trusted specialists.
+            Building Dubai's next chapter in healthcare — together with the region's most trusted
+            specialists.
           </h2>
           <div className="flex flex-wrap gap-4 lg:justify-end">
-            <Link to="/contact-us" className="btn-primary">Get in touch</Link>
+            <Link to="/contact-us" className="btn-primary">
+              Get in touch
+            </Link>
             <Link
               to="/about-us"
               className="inline-flex items-center gap-2 px-8 py-3 text-sm uppercase tracking-[0.2em] text-primary border border-primary/30 rounded-full hover:bg-primary hover:text-primary-foreground transition-colors"

@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
 import { SiteLayout } from "@/components/SiteLayout";
-import { MapPin, Phone, Mail } from "lucide-react";
+import { MapPin, Phone, Mail, ArrowUpRight } from "lucide-react";
 
 export const Route = createFileRoute("/contact-us")({
   head: () => ({
@@ -25,79 +25,87 @@ function Contact() {
 
   return (
     <SiteLayout>
-      <section className="py-16 bg-secondary text-center">
-        <div className="max-w-4xl mx-auto px-4">
-          <h1 className="font-serif text-5xl text-primary uppercase">Contact Us</h1>
-          <span className="gold-divider" />
-          <h2 className="font-serif text-2xl text-foreground mt-2">How can we help you?</h2>
-          <p className="text-muted-foreground mt-3">
-            Choose any of the methods below and we'll get back to you as soon as possible.
+      <section className="border-b border-border/70 bg-white/70">
+        <div className="mx-auto max-w-7xl px-4 py-14 text-center sm:px-6 lg:px-8">
+          <div className="section-eyebrow">Contact</div>
+          <h1 className="section-title mx-auto mt-4 max-w-3xl">Let’s discuss a project, partnership, or request.</h1>
+          <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-foreground/65 sm:text-base">
+            Use the form or reach out directly through the contact details below.
           </p>
         </div>
       </section>
 
-      <section className="py-20">
-        <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-12">
-          {/* Form */}
-          <div className="bg-white border border-border rounded-lg p-8 shadow-sm">
-            <h3 className="font-serif text-2xl text-primary mb-1">Get in touch</h3>
-            <span className="block w-16 h-0.5 bg-[var(--gold)] mb-6" />
+      <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
+        <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="surface-card rounded-[1.75rem] p-6 sm:p-8 lg:p-10">
+            <div className="section-eyebrow">Send a message</div>
+            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-primary">Get in touch</h2>
             {sent ? (
-              <div className="text-center py-12">
-                <p className="text-primary font-serif text-xl">Thank you!</p>
-                <p className="text-muted-foreground mt-2">We've received your message and will be in touch shortly.</p>
+              <div className="py-14 text-center">
+                <p className="text-2xl font-semibold text-primary">Thank you</p>
+                <p className="mx-auto mt-3 max-w-md text-sm leading-7 text-foreground/65">
+                  We&apos;ve received your message and will be in touch shortly.
+                </p>
               </div>
             ) : (
-              <form onSubmit={onSubmit} className="space-y-4">
+              <form onSubmit={onSubmit} className="mt-8 space-y-4">
                 <div>
-                  <label className="block text-sm font-semibold uppercase tracking-wide text-foreground mb-1">Name</label>
-                  <input required type="text" className="w-full px-4 py-2 border border-input rounded-md bg-white focus:outline-none focus:ring-2 focus:ring-ring" />
+                  <label className="mb-2 block text-xs font-semibold uppercase tracking-[0.2em] text-foreground/60">Name</label>
+                  <input required type="text" className="modern-input" />
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold uppercase tracking-wide text-foreground mb-1">Email Address</label>
-                  <input required type="email" className="w-full px-4 py-2 border border-input rounded-md bg-white focus:outline-none focus:ring-2 focus:ring-ring" />
+                  <label className="mb-2 block text-xs font-semibold uppercase tracking-[0.2em] text-foreground/60">Email address</label>
+                  <input required type="email" className="modern-input" />
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold uppercase tracking-wide text-foreground mb-1">Message</label>
-                  <textarea required rows={5} className="w-full px-4 py-2 border border-input rounded-md bg-white focus:outline-none focus:ring-2 focus:ring-ring" />
+                  <label className="mb-2 block text-xs font-semibold uppercase tracking-[0.2em] text-foreground/60">Message</label>
+                  <textarea required rows={6} className="modern-input resize-none" />
                 </div>
-                <button type="submit" className="btn-primary w-full">Submit</button>
+                <button type="submit" className="btn-primary w-full">
+                  Submit message
+                  <ArrowUpRight className="h-4 w-4" />
+                </button>
               </form>
             )}
           </div>
 
-          {/* Info */}
-          <div>
-            <h3 className="font-serif text-2xl text-primary mb-1">Contact</h3>
-            <span className="block w-16 h-0.5 bg-[var(--gold)] mb-6" />
-            <ul className="space-y-5 text-foreground">
-              <li className="flex gap-4">
-                <MapPin className="w-5 h-5 text-[var(--gold)] mt-1 shrink-0" />
-                <div>
-                  <p className="font-semibold">Head Office</p>
-                  <p className="text-muted-foreground">
-                    Office #601 Opal Tower,<br />
-                    Burj Khalifa St, Business Bay,<br />
-                    Dubai, United Arab Emirates<br />
-                    P.O. Box: 413155
-                  </p>
-                </div>
-              </li>
-              <li className="flex gap-4">
-                <Phone className="w-5 h-5 text-[var(--gold)] mt-1 shrink-0" />
-                <a href="tel:+97142249688" className="hover:text-primary">+971 4 224 9688</a>
-              </li>
-              <li className="flex gap-4">
-                <Mail className="w-5 h-5 text-[var(--gold)] mt-1 shrink-0" />
-                <a href="mailto:info@almullaholding.co" className="hover:text-primary">info@almullaholding.co</a>
-              </li>
-            </ul>
+          <div className="grid gap-6">
+            <div className="surface-card rounded-[1.75rem] p-6 sm:p-8 lg:p-10">
+              <div className="section-eyebrow">Contact details</div>
+              <h2 className="mt-4 text-3xl font-semibold tracking-tight text-primary">Direct lines</h2>
+              <ul className="mt-6 space-y-6 text-sm text-foreground">
+                <li className="flex gap-4">
+                  <MapPin className="mt-1 h-5 w-5 shrink-0 text-[var(--gold)]" />
+                  <div>
+                    <p className="font-semibold text-primary">Head Office</p>
+                    <p className="mt-2 leading-7 text-foreground/65">
+                      Office #601 Opal Tower,<br />
+                      Burj Khalifa St, Business Bay,<br />
+                      Dubai, United Arab Emirates<br />
+                      P.O. Box: 413155
+                    </p>
+                  </div>
+                </li>
+                <li className="flex gap-4">
+                  <Phone className="mt-1 h-5 w-5 shrink-0 text-[var(--gold)]" />
+                  <a href="tel:+97142249688" className="transition-colors hover:text-primary">
+                    +971 4 224 9688
+                  </a>
+                </li>
+                <li className="flex gap-4">
+                  <Mail className="mt-1 h-5 w-5 shrink-0 text-[var(--gold)]" />
+                  <a href="mailto:info@almullaholding.co" className="transition-colors hover:text-primary">
+                    info@almullaholding.co
+                  </a>
+                </li>
+              </ul>
+            </div>
 
-            <div className="mt-8 rounded-lg overflow-hidden border border-border h-72">
+            <div className="surface-card overflow-hidden rounded-[1.75rem] p-3">
               <iframe
                 title="Office Location"
                 src="https://www.google.com/maps?q=Opal+Tower+Business+Bay+Dubai&output=embed"
-                className="w-full h-full"
+                className="h-72 w-full rounded-[1.35rem]"
                 loading="lazy"
               />
             </div>

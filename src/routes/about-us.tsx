@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
 import chairmanImg from "@/assets/chairman.jpg";
+import { ArrowUpRight, Check } from "lucide-react";
 
 export const Route = createFileRoute("/about-us")({
   head: () => ({
@@ -17,51 +18,94 @@ export const Route = createFileRoute("/about-us")({
 function About() {
   return (
     <SiteLayout>
-      <section className="bg-secondary py-16">
-        <div className="max-w-6xl mx-auto px-4 text-center">
-          <h1 className="font-serif text-5xl text-primary uppercase">About Us</h1>
-          <span className="gold-divider" />
+      <section className="border-b border-border/70 bg-white/70">
+        <div className="mx-auto max-w-7xl px-4 py-14 text-center sm:px-6 lg:px-8">
+          <div className="section-eyebrow">About us</div>
+          <h1 className="section-title mx-auto mt-4 max-w-3xl">A focused holding group with a modern operating style.</h1>
+          <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-foreground/65 sm:text-base">
+            The group is chaired by Mr. Abdulla Mohamed Saeed AlMulla and structured around a practical, long-term investment outlook.
+          </p>
         </div>
       </section>
 
-      <section className="py-20">
-        <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-14 items-center">
-          <div>
-            <h2 className="font-serif text-3xl text-primary mb-4">Chairman's Message</h2>
-            <span className="block w-20 h-0.5 bg-[var(--gold)] mb-6" />
-            <p className="text-muted-foreground leading-relaxed mb-4">
-              In today's dynamic environment, growth is essential for sustainability
-              and for protecting the interests of our stakeholders. At AlMulla Holding
-              Group we continuously prepare for new opportunities and embrace economic
-              diversity. The group is built around subsidiaries focused on Healthcare,
-              Energy and Hospitality.
-            </p>
-            <p className="text-muted-foreground leading-relaxed mb-6">Our activities span:</p>
-            <ul className="space-y-2 mb-8">
-              {["Strategic investment", "Real estate", "Healthcare", "Hospitality", "Education"].map((i) => (
-                <li key={i} className="flex items-center gap-3 text-foreground">
-                  <span className="w-2 h-2 rounded-full bg-[var(--gold)]" /> {i}
-                </li>
+      <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
+        <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
+          <div className="surface-card rounded-[1.75rem] p-6 sm:p-8 lg:p-10">
+            <div className="section-eyebrow">Chairman&apos;s message</div>
+            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-primary sm:text-4xl">
+              We keep the group focused, adaptable, and built for the long term.
+            </h2>
+            <div className="mt-6 space-y-5 text-sm leading-7 text-foreground/72 sm:text-base">
+              <p>
+                In a fast-moving market, sustained value comes from clarity of focus and disciplined execution.
+                AlMulla Holding Group continues to build around sectors where quality, trust, and service matter most.
+              </p>
+              <p>
+                The company is structured to support growth across healthcare and hospitality while maintaining a modern operating mindset and consistent brand standards.
+              </p>
+            </div>
+
+            <div className="mt-8 grid gap-3 sm:grid-cols-2">
+              {[
+                "Strategic investment",
+                "Healthcare operations",
+                "Hospitality development",
+                "Long-term value creation",
+              ].map((item) => (
+                <div key={item} className="flex items-center gap-3 rounded-2xl border border-border bg-white px-4 py-3 text-sm text-foreground/75">
+                  <Check className="h-4 w-4 text-[var(--gold)]" />
+                  {item}
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
-          <div>
-            <img src={chairmanImg} alt="Mr. Abdulla Mohamed Saeed AlMulla, Chairman" className="rounded-lg shadow-xl w-full" loading="lazy" width={800} height={800} />
-            <div className="text-center mt-5">
-              <p className="font-serif italic text-xl text-primary">Mr. Abdulla Mohamed Saeed AlMulla</p>
-              <p className="text-sm text-muted-foreground tracking-widest uppercase">Chairman</p>
+
+          <div className="grid gap-6">
+            <div className="surface-card overflow-hidden rounded-[1.75rem] p-3">
+              <img
+                src={chairmanImg}
+                alt="Mr. Abdulla Mohamed Saeed AlMulla, Chairman"
+                className="h-[520px] w-full rounded-[1.35rem] object-cover"
+                loading="lazy"
+                width={900}
+                height={1100}
+              />
+            </div>
+
+            <div className="surface-card rounded-[1.5rem] p-6">
+              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[var(--gold)]">Chairman</p>
+              <p className="mt-3 text-xl font-semibold text-primary">Mr. Abdulla Mohamed Saeed AlMulla</p>
+              <p className="mt-2 text-sm leading-7 text-foreground/65">
+                Guiding the group with an emphasis on quality, resilience, and sector-focused growth.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="bg-primary text-primary-foreground py-16">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h3 className="font-serif text-3xl mb-4">AlMulla Holding Group</h3>
-          <p className="opacity-90 mb-8">
-            A conglomerate with several subsidiaries, chaired by Mr. Abdulla Mohamed Saeed AlMulla.
-          </p>
-          <Link to="/contact-us" className="btn-primary !bg-[var(--gold)] !text-primary">Contact Us</Link>
+      <section className="mx-auto max-w-7xl px-4 pb-20 sm:px-6 lg:px-8">
+        <div className="surface-card grid gap-8 rounded-[1.75rem] p-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:p-10">
+          <div>
+            <div className="section-eyebrow">Next step</div>
+            <h3 className="mt-3 text-3xl font-semibold tracking-tight text-primary">
+              Explore the group or get in touch.
+            </h3>
+            <p className="mt-4 max-w-xl text-sm leading-7 text-foreground/65">
+              The site now uses a cleaner visual rhythm, modern spacing, and softer surfaces while keeping the same core content.
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-3 lg:justify-end">
+            <Link to="/contact-us" className="btn-primary">
+              Contact us
+              <ArrowUpRight className="h-4 w-4" />
+            </Link>
+            <Link
+              to="/"
+              className="inline-flex items-center justify-center rounded-full border border-border bg-white px-5 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-secondary"
+            >
+              Back home
+            </Link>
+          </div>
         </div>
       </section>
     </SiteLayout>

@@ -1,73 +1,90 @@
 import { Link } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
-import { Mail, Phone, Menu, X, ChevronDown } from "lucide-react";
+import { Mail, Phone, Menu, X, ChevronDown, ArrowUpRight } from "lucide-react";
+import { AlmullaLogo } from "@/components/AlmullaLogo";
+import { cn } from "@/lib/utils";
 
 export function SiteLayout({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false);
   const [bizOpen, setBizOpen] = useState(false);
 
   const linkCls =
-    "text-sm font-semibold tracking-wide uppercase text-foreground hover:text-primary transition-colors";
+    "relative text-sm font-medium text-foreground/80 transition-colors hover:text-primary after:absolute after:-bottom-2 after:left-0 after:h-px after:w-0 after:bg-[var(--gold)] after:transition-all after:duration-200 hover:after:w-full";
 
   return (
-    <div className="min-h-screen flex flex-col bg-background">
-      {/* Top bar */}
-      <div className="bg-primary text-primary-foreground text-sm">
-        <div className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-end gap-6">
-          <a href="tel:+97142249688" className="flex items-center gap-2 hover:text-[var(--gold)] transition-colors">
-            <Phone className="w-3.5 h-3.5" /> +971 4 224 9688
-          </a>
-          <a href="mailto:info@almullaholding.co" className="flex items-center gap-2 hover:text-[var(--gold)] transition-colors">
-            <Mail className="w-3.5 h-3.5" /> info@almullaholding.co
-          </a>
+    <div className="min-h-screen flex flex-col bg-background text-foreground">
+      <div className="border-b border-border/70 bg-white/70 text-sm backdrop-blur-xl">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 text-foreground/70 sm:px-6 lg:px-8">
+          <p className="hidden sm:block">Dubai-based holding group focused on healthcare and hospitality.</p>
+          <div className="flex items-center gap-5 ml-auto">
+            <a href="tel:+97142249688" className="flex items-center gap-2 transition-colors hover:text-primary">
+              <Phone className="h-3.5 w-3.5" /> +971 4 224 9688
+            </a>
+            <a href="mailto:info@almullaholding.co" className="flex items-center gap-2 transition-colors hover:text-primary">
+              <Mail className="h-3.5 w-3.5" /> info@almullaholding.co
+            </a>
+          </div>
         </div>
       </div>
 
-      {/* Header */}
-      <header className="sticky top-0 z-40 bg-background/95 backdrop-blur border-b border-border">
-        <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-3">
-            <span className="font-serif text-2xl font-bold text-primary">AlMulla</span>
-            <span className="hidden sm:inline text-xs tracking-[0.3em] text-muted-foreground uppercase border-l border-[var(--gold)] pl-3">
-              Holding
-            </span>
+      <header className="sticky top-0 z-40 border-b border-border/70 bg-background/80 backdrop-blur-xl">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+          <Link to="/" className="shrink-0">
+            <AlmullaLogo className="gap-2 sm:gap-3" />
           </Link>
 
-          <nav className="hidden md:flex items-center gap-8">
-            <Link to="/" className={linkCls} activeProps={{ className: linkCls + " text-primary" }}>Home</Link>
-            <Link to="/about-us" className={linkCls} activeProps={{ className: linkCls + " text-primary" }}>About Us</Link>
+          <nav className="hidden items-center gap-10 md:flex">
+            <Link to="/" className={linkCls} activeProps={{ className: `${linkCls} text-primary after:w-full` }}>Home</Link>
+            <Link to="/about-us" className={linkCls} activeProps={{ className: `${linkCls} text-primary after:w-full` }}>About</Link>
             <div
               className="relative"
               onMouseEnter={() => setBizOpen(true)}
               onMouseLeave={() => setBizOpen(false)}
             >
-              <button className={linkCls + " flex items-center gap-1"}>
-                Businesses <ChevronDown className="w-3.5 h-3.5" />
+              <button className={cn(linkCls, "flex items-center gap-1 bg-transparent border-0 p-0")}>
+                Businesses <ChevronDown className="h-3.5 w-3.5" />
               </button>
               {bizOpen && (
-                <div className="absolute top-full left-0 pt-3 w-56">
-                  <div className="bg-white shadow-xl rounded-md border border-border overflow-hidden">
-                    <Link to="/businesses/healthcare" className="block px-4 py-3 text-sm hover:bg-secondary hover:text-primary">Healthcare</Link>
-                    <Link to="/businesses/hospitality" className="block px-4 py-3 text-sm hover:bg-secondary hover:text-primary">Hospitality</Link>
+                <div className="absolute left-0 top-full pt-4">
+                  <div className="surface-card w-64 overflow-hidden rounded-2xl p-2">
+                    <Link
+                      to="/businesses/healthcare"
+                      className="flex items-center justify-between rounded-xl px-4 py-3 text-sm text-foreground/80 transition-colors hover:bg-secondary hover:text-primary"
+                    >
+                      Healthcare
+                      <ArrowUpRight className="h-4 w-4 opacity-60" />
+                    </Link>
+                    <Link
+                      to="/businesses/hospitality"
+                      className="flex items-center justify-between rounded-xl px-4 py-3 text-sm text-foreground/80 transition-colors hover:bg-secondary hover:text-primary"
+                    >
+                      Hospitality
+                      <ArrowUpRight className="h-4 w-4 opacity-60" />
+                    </Link>
                   </div>
                 </div>
               )}
             </div>
-            <Link to="/contact-us" className={linkCls} activeProps={{ className: linkCls + " text-primary" }}>Contact Us</Link>
+            <Link to="/contact-us" className={linkCls} activeProps={{ className: `${linkCls} text-primary after:w-full` }}>Contact</Link>
           </nav>
 
-          <button className="md:hidden text-primary" onClick={() => setOpen(!open)} aria-label="Menu">
-            {open ? <X /> : <Menu />}
+          <button
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border bg-white/80 text-primary shadow-sm transition-transform hover:-translate-y-0.5 md:hidden"
+            onClick={() => setOpen(!open)}
+            aria-label="Menu"
+          >
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
+
         {open && (
-          <div className="md:hidden border-t border-border bg-white">
-            <div className="flex flex-col px-4 py-3 gap-3">
-              <Link to="/" className={linkCls} onClick={() => setOpen(false)}>Home</Link>
-              <Link to="/about-us" className={linkCls} onClick={() => setOpen(false)}>About Us</Link>
-              <Link to="/businesses/healthcare" className={linkCls} onClick={() => setOpen(false)}>Healthcare</Link>
-              <Link to="/businesses/hospitality" className={linkCls} onClick={() => setOpen(false)}>Hospitality</Link>
-              <Link to="/contact-us" className={linkCls} onClick={() => setOpen(false)}>Contact Us</Link>
+          <div className="border-t border-border/70 bg-background/95 md:hidden">
+            <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-4 sm:px-6">
+              <Link to="/" className="rounded-xl px-4 py-3 text-sm font-medium hover:bg-secondary" onClick={() => setOpen(false)}>Home</Link>
+              <Link to="/about-us" className="rounded-xl px-4 py-3 text-sm font-medium hover:bg-secondary" onClick={() => setOpen(false)}>About</Link>
+              <Link to="/businesses/healthcare" className="rounded-xl px-4 py-3 text-sm font-medium hover:bg-secondary" onClick={() => setOpen(false)}>Healthcare</Link>
+              <Link to="/businesses/hospitality" className="rounded-xl px-4 py-3 text-sm font-medium hover:bg-secondary" onClick={() => setOpen(false)}>Hospitality</Link>
+              <Link to="/contact-us" className="rounded-xl px-4 py-3 text-sm font-medium hover:bg-secondary" onClick={() => setOpen(false)}>Contact</Link>
             </div>
           </div>
         )}
@@ -75,40 +92,36 @@ export function SiteLayout({ children }: { children: ReactNode }) {
 
       <main className="flex-1">{children}</main>
 
-      {/* Footer */}
-      <footer className="bg-primary text-primary-foreground mt-20">
-        <div className="max-w-7xl mx-auto px-4 py-12 grid md:grid-cols-3 gap-10">
-          <div>
-            <h3 className="font-serif text-2xl mb-3">AlMulla Holding Group</h3>
-            <span className="block w-16 h-0.5 bg-[var(--gold)] mb-4" />
-            <p className="text-sm opacity-80 leading-relaxed">
-              A business conglomerate with several subsidiaries across healthcare, hospitality and beyond.
+      <footer className="mt-20 border-t border-border/70 bg-white/60 backdrop-blur-xl">
+        <div className="mx-auto grid max-w-7xl gap-8 px-4 py-16 sm:px-6 lg:grid-cols-[1.35fr_1fr_1fr] lg:px-8">
+          <div className="space-y-5">
+            <AlmullaLogo compact className="items-start" />
+            <p className="max-w-xl text-sm leading-7 text-foreground/70">
+              AlMulla Holding Group brings together healthcare and hospitality platforms shaped around quality, consistency, and long-term value.
             </p>
           </div>
-          <div>
-            <h4 className="font-serif text-lg mb-3">Contact</h4>
-            <span className="block w-12 h-0.5 bg-[var(--gold)] mb-4" />
-            <p className="text-sm opacity-80 leading-relaxed">
+          <div className="surface-card rounded-2xl p-6">
+            <h3 className="text-sm font-semibold uppercase tracking-[0.22em] text-primary">Contact</h3>
+            <p className="mt-4 text-sm leading-7 text-foreground/70">
               Office #601 Opal Tower,<br />
               Burj Khalifa St, Business Bay,<br />
               Dubai, United Arab Emirates<br />
-              <strong>P.O. Box:</strong> 413155
+              P.O. Box: 413155
             </p>
           </div>
-          <div>
-            <h4 className="font-serif text-lg mb-3">Get in Touch</h4>
-            <span className="block w-12 h-0.5 bg-[var(--gold)] mb-4" />
-            <p className="text-sm opacity-80 space-y-1">
-              <a href="tel:+97142249688" className="flex items-center gap-2 hover:text-[var(--gold)]">
-                <Phone className="w-4 h-4" /> +971 4 224 9688
+          <div className="surface-card rounded-2xl p-6">
+            <h3 className="text-sm font-semibold uppercase tracking-[0.22em] text-primary">Get in Touch</h3>
+            <div className="mt-4 space-y-3 text-sm">
+              <a href="tel:+97142249688" className="flex items-center gap-2 transition-colors hover:text-primary">
+                <Phone className="h-4 w-4 text-[var(--gold)]" /> +971 4 224 9688
               </a>
-              <a href="mailto:info@almullaholding.co" className="flex items-center gap-2 hover:text-[var(--gold)] mt-2">
-                <Mail className="w-4 h-4" /> info@almullaholding.co
+              <a href="mailto:info@almullaholding.co" className="flex items-center gap-2 transition-colors hover:text-primary">
+                <Mail className="h-4 w-4 text-[var(--gold)]" /> info@almullaholding.co
               </a>
-            </p>
+            </div>
           </div>
         </div>
-        <div className="border-t border-white/10 py-4 text-center text-xs opacity-70">
+        <div className="border-t border-border/70 px-4 py-4 text-center text-xs text-foreground/55 sm:px-6 lg:px-8">
           © {new Date().getFullYear()} AlMulla Holding Group. All rights reserved.
         </div>
       </footer>

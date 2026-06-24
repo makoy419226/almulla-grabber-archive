@@ -23,12 +23,12 @@ function About() {
   return (
     <SiteLayout>
       <section className="border-b border-primary/15 bg-primary text-primary-foreground">
-        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl px-4 py-16 text-center sm:px-6 lg:px-8">
           <div className="text-sm font-semibold text-[var(--gold)]">About us</div>
           <h1 className="mt-4 max-w-4xl text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
             A focused holding group with a modern operating style.
           </h1>
-          <p className="mt-5 max-w-2xl text-base leading-8 text-primary-foreground/72">
+          <p className="copy-center mt-5 max-w-2xl text-base leading-8 text-primary-foreground/72">
             The group is chaired by Mr. Abdulla Mohamed Saeed AlMulla and structured around a
             practical, long-term investment outlook.
           </p>
@@ -54,7 +54,7 @@ function About() {
               </p>
             </div>
 
-            <div className="mt-8 grid gap-3 sm:grid-cols-2">
+            <div className="data-center mt-8 grid gap-3 sm:grid-cols-2">
               {[
                 "Strategic investment",
                 "Healthcare operations",
@@ -100,17 +100,17 @@ function About() {
 
       <section className="mx-auto max-w-7xl px-4 pb-20 sm:px-6 lg:px-8">
         <div className="surface-card grid gap-8 rounded-lg p-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:p-10">
-          <div>
+          <div className="text-center">
             <div className="section-eyebrow">Next step</div>
             <h3 className="mt-3 text-3xl font-semibold text-primary">
               Explore the group or get in touch.
             </h3>
-            <p className="mt-4 max-w-xl text-sm leading-7 text-foreground/65">
+            <p className="copy-center mt-4 max-w-xl text-sm leading-7 text-foreground/65">
               The site now uses a cleaner visual rhythm, modern spacing, and softer surfaces while
               keeping the same core content.
             </p>
           </div>
-          <div className="flex flex-wrap gap-3 lg:justify-end">
+          <div className="flex flex-wrap justify-center gap-3">
             <Link to="/contact-us" className="btn-primary">
               Contact us
               <ArrowUpRight className="h-4 w-4" />

@@ -48,12 +48,17 @@ export function SiteLayout({ children }: { children: ReactNode }) {
       </div>
 
       <header className="sticky top-3 z-50 flex justify-center px-4 py-3 sm:px-6 lg:px-8">
-        <div className="liquid-glass glass-morph grid w-full max-w-7xl grid-cols-[1fr_auto] items-center rounded-[2.25rem] px-4 py-3 md:grid-cols-[minmax(12rem,1fr)_auto_minmax(12rem,1fr)] lg:px-6">
-          <Link to="/" className="shrink-0 justify-self-start">
+        <div className="glass-morph relative grid w-full max-w-7xl grid-cols-[1fr_auto] items-center rounded-[2.25rem] px-4 py-3 md:grid-cols-[minmax(12rem,1fr)_auto_minmax(12rem,1fr)] lg:px-6">
+          <div
+            className="liquid-glass pointer-events-none absolute inset-0 rounded-[2.25rem]"
+            aria-hidden="true"
+          />
+
+          <Link to="/" className="relative z-10 shrink-0 justify-self-start">
             <AlmullaLogo className="gap-2 sm:gap-3" />
           </Link>
 
-          <nav className="hidden items-center justify-center gap-1 md:flex md:justify-self-center">
+          <nav className="relative z-20 hidden items-center justify-center gap-1 md:flex md:justify-self-center">
             <Link
               to="/"
               className={linkCls}
@@ -87,7 +92,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
                 {selectedBusiness} <ChevronDown className="h-3.5 w-3.5" />
               </button>
               {bizOpen && (
-                <div className="absolute left-0 top-full pt-3">
+                <div className="absolute left-0 top-full z-50 pt-3">
                   <div
                     className="surface-card glass-morph w-64 overflow-hidden rounded-[1.25rem] p-2 shadow-2xl shadow-black/10"
                     role="menu"
@@ -117,10 +122,10 @@ export function SiteLayout({ children }: { children: ReactNode }) {
             </Link>
           </nav>
 
-          <div className="hidden justify-self-end md:block" aria-hidden="true" />
+          <div className="relative z-10 hidden justify-self-end md:block" aria-hidden="true" />
 
           <button
-            className="inline-flex h-11 w-11 items-center justify-center justify-self-end rounded-full border border-white/70 bg-white/72 text-primary shadow-sm transition-transform hover:-translate-y-0.5 md:hidden"
+            className="relative z-10 inline-flex h-11 w-11 items-center justify-center justify-self-end rounded-full border border-white/70 bg-white/72 text-primary shadow-sm transition-transform hover:-translate-y-0.5 md:hidden"
             onClick={() => setOpen(!open)}
             aria-label="Menu"
           >
@@ -167,18 +172,18 @@ export function SiteLayout({ children }: { children: ReactNode }) {
         )}
       </header>
 
-      <main className="flex-1">{children}</main>
+      <main className="site-content flex-1">{children}</main>
 
       <footer className="mt-20 border-t border-border/70 bg-[var(--ink)] text-primary-foreground">
         <div className="mx-auto grid max-w-7xl gap-8 px-4 py-16 sm:px-6 lg:grid-cols-[1.35fr_1fr_1fr] lg:px-8">
-          <div className="space-y-5">
-            <AlmullaLogo compact className="items-start" />
-            <p className="max-w-xl text-sm leading-7 text-primary-foreground/68">
+          <div className="space-y-5 text-center">
+            <AlmullaLogo compact className="mx-auto items-start" />
+            <p className="mx-auto max-w-xl text-justify text-sm leading-7 text-primary-foreground/68">
               AlMulla Holding Group brings together healthcare and hospitality platforms shaped
               around quality, consistency, and long-term value.
             </p>
           </div>
-          <div className="rounded-lg border border-white/10 bg-white/[0.06] p-6">
+          <div className="rounded-lg border border-white/10 bg-white/[0.06] p-6 text-center">
             <h3 className="text-sm font-semibold text-[var(--gold)]">Contact</h3>
             <p className="mt-4 text-sm leading-7 text-primary-foreground/72">
               Office no. 1405, Aspect Tower Zone B,
@@ -190,18 +195,18 @@ export function SiteLayout({ children }: { children: ReactNode }) {
               Dubai, UAE
             </p>
           </div>
-          <div className="rounded-lg border border-white/10 bg-white/[0.06] p-6">
+          <div className="rounded-lg border border-white/10 bg-white/[0.06] p-6 text-center">
             <h3 className="text-sm font-semibold text-[var(--gold)]">Get in Touch</h3>
             <div className="mt-4 space-y-3 text-sm">
               <a
                 href="tel:+97142249662"
-                className="flex items-center gap-2 text-primary-foreground/72 transition-colors hover:text-[var(--gold)]"
+                className="flex items-center justify-center gap-2 text-primary-foreground/72 transition-colors hover:text-[var(--gold)]"
               >
                 <Phone className="h-4 w-4 text-[var(--gold)]" /> 04 224 9662
               </a>
               <a
                 href="mailto:info@almullaholding.co"
-                className="flex items-center gap-2 text-primary-foreground/72 transition-colors hover:text-[var(--gold)]"
+                className="flex items-center justify-center gap-2 text-primary-foreground/72 transition-colors hover:text-[var(--gold)]"
               >
                 <Mail className="h-4 w-4 text-[var(--gold)]" /> info@almullaholding.co
               </a>

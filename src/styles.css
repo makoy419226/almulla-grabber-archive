@@ -34,31 +34,34 @@
 }
 
 :root {
-  --radius: 0.5rem;
-  --background: oklch(0.975 0.012 85);
-  --foreground: oklch(0.16 0.026 28);
+  --radius: 0.375rem;
+  --background: oklch(0.976 0.007 84);
+  --foreground: oklch(0.17 0.018 244);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.16 0.026 28);
+  --card-foreground: oklch(0.17 0.018 244);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.16 0.026 28);
-  --primary: oklch(0.25 0.095 26);
-  --primary-foreground: oklch(0.99 0.004 84);
-  --secondary: oklch(0.94 0.017 82);
-  --secondary-foreground: oklch(0.25 0.095 26);
-  --muted: oklch(0.93 0.012 82);
-  --muted-foreground: oklch(0.45 0.023 35);
-  --accent: oklch(0.72 0.14 74);
-  --accent-foreground: oklch(0.16 0.026 28);
+  --popover-foreground: oklch(0.17 0.018 244);
+  --primary: oklch(0.24 0.09 24);
+  --primary-foreground: oklch(0.99 0.004 86);
+  --secondary: oklch(0.92 0.013 188);
+  --secondary-foreground: oklch(0.22 0.046 196);
+  --muted: oklch(0.925 0.008 88);
+  --muted-foreground: oklch(0.42 0.016 238);
+  --accent: oklch(0.64 0.082 182);
+  --accent-foreground: oklch(0.12 0.018 222);
   --destructive: oklch(0.56 0.2 27);
   --destructive-foreground: oklch(0.99 0.002 80);
-  --border: oklch(0.86 0.018 78);
-  --input: oklch(0.875 0.018 78);
-  --ring: oklch(0.51 0.13 48);
-  --gold: oklch(0.73 0.15 75);
-  --ink: oklch(0.13 0.025 28);
-  --wine: oklch(0.31 0.105 25);
-  --font-sans: "Roboto", system-ui, sans-serif;
-  --font-serif: "Roboto", system-ui, sans-serif;
+  --border: oklch(0.84 0.013 88);
+  --input: oklch(0.88 0.01 88);
+  --ring: oklch(0.56 0.09 182);
+  --gold: oklch(0.74 0.135 78);
+  --ink: oklch(0.15 0.022 248);
+  --wine: oklch(0.31 0.11 24);
+  --teal: oklch(0.5 0.075 190);
+  --ivory: oklch(0.985 0.008 86);
+  --charcoal: oklch(0.17 0.018 244);
+  --font-sans: "Manrope", "Inter", system-ui, sans-serif;
+  --font-serif: "Manrope", "Inter", system-ui, sans-serif;
 }
 
 @layer base {
@@ -72,18 +75,7 @@
 
   body {
     min-height: 100vh;
-    background:
-      radial-gradient(
-        circle at top left,
-        color-mix(in oklab, var(--gold) 16%, transparent) 0,
-        transparent 28rem
-      ),
-      linear-gradient(
-        180deg,
-        oklch(0.995 0.005 85) 0%,
-        var(--background) 46%,
-        oklch(0.95 0.015 83) 100%
-      );
+    background: linear-gradient(180deg, var(--ivory) 0%, var(--background) 48%, oklch(0.94 0.012 86) 100%);
     color: var(--color-foreground);
     font-family: var(--font-sans);
     text-rendering: optimizeLegibility;
@@ -95,6 +87,35 @@
   h4 {
     font-family: var(--font-sans);
     letter-spacing: 0;
+  }
+
+  .site-content :is(h1, h2, h3, h4, .section-title, .section-eyebrow) {
+    text-align: center;
+  }
+
+  .site-content :is(h1, h2, h3, h4, .section-title) {
+    margin-right: auto;
+    margin-left: auto;
+    text-wrap: balance;
+  }
+
+  .site-content p {
+    text-align: justify;
+  }
+
+  .site-content
+    :is(
+      .section-eyebrow,
+      .data-center,
+      .data-center *
+    ) {
+    text-align: center;
+    text-align-last: center;
+  }
+
+  .site-content .copy-center {
+    margin-right: auto;
+    margin-left: auto;
   }
 
   ::selection {
@@ -172,41 +193,40 @@
     transform: translateX(120%);
   }
 
-  .liquid-glass,
-  .surface-card,
-  .card-business {
+  .liquid-glass {
     position: relative;
     overflow: hidden;
-    border: 1px solid color-mix(in oklab, white 58%, var(--border));
+    border: 1px solid color-mix(in oklab, white 66%, var(--border));
     background: linear-gradient(
       135deg,
-      color-mix(in oklab, white 88%, transparent) 0%,
-      color-mix(in oklab, white 76%, var(--secondary)) 52%,
-      color-mix(in oklab, white 68%, var(--gold)) 100%
+      color-mix(in oklab, white 88%, transparent),
+      color-mix(in oklab, white 62%, var(--secondary))
     );
     box-shadow:
-      inset 0 1px 0 color-mix(in oklab, white 72%, transparent),
-      inset 0 -1px 0 color-mix(in oklab, white 26%, transparent),
-      0 24px 70px -46px rgba(35, 22, 16, 0.58);
+      inset 0 1px 0 color-mix(in oklab, white 74%, transparent),
+      0 22px 60px -42px rgba(17, 26, 38, 0.5);
     backdrop-filter: blur(22px) saturate(1.28);
     -webkit-backdrop-filter: blur(22px) saturate(1.28);
   }
 
+  .surface-card,
+  .card-business {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid color-mix(in oklab, var(--border) 74%, white);
+    background: color-mix(in oklab, white 94%, var(--ivory));
+    box-shadow: 0 24px 70px -52px rgba(17, 26, 38, 0.42);
+  }
+
   .liquid-glass::before,
-  .surface-card::before,
-  .card-business::before,
-  .liquid-glass::after,
-  .surface-card::after,
-  .card-business::after {
+  .liquid-glass::after {
     position: absolute;
     pointer-events: none;
     content: "";
     z-index: 0;
   }
 
-  .liquid-glass::before,
-  .surface-card::before,
-  .card-business::before {
+  .liquid-glass::before {
     inset: 1px;
     border-radius: inherit;
     background: linear-gradient(
@@ -217,9 +237,7 @@
     );
   }
 
-  .liquid-glass::after,
-  .surface-card::after,
-  .card-business::after {
+  .liquid-glass::after {
     inset: -35% -18%;
     background: linear-gradient(
       110deg,
@@ -242,7 +260,7 @@
   }
 
   .surface-card {
-    border-color: color-mix(in oklab, white 54%, var(--border));
+    border-color: color-mix(in oklab, var(--border) 68%, white);
   }
 
   .panel-shadow {
@@ -253,15 +271,94 @@
     font-size: 0.78rem;
     font-weight: 800;
     letter-spacing: 0;
-    color: color-mix(in oklab, var(--primary) 66%, var(--gold));
+    color: color-mix(in oklab, var(--teal) 68%, var(--primary));
   }
 
   .section-title {
-    font-size: clamp(2rem, 4vw, 3.75rem);
-    font-weight: 700;
+    font-size: clamp(2.2rem, 5vw, 4.75rem);
+    font-weight: 800;
     line-height: 1.05;
     letter-spacing: 0;
     color: var(--primary);
+  }
+
+  .cinematic-media {
+    animation: cinematic-zoom 18s ease-in-out infinite alternate;
+    transform-origin: center;
+    will-change: transform;
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border: 1px solid color-mix(in oklab, white 34%, var(--border));
+    border-radius: var(--radius);
+    background: color-mix(in oklab, white 10%, transparent);
+    color: inherit;
+    padding: 0.85rem 1.15rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    transition:
+      transform 220ms ease,
+      background-color 220ms ease,
+      border-color 220ms ease;
+  }
+
+  .btn-secondary:hover {
+    transform: translateY(-2px);
+    border-color: color-mix(in oklab, var(--gold) 64%, white);
+    background: color-mix(in oklab, white 18%, transparent);
+  }
+
+  .metric-card {
+    min-height: 8rem;
+    border: 1px solid color-mix(in oklab, white 20%, var(--border));
+    border-radius: var(--radius);
+    background: color-mix(in oklab, white 10%, transparent);
+    padding: 1.25rem;
+    box-shadow: inset 0 1px 0 color-mix(in oklab, white 18%, transparent);
+  }
+
+  .metric-value {
+    color: var(--gold);
+    font-size: clamp(2rem, 5vw, 4.5rem);
+    font-weight: 800;
+    line-height: 0.95;
+  }
+
+  .metric-label {
+    margin-top: 0.75rem;
+    color: color-mix(in oklab, currentColor 72%, transparent);
+    font-size: 0.78rem;
+    font-weight: 700;
+  }
+
+  .sector-card {
+    isolation: isolate;
+    min-height: 34rem;
+    border-radius: var(--radius);
+    background: var(--ink);
+    color: var(--primary-foreground);
+    box-shadow: 0 34px 90px -62px rgba(17, 26, 38, 0.7);
+  }
+
+  .sector-card img {
+    transform: scale(1.01);
+    transition: transform 800ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .sector-card:hover img {
+    transform: scale(1.07);
+  }
+
+  .sector-card .sector-arrow {
+    transition: transform 220ms ease;
+  }
+
+  .sector-card:hover .sector-arrow {
+    transform: translate(0.25rem, -0.25rem);
   }
 
   .modern-input {
@@ -401,6 +498,16 @@
   }
 }
 
+@keyframes cinematic-zoom {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.08);
+  }
+}
+
 @keyframes glass-flow {
   from {
     opacity: 0.26;
@@ -476,6 +583,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .reveal-up,
+  .cinematic-media,
   .glass-morph,
   .morph-list li,
   .motion-flip-bottom,
@@ -493,15 +601,21 @@
   }
 
   .btn-primary,
+  .btn-secondary,
   .fluid-morph,
-  .card-business {
+  .card-business,
+  .sector-card img,
+  .sector-card .sector-arrow {
     transition: none;
   }
 
   .btn-primary:hover,
+  .btn-secondary:hover,
   .fluid-morph:hover,
   .fluid-morph:active,
-  .card-business:hover {
+  .card-business:hover,
+  .sector-card:hover img,
+  .sector-card:hover .sector-arrow {
     transform: none;
   }
 }

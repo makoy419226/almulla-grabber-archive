@@ -57,18 +57,18 @@ function Home() {
         </div>
 
         <div className="relative mx-auto flex min-h-[76vh] max-w-7xl flex-col justify-end px-4 pb-12 pt-28 sm:px-6 lg:px-8 lg:pb-16">
-          <div className="max-w-3xl">
+          <div className="mx-auto max-w-3xl text-center">
             <div className="reveal-up text-sm font-semibold text-[var(--gold)]">
               Dubai holding group
             </div>
             <h1 className="reveal-up reveal-delay-1 mt-5 text-5xl font-bold leading-none text-primary-foreground sm:text-6xl lg:text-7xl">
               AlMulla Holding Group
             </h1>
-            <p className="reveal-up reveal-delay-2 mt-6 max-w-2xl text-base leading-8 text-primary-foreground/78 sm:text-lg">
+            <p className="copy-center reveal-up reveal-delay-2 mt-6 max-w-2xl text-base leading-8 text-primary-foreground/78 sm:text-lg">
               A modern holding company with focused investments in healthcare and hospitality, built
               around quality service and long-term value.
             </p>
-            <div className="reveal-up reveal-delay-2 mt-8 flex flex-wrap gap-3">
+            <div className="reveal-up reveal-delay-2 mt-8 flex flex-wrap justify-center gap-3">
               <Link to="/about-us" className="btn-primary">
                 Discover the group
                 <ArrowUpRight className="h-4 w-4" />
@@ -96,17 +96,17 @@ function Home() {
           />
         </div>
 
-        <div className="self-center">
+        <div className="self-center text-center">
           <div className="section-eyebrow">Leadership</div>
           <h2 className="section-title mt-4 max-w-3xl">
             Built around clarity, disciplined investment, and consistent service.
           </h2>
-          <p className="mt-5 max-w-2xl text-base leading-8 text-foreground/68">
+          <p className="copy-center mt-5 max-w-2xl text-base leading-8 text-foreground/68">
             The group brings together healthcare and hospitality platforms with a practical focus on
             quality, trusted partnerships, and long-term value creation.
           </p>
           <div className="mt-8 surface-card fluid-morph rounded-lg p-5">
-            <div className="flex items-center justify-between gap-4">
+            <div className="data-center flex flex-wrap items-center justify-center gap-4">
               <div>
                 <p className="text-lg font-semibold text-primary">
                   Mr. Abdulla Mohamed Saeed AlMulla
@@ -123,7 +123,7 @@ function Home() {
         <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
           <div className="grid gap-4 lg:grid-cols-3">
             <div className="surface-card fluid-morph rounded-lg p-6">
-              <Sparkles className="h-5 w-5 text-[var(--gold)]" />
+              <Sparkles className="mx-auto h-5 w-5 text-[var(--gold)]" />
               <h2 className="mt-4 text-xl font-semibold text-primary">Modern structure</h2>
               <p className="mt-2 text-sm leading-7 text-foreground/70">
                 A focused portfolio with clean presentation, clear hierarchy, and an editorial
@@ -131,7 +131,7 @@ function Home() {
               </p>
             </div>
             <div className="surface-card fluid-morph rounded-lg p-6">
-              <HeartPulse className="h-5 w-5 text-[var(--gold)]" />
+              <HeartPulse className="mx-auto h-5 w-5 text-[var(--gold)]" />
               <h2 className="mt-4 text-xl font-semibold text-primary">Healthcare focus</h2>
               <p className="mt-2 text-sm leading-7 text-foreground/70">
                 Built around specialist partnerships, service quality, and patient-centered
@@ -139,7 +139,7 @@ function Home() {
               </p>
             </div>
             <div className="surface-card fluid-morph rounded-lg p-6">
-              <Building2 className="h-5 w-5 text-[var(--gold)]" />
+              <Building2 className="mx-auto h-5 w-5 text-[var(--gold)]" />
               <h2 className="mt-4 text-xl font-semibold text-primary">Hospitality platform</h2>
               <p className="mt-2 text-sm leading-7 text-foreground/70">
                 Designed for modern travelers with a calm, premium, and highly usable brand
@@ -151,14 +151,14 @@ function Home() {
       </section>
 
       <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
-        <div className="mb-8 flex flex-wrap items-end justify-between gap-6">
-          <div>
+        <div className="mb-8 flex flex-wrap items-end justify-center gap-6 text-center">
+          <div className="mx-auto">
             <div className="section-eyebrow">Businesses</div>
             <h2 className="section-title mt-3 max-w-2xl">
               Two focused platforms with one operating standard.
             </h2>
           </div>
-          <p className="max-w-lg text-sm leading-7 text-foreground/65">
+          <p className="copy-center max-w-lg text-sm leading-7 text-foreground/65">
             Healthcare and hospitality are presented through clear sector pages, direct copy, and a
             sharper visual system.
           </p>
@@ -168,7 +168,7 @@ function Home() {
           {sectors.map((sector) => (
             <article key={sector.title} className="card-business fluid-morph overflow-hidden">
               <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
-                <div>
+                <div className="text-center">
                   <div className="section-eyebrow">{sector.title}</div>
                   <h3 className="mt-3 text-2xl font-semibold text-primary">{sector.title}</h3>
                   <p className="mt-3 text-sm leading-7 text-foreground/70">{sector.body}</p>

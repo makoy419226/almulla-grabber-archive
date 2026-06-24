@@ -57,8 +57,8 @@ function Hospitality() {
           className="absolute inset-0 bg-[linear-gradient(90deg,rgba(51,18,20,0.96),rgba(51,18,20,0.76),rgba(51,18,20,0.3))]"
           aria-hidden
         />
-        <div className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
-          <div className="motion-flip-bottom flex h-20 w-20 items-center justify-center rounded-lg bg-white/95 shadow-2xl shadow-black/20">
+        <div className="relative mx-auto max-w-7xl px-4 py-20 text-center sm:px-6 lg:px-8 lg:py-28">
+          <div className="motion-flip-bottom mx-auto flex h-20 w-20 items-center justify-center rounded-lg bg-white/95 shadow-2xl shadow-black/20">
             <AlmullaLogo compact />
           </div>
           <div className="motion-flip-bottom motion-delay-1 mt-8 text-sm font-semibold text-[var(--gold)]">
@@ -67,7 +67,7 @@ function Hospitality() {
           <h1 className="motion-flip-bottom motion-delay-2 mt-4 max-w-4xl text-5xl font-bold leading-none sm:text-6xl lg:text-7xl">
             AlMulla Hospitality
           </h1>
-          <p className="motion-slide-bottom motion-delay-3 mt-6 max-w-2xl text-base leading-8 text-primary-foreground/76 sm:text-lg">
+          <p className="copy-center motion-slide-bottom motion-delay-3 mt-6 max-w-2xl text-base leading-8 text-primary-foreground/76 sm:text-lg">
             Hospitality concepts shaped for modern travelers, premium service, and calm, practical
             luxury.
           </p>
@@ -115,7 +115,7 @@ function Hospitality() {
             </div>
 
             <div className="surface-card rounded-lg p-6 sm:p-8">
-              <div className="flex items-center justify-between gap-4">
+              <div className="data-center flex flex-wrap items-center justify-center gap-4">
                 <div>
                   <p className="section-eyebrow">Guest experience</p>
                   <p className="mt-3 text-lg font-semibold text-primary">
@@ -132,13 +132,13 @@ function Hospitality() {
           <div className="grid gap-6">
             {brands.map((b) => (
               <div key={b.name} className="surface-card rounded-lg p-6 sm:p-8">
-                <div className="flex flex-wrap items-start justify-between gap-4">
+                <div className="data-center flex flex-wrap items-start justify-center gap-4 text-center">
                   <div>
                     <h3 className="text-2xl font-semibold text-primary">{b.name}</h3>
                     <p className="mt-2 text-sm font-semibold text-[var(--gold)]">{b.tag}</p>
                   </div>
                 </div>
-                <p className="mt-5 max-w-4xl text-sm leading-7 text-foreground/70 sm:text-base">
+                <p className="copy-center mt-5 max-w-4xl text-sm leading-7 text-foreground/70 sm:text-base">
                   {b.body}
                 </p>
               </div>

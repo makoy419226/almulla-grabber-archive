@@ -29,12 +29,12 @@ function Contact() {
   return (
     <SiteLayout>
       <section className="border-b border-primary/15 bg-primary text-primary-foreground">
-        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl px-4 py-16 text-center sm:px-6 lg:px-8">
           <div className="text-sm font-semibold text-[var(--gold)]">Contact</div>
           <h1 className="mt-4 max-w-4xl text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
             Let’s discuss a project, partnership, or request.
           </h1>
-          <p className="mt-5 max-w-2xl text-base leading-8 text-primary-foreground/72">
+          <p className="copy-center mt-5 max-w-2xl text-base leading-8 text-primary-foreground/72">
             Use the form or reach out directly through the contact details below.
           </p>
         </div>
@@ -84,9 +84,9 @@ function Contact() {
             <div className="surface-card rounded-lg p-6 sm:p-8 lg:p-10">
               <div className="section-eyebrow">Contact details</div>
               <h2 className="mt-4 text-3xl font-semibold text-primary">Direct lines</h2>
-              <ul className="mt-6 space-y-6 text-sm text-foreground">
-                <li className="flex gap-4">
-                  <MapPin className="mt-1 h-5 w-5 shrink-0 text-[var(--gold)]" />
+              <ul className="data-center mt-6 space-y-6 text-sm text-foreground">
+                <li className="flex flex-col items-center gap-3">
+                  <MapPin className="h-5 w-5 shrink-0 text-[var(--gold)]" />
                   <div>
                     <p className="font-semibold text-primary">Head Office</p>
                     <p className="mt-2 leading-7 text-foreground/65">
@@ -100,14 +100,14 @@ function Contact() {
                     </p>
                   </div>
                 </li>
-                <li className="flex gap-4">
-                  <Phone className="mt-1 h-5 w-5 shrink-0 text-[var(--gold)]" />
+                <li className="flex flex-col items-center gap-3">
+                  <Phone className="h-5 w-5 shrink-0 text-[var(--gold)]" />
                   <a href="tel:+97142249662" className="transition-colors hover:text-primary">
                     04 224 9662
                   </a>
                 </li>
-                <li className="flex gap-4">
-                  <Mail className="mt-1 h-5 w-5 shrink-0 text-[var(--gold)]" />
+                <li className="flex flex-col items-center gap-3">
+                  <Mail className="h-5 w-5 shrink-0 text-[var(--gold)]" />
                   <a
                     href="mailto:info@almullaholding.co"
                     className="transition-colors hover:text-primary"

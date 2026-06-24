@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 export function SiteLayout({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false);
   const [bizOpen, setBizOpen] = useState(false);
+  const developmentNotice = "This website is in development";
   const pathname = useLocation({ select: (location) => location.pathname });
   const selectedBusiness =
     pathname === "/businesses/healthcare"
@@ -36,6 +37,23 @@ export function SiteLayout({ children }: { children: ReactNode }) {
             >
               <Mail className="h-3.5 w-3.5" /> info@almullaholding.co
             </a>
+          </div>
+        </div>
+      </div>
+
+      <div className="development-strip" role="status" aria-label={developmentNotice}>
+        <div className="development-marquee" aria-hidden="true">
+          <div className="development-marquee-group">
+            <span>{developmentNotice}</span>
+            <span>{developmentNotice}</span>
+            <span>{developmentNotice}</span>
+            <span>{developmentNotice}</span>
+          </div>
+          <div className="development-marquee-group">
+            <span>{developmentNotice}</span>
+            <span>{developmentNotice}</span>
+            <span>{developmentNotice}</span>
+            <span>{developmentNotice}</span>
           </div>
         </div>
       </div>

@@ -191,6 +191,42 @@
     box-shadow: 0 30px 80px -48px rgba(31, 25, 20, 0.55);
   }
 
+  .development-strip {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    right: 0;
+    z-index: 60;
+    overflow: hidden;
+    transform: translateY(-50%);
+    border-block: 1px solid color-mix(in oklab, var(--destructive) 38%, transparent);
+    background: color-mix(in oklab, white 84%, transparent);
+    box-shadow: 0 12px 32px -28px color-mix(in oklab, var(--destructive) 70%, transparent);
+    pointer-events: none;
+    backdrop-filter: blur(10px);
+  }
+
+  .development-marquee {
+    display: flex;
+    width: max-content;
+    color: var(--destructive);
+    font-size: clamp(0.82rem, 1.7vw, 1.05rem);
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    text-transform: uppercase;
+    white-space: nowrap;
+    animation: development-marquee 18s linear infinite;
+  }
+
+  .development-marquee-group {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: clamp(2rem, 8vw, 6rem);
+    padding: 0.55rem clamp(1rem, 4vw, 3rem);
+  }
+
   .reveal-up {
     animation: reveal-up 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
   }
@@ -276,10 +312,21 @@
   }
 }
 
+@keyframes development-marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal-up,
   .motion-flip-bottom,
-  .motion-slide-bottom {
+  .motion-slide-bottom,
+  .development-marquee {
     animation: none;
     opacity: 1;
     transform: none;

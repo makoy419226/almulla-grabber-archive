@@ -16,7 +16,7 @@ export const Route = createFileRoute("/businesses/hospitality")({
       },
       { property: "og:title", content: "AlMulla Hospitality" },
       { property: "og:description", content: "Upscale hotels for the conscious modern traveler." },
-      { property: "og:image", content: "/src/assets/hospitality.jpg" },
+      { property: "og:image", content: hospitalityImg },
     ],
   }),
   component: Hospitality,
@@ -43,16 +43,31 @@ const brands = [
 function Hospitality() {
   return (
     <SiteLayout>
-      <section className="border-b border-border/70 bg-white/70">
-        <div className="mx-auto max-w-7xl px-4 py-14 text-center sm:px-6 lg:px-8">
-          <div className="motion-flip-bottom mx-auto flex justify-center">
+      <section className="relative overflow-hidden bg-primary text-primary-foreground">
+        <div
+          className="absolute inset-0 opacity-36"
+          style={{
+            backgroundImage: `url(${hospitalityImg})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+          aria-hidden
+        />
+        <div
+          className="absolute inset-0 bg-[linear-gradient(90deg,rgba(51,18,20,0.96),rgba(51,18,20,0.76),rgba(51,18,20,0.3))]"
+          aria-hidden
+        />
+        <div className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
+          <div className="motion-flip-bottom flex h-20 w-20 items-center justify-center rounded-lg bg-white/95 shadow-2xl shadow-black/20">
             <AlmullaLogo compact />
           </div>
-          <div className="motion-flip-bottom motion-delay-1 section-eyebrow mt-6">Hospitality</div>
-          <h1 className="motion-flip-bottom motion-delay-2 section-title mx-auto mt-4 max-w-3xl">
+          <div className="motion-flip-bottom motion-delay-1 mt-8 text-sm font-semibold text-[var(--gold)]">
+            Hospitality
+          </div>
+          <h1 className="motion-flip-bottom motion-delay-2 mt-4 max-w-4xl text-5xl font-bold leading-none sm:text-6xl lg:text-7xl">
             AlMulla Hospitality
           </h1>
-          <p className="motion-slide-bottom motion-delay-3 mx-auto mt-5 max-w-2xl text-sm leading-7 text-foreground/65 sm:text-base">
+          <p className="motion-slide-bottom motion-delay-3 mt-6 max-w-2xl text-base leading-8 text-primary-foreground/76 sm:text-lg">
             Hospitality concepts shaped for modern travelers, premium service, and calm, practical
             luxury.
           </p>
@@ -62,7 +77,7 @@ function Hospitality() {
       <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
         <div className="motion-slide-bottom grid gap-8 lg:grid-cols-[1fr_0.95fr] lg:items-start">
           <div className="space-y-6">
-            <div className="surface-card rounded-[1.75rem] p-6 sm:p-8">
+            <div className="surface-card rounded-lg p-6 sm:p-8">
               <div className="section-eyebrow">Concept</div>
               <p className="mt-4 text-lg leading-8 text-foreground/75">
                 After a day of work or travel, a hotel should feel calm, efficient, and easy to
@@ -70,7 +85,7 @@ function Hospitality() {
               </p>
             </div>
 
-            <div className="surface-card rounded-[1.75rem] p-6 sm:p-8">
+            <div className="surface-card rounded-lg p-6 sm:p-8">
               <div className="section-eyebrow">Approach</div>
               <p className="mt-4 text-sm leading-7 text-foreground/70 sm:text-base">
                 Our properties are designed for guests who want thoughtful service, strong brand
@@ -84,7 +99,7 @@ function Hospitality() {
               <img
                 src={dubaiImg}
                 alt="Dubai"
-                className="h-64 w-full rounded-[1.5rem] object-cover shadow-lg"
+                className="h-64 w-full rounded-lg object-cover shadow-lg"
                 loading="lazy"
                 width={800}
                 height={400}
@@ -92,14 +107,14 @@ function Hospitality() {
               <img
                 src={hospitalityImg}
                 alt="Hospitality"
-                className="h-64 w-full rounded-[1.5rem] object-cover shadow-lg"
+                className="h-64 w-full rounded-lg object-cover shadow-lg"
                 loading="lazy"
                 width={800}
                 height={400}
               />
             </div>
 
-            <div className="surface-card rounded-[1.75rem] p-6 sm:p-8">
+            <div className="surface-card rounded-lg p-6 sm:p-8">
               <div className="flex items-center justify-between gap-4">
                 <div>
                   <p className="section-eyebrow">Guest experience</p>
@@ -113,16 +128,14 @@ function Hospitality() {
           </div>
         </div>
 
-        <div className="mx-auto mt-14 max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto mt-14 max-w-7xl">
           <div className="grid gap-6">
             {brands.map((b) => (
-              <div key={b.name} className="surface-card rounded-[1.5rem] p-6 sm:p-8">
+              <div key={b.name} className="surface-card rounded-lg p-6 sm:p-8">
                 <div className="flex flex-wrap items-start justify-between gap-4">
                   <div>
                     <h3 className="text-2xl font-semibold text-primary">{b.name}</h3>
-                    <p className="mt-2 text-xs uppercase tracking-[0.22em] text-[var(--gold)]">
-                      {b.tag}
-                    </p>
+                    <p className="mt-2 text-sm font-semibold text-[var(--gold)]">{b.tag}</p>
                   </div>
                 </div>
                 <p className="mt-5 max-w-4xl text-sm leading-7 text-foreground/70 sm:text-base">

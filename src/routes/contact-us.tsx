@@ -7,7 +7,10 @@ export const Route = createFileRoute("/contact-us")({
   head: () => ({
     meta: [
       { title: "Contact Us — AlMulla Holding Group" },
-      { name: "description", content: "Get in touch with AlMulla Holding Group in Business Bay, Dubai." },
+      {
+        name: "description",
+        content: "Get in touch with AlMulla Holding Group in Business Bay, Dubai.",
+      },
       { property: "og:title", content: "Contact AlMulla Holding Group" },
       { property: "og:description", content: "Reach our team in Business Bay, Dubai." },
     ],
@@ -25,11 +28,13 @@ function Contact() {
 
   return (
     <SiteLayout>
-      <section className="border-b border-border/70 bg-white/70">
-        <div className="mx-auto max-w-7xl px-4 py-14 text-center sm:px-6 lg:px-8">
-          <div className="section-eyebrow">Contact</div>
-          <h1 className="section-title mx-auto mt-4 max-w-3xl">Let’s discuss a project, partnership, or request.</h1>
-          <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-foreground/65 sm:text-base">
+      <section className="border-b border-primary/15 bg-primary text-primary-foreground">
+        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+          <div className="text-sm font-semibold text-[var(--gold)]">Contact</div>
+          <h1 className="mt-4 max-w-4xl text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
+            Let’s discuss a project, partnership, or request.
+          </h1>
+          <p className="mt-5 max-w-2xl text-base leading-8 text-primary-foreground/72">
             Use the form or reach out directly through the contact details below.
           </p>
         </div>
@@ -37,9 +42,9 @@ function Contact() {
 
       <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
         <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
-          <div className="surface-card rounded-[1.75rem] p-6 sm:p-8 lg:p-10">
+          <div className="surface-card rounded-lg p-6 sm:p-8 lg:p-10">
             <div className="section-eyebrow">Send a message</div>
-            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-primary">Get in touch</h2>
+            <h2 className="mt-4 text-3xl font-semibold text-primary">Get in touch</h2>
             {sent ? (
               <div className="py-14 text-center">
                 <p className="text-2xl font-semibold text-primary">Thank you</p>
@@ -50,15 +55,21 @@ function Contact() {
             ) : (
               <form onSubmit={onSubmit} className="mt-8 space-y-4">
                 <div>
-                  <label className="mb-2 block text-xs font-semibold uppercase tracking-[0.2em] text-foreground/60">Name</label>
+                  <label className="mb-2 block text-sm font-semibold text-foreground/64">
+                    Name
+                  </label>
                   <input required type="text" className="modern-input" />
                 </div>
                 <div>
-                  <label className="mb-2 block text-xs font-semibold uppercase tracking-[0.2em] text-foreground/60">Email address</label>
+                  <label className="mb-2 block text-sm font-semibold text-foreground/64">
+                    Email address
+                  </label>
                   <input required type="email" className="modern-input" />
                 </div>
                 <div>
-                  <label className="mb-2 block text-xs font-semibold uppercase tracking-[0.2em] text-foreground/60">Message</label>
+                  <label className="mb-2 block text-sm font-semibold text-foreground/64">
+                    Message
+                  </label>
                   <textarea required rows={6} className="modern-input resize-none" />
                 </div>
                 <button type="submit" className="btn-primary w-full">
@@ -70,42 +81,48 @@ function Contact() {
           </div>
 
           <div className="grid gap-6">
-            <div className="surface-card rounded-[1.75rem] p-6 sm:p-8 lg:p-10">
+            <div className="surface-card rounded-lg p-6 sm:p-8 lg:p-10">
               <div className="section-eyebrow">Contact details</div>
-              <h2 className="mt-4 text-3xl font-semibold tracking-tight text-primary">Direct lines</h2>
+              <h2 className="mt-4 text-3xl font-semibold text-primary">Direct lines</h2>
               <ul className="mt-6 space-y-6 text-sm text-foreground">
                 <li className="flex gap-4">
                   <MapPin className="mt-1 h-5 w-5 shrink-0 text-[var(--gold)]" />
                   <div>
                     <p className="font-semibold text-primary">Head Office</p>
                     <p className="mt-2 leading-7 text-foreground/65">
-                      Office #601 Opal Tower,<br />
-                      Burj Khalifa St, Business Bay,<br />
-                      Dubai, United Arab Emirates<br />
-                      P.O. Box: 413155
+                      Office no. 1405, Aspect Tower Zone B,
+                      <br />
+                      Business Bay,
+                      <br />
+                      PO BOX 413155,
+                      <br />
+                      Dubai, UAE
                     </p>
                   </div>
                 </li>
                 <li className="flex gap-4">
                   <Phone className="mt-1 h-5 w-5 shrink-0 text-[var(--gold)]" />
-                  <a href="tel:+97142249688" className="transition-colors hover:text-primary">
-                    +971 4 224 9688
+                  <a href="tel:+97142249662" className="transition-colors hover:text-primary">
+                    04 224 9662
                   </a>
                 </li>
                 <li className="flex gap-4">
                   <Mail className="mt-1 h-5 w-5 shrink-0 text-[var(--gold)]" />
-                  <a href="mailto:info@almullaholding.co" className="transition-colors hover:text-primary">
+                  <a
+                    href="mailto:info@almullaholding.co"
+                    className="transition-colors hover:text-primary"
+                  >
                     info@almullaholding.co
                   </a>
                 </li>
               </ul>
             </div>
 
-            <div className="surface-card overflow-hidden rounded-[1.75rem] p-3">
+            <div className="surface-card overflow-hidden rounded-lg p-2">
               <iframe
                 title="Office Location"
-                src="https://www.google.com/maps?q=Opal+Tower+Business+Bay+Dubai&output=embed"
-                className="h-72 w-full rounded-[1.35rem]"
+                src="https://www.google.com/maps?q=Aspect+Tower+Zone+B+Business+Bay+Dubai&output=embed"
+                className="h-72 w-full rounded-md"
                 loading="lazy"
               />
             </div>

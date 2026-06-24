@@ -71,29 +71,27 @@ function Healthcare() {
           className="absolute inset-0 bg-gradient-to-tr from-primary via-primary/90 to-transparent"
           aria-hidden
         />
-        <div className="relative max-w-7xl mx-auto px-6 lg:px-10 pt-28 pb-32 lg:pt-40 lg:pb-48">
-          <div className="motion-flip-bottom mb-8 flex h-20 w-20 items-center justify-center rounded-full bg-white/95 shadow-2xl shadow-black/20">
+        <div className="relative mx-auto max-w-7xl px-4 pb-32 pt-28 sm:px-6 lg:px-8 lg:pb-44 lg:pt-36">
+          <div className="motion-flip-bottom mb-8 flex h-20 w-20 items-center justify-center rounded-lg bg-white/95 shadow-2xl shadow-black/20">
             <AlmullaLogo compact />
           </div>
-          <div className="motion-flip-bottom motion-delay-1 flex items-center gap-3 text-xs uppercase tracking-[0.3em] text-[var(--gold)] mb-8">
+          <div className="motion-flip-bottom motion-delay-1 mb-8 flex items-center gap-3 text-sm font-semibold text-[var(--gold)]">
             <span className="h-px w-10 bg-[var(--gold)]" />
             Sector · Healthcare
           </div>
-          <h1 className="motion-flip-bottom motion-delay-2 font-serif text-5xl md:text-7xl lg:text-8xl leading-[0.95] max-w-5xl">
-            Chicago <span className="italic text-[var(--gold)]">Healthcare</span>
+          <h1 className="motion-flip-bottom motion-delay-2 max-w-5xl text-5xl font-bold leading-none md:text-7xl lg:text-8xl">
+            Chicago <span className="text-[var(--gold)]">Healthcare</span>
           </h1>
           <p className="motion-slide-bottom motion-delay-3 mt-8 max-w-2xl text-lg text-primary-foreground/80 leading-relaxed">
             Investing in the care and improvement of human life — through premium clinical ventures,
             leading specialists, and the technology that defines modern medicine.
           </p>
 
-          <div className="motion-slide-bottom motion-delay-4 mt-14 grid grid-cols-3 gap-6 max-w-2xl border-t border-primary-foreground/20 pt-8">
+          <div className="motion-slide-bottom motion-delay-4 mt-14 grid max-w-2xl grid-cols-3 gap-6 border-t border-primary-foreground/20 pt-8">
             {stats.map((s) => (
               <div key={s.label}>
-                <div className="font-serif text-3xl md:text-4xl text-[var(--gold)]">{s.value}</div>
-                <div className="mt-2 text-xs uppercase tracking-widest text-primary-foreground/70">
-                  {s.label}
-                </div>
+                <div className="text-3xl font-bold text-[var(--gold)] md:text-4xl">{s.value}</div>
+                <div className="mt-2 text-sm text-primary-foreground/70">{s.label}</div>
               </div>
             ))}
           </div>
@@ -102,13 +100,11 @@ function Healthcare() {
 
       {/* Intro / Mission split */}
       <section className="bg-background">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10 -mt-20 relative z-10">
-          <div className="motion-slide-bottom grid lg:grid-cols-12 gap-8">
-            <div className="lg:col-span-7 bg-card rounded-2xl shadow-[0_30px_60px_-30px_oklch(0_0_0/0.25)] p-10 lg:p-14">
-              <div className="text-xs uppercase tracking-[0.3em] text-[var(--gold)] mb-5">
-                Our Mission
-              </div>
-              <h2 className="font-serif text-3xl md:text-4xl text-primary leading-tight">
+        <div className="relative z-10 mx-auto -mt-20 max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="motion-slide-bottom grid gap-8 lg:grid-cols-12">
+            <div className="surface-card rounded-lg p-8 lg:col-span-7 lg:p-12">
+              <div className="mb-5 text-sm font-semibold text-[var(--gold)]">Our Mission</div>
+              <h2 className="text-3xl font-semibold leading-tight text-primary md:text-4xl">
                 A commitment to the care and improvement of human life.
               </h2>
               <div className="mt-8 space-y-5 text-muted-foreground leading-relaxed text-[17px]">
@@ -125,19 +121,17 @@ function Healthcare() {
               </div>
             </div>
 
-            <aside className="lg:col-span-5 bg-primary text-primary-foreground rounded-2xl p-10 lg:p-14 flex flex-col justify-between">
+            <aside className="flex flex-col justify-between rounded-lg bg-primary p-8 text-primary-foreground lg:col-span-5 lg:p-12">
               <div>
-                <div className="text-xs uppercase tracking-[0.3em] text-[var(--gold)] mb-5">
-                  Values
-                </div>
-                <p className="font-serif text-2xl leading-snug">
+                <div className="mb-5 text-sm font-semibold text-[var(--gold)]">Values</div>
+                <p className="text-2xl font-semibold leading-snug">
                   "These values are essential and timeless — guiding every investment, partnership,
                   and patient experience we touch."
                 </p>
               </div>
               <Link
                 to="/contact-us"
-                className="mt-10 inline-flex items-center justify-between gap-4 group border-t border-primary-foreground/20 pt-6 text-sm uppercase tracking-[0.2em]"
+                className="group mt-10 inline-flex items-center justify-between gap-4 border-t border-primary-foreground/20 pt-6 text-sm font-semibold"
               >
                 Partner with us
                 <ArrowUpRight className="w-5 h-5 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
@@ -149,13 +143,11 @@ function Healthcare() {
 
       {/* Pillars */}
       <section className="bg-background py-24 lg:py-32">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex items-end justify-between flex-wrap gap-6 mb-14">
             <div>
-              <div className="text-xs uppercase tracking-[0.3em] text-[var(--gold)] mb-4">
-                What we build
-              </div>
-              <h2 className="font-serif text-4xl md:text-5xl text-primary max-w-2xl leading-tight">
+              <div className="mb-4 text-sm font-semibold text-[var(--gold)]">What we build</div>
+              <h2 className="max-w-2xl text-4xl font-semibold leading-tight text-primary md:text-5xl">
                 Four pillars guiding every investment.
               </h2>
             </div>
@@ -165,18 +157,18 @@ function Healthcare() {
             </div>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-border rounded-2xl overflow-hidden border border-border">
+          <div className="grid overflow-hidden rounded-lg border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
             {pillars.map((p) => {
               const Icon = p.icon;
               return (
                 <div
                   key={p.title}
-                  className="bg-card p-8 lg:p-10 group transition-colors hover:bg-secondary"
+                  className="group bg-card p-8 transition-colors hover:bg-secondary lg:p-10"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-primary/5 text-primary flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                  <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-md bg-primary/5 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
                     <Icon className="w-5 h-5" />
                   </div>
-                  <h3 className="font-serif text-xl text-primary mb-3">{p.title}</h3>
+                  <h3 className="mb-3 text-xl font-semibold text-primary">{p.title}</h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">{p.body}</p>
                 </div>
               );
@@ -187,8 +179,8 @@ function Healthcare() {
 
       {/* CTA band */}
       <section className="bg-secondary">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10 py-20 lg:py-24 grid lg:grid-cols-2 gap-10 items-center">
-          <h2 className="font-serif text-3xl md:text-4xl text-primary leading-tight">
+        <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 py-20 sm:px-6 lg:grid-cols-2 lg:px-8 lg:py-24">
+          <h2 className="text-3xl font-semibold leading-tight text-primary md:text-4xl">
             Building Dubai's next chapter in healthcare — together with the region's most trusted
             specialists.
           </h2>
@@ -198,7 +190,7 @@ function Healthcare() {
             </Link>
             <Link
               to="/about-us"
-              className="inline-flex items-center gap-2 px-8 py-3 text-sm uppercase tracking-[0.2em] text-primary border border-primary/30 rounded-full hover:bg-primary hover:text-primary-foreground transition-colors"
+              className="inline-flex items-center gap-2 rounded-md border border-primary/30 px-6 py-3 text-sm font-semibold text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
             >
               About the group
               <ArrowUpRight className="w-4 h-4" />

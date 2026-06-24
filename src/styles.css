@@ -34,27 +34,27 @@
 }
 
 :root {
-  --radius: 1rem;
-  --background: oklch(0.985 0.005 85);
-  --foreground: oklch(0.18 0.015 25);
+  --radius: 0.5rem;
+  --background: oklch(0.982 0.003 80);
+  --foreground: oklch(0.17 0.018 24);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.18 0.015 25);
+  --card-foreground: oklch(0.17 0.018 24);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.18 0.015 25);
-  --primary: oklch(0.28 0.08 26);
-  --primary-foreground: oklch(0.985 0.003 80);
-  --secondary: oklch(0.96 0.003 80);
-  --secondary-foreground: oklch(0.28 0.08 26);
-  --muted: oklch(0.95 0.003 80);
-  --muted-foreground: oklch(0.5 0.02 30);
-  --accent: oklch(0.76 0.12 74);
-  --accent-foreground: oklch(0.18 0.015 25);
-  --destructive: oklch(0.55 0.2 27);
-  --destructive-foreground: oklch(0.985 0.003 80);
-  --border: oklch(0.9 0.01 70);
-  --input: oklch(0.9 0.01 70);
-  --ring: oklch(0.45 0.1 26);
-  --gold: oklch(0.72 0.12 74);
+  --popover-foreground: oklch(0.17 0.018 24);
+  --primary: oklch(0.27 0.09 25);
+  --primary-foreground: oklch(0.99 0.002 80);
+  --secondary: oklch(0.948 0.004 82);
+  --secondary-foreground: oklch(0.27 0.09 25);
+  --muted: oklch(0.94 0.004 80);
+  --muted-foreground: oklch(0.46 0.018 35);
+  --accent: oklch(0.72 0.13 73);
+  --accent-foreground: oklch(0.18 0.02 24);
+  --destructive: oklch(0.56 0.2 27);
+  --destructive-foreground: oklch(0.99 0.002 80);
+  --border: oklch(0.875 0.008 78);
+  --input: oklch(0.885 0.008 78);
+  --ring: oklch(0.43 0.1 25);
+  --gold: oklch(0.71 0.13 73);
   --font-sans: "Roboto", system-ui, sans-serif;
   --font-serif: "Roboto", system-ui, sans-serif;
 }
@@ -71,9 +71,9 @@
   body {
     background: linear-gradient(
       180deg,
-      oklch(0.992 0.003 85),
-      oklch(0.985 0.004 85) 28%,
-      oklch(0.98 0.004 85)
+      oklch(0.995 0.002 85) 0%,
+      var(--background) 36%,
+      oklch(0.955 0.004 82) 100%
     );
     color: var(--color-foreground);
     font-family: var(--font-sans);
@@ -85,7 +85,7 @@
   h3,
   h4 {
     font-family: var(--font-sans);
-    letter-spacing: -0.02em;
+    letter-spacing: 0;
   }
 
   ::selection {
@@ -108,57 +108,58 @@
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    border-radius: 999px;
+    border: 1px solid color-mix(in oklab, var(--primary) 80%, black);
+    border-radius: var(--radius);
     background: var(--primary);
     color: var(--primary-foreground);
-    padding: 0.95rem 1.5rem;
+    padding: 0.85rem 1.15rem;
     font-size: 0.85rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0;
     transition:
       transform 180ms ease,
       box-shadow 180ms ease,
-      background-color 180ms ease;
-    box-shadow: 0 14px 30px -20px color-mix(in oklab, var(--primary) 75%, transparent);
+      background-color 180ms ease,
+      border-color 180ms ease;
+    box-shadow: 0 14px 28px -22px color-mix(in oklab, var(--primary) 85%, transparent);
   }
 
   .btn-primary:hover {
     transform: translateY(-1px);
-    box-shadow: 0 20px 36px -22px color-mix(in oklab, var(--primary) 70%, transparent);
+    background: color-mix(in oklab, var(--primary) 88%, black);
+    box-shadow: 0 20px 36px -24px color-mix(in oklab, var(--primary) 86%, transparent);
   }
 
   .surface-card {
-    border: 1px solid color-mix(in oklab, var(--border) 80%, white);
-    background: color-mix(in oklab, white 92%, var(--secondary));
-    box-shadow: 0 18px 60px -42px rgba(31, 25, 20, 0.45);
-    backdrop-filter: blur(16px);
+    border: 1px solid color-mix(in oklab, var(--border) 86%, white);
+    background: color-mix(in oklab, white 94%, var(--secondary));
+    box-shadow: 0 18px 42px -38px rgba(31, 25, 20, 0.52);
+    backdrop-filter: blur(14px);
   }
 
   .panel-shadow {
-    box-shadow: 0 18px 48px -34px rgba(31, 25, 20, 0.42);
+    box-shadow: 0 18px 42px -34px rgba(31, 25, 20, 0.42);
   }
 
   .section-eyebrow {
-    font-size: 0.72rem;
+    font-size: 0.78rem;
     font-weight: 700;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
+    letter-spacing: 0;
     color: color-mix(in oklab, var(--primary) 66%, var(--gold));
   }
 
   .section-title {
-    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-size: clamp(2rem, 4vw, 3.75rem);
     font-weight: 700;
-    line-height: 1.02;
-    letter-spacing: -0.04em;
+    line-height: 1.05;
+    letter-spacing: 0;
     color: var(--primary);
   }
 
   .modern-input {
     width: 100%;
     border: 1px solid var(--border);
-    border-radius: 1rem;
+    border-radius: var(--radius);
     background: white;
     padding: 0.95rem 1rem;
     outline: none;
@@ -174,11 +175,11 @@
   }
 
   .card-business {
-    border-radius: 1.25rem;
+    border-radius: var(--radius);
     border: 1px solid var(--border);
-    background: white;
+    background: color-mix(in oklab, white 96%, var(--secondary));
     padding: 1.5rem;
-    box-shadow: 0 24px 60px -42px rgba(31, 25, 20, 0.48);
+    box-shadow: 0 22px 50px -42px rgba(31, 25, 20, 0.5);
     transition:
       transform 180ms ease,
       box-shadow 180ms ease,
@@ -186,7 +187,7 @@
   }
 
   .card-business:hover {
-    transform: translateY(-6px);
+    transform: translateY(-4px);
     border-color: color-mix(in oklab, var(--gold) 40%, var(--border));
     box-shadow: 0 30px 80px -48px rgba(31, 25, 20, 0.55);
   }
@@ -212,7 +213,7 @@
     color: var(--destructive);
     font-size: clamp(0.82rem, 1.7vw, 1.05rem);
     font-weight: 900;
-    letter-spacing: 0.08em;
+    letter-spacing: 0;
     line-height: 1;
     text-transform: uppercase;
     white-space: nowrap;

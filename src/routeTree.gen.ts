@@ -14,6 +14,7 @@ import { Route as AboutUsRouteImport } from './routes/about-us'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BusinessesHospitalityRouteImport } from './routes/businesses.hospitality'
 import { Route as BusinessesHealthcareRouteImport } from './routes/businesses.healthcare'
+import { Route as BusinessesBusinessRouteImport } from './routes/businesses.$business'
 
 const ContactUsRoute = ContactUsRouteImport.update({
   id: '/contact-us',
@@ -40,11 +41,17 @@ const BusinessesHealthcareRoute = BusinessesHealthcareRouteImport.update({
   path: '/businesses/healthcare',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BusinessesBusinessRoute = BusinessesBusinessRouteImport.update({
+  id: '/businesses/$business',
+  path: '/businesses/$business',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about-us': typeof AboutUsRoute
   '/contact-us': typeof ContactUsRoute
+  '/businesses/$business': typeof BusinessesBusinessRoute
   '/businesses/healthcare': typeof BusinessesHealthcareRoute
   '/businesses/hospitality': typeof BusinessesHospitalityRoute
 }
@@ -52,6 +59,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about-us': typeof AboutUsRoute
   '/contact-us': typeof ContactUsRoute
+  '/businesses/$business': typeof BusinessesBusinessRoute
   '/businesses/healthcare': typeof BusinessesHealthcareRoute
   '/businesses/hospitality': typeof BusinessesHospitalityRoute
 }
@@ -60,6 +68,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about-us': typeof AboutUsRoute
   '/contact-us': typeof ContactUsRoute
+  '/businesses/$business': typeof BusinessesBusinessRoute
   '/businesses/healthcare': typeof BusinessesHealthcareRoute
   '/businesses/hospitality': typeof BusinessesHospitalityRoute
 }
@@ -69,6 +78,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about-us'
     | '/contact-us'
+    | '/businesses/$business'
     | '/businesses/healthcare'
     | '/businesses/hospitality'
   fileRoutesByTo: FileRoutesByTo
@@ -76,6 +86,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about-us'
     | '/contact-us'
+    | '/businesses/$business'
     | '/businesses/healthcare'
     | '/businesses/hospitality'
   id:
@@ -83,6 +94,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about-us'
     | '/contact-us'
+    | '/businesses/$business'
     | '/businesses/healthcare'
     | '/businesses/hospitality'
   fileRoutesById: FileRoutesById
@@ -91,6 +103,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutUsRoute: typeof AboutUsRoute
   ContactUsRoute: typeof ContactUsRoute
+  BusinessesBusinessRoute: typeof BusinessesBusinessRoute
   BusinessesHealthcareRoute: typeof BusinessesHealthcareRoute
   BusinessesHospitalityRoute: typeof BusinessesHospitalityRoute
 }
@@ -132,6 +145,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BusinessesHealthcareRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/businesses/$business': {
+      id: '/businesses/$business'
+      path: '/businesses/$business'
+      fullPath: '/businesses/$business'
+      preLoaderRoute: typeof BusinessesBusinessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -139,6 +159,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutUsRoute: AboutUsRoute,
   ContactUsRoute: ContactUsRoute,
+  BusinessesBusinessRoute: BusinessesBusinessRoute,
   BusinessesHealthcareRoute: BusinessesHealthcareRoute,
   BusinessesHospitalityRoute: BusinessesHospitalityRoute,
 }

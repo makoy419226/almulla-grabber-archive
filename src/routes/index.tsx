@@ -81,12 +81,11 @@ function Home() {
               </Link>
             </div>
           </div>
-
         </div>
       </section>
 
       <section className="mx-auto grid max-w-7xl gap-8 px-4 py-14 sm:px-6 lg:grid-cols-[0.88fr_1.12fr] lg:px-8 lg:py-20">
-        <div className="surface-card overflow-hidden rounded-lg p-2">
+        <div className="surface-card fluid-morph overflow-hidden rounded-lg p-2">
           <img
             src={chairmanImg}
             alt="Chairman"
@@ -106,7 +105,7 @@ function Home() {
             The group brings together healthcare and hospitality platforms with a practical focus on
             quality, trusted partnerships, and long-term value creation.
           </p>
-          <div className="mt-8 surface-card rounded-lg p-5">
+          <div className="mt-8 surface-card fluid-morph rounded-lg p-5">
             <div className="flex items-center justify-between gap-4">
               <div>
                 <p className="text-lg font-semibold text-primary">
@@ -123,7 +122,7 @@ function Home() {
       <section className="border-y border-border/70 bg-white/62">
         <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
           <div className="grid gap-4 lg:grid-cols-3">
-            <div className="surface-card rounded-lg p-6">
+            <div className="surface-card fluid-morph rounded-lg p-6">
               <Sparkles className="h-5 w-5 text-[var(--gold)]" />
               <h2 className="mt-4 text-xl font-semibold text-primary">Modern structure</h2>
               <p className="mt-2 text-sm leading-7 text-foreground/70">
@@ -131,7 +130,7 @@ function Home() {
                 layout.
               </p>
             </div>
-            <div className="surface-card rounded-lg p-6">
+            <div className="surface-card fluid-morph rounded-lg p-6">
               <HeartPulse className="h-5 w-5 text-[var(--gold)]" />
               <h2 className="mt-4 text-xl font-semibold text-primary">Healthcare focus</h2>
               <p className="mt-2 text-sm leading-7 text-foreground/70">
@@ -139,7 +138,7 @@ function Home() {
                 outcomes.
               </p>
             </div>
-            <div className="surface-card rounded-lg p-6">
+            <div className="surface-card fluid-morph rounded-lg p-6">
               <Building2 className="h-5 w-5 text-[var(--gold)]" />
               <h2 className="mt-4 text-xl font-semibold text-primary">Hospitality platform</h2>
               <p className="mt-2 text-sm leading-7 text-foreground/70">
@@ -167,7 +166,7 @@ function Home() {
 
         <div className="grid gap-6 md:grid-cols-2">
           {sectors.map((sector) => (
-            <article key={sector.title} className="card-business overflow-hidden">
+            <article key={sector.title} className="card-business fluid-morph overflow-hidden">
               <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
                 <div>
                   <div className="section-eyebrow">{sector.title}</div>

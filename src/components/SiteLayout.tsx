@@ -1,5 +1,5 @@
 import { Link, useLocation } from "@tanstack/react-router";
-import { useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Mail, Phone, Menu, X, ChevronDown, ArrowUpRight, MapPin } from "lucide-react";
 import { AlmullaLogo } from "@/components/AlmullaLogo";
 import { cn } from "@/lib/utils";
@@ -15,6 +15,7 @@ const businessLinks = [
 export function SiteLayout({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false);
   const [bizOpen, setBizOpen] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
   const pathname = useLocation({ select: (location) => location.pathname });
   const selectedBusiness =
     businessLinks.find((business) => business.to === pathname)?.label ?? "Businesses";
@@ -24,6 +25,30 @@ export function SiteLayout({ children }: { children: ReactNode }) {
     "inline-flex items-center rounded-full px-3 py-2 text-sm font-semibold text-foreground/70 transition-colors hover:bg-white/72 hover:text-primary";
   const mobileLinkCls =
     "flex items-center rounded-lg px-4 py-3 text-base font-semibold text-foreground/82 transition-colors hover:bg-white/72 hover:text-primary";
+
+  useEffect(() => {
+    if (!open) return;
+
+    const handlePointerDown = (event: PointerEvent) => {
+      if (!headerRef.current?.contains(event.target as Node)) {
+        setOpen(false);
+      }
+    };
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener("pointerdown", handlePointerDown);
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("pointerdown", handlePointerDown);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [open]);
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground">
@@ -49,7 +74,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
         </div>
       </div>
 
-      <header className="sticky top-3 z-50 px-4 py-3 sm:px-6 lg:px-8">
+      <header ref={headerRef} className="sticky top-3 z-50 px-4 py-3 sm:px-6 lg:px-8">
         <div className="relative mx-auto w-full max-w-7xl">
           <div className="glass-morph deploy-sync-header relative grid w-full grid-cols-[auto_auto] items-center justify-between gap-3 rounded-[1.5rem] px-3 py-2.5 md:grid-cols-[minmax(12rem,1fr)_auto_minmax(12rem,1fr)] md:rounded-[2.25rem] md:px-4 md:py-3 lg:px-6">
             <div

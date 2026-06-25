@@ -1,7 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState, type FormEvent } from "react";
+import { type FormEvent } from "react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { MapPin, Phone, Mail, ArrowUpRight } from "lucide-react";
+
+const contactEmail = "info@almullaholding.co";
 
 export const Route = createFileRoute("/contact-us")({
   head: () => ({
@@ -19,11 +21,20 @@ export const Route = createFileRoute("/contact-us")({
 });
 
 function Contact() {
-  const [sent, setSent] = useState(false);
+  const onSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
 
-  const onSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    setSent(true);
+    const formData = new FormData(event.currentTarget);
+    const name = String(formData.get("name") ?? "").trim();
+    const email = String(formData.get("email") ?? "").trim();
+    const message = String(formData.get("message") ?? "").trim();
+
+    const subject = encodeURIComponent(`Website enquiry from ${name}`);
+    const body = encodeURIComponent(
+      [`Name: ${name}`, `Email: ${email}`, "", "Message:", message].join("\n"),
+    );
+
+    window.location.href = `mailto:${contactEmail}?subject=${subject}&body=${body}`;
   };
 
   return (
@@ -43,41 +54,30 @@ function Contact() {
       <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
         <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
           <div className="surface-card rounded-lg p-6 sm:p-8 lg:p-10">
-            <div className="section-eyebrow">Send a message</div>
+            <div className="section-eyebrow">Send an email</div>
             <h2 className="mt-4 text-3xl font-semibold text-primary">Get in touch</h2>
-            {sent ? (
-              <div className="py-14 text-center">
-                <p className="text-2xl font-semibold text-primary">Thank you</p>
-                <p className="mx-auto mt-3 max-w-md text-sm leading-7 text-foreground/65">
-                  We&apos;ve received your message and will be in touch shortly.
-                </p>
+            <form onSubmit={onSubmit} className="mt-8 space-y-4">
+              <div>
+                <label className="mb-2 block text-sm font-semibold text-foreground/64">Name</label>
+                <input required name="name" type="text" className="modern-input" />
               </div>
-            ) : (
-              <form onSubmit={onSubmit} className="mt-8 space-y-4">
-                <div>
-                  <label className="mb-2 block text-sm font-semibold text-foreground/64">
-                    Name
-                  </label>
-                  <input required type="text" className="modern-input" />
-                </div>
-                <div>
-                  <label className="mb-2 block text-sm font-semibold text-foreground/64">
-                    Email address
-                  </label>
-                  <input required type="email" className="modern-input" />
-                </div>
-                <div>
-                  <label className="mb-2 block text-sm font-semibold text-foreground/64">
-                    Message
-                  </label>
-                  <textarea required rows={6} className="modern-input resize-none" />
-                </div>
-                <button type="submit" className="btn-primary w-full">
-                  Submit message
-                  <ArrowUpRight className="h-4 w-4" />
-                </button>
-              </form>
-            )}
+              <div>
+                <label className="mb-2 block text-sm font-semibold text-foreground/64">
+                  Email address
+                </label>
+                <input required name="email" type="email" className="modern-input" />
+              </div>
+              <div>
+                <label className="mb-2 block text-sm font-semibold text-foreground/64">
+                  Message
+                </label>
+                <textarea required name="message" rows={6} className="modern-input resize-none" />
+              </div>
+              <button type="submit" className="btn-primary w-full">
+                Send email
+                <ArrowUpRight className="h-4 w-4" />
+              </button>
+            </form>
           </div>
 
           <div className="grid gap-6">
@@ -109,10 +109,10 @@ function Contact() {
                 <li className="flex flex-col items-center gap-3">
                   <Mail className="h-5 w-5 shrink-0 text-[var(--gold)]" />
                   <a
-                    href="mailto:info@almullaholding.co"
+                    href={`mailto:${contactEmail}`}
                     className="transition-colors hover:text-primary"
                   >
-                    info@almullaholding.co
+                    {contactEmail}
                   </a>
                 </li>
               </ul>

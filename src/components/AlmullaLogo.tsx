@@ -6,16 +6,13 @@ type AlmullaLogoProps = {
   compact?: boolean;
 };
 
-export function AlmullaLogo({
-  className,
-  compact = false,
-}: AlmullaLogoProps) {
+export function AlmullaLogo({ className, compact = false }: AlmullaLogoProps) {
   return (
     <div className={cn("flex items-center gap-3", className)}>
       <div
         className={cn(
           "shrink-0 overflow-hidden",
-          compact ? "h-12 w-9" : "h-[3.1rem] w-[8.9rem]",
+          compact ? "h-12 w-9" : "h-[2.4rem] w-[6.9rem] sm:h-[3.1rem] sm:w-[8.9rem]",
         )}
       >
         <img

@@ -1,0 +1,20 @@
+import tailwindcss from "@tailwindcss/vite";
+import react from "@vitejs/plugin-react";
+import { defineConfig } from "vite";
+import { fileURLToPath, URL } from "node:url";
+
+export default defineConfig({
+  root: "godaddy",
+  publicDir: "../godaddy-public",
+  plugins: [react(), tailwindcss()],
+  resolve: {
+    alias: {
+      "@": fileURLToPath(new URL("./src", import.meta.url)),
+    },
+    dedupe: ["react", "react-dom"],
+  },
+  build: {
+    outDir: "../godaddy-dist",
+    emptyOutDir: true,
+  },
+});

@@ -7,9 +7,11 @@
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
+    "build:godaddy": "vite build --config vite.godaddy.config.ts",
     "build:dev": "vite build --mode development",
     "deploy": "npm run build && wrangler deploy",
     "preview": "vite preview",
+    "preview:godaddy": "vite preview --config vite.godaddy.config.ts",
     "lint": "eslint .",
     "format": "prettier --write ."
   },

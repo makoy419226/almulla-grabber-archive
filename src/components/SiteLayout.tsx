@@ -22,6 +22,8 @@ export function SiteLayout({ children }: { children: ReactNode }) {
 
   const linkCls =
     "inline-flex items-center rounded-full px-3 py-2 text-sm font-semibold text-foreground/70 transition-colors hover:bg-white/72 hover:text-primary";
+  const mobileLinkCls =
+    "flex items-center rounded-lg px-4 py-3 text-base font-semibold text-foreground/82 transition-colors hover:bg-white/72 hover:text-primary";
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground">
@@ -47,129 +49,140 @@ export function SiteLayout({ children }: { children: ReactNode }) {
         </div>
       </div>
 
-      <header className="sticky top-3 z-50 flex justify-center px-4 py-3 sm:px-6 lg:px-8">
-        <div className="glass-morph relative grid w-full max-w-7xl grid-cols-[1fr_auto] items-center rounded-[2.25rem] px-4 py-3 md:grid-cols-[minmax(12rem,1fr)_auto_minmax(12rem,1fr)] lg:px-6">
-          <div
-            className="liquid-glass pointer-events-none absolute inset-0 rounded-[2.25rem]"
-            aria-hidden="true"
-          />
-
-          <Link to="/" className="relative z-10 shrink-0 justify-self-start">
-            <AlmullaLogo className="gap-2 sm:gap-3" />
-          </Link>
-
-          <nav className="relative z-20 hidden items-center justify-center gap-1 md:flex md:justify-self-center">
-            <Link
-              to="/"
-              className={linkCls}
-              activeProps={{ className: `${linkCls} bg-white text-primary shadow-sm` }}
-            >
-              Home
-            </Link>
-            <Link
-              to="/about-us"
-              className={linkCls}
-              activeProps={{ className: `${linkCls} bg-white text-primary shadow-sm` }}
-            >
-              About
-            </Link>
+      <header className="sticky top-3 z-50 px-4 py-3 sm:px-6 lg:px-8">
+        <div className="relative mx-auto w-full max-w-7xl">
+          <div className="glass-morph relative grid w-full grid-cols-[auto_auto] items-center justify-between gap-3 rounded-[1.5rem] px-3 py-2.5 md:grid-cols-[minmax(12rem,1fr)_auto_minmax(12rem,1fr)] md:rounded-[2.25rem] md:px-4 md:py-3 lg:px-6">
             <div
-              className="relative"
-              onMouseEnter={() => setBizOpen(true)}
-              onMouseLeave={() => setBizOpen(false)}
-            >
-              <button
-                type="button"
-                className={cn(
-                  linkCls,
-                  "gap-1 border-0 bg-transparent",
-                  isBusinessRoute && "bg-white/76 text-primary shadow-sm",
-                )}
-                aria-expanded={bizOpen}
-                aria-haspopup="menu"
-                onClick={() => setBizOpen((current) => !current)}
-              >
-                {selectedBusiness} <ChevronDown className="h-3.5 w-3.5" />
-              </button>
-              {bizOpen && (
-                <div className="absolute left-0 top-full z-50 pt-3">
-                  <div
-                    className="surface-card glass-morph w-64 overflow-hidden rounded-[1.25rem] p-2 shadow-2xl shadow-black/10"
-                    role="menu"
-                  >
-                    {businessLinks.map((business) => (
-                      <Link
-                        key={business.to}
-                        to={business.to}
-                        className="flex items-center justify-between rounded-md px-4 py-3 text-sm font-medium text-foreground/78 transition-colors hover:bg-secondary hover:text-primary"
-                        activeProps={{ className: "bg-white text-primary shadow-sm" }}
-                        onClick={() => setBizOpen(false)}
-                      >
-                        {business.label}
-                        <ArrowUpRight className="h-4 w-4 opacity-60" />
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
-            <Link
-              to="/contact-us"
-              className={linkCls}
-              activeProps={{ className: `${linkCls} bg-white text-primary shadow-sm` }}
-            >
-              Contact
+              className="liquid-glass pointer-events-none absolute inset-0 rounded-[1.5rem] md:rounded-[2.25rem]"
+              aria-hidden="true"
+            />
+
+            <Link to="/" className="relative z-10 shrink-0 justify-self-start">
+              <AlmullaLogo />
             </Link>
-          </nav>
 
-          <div className="relative z-10 hidden justify-self-end md:block" aria-hidden="true" />
-
-          <button
-            className="relative z-10 inline-flex h-11 w-11 items-center justify-center justify-self-end rounded-full border border-white/70 bg-white/72 text-primary shadow-sm transition-transform hover:-translate-y-0.5 md:hidden"
-            onClick={() => setOpen(!open)}
-            aria-label="Menu"
-          >
-            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
-        </div>
-
-        {open && (
-          <div className="liquid-glass glass-morph mx-auto mt-2 max-w-7xl overflow-hidden rounded-[1.75rem] md:hidden">
-            <div className="flex flex-col gap-2 px-4 py-4 sm:px-6">
+            <nav className="relative z-20 hidden items-center justify-center gap-1 md:flex md:justify-self-center">
               <Link
                 to="/"
-                className="rounded-md px-4 py-3 text-sm font-semibold hover:bg-secondary"
-                onClick={() => setOpen(false)}
+                className={linkCls}
+                activeProps={{ className: `${linkCls} bg-white text-primary shadow-sm` }}
               >
                 Home
               </Link>
               <Link
                 to="/about-us"
-                className="rounded-md px-4 py-3 text-sm font-semibold hover:bg-secondary"
-                onClick={() => setOpen(false)}
+                className={linkCls}
+                activeProps={{ className: `${linkCls} bg-white text-primary shadow-sm` }}
               >
                 About
               </Link>
-              {businessLinks.map((business) => (
-                <Link
-                  key={business.to}
-                  to={business.to}
-                  className="rounded-md px-4 py-3 text-sm font-semibold hover:bg-secondary"
-                  onClick={() => setOpen(false)}
+              <div
+                className="relative"
+                onMouseEnter={() => setBizOpen(true)}
+                onMouseLeave={() => setBizOpen(false)}
+              >
+                <button
+                  type="button"
+                  className={cn(
+                    linkCls,
+                    "gap-1 border-0 bg-transparent",
+                    isBusinessRoute && "bg-white/76 text-primary shadow-sm",
+                  )}
+                  aria-expanded={bizOpen}
+                  aria-haspopup="menu"
+                  onClick={() => setBizOpen((current) => !current)}
                 >
-                  {business.label}
-                </Link>
-              ))}
+                  {selectedBusiness} <ChevronDown className="h-3.5 w-3.5" />
+                </button>
+                {bizOpen && (
+                  <div className="absolute left-0 top-full z-50 pt-3">
+                    <div
+                      className="surface-card glass-morph w-64 overflow-hidden rounded-[1.25rem] p-2 shadow-2xl shadow-black/10"
+                      role="menu"
+                    >
+                      {businessLinks.map((business) => (
+                        <Link
+                          key={business.to}
+                          to={business.to}
+                          className="flex items-center justify-between rounded-md px-4 py-3 text-sm font-medium text-foreground/78 transition-colors hover:bg-secondary hover:text-primary"
+                          activeProps={{ className: "bg-white text-primary shadow-sm" }}
+                          onClick={() => setBizOpen(false)}
+                        >
+                          {business.label}
+                          <ArrowUpRight className="h-4 w-4 opacity-60" />
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
               <Link
                 to="/contact-us"
-                className="rounded-md px-4 py-3 text-sm font-semibold hover:bg-secondary"
-                onClick={() => setOpen(false)}
+                className={linkCls}
+                activeProps={{ className: `${linkCls} bg-white text-primary shadow-sm` }}
               >
                 Contact
               </Link>
-            </div>
+            </nav>
+
+            <div className="relative z-10 hidden justify-self-end md:block" aria-hidden="true" />
+
+            <button
+              className="relative z-10 inline-flex h-10 w-10 items-center justify-center justify-self-end rounded-full border border-white/70 bg-white/72 text-primary shadow-sm transition-transform hover:-translate-y-0.5 sm:h-11 sm:w-11 md:hidden"
+              onClick={() => setOpen(!open)}
+              aria-label="Menu"
+              aria-expanded={open}
+              aria-controls="mobile-navigation"
+            >
+              {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </button>
           </div>
-        )}
+
+          {open && (
+            <div
+              id="mobile-navigation"
+              className="liquid-glass glass-morph absolute left-0 right-0 top-full z-50 mt-2 overflow-hidden rounded-[1.5rem] shadow-2xl shadow-black/10 md:hidden"
+            >
+              <nav className="flex flex-col gap-1 p-2" aria-label="Mobile navigation">
+                <Link
+                  to="/"
+                  className={mobileLinkCls}
+                  activeProps={{ className: `${mobileLinkCls} bg-white text-primary shadow-sm` }}
+                  onClick={() => setOpen(false)}
+                >
+                  Home
+                </Link>
+                <Link
+                  to="/about-us"
+                  className={mobileLinkCls}
+                  activeProps={{ className: `${mobileLinkCls} bg-white text-primary shadow-sm` }}
+                  onClick={() => setOpen(false)}
+                >
+                  About
+                </Link>
+                {businessLinks.map((business) => (
+                  <Link
+                    key={business.to}
+                    to={business.to}
+                    className={mobileLinkCls}
+                    activeProps={{ className: `${mobileLinkCls} bg-white text-primary shadow-sm` }}
+                    onClick={() => setOpen(false)}
+                  >
+                    {business.label}
+                  </Link>
+                ))}
+                <Link
+                  to="/contact-us"
+                  className={mobileLinkCls}
+                  activeProps={{ className: `${mobileLinkCls} bg-white text-primary shadow-sm` }}
+                  onClick={() => setOpen(false)}
+                >
+                  Contact
+                </Link>
+              </nav>
+            </div>
+          )}
+        </div>
       </header>
 
       <main className="site-content flex-1">{children}</main>

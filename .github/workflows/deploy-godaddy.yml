@@ -42,4 +42,4 @@ jobs:
           protocol: ftp
           port: 21
           local-dir: ./godaddy-dist/
-          server-dir: /repositories/almullaholding.com/
+          server-dir: /public_html/

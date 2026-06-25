@@ -57,15 +57,15 @@ GODADDY_FTP_PASSWORD
 The workflow uploads the built site to:
 
 ```text
-/public_html/
+/
 ```
 
-GoDaddy/cPanel shows `almullaholding.com` as the main domain with document root:
+Use an FTP account whose directory is the live site root:
 
 ```text
-/public_html
+/home/upjzdjjy3xcp/public_html
 ```
 
-That means every successful GitHub Actions deployment updates the live site folder directly.
+Because the FTP account starts inside `public_html`, `/` means the live website folder.
 
 The workflow runs on pushes to `main` and can also be started manually from GitHub Actions.

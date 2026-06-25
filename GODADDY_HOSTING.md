@@ -52,19 +52,16 @@ Add these secrets in GitHub:
 GODADDY_FTP_SERVER
 GODADDY_FTP_USERNAME
 GODADDY_FTP_PASSWORD
-GODADDY_FTP_SERVER_DIR
 ```
 
-`GODADDY_FTP_SERVER_DIR` is usually:
+The workflow uploads the built site to:
 
 ```text
-/public_html/
+/repositories/almullaholding.com/
 ```
 
-If GoDaddy FTP logs you directly into the site root, use:
-
-```text
-/
-```
+Set the GoDaddy/cPanel domain document root for `almullaholding.com` to
+`/home/upjzdjjy3xcp/repositories/almullaholding.com` so the domain serves the
+same folder that GitHub updates.
 
 The workflow runs on pushes to `main` and can also be started manually from GitHub Actions.

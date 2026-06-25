@@ -35,3 +35,36 @@ Upload the contents of `godaddy-dist/` into the GoDaddy hosting document root, u
 
 The contact form is still client-side only. It shows a thank-you message but does not send email
 unless a form backend or third-party form endpoint is added.
+
+## GitHub Auto Deploy
+
+The repository includes a GitHub Actions workflow at:
+
+```text
+.github/workflows/deploy-godaddy.yml
+```
+
+It runs `npm run build:godaddy` and uploads `godaddy-dist/` to GoDaddy by FTP.
+
+Add these secrets in GitHub:
+
+```text
+GODADDY_FTP_SERVER
+GODADDY_FTP_USERNAME
+GODADDY_FTP_PASSWORD
+GODADDY_FTP_SERVER_DIR
+```
+
+`GODADDY_FTP_SERVER_DIR` is usually:
+
+```text
+/public_html/
+```
+
+If GoDaddy FTP logs you directly into the site root, use:
+
+```text
+/
+```
+
+The workflow runs on pushes to `main` and can also be started manually from GitHub Actions.

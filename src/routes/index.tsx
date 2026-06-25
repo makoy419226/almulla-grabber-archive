@@ -5,6 +5,7 @@ import heroImg from "@/assets/hero.jpg";
 import healthcareImg from "@/assets/healthcare.jpg";
 import hospitalityImg from "@/assets/hospitality.jpg";
 import chairmanImg from "@/assets/chairman.jpg";
+import stackedLogoImg from "@/assets/logo-stacked-transparent.png";
 import { ArrowUpRight, Building2, HeartPulse, Sparkles } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -58,13 +59,17 @@ function Home() {
 
         <div className="relative mx-auto flex min-h-[76vh] max-w-7xl flex-col justify-end px-4 pb-12 pt-28 sm:px-6 lg:px-8 lg:pb-16">
           <div className="mx-auto max-w-3xl text-center">
-            <div className="reveal-up text-sm font-semibold text-[var(--gold)]">
-              Dubai holding group
-            </div>
-            <h1 className="reveal-up reveal-delay-1 mt-5 text-5xl font-bold leading-none text-primary-foreground sm:text-6xl lg:text-7xl">
-              AlMulla Holding Group
-            </h1>
-            <p className="copy-center reveal-up reveal-delay-2 mt-6 max-w-2xl text-base leading-8 text-primary-foreground/78 sm:text-lg">
+            <img
+              src={stackedLogoImg}
+              alt="AlMulla Holding"
+              className="reveal-up mx-auto h-auto w-[min(68vw,18rem)] drop-shadow-[0_18px_38px_rgba(0,0,0,0.28)] sm:w-[22rem] lg:w-[25rem]"
+              width={560}
+              height={720}
+              decoding="async"
+              fetchPriority="high"
+            />
+            <h1 className="sr-only">AlMulla Holding Group</h1>
+            <p className="copy-center reveal-up reveal-delay-1 mt-7 max-w-2xl text-base leading-8 text-primary-foreground/78 sm:text-lg">
               A modern holding company with focused investments in healthcare and hospitality, built
               around quality service and long-term value.
             </p>

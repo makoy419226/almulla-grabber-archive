@@ -51,9 +51,9 @@ export function SiteLayout({ children }: { children: ReactNode }) {
 
       <header className="sticky top-3 z-50 px-4 py-3 sm:px-6 lg:px-8">
         <div className="relative mx-auto w-full max-w-7xl">
-          <div className="glass-morph relative grid w-full grid-cols-[auto_auto] items-center justify-between gap-3 rounded-[1.5rem] px-3 py-2.5 md:grid-cols-[minmax(12rem,1fr)_auto_minmax(12rem,1fr)] md:rounded-[2.25rem] md:px-4 md:py-3 lg:px-6">
+          <div className="glass-morph deploy-sync-header relative grid w-full grid-cols-[auto_auto] items-center justify-between gap-3 rounded-[1.5rem] px-3 py-2.5 md:grid-cols-[minmax(12rem,1fr)_auto_minmax(12rem,1fr)] md:rounded-[2.25rem] md:px-4 md:py-3 lg:px-6">
             <div
-              className="liquid-glass pointer-events-none absolute inset-0 rounded-[1.5rem] md:rounded-[2.25rem]"
+              className="liquid-glass deploy-sync-glass pointer-events-none absolute inset-0 rounded-[1.5rem] md:rounded-[2.25rem]"
               aria-hidden="true"
             />
 

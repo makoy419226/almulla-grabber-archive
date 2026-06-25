@@ -75,7 +75,12 @@
 
   body {
     min-height: 100vh;
-    background: linear-gradient(180deg, var(--ivory) 0%, var(--background) 48%, oklch(0.94 0.012 86) 100%);
+    background: linear-gradient(
+      180deg,
+      var(--ivory) 0%,
+      var(--background) 48%,
+      oklch(0.94 0.012 86) 100%
+    );
     color: var(--color-foreground);
     font-family: var(--font-sans);
     text-rendering: optimizeLegibility;
@@ -103,12 +108,7 @@
     text-align: justify;
   }
 
-  .site-content
-    :is(
-      .section-eyebrow,
-      .data-center,
-      .data-center *
-    ) {
+  .site-content :is(.section-eyebrow, .data-center, .data-center *) {
     text-align: center;
     text-align-last: center;
   }
@@ -207,6 +207,21 @@
       0 22px 60px -42px rgba(17, 26, 38, 0.5);
     backdrop-filter: blur(22px) saturate(1.28);
     -webkit-backdrop-filter: blur(22px) saturate(1.28);
+  }
+
+  .deploy-sync-header {
+    box-shadow:
+      0 0 0 1px color-mix(in oklab, var(--destructive) 20%, transparent),
+      0 18px 52px -40px color-mix(in oklab, var(--destructive) 34%, transparent);
+  }
+
+  .deploy-sync-glass {
+    border-color: color-mix(in oklab, var(--destructive) 20%, white 58%);
+    background: linear-gradient(
+      135deg,
+      color-mix(in oklab, white 84%, var(--destructive) 7%),
+      color-mix(in oklab, white 68%, var(--destructive) 10%)
+    );
   }
 
   .surface-card,

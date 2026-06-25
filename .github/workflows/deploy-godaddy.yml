@@ -27,11 +27,20 @@ jobs:
       - name: Build GoDaddy static site
         run: npm run build:godaddy
 
+      - name: Validate GoDaddy FTP secrets
+        run: |
+          test -n "${{ secrets.GODADDY_FTP_SERVER }}" || (echo "Missing GODADDY_FTP_SERVER" && exit 1)
+          test -n "${{ secrets.GODADDY_FTP_USERNAME }}" || (echo "Missing GODADDY_FTP_USERNAME" && exit 1)
+          test -n "${{ secrets.GODADDY_FTP_PASSWORD }}" || (echo "Missing GODADDY_FTP_PASSWORD" && exit 1)
+          test -n "${{ secrets.GODADDY_FTP_SERVER_DIR }}" || (echo "Missing GODADDY_FTP_SERVER_DIR" && exit 1)
+
       - name: Upload to GoDaddy hosting
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.GODADDY_FTP_SERVER }}
           username: ${{ secrets.GODADDY_FTP_USERNAME }}
           password: ${{ secrets.GODADDY_FTP_PASSWORD }}
+          protocol: ftp
+          port: 21
           local-dir: ./godaddy-dist/
           server-dir: ${{ secrets.GODADDY_FTP_SERVER_DIR }}

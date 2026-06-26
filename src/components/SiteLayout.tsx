@@ -22,9 +22,9 @@ export function SiteLayout({ children }: { children: ReactNode }) {
   const isBusinessRoute = pathname.startsWith("/businesses/");
 
   const linkCls =
-    "inline-flex items-center rounded-full px-3 py-2 text-sm font-semibold text-foreground/70 transition-colors hover:bg-white/72 hover:text-primary";
+    "nav-hover-magnify inline-flex items-center rounded-full px-3 py-2 text-sm font-semibold text-foreground/70 hover:bg-white/72 hover:text-primary";
   const mobileLinkCls =
-    "flex items-center rounded-lg px-4 py-3 text-base font-semibold text-foreground/82 transition-colors hover:bg-white/72 hover:text-primary";
+    "nav-hover-magnify mobile-nav-link flex items-center rounded-lg px-4 py-3 text-base font-semibold text-foreground/82 hover:bg-white/72 hover:text-primary";
 
   useEffect(() => {
     if (!open) return;
@@ -129,12 +129,12 @@ export function SiteLayout({ children }: { children: ReactNode }) {
                         <Link
                           key={business.to}
                           to={business.to}
-                          className="flex items-center justify-between rounded-md px-4 py-3 text-sm font-medium text-foreground/78 transition-colors hover:bg-secondary hover:text-primary"
+                          className="nav-hover-magnify dropdown-nav-link group flex items-center justify-between rounded-md px-4 py-3 text-sm font-medium text-foreground/78 hover:bg-secondary hover:text-primary"
                           activeProps={{ className: "bg-white text-primary shadow-sm" }}
                           onClick={() => setBizOpen(false)}
                         >
                           {business.label}
-                          <ArrowUpRight className="h-4 w-4 opacity-60" />
+                          <ArrowUpRight className="dropdown-nav-arrow h-4 w-4 opacity-60" />
                         </Link>
                       ))}
                     </div>

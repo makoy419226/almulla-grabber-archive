@@ -14,9 +14,9 @@ export type SeoEntry = {
 export const seoEntries: Record<string, SeoEntry> = {
   "/": {
     path: "/",
-    title: "AlMulla Holding Group - Dubai Healthcare and Hospitality Holding Company",
+    title: "AlMulla Holding Group - Dubai Holding Company",
     description:
-      "AlMulla Holding Group is a Dubai-based holding company with focused investments in healthcare and hospitality.",
+      "AlMulla Holding Group is a Dubai-based holding company with focused investments across healthcare, hospitality, real-estate, education, and energy.",
   },
   "/about-us": {
     path: "/about-us",

@@ -7,6 +7,7 @@ import heroAlmullaEtihadImg from "@/assets/hero-almulla-etihad-burj.jpg";
 import healthcareImg from "@/assets/healthcare.jpg";
 import hospitalityImg from "@/assets/hospitality.jpg";
 import realEstateImg from "@/assets/sector-real-estate.jpg";
+import strategicInvestmentImg from "@/assets/sector-strategic-investment.jpg";
 import stackedLogoImg from "@/assets/logo-stacked-transparent.png";
 import {
   ArrowRight,
@@ -41,6 +42,13 @@ export const Route = createFileRoute("/")({
 });
 
 const sectors = [
+  {
+    title: "Strategic investment",
+    img: strategicInvestmentImg,
+    to: "/businesses/strategic-investment",
+    icon: BriefcaseBusiness,
+    body: "Allocating capital with discipline across resilient opportunities, partnerships, and long-term growth platforms.",
+  },
   {
     title: "Healthcare",
     img: healthcareImg,

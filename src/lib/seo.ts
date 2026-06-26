@@ -16,19 +16,43 @@ export const seoEntries: Record<string, SeoEntry> = {
     path: "/",
     title: "AlMulla Holding Group - Dubai Holding Company",
     description:
-      "AlMulla Holding Group is a Dubai-based holding company with focused investments across healthcare, hospitality, real-estate, education, and energy.",
+      "AlMulla Holding Group is a Dubai-based holding company with focused investments across strategic investment, healthcare, hospitality, real-estate, education, and energy.",
   },
   "/about-us": {
     path: "/about-us",
     title: "About AlMulla Holding Group - Dubai Holding Company",
     description:
-      "Learn about AlMulla Holding Group, chaired by Mr. Abdulla Mohamed Saeed AlMulla and focused on healthcare and hospitality investments.",
+      "Learn about AlMulla Holding Group, chaired by Mr. Abdulla Mohamed Saeed AlMulla and structured around disciplined, sector-focused long-term growth.",
   },
   "/businesses/healthcare": {
     path: "/businesses/healthcare",
     title: "Chicago Healthcare - AlMulla Holding Group",
     description:
       "Chicago Healthcare invests in and operates premium healthcare ventures in Dubai with leading medical specialists and modern facilities.",
+  },
+  "/businesses/strategic-investment": {
+    path: "/businesses/strategic-investment",
+    title: "Strategic Investment - AlMulla Holding Group",
+    description:
+      "Strategic Investment at AlMulla Holding Group focuses on disciplined capital allocation, regional partnerships, and long-term value creation across resilient sectors.",
+  },
+  "/businesses/education": {
+    path: "/businesses/education",
+    title: "Education - AlMulla Holding Group",
+    description:
+      "AlMulla Holding Group backs education ventures built around strong learning environments, future-ready campuses, and long-term community value.",
+  },
+  "/businesses/real-estate": {
+    path: "/businesses/real-estate",
+    title: "Real-estate - AlMulla Holding Group",
+    description:
+      "AlMulla Holding Group develops and manages resilient real-estate assets shaped by quality locations, tenant experience, and durable demand.",
+  },
+  "/businesses/energy": {
+    path: "/businesses/energy",
+    title: "Energy - AlMulla Holding Group",
+    description:
+      "AlMulla Holding Group invests in energy platforms spanning solar, infrastructure, and practical future-ready systems built for reliability and growth.",
   },
   "/businesses/hospitality": {
     path: "/businesses/hospitality",
@@ -78,7 +102,7 @@ export function getSeoEntry(pathname: string): SeoEntry {
       path,
       title: `${SITE_NAME} - Page Not Found`,
       description:
-        "The requested AlMulla Holding Group page is not available. Visit the official website for healthcare, hospitality, and contact information.",
+        "The requested AlMulla Holding Group page is not available. Visit the official website for strategic investment, healthcare, hospitality, education, real-estate, energy, and contact information.",
       robots: "noindex, follow",
     }
   );

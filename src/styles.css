@@ -35,31 +35,34 @@
 
 :root {
   --radius: 0.375rem;
-  --background: oklch(0.976 0.007 84);
-  --foreground: oklch(0.17 0.018 244);
+  --background: oklch(0.982 0.01 86);
+  --foreground: oklch(0.18 0.014 72);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.17 0.018 244);
+  --card-foreground: oklch(0.18 0.014 72);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.17 0.018 244);
-  --primary: oklch(0.24 0.09 24);
-  --primary-foreground: oklch(0.99 0.004 86);
-  --secondary: oklch(0.92 0.013 188);
-  --secondary-foreground: oklch(0.22 0.046 196);
-  --muted: oklch(0.925 0.008 88);
-  --muted-foreground: oklch(0.42 0.016 238);
-  --accent: oklch(0.64 0.082 182);
-  --accent-foreground: oklch(0.12 0.018 222);
+  --popover-foreground: oklch(0.18 0.014 72);
+  --primary: oklch(0.28 0.055 58);
+  --primary-foreground: oklch(0.985 0.008 86);
+  --secondary: oklch(0.935 0.03 86);
+  --secondary-foreground: oklch(0.24 0.04 64);
+  --muted: oklch(0.94 0.012 86);
+  --muted-foreground: oklch(0.43 0.012 70);
+  --accent: oklch(0.72 0.105 82);
+  --accent-foreground: oklch(0.16 0.018 70);
   --destructive: oklch(0.56 0.2 27);
   --destructive-foreground: oklch(0.99 0.002 80);
-  --border: oklch(0.84 0.013 88);
-  --input: oklch(0.88 0.01 88);
-  --ring: oklch(0.56 0.09 182);
-  --gold: oklch(0.74 0.135 78);
-  --ink: oklch(0.15 0.022 248);
-  --wine: oklch(0.31 0.11 24);
-  --teal: oklch(0.5 0.075 190);
-  --ivory: oklch(0.985 0.008 86);
-  --charcoal: oklch(0.17 0.018 244);
+  --border: oklch(0.855 0.02 84);
+  --input: oklch(0.895 0.014 86);
+  --ring: oklch(0.7 0.11 82);
+  --gold: oklch(0.74 0.125 82);
+  --gold-soft: oklch(0.91 0.058 86);
+  --bronze: oklch(0.42 0.075 64);
+  --ink: oklch(0.16 0.016 72);
+  --wine: oklch(0.27 0.055 42);
+  --teal: oklch(0.42 0.035 210);
+  --ivory: oklch(0.988 0.009 86);
+  --champagne: oklch(0.955 0.035 88);
+  --charcoal: oklch(0.16 0.016 72);
   --font-sans: "Manrope", "Inter", system-ui, sans-serif;
   --font-serif: "Manrope", "Inter", system-ui, sans-serif;
 }
@@ -75,12 +78,13 @@
 
   body {
     min-height: 100vh;
-    background: linear-gradient(
-      180deg,
-      var(--ivory) 0%,
-      var(--background) 48%,
-      oklch(0.94 0.012 86) 100%
-    );
+    background:
+      radial-gradient(
+        circle at 84% 8%,
+        color-mix(in oklab, var(--gold) 13%, transparent),
+        transparent 32%
+      ),
+      linear-gradient(180deg, var(--ivory) 0%, white 42%, var(--background) 100%);
     color: var(--color-foreground);
     font-family: var(--font-sans);
     text-rendering: optimizeLegibility;
@@ -140,12 +144,12 @@
     justify-content: center;
     gap: 0.5rem;
     overflow: hidden;
-    border: 1px solid color-mix(in oklab, var(--gold) 45%, var(--primary));
+    border: 1px solid color-mix(in oklab, var(--gold) 62%, var(--bronze));
     border-radius: var(--radius);
     background: linear-gradient(
       135deg,
-      var(--primary),
-      color-mix(in oklab, var(--primary) 76%, black)
+      color-mix(in oklab, var(--gold) 74%, var(--bronze)),
+      color-mix(in oklab, var(--bronze) 86%, var(--primary))
     );
     color: var(--primary-foreground);
     padding: 0.85rem 1.15rem;
@@ -158,8 +162,8 @@
       background-color 260ms ease,
       border-color 260ms ease;
     box-shadow:
-      inset 0 1px 0 color-mix(in oklab, white 26%, transparent),
-      0 18px 42px -24px color-mix(in oklab, var(--primary) 86%, transparent);
+      inset 0 1px 0 color-mix(in oklab, white 34%, transparent),
+      0 18px 42px -24px color-mix(in oklab, var(--bronze) 86%, transparent);
   }
 
   .btn-primary::before {
@@ -169,7 +173,7 @@
     background: linear-gradient(
       115deg,
       transparent 12%,
-      color-mix(in oklab, white 22%, transparent) 32%,
+      color-mix(in oklab, white 30%, transparent) 32%,
       transparent 52%
     );
     pointer-events: none;
@@ -181,12 +185,12 @@
     transform: translateY(-2px) scale(1.012);
     background: linear-gradient(
       135deg,
-      color-mix(in oklab, var(--primary) 92%, black),
-      color-mix(in oklab, var(--primary) 70%, black)
+      color-mix(in oklab, var(--gold) 82%, white),
+      color-mix(in oklab, var(--bronze) 88%, var(--primary))
     );
     box-shadow:
-      inset 0 1px 0 color-mix(in oklab, white 32%, transparent),
-      0 24px 56px -28px color-mix(in oklab, var(--primary) 90%, transparent);
+      inset 0 1px 0 color-mix(in oklab, white 42%, transparent),
+      0 24px 56px -28px color-mix(in oklab, var(--bronze) 90%, transparent);
   }
 
   .btn-primary:hover::before {
@@ -211,24 +215,24 @@
 
   .deploy-sync-header {
     box-shadow:
-      0 0 0 1px color-mix(in oklab, var(--destructive) 20%, transparent),
-      0 18px 52px -40px color-mix(in oklab, var(--destructive) 34%, transparent);
+      0 0 0 1px color-mix(in oklab, var(--gold) 22%, transparent),
+      0 18px 52px -40px color-mix(in oklab, var(--bronze) 28%, transparent);
   }
 
   .site-header-tint {
     background: linear-gradient(
       180deg,
-      color-mix(in oklab, var(--destructive) 10%, transparent),
-      color-mix(in oklab, var(--destructive) 6%, transparent)
+      color-mix(in oklab, var(--gold) 11%, transparent),
+      color-mix(in oklab, var(--champagne) 20%, transparent)
     );
   }
 
   .deploy-sync-glass {
-    border-color: color-mix(in oklab, var(--destructive) 32%, white 50%);
+    border-color: color-mix(in oklab, var(--gold) 44%, white 50%);
     background: linear-gradient(
       135deg,
-      color-mix(in oklab, white 76%, var(--destructive) 16%),
-      color-mix(in oklab, white 56%, var(--destructive) 20%)
+      color-mix(in oklab, white 78%, var(--gold) 13%),
+      color-mix(in oklab, white 68%, var(--champagne) 24%)
     );
   }
 
@@ -354,7 +358,7 @@
     font-size: 0.78rem;
     font-weight: 800;
     letter-spacing: 0;
-    color: color-mix(in oklab, var(--teal) 68%, var(--primary));
+    color: color-mix(in oklab, var(--bronze) 72%, var(--gold));
   }
 
   .section-title {
@@ -366,15 +370,17 @@
   }
 
   .site-header-shell {
-    border-bottom: 1px solid color-mix(in oklab, var(--destructive) 18%, white);
+    border-bottom: 1px solid color-mix(in oklab, var(--gold) 24%, white);
     background:
       linear-gradient(
         135deg,
-        color-mix(in oklab, white 78%, var(--destructive) 13%),
-        color-mix(in oklab, white 72%, var(--destructive) 18%)
+        color-mix(in oklab, white 84%, var(--champagne) 18%),
+        color-mix(in oklab, white 74%, var(--gold) 13%)
       ),
       var(--ivory);
-    box-shadow: 0 18px 44px -38px color-mix(in oklab, var(--primary) 55%, transparent);
+    box-shadow:
+      inset 0 1px 0 color-mix(in oklab, white 72%, transparent),
+      0 18px 44px -38px color-mix(in oklab, var(--bronze) 55%, transparent);
     backdrop-filter: blur(18px) saturate(1.18);
     -webkit-backdrop-filter: blur(18px) saturate(1.18);
   }
@@ -386,7 +392,7 @@
     left: 0.75rem;
     height: 2px;
     border-radius: 999px;
-    background: var(--primary);
+    background: linear-gradient(90deg, var(--bronze), var(--gold));
     content: "";
     transform: scaleX(0);
     transform-origin: left;
@@ -401,7 +407,7 @@
   .home-legacy {
     overflow: hidden;
     background:
-      linear-gradient(180deg, color-mix(in oklab, white 94%, var(--gold) 6%), var(--ivory) 56%),
+      linear-gradient(180deg, color-mix(in oklab, white 92%, var(--gold) 5%), white 44%, var(--ivory) 100%),
       var(--ivory);
   }
 
@@ -420,10 +426,10 @@
     isolation: isolate;
     min-height: calc(100vh - 5rem);
     background:
-      linear-gradient(90deg, color-mix(in oklab, white 96%, var(--gold) 4%) 0%, transparent 60%),
+      linear-gradient(90deg, color-mix(in oklab, white 95%, var(--gold) 4%) 0%, transparent 60%),
       radial-gradient(
         circle at 82% 25%,
-        color-mix(in oklab, var(--gold) 18%, transparent),
+        color-mix(in oklab, var(--gold) 15%, transparent),
         transparent 35%
       );
   }
@@ -440,7 +446,7 @@
   .legacy-heading {
     display: grid;
     gap: 0.08em;
-    color: color-mix(in oklab, var(--ink) 88%, black);
+    color: color-mix(in oklab, var(--ink) 92%, black);
     font-family: Georgia, "Times New Roman", serif;
     font-size: clamp(3rem, 7.2vw, 6.7rem);
     font-weight: 500;
@@ -449,7 +455,7 @@
   }
 
   .legacy-heading span:last-child {
-    color: color-mix(in oklab, var(--gold) 70%, var(--primary));
+    color: color-mix(in oklab, var(--gold) 64%, var(--bronze));
   }
 
   .legacy-line {
@@ -457,18 +463,18 @@
     width: 4.2rem;
     height: 2px;
     margin-top: 2rem;
-    background: var(--primary);
+    background: linear-gradient(90deg, var(--primary), var(--gold));
   }
 
   .legacy-hero-visual {
     position: relative;
     min-height: clamp(24rem, 54vw, 42rem);
     overflow: hidden;
-    border: 1px solid color-mix(in oklab, var(--border) 58%, white);
+    border: 1px solid color-mix(in oklab, var(--gold) 28%, white);
     border-radius: clamp(1rem, 1.8vw, 1.6rem);
     box-shadow:
-      0 34px 90px -62px color-mix(in oklab, var(--primary) 72%, transparent),
-      inset 0 1px 0 color-mix(in oklab, white 54%, transparent);
+      0 36px 94px -62px color-mix(in oklab, var(--bronze) 72%, transparent),
+      inset 0 1px 0 color-mix(in oklab, white 58%, transparent);
   }
 
   .legacy-hero-visual::before {
@@ -601,15 +607,15 @@
   }
 
   .btn-outline-legacy {
-    border: 1px solid color-mix(in oklab, var(--primary) 38%, white);
-    background: transparent;
+    border: 1px solid color-mix(in oklab, var(--gold) 44%, var(--border));
+    background: color-mix(in oklab, white 84%, var(--champagne));
     color: var(--primary);
   }
 
   .btn-outline-legacy:hover {
-    border-color: color-mix(in oklab, var(--gold) 70%, var(--primary));
-    background: color-mix(in oklab, white 72%, var(--gold) 10%);
-    box-shadow: 0 18px 40px -32px color-mix(in oklab, var(--primary) 65%, transparent);
+    border-color: color-mix(in oklab, var(--gold) 74%, var(--bronze));
+    background: color-mix(in oklab, white 68%, var(--gold) 16%);
+    box-shadow: 0 18px 40px -32px color-mix(in oklab, var(--bronze) 65%, transparent);
   }
 
   .legacy-eyebrow {
@@ -617,7 +623,7 @@
     font-weight: 900;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--primary);
+    color: color-mix(in oklab, var(--bronze) 78%, var(--gold));
   }
 
   .legacy-section-title {
@@ -635,10 +641,12 @@
     display: block;
     overflow: hidden;
     min-height: 31rem;
-    border: 1px solid color-mix(in oklab, var(--border) 80%, white);
+    border: 1px solid color-mix(in oklab, var(--gold) 18%, var(--border));
     border-radius: var(--radius);
-    background: color-mix(in oklab, white 92%, var(--ivory));
-    box-shadow: 0 20px 58px -48px color-mix(in oklab, var(--ink) 58%, transparent);
+    background:
+      linear-gradient(180deg, white, color-mix(in oklab, white 92%, var(--champagne))),
+      var(--card);
+    box-shadow: 0 22px 64px -50px color-mix(in oklab, var(--bronze) 52%, transparent);
     transition:
       transform 320ms cubic-bezier(0.16, 1, 0.3, 1),
       border-color 240ms ease,
@@ -648,15 +656,17 @@
   .legacy-sector-card:hover,
   .legacy-sector-card:focus-visible {
     transform: translateY(-7px) scale(1.015);
-    border-color: color-mix(in oklab, var(--gold) 45%, white);
-    box-shadow: 0 32px 76px -52px color-mix(in oklab, var(--primary) 72%, transparent);
+    border-color: color-mix(in oklab, var(--gold) 60%, white);
+    box-shadow:
+      inset 0 1px 0 color-mix(in oklab, white 78%, transparent),
+      0 34px 82px -52px color-mix(in oklab, var(--bronze) 72%, transparent);
     outline: none;
   }
 
   .legacy-sector-media {
     height: var(--sector-media-height);
     overflow: hidden;
-    border-bottom: 1px solid color-mix(in oklab, var(--border) 72%, white);
+    border-bottom: 1px solid color-mix(in oklab, var(--gold) 22%, white);
   }
 
   .legacy-sector-media img {
@@ -677,11 +687,17 @@
     height: 4.1rem;
     align-items: center;
     justify-content: center;
-    border: 4px solid var(--ivory);
+    border: 4px solid color-mix(in oklab, white 88%, var(--champagne));
     border-radius: 999px;
-    background: color-mix(in oklab, var(--gold) 74%, var(--primary));
+    background: linear-gradient(
+      145deg,
+      color-mix(in oklab, var(--gold) 84%, white),
+      color-mix(in oklab, var(--bronze) 84%, var(--primary))
+    );
     color: white;
-    box-shadow: 0 18px 36px -24px color-mix(in oklab, var(--primary) 78%, transparent);
+    box-shadow:
+      inset 0 1px 0 color-mix(in oklab, white 34%, transparent),
+      0 18px 36px -24px color-mix(in oklab, var(--bronze) 78%, transparent);
   }
 
   .legacy-sector-card h3 {
@@ -699,10 +715,11 @@
     align-items: center;
     gap: 2rem;
     overflow: hidden;
-    border: 1px solid color-mix(in oklab, var(--border) 75%, white);
+    border: 1px solid color-mix(in oklab, var(--gold) 22%, var(--border));
     border-radius: var(--radius);
     background:
-      linear-gradient(90deg, color-mix(in oklab, white 86%, var(--gold) 10%), white 54%),
+      linear-gradient(90deg, color-mix(in oklab, white 82%, var(--champagne)) 0%, white 58%),
+      radial-gradient(circle at 84% 18%, color-mix(in oklab, var(--gold) 14%, transparent), transparent 30%),
       var(--ivory);
     padding: clamp(1.5rem, 4vw, 3rem);
   }
@@ -730,7 +747,7 @@
 
   .legacy-quote p {
     max-width: 21rem;
-    color: color-mix(in oklab, var(--primary) 76%, var(--ink));
+    color: color-mix(in oklab, var(--bronze) 74%, var(--ink));
     font-size: 1rem;
     line-height: 1.8;
   }
@@ -751,10 +768,15 @@
     overflow: hidden;
     border-radius: var(--radius);
     background:
+      radial-gradient(
+        circle at 88% 28%,
+        color-mix(in oklab, var(--gold) 30%, transparent),
+        transparent 28%
+      ),
       linear-gradient(
         135deg,
-        color-mix(in oklab, var(--primary) 90%, black),
-        color-mix(in oklab, var(--primary) 74%, var(--ink))
+        color-mix(in oklab, var(--ink) 94%, black),
+        color-mix(in oklab, var(--primary) 76%, var(--ink))
       );
     color: var(--primary-foreground);
     padding: clamp(1.5rem, 4vw, 3rem);
@@ -776,12 +798,13 @@
     position: relative;
     z-index: 2;
     min-width: 10.5rem;
-    background: var(--primary-foreground);
-    color: var(--primary);
+    border: 1px solid color-mix(in oklab, var(--gold) 32%, white);
+    background: color-mix(in oklab, white 86%, var(--gold) 10%);
+    color: color-mix(in oklab, var(--primary) 88%, black);
   }
 
   .btn-light-legacy:hover {
-    background: color-mix(in oklab, var(--primary-foreground) 88%, var(--gold));
+    background: color-mix(in oklab, var(--gold) 72%, white);
     box-shadow: 0 18px 40px -28px rgba(0, 0, 0, 0.46);
   }
 
@@ -1196,8 +1219,8 @@
     background:
       linear-gradient(
         135deg,
-        color-mix(in oklab, white 74%, var(--destructive) 17%),
-        color-mix(in oklab, white 68%, var(--destructive) 22%)
+        color-mix(in oklab, white 78%, var(--champagne) 22%),
+        color-mix(in oklab, white 70%, var(--gold) 14%)
       ),
       var(--ivory);
   }

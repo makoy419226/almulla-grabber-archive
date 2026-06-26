@@ -6,6 +6,7 @@ import {
   absoluteUrl,
   getSeoEntry,
   organizationJsonLd,
+  websiteJsonLd,
 } from "@/lib/seo";
 
 function setMeta(selector: string, attributes: Record<string, string>) {
@@ -33,17 +34,17 @@ function setCanonical(href: string) {
   element.setAttribute("href", href);
 }
 
-function setJsonLd() {
-  let element = document.head.querySelector<HTMLScriptElement>("#organization-json-ld");
+function setJsonLd(id: string, data: unknown) {
+  let element = document.head.querySelector<HTMLScriptElement>(`#${id}`);
 
   if (!element) {
     element = document.createElement("script");
-    element.id = "organization-json-ld";
+    element.id = id;
     element.type = "application/ld+json";
     document.head.appendChild(element);
   }
 
-  element.text = JSON.stringify(organizationJsonLd);
+  element.text = JSON.stringify(data);
 }
 
 export function SeoUpdater() {
@@ -56,11 +57,16 @@ export function SeoUpdater() {
 
     document.title = seo.title;
     setCanonical(canonical);
-    setJsonLd();
+    setJsonLd("organization-json-ld", organizationJsonLd);
+    setJsonLd("website-json-ld", websiteJsonLd);
 
     setMeta('meta[name="description"]', { name: "description", content: seo.description });
     setMeta('meta[name="robots"]', { name: "robots", content: seo.robots ?? "index, follow" });
     setMeta('meta[name="author"]', { name: "author", content: SITE_NAME });
+    setMeta('meta[name="application-name"]', {
+      name: "application-name",
+      content: SITE_NAME,
+    });
 
     setMeta('meta[property="og:site_name"]', { property: "og:site_name", content: SITE_NAME });
     setMeta('meta[property="og:type"]', { property: "og:type", content: "website" });

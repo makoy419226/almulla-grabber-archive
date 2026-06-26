@@ -1,7 +1,9 @@
 export const SITE_ORIGIN = "https://almullaholding.com";
 export const SITE_NAME = "AlMulla Holding Group";
+export const SITE_SHORT_NAME = "Almullah";
 export const DEFAULT_OG_IMAGE = `${SITE_ORIGIN}/og-image.jpg`;
 export const LOGO_URL = `${SITE_ORIGIN}/logo.png`;
+export const FAVICON_URL = `${SITE_ORIGIN}/favicon.png`;
 
 export type SeoEntry = {
   path: string;
@@ -84,6 +86,14 @@ export const organizationJsonLd = {
     postalCode: "413155",
     addressCountry: "AE",
   },
+};
+
+export const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: SITE_NAME,
+  alternateName: SITE_SHORT_NAME,
+  url: SITE_ORIGIN,
 };
 
 export function normalizeSeoPath(pathname: string) {

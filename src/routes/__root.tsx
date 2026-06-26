@@ -12,6 +12,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import faviconUrl from "../assets/favicon.png";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { LOGO_URL, SITE_NAME } from "../lib/seo";
 
 function NotFoundComponent() {
   return (
@@ -76,22 +77,26 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "AlMulla Holding Group" },
+      { title: SITE_NAME },
       {
         name: "description",
         content:
-          "AlMulla Holding Group — a Dubai-based business conglomerate with subsidiaries in healthcare and hospitality.",
+          "AlMulla Holding Group is a Dubai-based holding company with focused investments across strategic investment, healthcare, hospitality, real-estate, education, and energy.",
       },
-      { property: "og:title", content: "AlMulla Holding Group" },
+      { name: "application-name", content: SITE_NAME },
+      { property: "og:site_name", content: SITE_NAME },
+      { property: "og:title", content: `${SITE_NAME} - Dubai Holding Company` },
       {
         property: "og:description",
-        content: "A Dubai-based conglomerate spanning healthcare and hospitality.",
+        content:
+          "A Dubai-based holding company with focused investments across strategic investment, healthcare, hospitality, real-estate, education, and energy.",
       },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
       { rel: "icon", type: "image/png", sizes: "64x64", href: faviconUrl },
+      { rel: "apple-touch-icon", href: LOGO_URL },
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },

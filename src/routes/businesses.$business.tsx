@@ -1,5 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
+import { AlmullaLogo } from "@/components/AlmullaLogo";
 import educationImg from "@/assets/sector-education.jpg";
 import energyImg from "@/assets/sector-energy.jpg";
 import realEstateImg from "@/assets/sector-real-estate.jpg";
@@ -356,15 +357,21 @@ function BusinessPage() {
           aria-hidden
         />
         <div className="relative mx-auto max-w-7xl px-4 pb-28 pt-24 text-center sm:px-6 lg:px-8 lg:pb-40 lg:pt-32">
-          <div className="text-sm font-semibold text-[var(--gold)]">{page.sector}</div>
-          <h1 className="mt-4 max-w-5xl text-5xl font-bold leading-none md:text-7xl lg:text-8xl">
+          <div className="motion-flip-bottom mx-auto mb-8 flex h-20 w-20 items-center justify-center rounded-lg bg-white/95 shadow-2xl shadow-black/20">
+            <AlmullaLogo compact />
+          </div>
+          <div className="motion-flip-bottom motion-delay-1 flex items-center justify-center gap-3 text-sm font-semibold text-[var(--gold)]">
+            <span className="h-px w-10 bg-[var(--gold)]" />
+            Sector · {page.sector}
+          </div>
+          <h1 className="motion-flip-bottom motion-delay-2 mt-4 max-w-5xl text-5xl font-bold leading-none md:text-7xl lg:text-8xl">
             {page.title}
           </h1>
-          <p className="copy-center mt-7 max-w-3xl text-base leading-8 text-primary-foreground/78 sm:text-lg">
+          <p className="copy-center motion-slide-bottom motion-delay-3 mt-7 max-w-3xl text-base leading-8 text-primary-foreground/78 sm:text-lg">
             {page.description}
           </p>
 
-          <div className="data-center mx-auto mt-14 grid max-w-3xl grid-cols-1 gap-6 border-t border-primary-foreground/20 pt-8 sm:grid-cols-3">
+          <div className="data-center motion-slide-bottom motion-delay-4 mx-auto mt-14 grid max-w-3xl grid-cols-1 gap-6 border-t border-primary-foreground/20 pt-8 sm:grid-cols-3">
             {page.stats.map((stat) => (
               <div key={stat.label}>
                 <div className="text-3xl font-bold text-[var(--gold)] md:text-4xl">
@@ -379,7 +386,7 @@ function BusinessPage() {
 
       <section className="bg-background">
         <div className="relative z-10 mx-auto -mt-16 max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-8 lg:grid-cols-[1.08fr_0.92fr]">
+          <div className="motion-slide-bottom grid gap-8 lg:grid-cols-[1.08fr_0.92fr]">
             <div className="surface-card rounded-lg p-8 lg:p-10">
               <div className="section-eyebrow">Sector overview</div>
               <h2 className="mt-4 text-3xl font-semibold leading-tight text-primary md:text-4xl">
@@ -422,11 +429,12 @@ function BusinessPage() {
           </div>
 
           <div className="mt-10 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
-            {page.pillars.map((pillar) => {
+            {page.pillars.map((pillar, index) => {
               const Icon = pillar.icon;
+              const delayClass = ["reveal-delay-1", "reveal-delay-2", "reveal-delay-3", ""][index] ?? "";
 
               return (
-                <div key={pillar.title} className="surface-card rounded-lg p-6">
+                <div key={pillar.title} className={`surface-card reveal-up rounded-lg p-6 ${delayClass}`.trim()}>
                   <div className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-gold/14 text-primary">
                     <Icon className="h-5 w-5" />
                   </div>
@@ -447,8 +455,13 @@ function BusinessPage() {
           </div>
 
           <div className="mt-10 grid gap-6 lg:grid-cols-3">
-            {page.focusAreas.map((area) => (
-              <div key={area.title} className="rounded-lg border border-primary/10 bg-white/72 p-6">
+            {page.focusAreas.map((area, index) => (
+              <div
+                key={area.title}
+                className={`rounded-lg border border-primary/10 bg-white/72 p-6 reveal-up ${
+                  index === 0 ? "reveal-delay-1" : index === 1 ? "reveal-delay-2" : "reveal-delay-3"
+                }`.trim()}
+              >
                 <h3 className="text-xl font-semibold text-primary">{area.title}</h3>
                 <p className="mt-3 text-sm leading-7 text-foreground/68">{area.body}</p>
               </div>

@@ -215,12 +215,20 @@
       0 18px 52px -40px color-mix(in oklab, var(--destructive) 34%, transparent);
   }
 
+  .site-header-tint {
+    background: linear-gradient(
+      180deg,
+      color-mix(in oklab, var(--destructive) 10%, transparent),
+      color-mix(in oklab, var(--destructive) 6%, transparent)
+    );
+  }
+
   .deploy-sync-glass {
-    border-color: color-mix(in oklab, var(--destructive) 20%, white 58%);
+    border-color: color-mix(in oklab, var(--destructive) 32%, white 50%);
     background: linear-gradient(
       135deg,
-      color-mix(in oklab, white 84%, var(--destructive) 7%),
-      color-mix(in oklab, white 68%, var(--destructive) 10%)
+      color-mix(in oklab, white 76%, var(--destructive) 16%),
+      color-mix(in oklab, white 56%, var(--destructive) 20%)
     );
   }
 

@@ -2,6 +2,7 @@ import { Link, useLocation } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Mail, Phone, Menu, X, ChevronDown, ArrowUpRight, MapPin } from "lucide-react";
 import { AlmullaLogo } from "@/components/AlmullaLogo";
+import { SeoUpdater } from "@/components/SeoUpdater";
 import { cn } from "@/lib/utils";
 
 const businessLinks = [
@@ -52,6 +53,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground">
+      <SeoUpdater />
       <div className="border-b border-white/10 bg-[var(--ink)] text-xs text-primary-foreground">
         <div className="mx-auto flex min-h-10 max-w-7xl items-center justify-end px-4 py-2 sm:px-6 lg:px-8">
           <div className="ml-auto flex flex-wrap items-center justify-end gap-x-5 gap-y-2">

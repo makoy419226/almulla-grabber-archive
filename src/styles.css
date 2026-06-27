@@ -326,6 +326,48 @@
       0 16px 34px -26px rgba(31, 25, 20, 0.58);
   }
 
+  .mobile-nav-panel {
+    transform-origin: top center;
+    animation: mobile-menu-in 420ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    will-change: opacity, transform, filter;
+  }
+
+  .mobile-nav-panel nav > * {
+    animation: mobile-menu-item-in 420ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .mobile-nav-panel nav > :nth-child(1) {
+    animation-delay: 55ms;
+  }
+
+  .mobile-nav-panel nav > :nth-child(2) {
+    animation-delay: 85ms;
+  }
+
+  .mobile-nav-panel nav > :nth-child(3) {
+    animation-delay: 115ms;
+  }
+
+  .mobile-nav-panel nav > :nth-child(4) {
+    animation-delay: 145ms;
+  }
+
+  .mobile-nav-panel nav > :nth-child(5) {
+    animation-delay: 175ms;
+  }
+
+  .mobile-nav-panel nav > :nth-child(6) {
+    animation-delay: 205ms;
+  }
+
+  .mobile-nav-panel nav > :nth-child(7) {
+    animation-delay: 235ms;
+  }
+
+  .mobile-nav-panel nav > :nth-child(8) {
+    animation-delay: 265ms;
+  }
+
   .dropdown-nav-link {
     transform-origin: center left;
   }
@@ -426,21 +468,37 @@
     isolation: isolate;
     min-height: calc(100vh - 5rem);
     background:
-      linear-gradient(90deg, color-mix(in oklab, white 95%, var(--gold) 4%) 0%, transparent 60%),
       radial-gradient(
-        circle at 82% 25%,
-        color-mix(in oklab, var(--gold) 15%, transparent),
-        transparent 35%
-      );
+        circle at 82% 22%,
+        color-mix(in oklab, var(--gold) 18%, transparent),
+        transparent 34%
+      ),
+      linear-gradient(
+        90deg,
+        color-mix(in oklab, white 95%, var(--ivory) 5%) 0%,
+        color-mix(in oklab, white 91%, var(--champagne) 9%) 28%,
+        color-mix(in oklab, white 68%, transparent) 44%,
+        transparent 64%
+      ),
+      linear-gradient(
+        180deg,
+        color-mix(in oklab, white 18%, transparent) 0%,
+        transparent 36%,
+        color-mix(in oklab, var(--primary) 10%, transparent) 100%
+      ),
+      var(--hero-image) right center / cover no-repeat;
   }
 
   .legacy-hero-copy {
     position: relative;
     z-index: 2;
+    width: min(42rem, 100%);
+    padding-top: clamp(2rem, 4vw, 4rem);
   }
 
   .legacy-hero-grid {
     position: relative;
+    width: 100%;
   }
 
   .legacy-heading {
@@ -466,74 +524,14 @@
     background: linear-gradient(90deg, var(--primary), var(--gold));
   }
 
-  .legacy-hero-visual {
-    position: relative;
-    min-height: clamp(24rem, 54vw, 42rem);
-    overflow: hidden;
-    border: 1px solid color-mix(in oklab, var(--gold) 28%, white);
-    border-radius: clamp(1rem, 1.8vw, 1.6rem);
-    box-shadow:
-      0 36px 94px -62px color-mix(in oklab, var(--bronze) 72%, transparent),
-      inset 0 1px 0 color-mix(in oklab, white 58%, transparent);
-  }
-
-  .legacy-hero-visual::before {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    pointer-events: none;
-    background:
-      linear-gradient(
-        90deg,
-        color-mix(in oklab, var(--ivory) 93%, transparent) 0%,
-        color-mix(in oklab, var(--ivory) 68%, transparent) 14%,
-        color-mix(in oklab, var(--ivory) 18%, transparent) 32%,
-        transparent 58%
-      ),
-      radial-gradient(
-        circle at 12% 50%,
-        color-mix(in oklab, white 42%, transparent),
-        transparent 40%
-      );
-    content: "";
-  }
-
-  .legacy-hero-visual::after {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    pointer-events: none;
-    background: linear-gradient(
-      180deg,
-      color-mix(in oklab, white 16%, transparent),
-      transparent 28%,
-      color-mix(in oklab, var(--primary) 10%, transparent)
-    );
-    content: "";
-  }
-
-  .legacy-hero-image {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    transform: scale(1.015);
-  }
-
   @media (min-width: 1024px) {
     .legacy-hero-grid {
-      gap: clamp(0.5rem, 2vw, 2rem);
+      align-items: flex-start;
     }
 
     .legacy-hero-copy {
-      padding-right: clamp(1rem, 4vw, 4.5rem);
-    }
-
-    .legacy-hero-visual {
-      min-height: clamp(30rem, 56vw, 45rem);
-      margin-left: clamp(-6rem, -5vw, -2.25rem);
+      padding-right: clamp(1rem, 4vw, 3rem);
+      padding-top: clamp(2.5rem, 5vw, 5.5rem);
     }
   }
 
@@ -1137,6 +1135,40 @@
   }
 }
 
+@keyframes mobile-menu-in {
+  0% {
+    opacity: 0;
+    filter: blur(10px);
+    transform: translateY(-16px) scale(0.965);
+  }
+
+  68% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(2px) scale(1.006);
+  }
+
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes mobile-menu-item-in {
+  0% {
+    opacity: 0;
+    filter: blur(4px);
+    transform: translateY(-10px) scale(0.985);
+  }
+
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0) scale(1);
+  }
+}
+
 @keyframes motion-flip-bottom {
   0% {
     opacity: 0;
@@ -1167,26 +1199,22 @@
 @media (max-width: 1023px) {
   .legacy-hero {
     min-height: auto;
-  }
-
-  .legacy-hero-visual {
-    min-height: 30rem;
-  }
-
-  .legacy-hero-visual::before {
     background:
       linear-gradient(
         180deg,
-        color-mix(in oklab, white 18%, transparent),
-        transparent 35%,
-        color-mix(in oklab, var(--ivory) 34%, transparent)
+        color-mix(in oklab, white 94%, var(--ivory) 6%) 0%,
+        color-mix(in oklab, white 84%, var(--champagne) 16%) 28%,
+        color-mix(in oklab, white 54%, transparent) 48%,
+        color-mix(in oklab, white 20%, transparent) 100%
       ),
       linear-gradient(
-        90deg,
-        color-mix(in oklab, var(--ivory) 28%, transparent),
-        transparent 42%
-      );
-  }
+        180deg,
+        color-mix(in oklab, white 6%, transparent) 0%,
+        transparent 50%,
+        color-mix(in oklab, var(--primary) 10%, transparent) 100%
+      ),
+      var(--hero-image) 62% center / cover no-repeat;
+    }
 
   .legacy-skyline {
     inset: 0;
@@ -1230,26 +1258,9 @@
   }
 
   .legacy-hero-copy {
+    width: 100%;
     padding-top: 1.25rem;
-  }
-
-  .legacy-hero-visual {
-    min-height: 24rem;
-  }
-
-  .legacy-hero-visual::before {
-    background:
-      linear-gradient(
-        180deg,
-        color-mix(in oklab, white 14%, transparent),
-        transparent 42%,
-        color-mix(in oklab, var(--primary) 10%, transparent)
-      ),
-      linear-gradient(
-        90deg,
-        color-mix(in oklab, var(--ivory) 16%, transparent),
-        transparent 48%
-      );
+    padding-bottom: 2rem;
   }
 
   .legacy-monument {
@@ -1278,6 +1289,8 @@
   .cinematic-media,
   .glass-morph,
   .morph-list li,
+  .mobile-nav-panel,
+  .mobile-nav-panel nav > *,
   .motion-flip-bottom,
   .motion-slide-bottom {
     animation: none;

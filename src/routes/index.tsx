@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import type { CSSProperties } from "react";
 import { SiteLayout } from "@/components/SiteLayout";
 import chairmanImg from "@/assets/chairman.jpg";
 import educationImg from "@/assets/sector-education.jpg";
@@ -90,8 +91,11 @@ function Home() {
   return (
     <SiteLayout>
       <div className="home-legacy">
-        <section className="legacy-hero">
-          <div className="legacy-hero-grid mx-auto grid min-h-[calc(100vh-5rem)] max-w-7xl items-center gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[0.92fr_1.08fr] lg:px-8 lg:py-20">
+        <section
+          className="legacy-hero"
+          style={{ "--hero-image": `url(${heroAlmullaEtihadImg})` } as CSSProperties}
+        >
+          <div className="legacy-hero-grid mx-auto flex min-h-[calc(100vh-5rem)] max-w-7xl items-start px-4 py-14 sm:px-6 lg:px-8 lg:py-18">
             <div className="legacy-hero-copy reveal-up">
               <h1 className="legacy-heading">
                 <span>Building Legacies.</span>
@@ -112,17 +116,6 @@ function Home() {
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>
-            </div>
-
-            <div className="legacy-hero-visual reveal-up reveal-delay-1">
-              <img
-                src={heroAlmullaEtihadImg}
-                alt="Golden AlMulla emblem sculpture with Dubai skyline and Etihad Rail"
-                className="legacy-hero-image"
-                width={1672}
-                height={941}
-                fetchPriority="high"
-              />
             </div>
           </div>
         </section>

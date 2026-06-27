@@ -154,7 +154,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
         {open && (
           <div
             id="mobile-navigation"
-            className="absolute left-4 right-4 top-[calc(100%+0.75rem)] z-50 rounded-[1.5rem] border border-primary/10 bg-white/92 p-3 shadow-2xl shadow-black/12 backdrop-blur-xl md:hidden"
+            className="mobile-nav-panel absolute left-4 right-4 top-[calc(100%+0.75rem)] z-50 rounded-[1.5rem] border border-primary/10 bg-white/92 p-3 shadow-2xl shadow-black/12 backdrop-blur-xl md:hidden"
           >
             <nav className="flex flex-col gap-1" aria-label="Mobile navigation">
               <Link

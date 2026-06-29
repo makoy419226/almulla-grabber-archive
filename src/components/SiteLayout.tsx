@@ -199,7 +199,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
 
       <main className="site-content flex-1">{children}</main>
 
-      <footer className="mt-0 bg-[var(--ink)] text-primary-foreground">
+      <footer className="footer-premium mt-0 text-primary-foreground">
         <div className="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-6 md:grid-cols-2 lg:grid-cols-[1.35fr_0.8fr_1.1fr_0.8fr] lg:px-8">
           <div className="space-y-5">
             <AlmullaLogo compact />

@@ -106,27 +106,20 @@ function Home() {
                 AlMulla Holding Group is a diversified holding company committed to long-term value
                 creation and sustainable growth across key sectors that shape tomorrow.
               </p>
-              <div className="mt-9 flex flex-wrap gap-4">
-                <a href="#businesses" className="btn-primary">
-                  Explore Our Businesses
-                  <ArrowRight className="h-4 w-4" />
-                </a>
-                <Link to="/about-us" className="btn-outline-legacy">
-                  About AlMulla Holding
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-              </div>
             </div>
           </div>
         </section>
 
-        <section id="businesses" className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
+        <section
+          id="businesses"
+          className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 2xl:max-w-[96rem]"
+        >
           <div className="mx-auto max-w-2xl text-center">
             <div className="legacy-eyebrow">Our Businesses</div>
             <h2 className="legacy-section-title mt-3">Business Sectors</h2>
           </div>
 
-          <div className="mt-10 grid gap-6 lg:grid-cols-2">
+          <div className="mt-10 grid grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-4 2xl:grid-cols-6">
             {sectors.map((sector) => {
               const Icon = sector.icon;
               return (
@@ -144,9 +137,9 @@ function Home() {
                   <div className="legacy-sector-icon">
                     <Icon className="h-6 w-6" />
                   </div>
-                  <div className="p-6 pt-9">
+                  <div className="legacy-sector-body">
                     <h3>{sector.title}</h3>
-                    <p className="mt-3 text-sm leading-7 text-foreground/66">{sector.body}</p>
+                    <p className="legacy-sector-copy mt-3">{sector.body}</p>
                     <span className="mt-6 inline-flex text-primary">
                       <ArrowRight className="h-4 w-4" />
                     </span>
@@ -168,10 +161,6 @@ function Home() {
                 Our leadership is united by a clear purpose and a relentless drive to deliver
                 long-term value, create impact, and build a better future.
               </p>
-              <Link to="/about-us" className="btn-primary mt-7">
-                Meet Our Leadership
-                <ArrowRight className="h-4 w-4" />
-              </Link>
             </div>
 
             <div className="legacy-chairman-wrap">

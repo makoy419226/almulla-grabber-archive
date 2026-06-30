@@ -18,8 +18,6 @@ import { SeoUpdater } from "@/components/SeoUpdater";
 import { cn } from "@/lib/utils";
 
 const businessLinks = [
-  { label: "Strategic investment", to: "/businesses/strategic-investment" },
-  { label: "Real-estate", to: "/businesses/real-estate" },
   { label: "Healthcare", to: "/businesses/healthcare" },
   { label: "Hospitality", to: "/businesses/hospitality" },
   { label: "Education", to: "/businesses/education" },

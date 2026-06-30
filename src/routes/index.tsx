@@ -7,15 +7,11 @@ import energyImg from "@/assets/sector-energy.jpg";
 import heroAlmullaEtihadImg from "@/assets/hero-almulla-etihad-burj.jpg";
 import healthcareImg from "@/assets/healthcare.jpg";
 import hospitalityImg from "@/assets/hospitality.jpg";
-import realEstateImg from "@/assets/sector-real-estate.jpg";
-import strategicInvestmentImg from "@/assets/sector-strategic-investment.jpg";
 import stackedLogoImg from "@/assets/logo-stacked-transparent.png";
 import {
   ArrowRight,
-  ArrowUpRight,
   BedDouble,
   BriefcaseBusiness,
-  Building2,
   GraduationCap,
   HeartPulse,
   Quote,
@@ -29,13 +25,13 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "AlMulla Holding Group is a Dubai-based holding company building long-term value across healthcare, hospitality, real-estate, education, and strategic investment.",
+          "AlMulla Holding Group is a Dubai-based holding company building long-term value across healthcare, hospitality, education, and energy.",
       },
       { property: "og:title", content: "AlMulla Holding Group" },
       {
         property: "og:description",
         content:
-          "A Dubai holding company focused on long-term value across healthcare, hospitality, real-estate, education, and strategic investment.",
+          "A Dubai holding company focused on long-term value across healthcare, hospitality, education, and energy.",
       },
     ],
   }),
@@ -43,13 +39,6 @@ export const Route = createFileRoute("/")({
 });
 
 const sectors = [
-  {
-    title: "Strategic investment",
-    img: strategicInvestmentImg,
-    to: "/businesses/strategic-investment",
-    icon: BriefcaseBusiness,
-    body: "Allocating capital with discipline across resilient opportunities, partnerships, and long-term growth platforms.",
-  },
   {
     title: "Healthcare",
     img: healthcareImg,
@@ -63,13 +52,6 @@ const sectors = [
     to: "/businesses/education",
     icon: GraduationCap,
     body: "Supporting future generations through quality education and innovative learning.",
-  },
-  {
-    title: "Real-estate",
-    img: realEstateImg,
-    to: "/businesses/real-estate",
-    icon: Building2,
-    body: "Developing resilient real-estate assets that support communities and long-term value.",
   },
   {
     title: "Hospitality",
@@ -112,14 +94,14 @@ function Home() {
 
         <section
           id="businesses"
-          className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 2xl:max-w-[96rem]"
+          className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8"
         >
           <div className="mx-auto max-w-2xl text-center">
-            <div className="legacy-eyebrow">Our Businesses</div>
-            <h2 className="legacy-section-title mt-3">Business Sectors</h2>
+            <div className="legacy-eyebrow">Our Portfolio</div>
+            <h2 className="legacy-section-title mt-3">Sectors That Shape Tomorrow</h2>
           </div>
 
-          <div className="mt-10 grid grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-4 2xl:grid-cols-6">
+          <div className="mt-10 grid grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-4">
             {sectors.map((sector) => {
               const Icon = sector.icon;
               return (

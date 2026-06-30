@@ -1293,39 +1293,6 @@
   }
 }
 
-@media (min-width: 1536px) {
-  .legacy-sector-card {
-    --sector-media-height: clamp(9rem, 10vw, 11rem);
-    min-height: 23rem;
-  }
-
-  .legacy-sector-body {
-    padding: 1.85rem 1rem 1.2rem;
-  }
-
-  .legacy-sector-card h3 {
-    font-size: 1.18rem;
-  }
-
-  .legacy-sector-copy {
-    font-size: 0.78rem;
-    line-height: 1.65;
-  }
-
-  .legacy-sector-icon {
-    top: calc(var(--sector-media-height) - 1.55rem);
-    left: 0.95rem;
-    width: 3.1rem;
-    height: 3.1rem;
-    border-width: 3px;
-  }
-
-  .legacy-sector-icon svg {
-    width: 1.2rem;
-    height: 1.2rem;
-  }
-}
-
 @media (max-width: 767px) {
   .site-header-shell {
     background:

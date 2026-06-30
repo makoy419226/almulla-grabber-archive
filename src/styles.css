@@ -59,7 +59,7 @@
   --bronze: oklch(0.42 0.075 64);
   --ink: oklch(0.16 0.016 72);
   --wine: oklch(0.27 0.055 42);
-  --brand-red: oklch(0.3 0.095 28);
+  --brand-red: #800020;
   --teal: oklch(0.42 0.035 210);
   --ivory: oklch(0.988 0.009 86);
   --champagne: oklch(0.955 0.035 88);
@@ -649,6 +649,10 @@
     letter-spacing: 0;
   }
 
+  .legacy-leadership .legacy-eyebrow {
+    font-size: 0.91rem;
+  }
+
   .legacy-sector-card {
     --sector-media-height: clamp(10rem, 15vw, 13.5rem);
     position: relative;
@@ -778,8 +782,8 @@
 
   .legacy-quote span {
     color: var(--primary);
-    font-size: 0.78rem;
-    font-weight: 800;
+    font-size: 0.94rem;
+    font-weight: 900;
   }
 
   .legacy-cta {

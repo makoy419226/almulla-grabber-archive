@@ -27,7 +27,7 @@ const businessLinks = [
 ];
 
 const navLinkBase =
-  "nav-hover-magnify inline-flex items-center rounded-md px-3 py-2 text-sm font-semibold text-foreground/72 hover:text-primary";
+  "nav-hover-magnify inline-flex items-center rounded-md px-4 py-3 text-base font-bold text-foreground/72 hover:text-primary";
 
 const mobileLinkBase =
   "nav-hover-magnify mobile-nav-link flex min-h-12 items-center rounded-md px-5 text-base font-semibold text-foreground/82 hover:bg-white/78 hover:text-primary";
@@ -70,7 +70,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
       <SeoUpdater />
 
       <header ref={headerRef} className="site-header-shell sticky top-0 z-50">
-        <div className="mx-auto flex h-20 max-w-7xl items-center justify-between gap-5 px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto flex h-[6.5rem] max-w-[104rem] items-center justify-between gap-7 px-4 sm:px-6 lg:px-10">
           <Link to="/" className="nav-hover-magnify shrink-0" aria-label="AlMulla Holding home">
             <AlmullaLogo />
           </Link>

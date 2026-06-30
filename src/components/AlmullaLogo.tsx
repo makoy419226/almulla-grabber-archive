@@ -12,7 +12,7 @@ export function AlmullaLogo({ className, compact = false }: AlmullaLogoProps) {
       <div
         className={cn(
           "shrink-0 overflow-hidden",
-          compact ? "h-12 w-9" : "h-[2.4rem] w-[6.9rem] sm:h-[3.1rem] sm:w-[8.9rem]",
+          compact ? "h-12 w-9" : "h-[3.1rem] w-[9rem] sm:h-[4rem] sm:w-[11.6rem]",
         )}
       >
         <img

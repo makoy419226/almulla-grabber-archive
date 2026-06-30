@@ -653,6 +653,14 @@
     font-size: 0.91rem;
   }
 
+  #businesses .legacy-eyebrow {
+    font-size: 0.99rem;
+  }
+
+  #businesses .legacy-section-title {
+    font-size: clamp(1.45rem, 2.95vw, 2.8rem);
+  }
+
   .legacy-sector-card {
     --sector-media-height: clamp(10rem, 15vw, 13.5rem);
     position: relative;

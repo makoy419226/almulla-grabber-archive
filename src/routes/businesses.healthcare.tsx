@@ -72,12 +72,8 @@ function Healthcare() {
           aria-hidden
         />
         <div className="relative mx-auto max-w-7xl px-4 pb-32 pt-28 text-center sm:px-6 lg:px-8 lg:pb-44 lg:pt-36">
-          <div className="motion-flip-bottom mx-auto mb-8 flex h-20 w-20 items-center justify-center rounded-lg bg-white/95 shadow-2xl shadow-black/20">
-            <AlmullaLogo compact />
-          </div>
-          <div className="motion-flip-bottom motion-delay-1 mb-8 flex items-center justify-center gap-3 text-sm font-semibold text-[var(--gold)]">
-            <span className="h-px w-10 bg-[var(--gold)]" />
-            Sector · Healthcare
+          <div className="motion-flip-bottom mx-auto mb-8 flex items-center justify-center">
+            <AlmullaLogo compact className="[&>div]:h-[7.8rem] [&>div]:w-[5.85rem]" />
           </div>
           <h1 className="motion-flip-bottom motion-delay-2 max-w-5xl text-5xl font-bold leading-none md:text-7xl lg:text-8xl">
             Chicago <span className="text-[var(--gold)]">Healthcare</span>

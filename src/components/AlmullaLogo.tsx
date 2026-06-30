@@ -1,4 +1,5 @@
 import logoImg from "@/assets/logo.png";
+import logoMarkImg from "@/assets/logo-stacked-transparent.png";
 import { cn } from "@/lib/utils";
 
 type AlmullaLogoProps = {
@@ -15,15 +16,30 @@ export function AlmullaLogo({ className, compact = false }: AlmullaLogoProps) {
           compact ? "h-12 w-9" : "h-[3.1rem] w-[9rem] sm:h-[4rem] sm:w-[11.6rem]",
         )}
       >
-        <img
-          src={logoImg}
-          alt="AlMulla Holding"
-          className={cn(
-            "select-none",
-            compact ? "h-full w-auto max-w-none" : "h-full w-full object-contain",
-          )}
-          draggable={false}
-        />
+        {compact ? (
+          <div
+            role="img"
+            aria-label="AlMulla Holding"
+            className="h-[142%] w-full bg-[var(--gold)]"
+            style={{
+              WebkitMaskImage: `url(${logoMarkImg})`,
+              WebkitMaskPosition: "top center",
+              WebkitMaskRepeat: "no-repeat",
+              WebkitMaskSize: "cover",
+              maskImage: `url(${logoMarkImg})`,
+              maskPosition: "top center",
+              maskRepeat: "no-repeat",
+              maskSize: "cover",
+            }}
+          />
+        ) : (
+          <img
+            src={logoImg}
+            alt="AlMulla Holding"
+            className="h-full w-full select-none object-contain"
+            draggable={false}
+          />
+        )}
       </div>
     </div>
   );

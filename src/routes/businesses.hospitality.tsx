@@ -58,11 +58,8 @@ function Hospitality() {
           aria-hidden
         />
         <div className="relative mx-auto max-w-7xl px-4 py-20 text-center sm:px-6 lg:px-8 lg:py-28">
-          <div className="motion-flip-bottom mx-auto flex h-20 w-20 items-center justify-center rounded-lg bg-white/95 shadow-2xl shadow-black/20">
-            <AlmullaLogo compact />
-          </div>
-          <div className="motion-flip-bottom motion-delay-1 mt-8 text-sm font-semibold text-[var(--gold)]">
-            Hospitality
+          <div className="motion-flip-bottom mx-auto mb-8 flex items-center justify-center">
+            <AlmullaLogo compact className="[&>div]:h-[7.8rem] [&>div]:w-[5.85rem]" />
           </div>
           <h1 className="motion-flip-bottom motion-delay-2 mt-4 max-w-4xl text-5xl font-bold leading-none sm:text-6xl lg:text-7xl">
             AlMulla Hospitality

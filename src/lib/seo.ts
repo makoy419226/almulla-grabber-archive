@@ -1,7 +1,7 @@
 export const SITE_ORIGIN = "https://almullaholding.com";
 export const SITE_NAME = "AlMulla Holding Group";
 export const SITE_SHORT_NAME = "Almullah";
-export const DEFAULT_OG_IMAGE = `${SITE_ORIGIN}/og-image.jpg`;
+export const DEFAULT_OG_IMAGE = `${SITE_ORIGIN}/og-image-v2.jpg`;
 export const LOGO_URL = `${SITE_ORIGIN}/logo.png`;
 export const FAVICON_URL = `${SITE_ORIGIN}/favicon.png`;
 

@@ -121,7 +121,7 @@ function Contact() {
             <div className="surface-card overflow-hidden rounded-lg p-2">
               <iframe
                 title="Office Location"
-                src="https://www.google.com/maps?q=Aspect+Tower+Zone+B+Business+Bay+Dubai&output=embed"
+                src="https://www.google.com/maps?q=Aspect+Tower+Zone+B+Business+Bay+Dubai&t=k&output=embed"
                 className="h-72 w-full rounded-md"
                 loading="lazy"
               />

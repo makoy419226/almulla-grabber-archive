@@ -39,7 +39,7 @@ function Contact() {
 
   return (
     <SiteLayout>
-      <section className="border-b border-primary/15 bg-primary text-primary-foreground">
+      <section className="page-hero border-b border-primary/15 bg-primary text-primary-foreground">
         <div className="mx-auto max-w-7xl px-4 py-16 text-center sm:px-6 lg:px-8">
           <div className="text-sm font-semibold text-[var(--gold)]">Contact</div>
           <h1 className="mt-4 max-w-4xl text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">

@@ -68,7 +68,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
       <SeoUpdater />
 
       <header ref={headerRef} className="site-header-shell sticky top-0 z-50">
-        <div className="mx-auto flex h-[6.5rem] max-w-[104rem] items-center justify-between gap-7 px-4 sm:px-6 lg:px-10">
+        <div className="mx-auto flex h-[5.75rem] max-w-[104rem] items-center justify-between gap-7 px-4 sm:px-6 lg:px-10">
           <Link to="/" className="nav-hover-magnify shrink-0" aria-label="AlMulla Holding home">
             <AlmullaLogo />
           </Link>
@@ -110,7 +110,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
               {bizOpen && (
                 <div className="absolute left-1/2 top-full z-50 w-72 -translate-x-1/2 pt-5">
                   <div
-                    className="surface-card glass-morph rounded-[1.5rem] p-3 shadow-2xl shadow-black/10"
+                    className="surface-card glass-morph rounded-lg p-3 shadow-2xl shadow-black/10"
                     role="menu"
                   >
                     {businessLinks.map((business) => (
@@ -152,7 +152,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
         {open && (
           <div
             id="mobile-navigation"
-            className="mobile-nav-panel absolute left-4 right-4 top-[calc(100%+0.75rem)] z-50 rounded-[1.5rem] border border-primary/10 bg-white/92 p-3 shadow-2xl shadow-black/12 backdrop-blur-xl md:hidden"
+            className="mobile-nav-panel absolute left-4 right-4 top-[calc(100%+0.75rem)] z-50 rounded-lg border border-primary/10 bg-white/92 p-3 shadow-2xl shadow-black/12 backdrop-blur-xl md:hidden"
           >
             <nav className="flex flex-col gap-1" aria-label="Mobile navigation">
               <Link

@@ -57,7 +57,7 @@ function Healthcare() {
   return (
     <SiteLayout>
       {/* Hero */}
-      <section className="relative overflow-hidden bg-primary text-primary-foreground">
+      <section className="business-hero relative overflow-hidden bg-primary text-primary-foreground">
         <div
           className="absolute inset-0 opacity-25"
           style={{

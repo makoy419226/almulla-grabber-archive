@@ -35,23 +35,23 @@
 
 :root {
   --radius: 0.5rem;
-  --background: oklch(0.978 0.008 92);
-  --foreground: oklch(0.17 0.012 78);
+  --background: oklch(0.982 0.01 86);
+  --foreground: oklch(0.18 0.014 72);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.18 0.014 72);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.18 0.014 72);
   --primary: oklch(0.28 0.055 58);
   --primary-foreground: oklch(0.985 0.008 86);
-  --secondary: oklch(0.932 0.021 94);
+  --secondary: oklch(0.935 0.03 86);
   --secondary-foreground: oklch(0.24 0.04 64);
-  --muted: oklch(0.94 0.01 92);
+  --muted: oklch(0.94 0.012 86);
   --muted-foreground: oklch(0.43 0.012 70);
   --accent: oklch(0.72 0.105 82);
   --accent-foreground: oklch(0.16 0.018 70);
   --destructive: oklch(0.56 0.2 27);
   --destructive-foreground: oklch(0.99 0.002 80);
-  --border: oklch(0.85 0.016 92);
+  --border: oklch(0.855 0.02 84);
   --input: oklch(0.895 0.014 86);
   --ring: oklch(0.7 0.11 82);
   --gold: oklch(0.74 0.125 82);
@@ -61,8 +61,8 @@
   --wine: oklch(0.27 0.055 42);
   --brand-red: #800020;
   --teal: oklch(0.42 0.035 210);
-  --ivory: oklch(0.988 0.008 96);
-  --champagne: oklch(0.95 0.026 92);
+  --ivory: oklch(0.988 0.009 86);
+  --champagne: oklch(0.955 0.035 88);
   --charcoal: oklch(0.16 0.016 72);
   --font-sans: "Manrope", "Inter", system-ui, sans-serif;
   --font-serif: "Manrope", "Inter", system-ui, sans-serif;
@@ -80,23 +80,17 @@
   body {
     min-height: 100vh;
     background:
-      linear-gradient(
-        90deg,
-        color-mix(in oklab, var(--primary) 5%, transparent) 1px,
-        transparent 1px
+      radial-gradient(
+        circle at 84% 8%,
+        color-mix(in oklab, var(--gold) 18%, transparent),
+        transparent 32%
       ),
       linear-gradient(
         180deg,
-        color-mix(in oklab, var(--primary) 4%, transparent) 1px,
-        transparent 1px
-      ),
-      linear-gradient(
-        180deg,
-        color-mix(in oklab, white 88%, var(--ivory)) 0%,
-        color-mix(in oklab, var(--ivory) 82%, var(--secondary)) 48%,
-        color-mix(in oklab, white 80%, var(--champagne)) 100%
+        color-mix(in oklab, var(--champagne) 74%, white) 0%,
+        color-mix(in oklab, var(--ivory) 76%, var(--gold) 8%) 45%,
+        color-mix(in oklab, var(--champagne) 82%, white) 100%
       );
-    background-size: 42px 42px, 42px 42px, auto;
     color: var(--color-foreground);
     font-family: var(--font-sans);
     text-rendering: optimizeLegibility;
@@ -433,19 +427,19 @@
   }
 
   .site-header-shell {
-    border-bottom: 1px solid color-mix(in oklab, var(--primary) 10%, white);
+    border-bottom: 1px solid color-mix(in oklab, var(--gold) 24%, white);
     background:
       linear-gradient(
-        180deg,
-        color-mix(in oklab, white 86%, transparent),
-        color-mix(in oklab, white 72%, var(--ivory))
+        135deg,
+        color-mix(in oklab, white 84%, var(--champagne) 18%),
+        color-mix(in oklab, white 74%, var(--gold) 13%)
       ),
       var(--ivory);
     box-shadow:
-      inset 0 1px 0 color-mix(in oklab, white 82%, transparent),
-      0 18px 44px -38px color-mix(in oklab, var(--ink) 38%, transparent);
-    backdrop-filter: blur(24px) saturate(1.22);
-    -webkit-backdrop-filter: blur(24px) saturate(1.22);
+      inset 0 1px 0 color-mix(in oklab, white 72%, transparent),
+      0 18px 44px -38px color-mix(in oklab, var(--bronze) 55%, transparent);
+    backdrop-filter: blur(18px) saturate(1.18);
+    -webkit-backdrop-filter: blur(18px) saturate(1.18);
   }
 
   .site-header-shell nav .nav-hover-magnify::after {
@@ -470,24 +464,18 @@
   .home-legacy {
     overflow: hidden;
     background:
-      linear-gradient(
-        90deg,
-        color-mix(in oklab, var(--primary) 4%, transparent) 1px,
-        transparent 1px
+      radial-gradient(
+        circle at 80% 5%,
+        color-mix(in oklab, var(--gold) 19%, transparent),
+        transparent 34%
       ),
       linear-gradient(
         180deg,
-        color-mix(in oklab, var(--primary) 3%, transparent) 1px,
-        transparent 1px
-      ),
-      linear-gradient(
-        180deg,
-        color-mix(in oklab, white 92%, var(--ivory)) 0%,
-        color-mix(in oklab, white 78%, var(--secondary)) 50%,
-        color-mix(in oklab, var(--champagne) 58%, white) 100%
+        color-mix(in oklab, var(--champagne) 72%, white) 0%,
+        color-mix(in oklab, var(--ivory) 88%, var(--gold) 7%) 46%,
+        color-mix(in oklab, var(--champagne) 76%, white) 100%
       ),
       color-mix(in oklab, var(--champagne) 86%, white);
-    background-size: 44px 44px, 44px 44px, auto, auto;
   }
 
   .site-content .home-legacy :is(h1, h2, h3, h4, p, .section-title, .section-eyebrow) {
@@ -505,18 +493,23 @@
     isolation: isolate;
     min-height: calc(100vh - 5rem);
     background:
+      radial-gradient(
+        circle at 82% 22%,
+        color-mix(in oklab, var(--gold) 18%, transparent),
+        transparent 34%
+      ),
       linear-gradient(
         90deg,
-        color-mix(in oklab, var(--ink) 82%, var(--primary)) 0%,
-        color-mix(in oklab, var(--ink) 62%, transparent) 38%,
-        color-mix(in oklab, var(--ink) 22%, transparent) 68%,
-        transparent 100%
+        color-mix(in oklab, white 95%, var(--ivory) 5%) 0%,
+        color-mix(in oklab, white 91%, var(--champagne) 9%) 28%,
+        color-mix(in oklab, white 68%, transparent) 44%,
+        transparent 64%
       ),
       linear-gradient(
         180deg,
-        color-mix(in oklab, black 12%, transparent) 0%,
-        transparent 48%,
-        color-mix(in oklab, var(--background) 92%, transparent) 100%
+        color-mix(in oklab, white 18%, transparent) 0%,
+        transparent 36%,
+        color-mix(in oklab, var(--primary) 10%, transparent) 100%
       ),
       var(--hero-image) right center / cover no-repeat;
   }
@@ -546,17 +539,17 @@
   .legacy-heading {
     display: grid;
     gap: 0.08em;
-    color: color-mix(in oklab, white 94%, var(--primary-foreground));
+    color: color-mix(in oklab, var(--ink) 92%, black);
     font-family: var(--font-sans);
     font-size: clamp(3rem, 7vw, 7.1rem);
     font-weight: 800;
     line-height: 0.95;
     letter-spacing: 0;
-    text-shadow: 0 24px 54px rgba(0, 0, 0, 0.36);
+    text-shadow: none;
   }
 
   .legacy-heading span:last-child {
-    color: color-mix(in oklab, var(--gold) 78%, white);
+    color: color-mix(in oklab, var(--gold) 64%, var(--bronze));
   }
 
   .legacy-line {
@@ -564,13 +557,13 @@
     width: 5.4rem;
     height: 2px;
     margin-top: 2.1rem;
-    background: linear-gradient(90deg, var(--gold), color-mix(in oklab, white 72%, transparent));
-    box-shadow: 0 0 24px color-mix(in oklab, var(--gold) 52%, transparent);
+    background: linear-gradient(90deg, var(--primary), var(--gold));
+    box-shadow: none;
   }
 
   .legacy-hero-copy p {
-    color: color-mix(in oklab, white 76%, var(--primary-foreground));
-    text-shadow: 0 14px 34px rgba(0, 0, 0, 0.32);
+    color: color-mix(in oklab, var(--foreground) 72%, transparent);
+    text-shadow: none;
   }
 
   @media (min-width: 1024px) {
@@ -1365,14 +1358,16 @@
     background:
       linear-gradient(
         180deg,
-        color-mix(in oklab, var(--ink) 78%, var(--primary)) 0%,
-        color-mix(in oklab, var(--ink) 58%, transparent) 48%,
-        color-mix(in oklab, var(--ink) 18%, transparent) 100%
+        color-mix(in oklab, white 94%, var(--ivory) 6%) 0%,
+        color-mix(in oklab, white 84%, var(--champagne) 16%) 28%,
+        color-mix(in oklab, white 54%, transparent) 48%,
+        color-mix(in oklab, white 20%, transparent) 100%
       ),
       linear-gradient(
         180deg,
-        transparent 0%,
-        color-mix(in oklab, var(--background) 90%, transparent) 100%
+        color-mix(in oklab, white 6%, transparent) 0%,
+        transparent 50%,
+        color-mix(in oklab, var(--primary) 10%, transparent) 100%
       ),
       var(--hero-image) 62% center / cover no-repeat;
   }
@@ -1407,9 +1402,9 @@
   .site-header-shell {
     background:
       linear-gradient(
-        180deg,
-        color-mix(in oklab, white 88%, transparent),
-        color-mix(in oklab, white 76%, var(--ivory))
+        135deg,
+        color-mix(in oklab, white 78%, var(--champagne) 22%),
+        color-mix(in oklab, white 70%, var(--gold) 14%)
       ),
       var(--ivory);
   }

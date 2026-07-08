@@ -81,7 +81,12 @@ export const organizationJsonLd = {
   "@type": "Organization",
   name: SITE_NAME,
   url: SITE_ORIGIN,
-  logo: LOGO_URL,
+  logo: {
+    "@type": "ImageObject",
+    url: LOGO_URL,
+    width: 284,
+    height: 99,
+  },
   image: DEFAULT_OG_IMAGE,
   email: "info@almullaholding.com",
   telephone: "+97142249662",

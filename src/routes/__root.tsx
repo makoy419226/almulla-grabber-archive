@@ -10,9 +10,8 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
-import faviconUrl from "../assets/favicon.png";
 import { reportLovableError } from "../lib/lovable-error-reporting";
-import { LOGO_URL, SITE_NAME } from "../lib/seo";
+import { FAVICON_URL, LOGO_URL, SITE_NAME } from "../lib/seo";
 
 function NotFoundComponent() {
   return (
@@ -95,9 +94,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
-      { rel: "icon", sizes: "any", href: faviconUrl },
-      { rel: "shortcut icon", href: faviconUrl },
-      { rel: "icon", type: "image/png", sizes: "64x64", href: faviconUrl },
+      { rel: "icon", sizes: "any", href: "/favicon.ico" },
+      { rel: "shortcut icon", href: "/favicon.ico" },
+      { rel: "icon", type: "image/png", sizes: "64x64", href: "/favicon.png" },
+      { rel: "icon", type: "image/png", sizes: "64x64", href: FAVICON_URL },
       { rel: "apple-touch-icon", href: LOGO_URL },
       { rel: "stylesheet", href: appCss },
     ],

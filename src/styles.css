@@ -420,10 +420,18 @@
     background: #fff;
     background-color: #fff;
     color: color-mix(in oklab, var(--ink) 94%, black);
+    min-height: 100vh;
+    min-height: 100dvh;
+    isolation: isolate;
     transform-origin: top right;
-    animation: mobile-menu-dropdown-in 420ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation: mobile-menu-dropdown-in 260ms cubic-bezier(0.16, 1, 0.3, 1) both;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
+  }
+
+  .mobile-menu-overlay > div {
+    background: #fff;
+    background-color: #fff;
   }
 
   .mobile-menu-logo {
@@ -454,8 +462,9 @@
 
   .mobile-menu-close:hover,
   .mobile-menu-close:focus-visible {
-    background: color-mix(in oklab, var(--primary) 92%, black);
-    color: white;
+    border-color: color-mix(in oklab, var(--primary) 62%, var(--gold));
+    background: color-mix(in oklab, white 86%, var(--champagne));
+    color: color-mix(in oklab, var(--primary) 90%, black);
     transform: scale(0.98);
   }
 

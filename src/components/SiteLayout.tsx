@@ -10,6 +10,7 @@ const navLinkBase =
 export function SiteLayout({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!open) return;
@@ -18,7 +19,8 @@ export function SiteLayout({ children }: { children: ReactNode }) {
     document.body.style.overflow = "hidden";
 
     const handlePointerDown = (event: PointerEvent) => {
-      if (!headerRef.current?.contains(event.target as Node)) {
+      const target = event.target as Node;
+      if (!headerRef.current?.contains(target) && !mobileMenuRef.current?.contains(target)) {
         setOpen(false);
       }
     };
@@ -90,89 +92,86 @@ export function SiteLayout({ children }: { children: ReactNode }) {
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
+      </header>
 
-        {open && (
-          <div
-            id="mobile-navigation"
-            className="mobile-menu-overlay fixed inset-0 z-[80] bg-white md:hidden"
-          >
-            <div className="flex h-full flex-col px-6 pb-8 pt-5 sm:px-10">
-              <div className="flex items-start justify-between gap-6">
-                <Link
-                  to="/"
-                  className="mobile-menu-logo"
-                  aria-label="AlMulla Holding home"
-                  onClick={() => setOpen(false)}
-                >
-                  <AlmullaLogo />
-                </Link>
-                <button
-                  type="button"
-                  className="mobile-menu-close"
-                  aria-label="Close menu"
-                  onClick={() => setOpen(false)}
-                >
-                  <X className="h-6 w-6" />
-                </button>
-              </div>
+      {open && (
+        <div
+          ref={mobileMenuRef}
+          id="mobile-navigation"
+          className="mobile-menu-overlay fixed inset-0 z-[80] bg-white md:hidden"
+        >
+          <div className="flex h-full flex-col px-6 pb-8 pt-5 sm:px-10">
+            <div className="flex items-start justify-between gap-6">
+              <Link
+                to="/"
+                className="mobile-menu-logo"
+                aria-label="AlMulla Holding home"
+                onClick={() => setOpen(false)}
+              >
+                <AlmullaLogo />
+              </Link>
+              <button
+                type="button"
+                className="mobile-menu-close"
+                aria-label="Close menu"
+                onClick={() => setOpen(false)}
+              >
+                <X className="h-6 w-6" />
+              </button>
+            </div>
 
-              <nav className="mobile-menu-links" aria-label="Mobile navigation">
-                <Link
-                  to="/about-us"
-                  className="mobile-menu-link"
-                  activeProps={{ className: "text-primary" }}
-                  onClick={() => setOpen(false)}
-                >
-                  Who We Are
-                </Link>
+            <nav className="mobile-menu-links" aria-label="Mobile navigation">
+              <Link
+                to="/about-us"
+                className="mobile-menu-link"
+                activeProps={{ className: "text-primary" }}
+                onClick={() => setOpen(false)}
+              >
+                Who We Are
+              </Link>
+              <a href="/#businesses" className="mobile-menu-link" onClick={() => setOpen(false)}>
+                What We Do
+              </a>
+              <Link
+                to="/contact-us"
+                className="mobile-menu-link"
+                activeProps={{ className: "text-primary" }}
+                onClick={() => setOpen(false)}
+              >
+                Get In Touch
+              </Link>
+            </nav>
+
+            <div className="mt-auto border-t border-foreground/14 pt-6">
+              <p className="mobile-menu-contact-title">Let&apos;s Get In Touch</p>
+              <div className="mt-6 grid grid-cols-3 items-center text-primary">
                 <a
-                  href="/#businesses"
-                  className="mobile-menu-link"
-                  onClick={() => setOpen(false)}
+                  href="tel:+97142249662"
+                  className="mobile-menu-contact-action"
+                  aria-label="Call AlMulla Holding"
                 >
-                  What We Do
+                  <Phone className="h-6 w-6" />
+                </a>
+                <a
+                  href="mailto:info@almullaholding.com"
+                  className="mobile-menu-contact-action"
+                  aria-label="Email AlMulla Holding"
+                >
+                  <Mail className="h-6 w-6" />
                 </a>
                 <Link
                   to="/contact-us"
-                  className="mobile-menu-link"
-                  activeProps={{ className: "text-primary" }}
+                  className="mobile-menu-contact-action"
+                  aria-label="Go to contact page"
                   onClick={() => setOpen(false)}
                 >
-                  Get In Touch
+                  <Send className="h-6 w-6" />
                 </Link>
-              </nav>
-
-              <div className="mt-auto border-t border-foreground/14 pt-6">
-                <p className="mobile-menu-contact-title">Let&apos;s Get In Touch</p>
-                <div className="mt-6 grid grid-cols-3 items-center text-primary">
-                  <a
-                    href="tel:+97142249662"
-                    className="mobile-menu-contact-action"
-                    aria-label="Call AlMulla Holding"
-                  >
-                    <Phone className="h-6 w-6" />
-                  </a>
-                  <a
-                    href="mailto:info@almullaholding.com"
-                    className="mobile-menu-contact-action"
-                    aria-label="Email AlMulla Holding"
-                  >
-                    <Mail className="h-6 w-6" />
-                  </a>
-                  <Link
-                    to="/contact-us"
-                    className="mobile-menu-contact-action"
-                    aria-label="Go to contact page"
-                    onClick={() => setOpen(false)}
-                  >
-                    <Send className="h-6 w-6" />
-                  </Link>
-                </div>
               </div>
             </div>
           </div>
-        )}
-      </header>
+        </div>
+      )}
 
       <main className="site-content flex-1">{children}</main>
 

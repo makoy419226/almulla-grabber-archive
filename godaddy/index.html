@@ -36,7 +36,7 @@
     <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png?v=3" />
     <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png?v=3" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=3" />
-    <link rel="preload" as="image" href="/hero-960.webp" type="image/webp" fetchpriority="high" />
+    <link rel="preload" as="image" href="/hero-960.webp?v=4" type="image/webp" fetchpriority="high" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -56,14 +56,19 @@
     </script>
     <style>
       :root {
-        --bg: #f8f1df;
-        --bg-2: #fffaf0;
-        --ink: #2a1515;
-        --muted: rgba(42, 21, 21, 0.7);
-        --gold: #b99625;
-        --gold-soft: rgba(185, 150, 37, 0.16);
-        --card: rgba(255, 255, 255, 0.72);
-        --line: rgba(42, 21, 21, 0.12);
+        --background: #fbf7ed;
+        --ivory: #fffaf0;
+        --champagne: #f4e9cc;
+        --primary: #3c2a1f;
+        --primary-foreground: #fffaf0;
+        --foreground: #2b2018;
+        --muted-foreground: rgba(43, 32, 24, 0.68);
+        --gold: #bc9228;
+        --bronze: #73502d;
+        --brand-red: #800020;
+        --ink: #241b15;
+        --border: rgba(60, 42, 31, 0.14);
+        --radius: 0.5rem;
       }
 
       * {
@@ -72,15 +77,18 @@
 
       html {
         scroll-behavior: auto;
+        background: var(--background);
       }
 
       body {
+        min-height: 100vh;
         margin: 0;
-        font-family: Arial, Helvetica, sans-serif;
-        color: var(--ink);
+        color: var(--foreground);
         background:
-          radial-gradient(circle at top right, var(--gold-soft), transparent 30%),
-          linear-gradient(180deg, var(--bg-2), var(--bg));
+          radial-gradient(circle at 84% 8%, rgba(188, 146, 40, 0.14), transparent 32%),
+          linear-gradient(180deg, #fbf2df 0%, var(--ivory) 45%, var(--champagne) 100%);
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        text-rendering: optimizeLegibility;
       }
 
       a {
@@ -93,22 +101,43 @@
         max-width: 100%;
       }
 
-      .shell {
-        width: min(1180px, calc(100% - 2rem));
-        margin: 0 auto;
+      .page {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
       }
 
-      .topbar {
+      .site-header-shell {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        border-bottom: 1px solid rgba(188, 146, 40, 0.18);
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(248, 241, 224, 0.92)),
+          var(--ivory);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72);
+      }
+
+      .header-inner {
         display: flex;
+        width: min(104rem, 100%);
+        height: 5.75rem;
         align-items: center;
         justify-content: space-between;
-        gap: 1rem;
-        padding: 1.1rem 0;
+        gap: 1.75rem;
+        margin: 0 auto;
+        padding: 0 2.5rem;
+      }
+
+      .logo-link {
+        display: inline-flex;
+        flex: 0 0 auto;
+        align-items: center;
       }
 
       .logo-picture {
         display: block;
-        width: 8.5rem;
+        width: clamp(8.5rem, 12vw, 11.7rem);
       }
 
       .logo {
@@ -116,212 +145,716 @@
         height: auto;
       }
 
-      .nav {
+      .main-nav {
         display: flex;
-        gap: 1rem;
-        font-size: 0.92rem;
-        color: var(--muted);
-      }
-
-      .hero {
-        display: grid;
-        gap: 1.5rem;
         align-items: center;
-        padding: 2rem 0 3rem;
+        gap: 1.25rem;
       }
 
-      .hero-grid {
-        display: grid;
-        gap: 1rem;
-      }
-
-      .eyebrow {
-        color: var(--gold);
-        font-size: 0.78rem;
-        font-weight: 800;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-      }
-
-      h1 {
-        margin: 0;
-        font-size: clamp(2.8rem, 7vw, 5.5rem);
-        line-height: 0.96;
-        letter-spacing: -0.04em;
-      }
-
-      .lead {
-        max-width: 42rem;
-        margin: 0;
-        font-size: 1.05rem;
-        line-height: 1.7;
-        color: var(--muted);
-      }
-
-      .actions {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.75rem;
-        margin-top: 0.5rem;
-      }
-
-      .btn {
+      .main-nav a {
+        position: relative;
         display: inline-flex;
         align-items: center;
-        justify-content: center;
-        min-height: 2.9rem;
+        border-radius: var(--radius);
         padding: 0.75rem 1rem;
+        color: rgba(43, 32, 24, 0.72);
+        font-size: 0.875rem;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+
+      .main-nav a::after {
+        position: absolute;
+        right: 0.75rem;
+        bottom: 0.3rem;
+        left: 0.75rem;
+        height: 2px;
         border-radius: 999px;
-        border: 1px solid var(--line);
-        background: rgba(255, 255, 255, 0.55);
-        font-size: 0.92rem;
-        font-weight: 700;
+        background: linear-gradient(90deg, var(--bronze), var(--gold));
+        content: "";
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 180ms ease;
       }
 
-      .btn.primary {
-        border-color: rgba(185, 150, 37, 0.35);
-        background: linear-gradient(135deg, #d9bf6a, var(--gold));
-        color: white;
+      .main-nav a:hover,
+      .main-nav a:focus-visible {
+        color: var(--primary);
+        outline: none;
       }
 
-      .hero-card {
+      .main-nav a:hover::after,
+      .main-nav a:focus-visible::after {
+        transform: scaleX(1);
+      }
+
+      .site-content {
+        flex: 1;
+      }
+
+      .home-legacy {
         overflow: hidden;
-        border-radius: 1.25rem;
-        border: 1px solid rgba(255, 255, 255, 0.6);
-        background: var(--card);
-        box-shadow: 0 20px 50px -34px rgba(0, 0, 0, 0.28);
+        background:
+          linear-gradient(180deg, #f7ecd0 0%, #fffaf0 42%, #f4e8cb 100%),
+          var(--ivory);
       }
 
-      .hero-card img {
+      .legacy-hero {
+        position: relative;
+        isolation: isolate;
+        min-height: clamp(32rem, 68vh, 45rem);
+        background: linear-gradient(135deg, #f4e8cb, #fffaf0);
+      }
+
+      .legacy-hero-media {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+        background: #f4e8cb;
+      }
+
+      .legacy-hero-media picture {
+        display: block;
         width: 100%;
-        height: min(72vw, 520px);
+        height: 100%;
+      }
+
+      .legacy-hero-media::before {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        pointer-events: none;
+        background:
+          linear-gradient(
+            90deg,
+            rgba(0, 0, 0, 0.78) 0%,
+            rgba(0, 0, 0, 0.54) 38%,
+            rgba(0, 0, 0, 0.18) 68%,
+            transparent 100%
+          ),
+          linear-gradient(180deg, rgba(0, 0, 0, 0.16), transparent 45%, rgba(0, 0, 0, 0.32));
+        content: "";
+      }
+
+      .legacy-hero-media img {
+        width: 100%;
+        height: 100%;
         object-fit: cover;
+        object-position: right center;
+        filter: saturate(0.98) contrast(1.02);
+        transform-origin: center;
       }
 
-      .section {
-        padding: 1rem 0 3rem;
+      .legacy-hero-grid {
+        position: absolute;
+        inset: 0;
+        z-index: 3;
+        display: flex;
+        width: 100%;
+        align-items: center;
       }
 
-      .section-title {
-        margin: 0 0 1rem;
-        font-size: clamp(1.8rem, 3vw, 2.8rem);
+      .legacy-container {
+        width: min(80rem, 100% - 2rem);
+        margin: 0 auto;
       }
 
-      .cards {
+      .legacy-hero-copy {
+        position: relative;
+        z-index: 3;
+        width: min(42rem, 100%);
+        padding: clamp(2.5rem, 6vw, 5rem) 0;
+      }
+
+      .legacy-hero-kicker,
+      .legacy-eyebrow {
+        font-size: 0.76rem;
+        font-weight: 900;
+        letter-spacing: 0;
+        text-transform: uppercase;
+      }
+
+      .legacy-hero-kicker {
+        margin-bottom: 1.1rem;
+        color: #e7c66c;
+      }
+
+      .legacy-heading {
         display: grid;
-        gap: 1rem;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-      }
-
-      .card {
-        border-radius: 1rem;
-        border: 1px solid var(--line);
-        background: rgba(255, 255, 255, 0.62);
-        padding: 1rem;
-      }
-
-      .card h3 {
-        margin: 0 0 0.5rem;
-        font-size: 1rem;
-      }
-
-      .card p {
+        gap: 0.04em;
         margin: 0;
-        color: var(--muted);
-        line-height: 1.6;
-        font-size: 0.92rem;
+        color: #fffaf0;
+        font-size: clamp(2rem, 3.8vw, 3.7rem);
+        font-weight: 800;
+        line-height: 1.04;
+        letter-spacing: 0;
       }
 
-      @media (max-width: 900px) {
-        .cards {
-          grid-template-columns: 1fr 1fr;
+      .legacy-heading span:last-child {
+        color: #d7b555;
+      }
+
+      .legacy-line {
+        display: block;
+        width: 4.6rem;
+        height: 2px;
+        margin-top: 1.45rem;
+        background: linear-gradient(90deg, var(--gold), transparent);
+      }
+
+      .legacy-hero-copy p {
+        max-width: 36rem;
+        margin: 1.5rem 0 0;
+        color: rgba(255, 250, 240, 0.78);
+        font-size: 1rem;
+        line-height: 2;
+      }
+
+      .legacy-learn-link {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        margin-top: 1.75rem;
+        color: #fffaf0;
+        font-size: 0.78rem;
+        font-weight: 900;
+        text-transform: uppercase;
+      }
+
+      .legacy-learn-link::after {
+        position: absolute;
+        right: 0;
+        bottom: -0.35rem;
+        left: 0;
+        height: 1px;
+        background: linear-gradient(90deg, var(--gold), var(--bronze));
+        content: "";
+        transform: scaleX(0.28);
+        transform-origin: left;
+        transition: transform 220ms ease;
+      }
+
+      .legacy-learn-link:hover::after,
+      .legacy-learn-link:focus-visible::after {
+        transform: scaleX(1);
+      }
+
+      .portfolio-section {
+        padding: 3.5rem 0 3.5rem;
+      }
+
+      .section-intro {
+        max-width: 56rem;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .legacy-eyebrow {
+        color: var(--brand-red);
+        font-size: 0.99rem;
+      }
+
+      .legacy-section-title {
+        margin: 0.75rem auto 0;
+        color: var(--ink);
+        font-size: clamp(1.9rem, 3.4vw, 3.25rem);
+        font-weight: 800;
+        line-height: 1.04;
+        letter-spacing: 0;
+        text-transform: uppercase;
+      }
+
+      .sector-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .legacy-sector-card {
+        position: relative;
+        display: block;
+        overflow: hidden;
+        min-height: clamp(24rem, 38vw, 34rem);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: var(--radius);
+        background: #d9c494;
+        box-shadow: 0 28px 70px -52px rgba(0, 0, 0, 0.72);
+        content-visibility: auto;
+        contain-intrinsic-size: 1px 34rem;
+        transition:
+          transform 220ms ease,
+          border-color 180ms ease,
+          box-shadow 220ms ease;
+      }
+
+      .legacy-sector-card::before {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        pointer-events: none;
+        border-radius: inherit;
+        background:
+          linear-gradient(180deg, rgba(0, 0, 0, 0.1), transparent 30%),
+          linear-gradient(180deg, transparent 36%, rgba(0, 0, 0, 0.82) 100%),
+          linear-gradient(90deg, rgba(0, 0, 0, 0.36), transparent 56%);
+        content: "";
+      }
+
+      .legacy-sector-card:hover,
+      .legacy-sector-card:focus-within {
+        border-color: rgba(214, 181, 85, 0.68);
+        box-shadow: 0 36px 86px -56px rgba(0, 0, 0, 0.86);
+        transform: translateY(-4px);
+      }
+
+      .legacy-sector-media {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+      }
+
+      .legacy-sector-media img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        filter: saturate(0.98) contrast(1.03);
+        transform-origin: center;
+        transition: transform 420ms ease;
+      }
+
+      .legacy-sector-card:hover .legacy-sector-media img,
+      .legacy-sector-card:focus-within .legacy-sector-media img {
+        transform: scale(1.04);
+      }
+
+      .legacy-sector-body {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 3;
+        padding: clamp(1.35rem, 3vw, 2.25rem);
+      }
+
+      .legacy-sector-card h3 {
+        margin: 0;
+        color: white;
+        font-size: clamp(1.65rem, 3vw, 3rem);
+        font-weight: 800;
+        line-height: 1;
+        text-transform: uppercase;
+        transition: transform 220ms ease;
+      }
+
+      .legacy-sector-copy {
+        max-width: 30rem;
+        margin: 0.75rem 0 0;
+        color: rgba(255, 255, 255, 0.74);
+        font-size: 0.95rem;
+        line-height: 1.75;
+        opacity: 0.88;
+        transition:
+          opacity 220ms ease,
+          transform 220ms ease;
+      }
+
+      .legacy-sector-card:hover h3,
+      .legacy-sector-card:focus-within h3 {
+        transform: translateY(-0.2rem);
+      }
+
+      .legacy-sector-card:hover .legacy-sector-copy,
+      .legacy-sector-card:focus-within .legacy-sector-copy {
+        opacity: 1;
+        transform: translateY(-0.15rem);
+      }
+
+      .footer-premium {
+        margin-top: 0;
+        color: var(--primary-foreground);
+        background:
+          linear-gradient(90deg, rgba(188, 146, 40, 0.1), transparent 38%),
+          linear-gradient(135deg, #301d18, #4a2c20 52%, #211814);
+        box-shadow: inset 0 1px 0 rgba(188, 146, 40, 0.18);
+      }
+
+      .footer-grid {
+        display: grid;
+        width: min(80rem, 100% - 2rem);
+        grid-template-columns: 1.35fr 0.8fr 1fr;
+        gap: 2rem;
+        margin: 0 auto;
+        padding: 3rem 0;
+      }
+
+      .footer-logo {
+        width: 9rem;
+        padding: 0.35rem 0.45rem;
+        border-radius: var(--radius);
+        background: rgba(255, 250, 240, 0.92);
+      }
+
+      .footer-copy {
+        max-width: 20rem;
+        margin: 1.25rem 0 0;
+        color: rgba(255, 250, 240, 0.68);
+        font-size: 0.875rem;
+        line-height: 1.75;
+      }
+
+      .footer-small {
+        margin: 1.25rem 0 0;
+        color: rgba(255, 250, 240, 0.46);
+        font-size: 0.75rem;
+      }
+
+      .footer-heading {
+        margin: 0;
+        color: var(--primary-foreground);
+        font-size: 0.875rem;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+      .footer-links {
+        display: grid;
+        gap: 0.75rem;
+        margin-top: 1rem;
+        color: rgba(255, 250, 240, 0.66);
+        font-size: 0.875rem;
+      }
+
+      .footer-links a:hover,
+      .footer-links a:focus-visible {
+        color: var(--gold);
+        outline: none;
+      }
+
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 1rem;
+        color: rgba(255, 250, 240, 0.44);
+        font-size: 0.75rem;
+        text-align: center;
+      }
+
+      .footer-bottom span + span {
+        margin-left: 0.75rem;
+      }
+
+      @media (prefers-reduced-motion: no-preference) {
+        .legacy-hero-media img {
+          animation: hero-media-drift 18s ease-in-out infinite alternate;
+        }
+
+        .legacy-hero-copy {
+          animation: reveal-up 460ms ease both;
+        }
+
+        .legacy-sector-card {
+          animation: portfolio-card-in 360ms ease both;
+        }
+
+        .legacy-sector-card:nth-child(2) {
+          animation-delay: 35ms;
+        }
+
+        .legacy-sector-card:nth-child(3) {
+          animation-delay: 70ms;
+        }
+
+        .legacy-sector-card:nth-child(4) {
+          animation-delay: 105ms;
         }
       }
 
-      @media (max-width: 640px) {
-        .nav {
-          display: none;
+      @keyframes hero-media-drift {
+        from {
+          transform: scale(1);
         }
 
-        .hero {
-          padding-top: 1rem;
+        to {
+          transform: scale(1.035) translate3d(-0.6%, 0, 0);
+        }
+      }
+
+      @keyframes reveal-up {
+        from {
+          opacity: 0;
+          transform: translateY(14px);
         }
 
-        .cards {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes portfolio-card-in {
+        from {
+          opacity: 0;
+          transform: translateY(12px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 1024px) {
+        .header-inner {
+          padding: 0 1.5rem;
+        }
+
+        .sector-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 1.5rem;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .site-header-shell {
+          position: static;
+        }
+
+        .header-inner {
+          height: auto;
+          min-height: 5.25rem;
+          flex-wrap: wrap;
+          gap: 0.75rem;
+          padding: 0.9rem 1rem;
+        }
+
+        .main-nav {
+          width: 100%;
+          justify-content: space-between;
+          gap: 0.35rem;
+        }
+
+        .main-nav a {
+          padding: 0.5rem 0.25rem;
+          font-size: 0.75rem;
+        }
+
+        .legacy-hero {
+          min-height: 34rem;
+        }
+
+        .legacy-hero-media::before {
+          background:
+            linear-gradient(90deg, rgba(0, 0, 0, 0.82), rgba(0, 0, 0, 0.5), transparent),
+            linear-gradient(180deg, rgba(0, 0, 0, 0.1), transparent 44%, rgba(0, 0, 0, 0.52));
+        }
+
+        .legacy-container {
+          width: min(100% - 2rem, 80rem);
+        }
+
+        .sector-grid {
           grid-template-columns: 1fr;
+          gap: 1.25rem;
         }
 
-        .hero-card img {
-          height: 280px;
+        .legacy-sector-card {
+          min-height: 23rem;
+        }
+
+        .footer-grid {
+          grid-template-columns: 1fr;
+          padding: 2.5rem 0;
         }
       }
     </style>
   </head>
   <body>
-    <header class="shell topbar">
-      <picture class="logo-picture">
-        <source srcset="/logo.webp" type="image/webp" />
-        <img class="logo" src="/logo.png" alt="AlMulla Holding Group" width="284" height="99" />
-      </picture>
-      <nav class="nav" aria-label="Primary">
-        <a href="#businesses">Businesses</a>
-        <a href="/about-us">About</a>
-        <a href="/contact-us">Contact</a>
-      </nav>
-    </header>
+    <div class="page">
+      <header class="site-header-shell">
+        <div class="header-inner">
+          <a class="logo-link" href="/" aria-label="AlMulla Holding home">
+            <picture class="logo-picture">
+              <source srcset="/logo.webp?v=4" type="image/webp" />
+              <img class="logo" src="/logo.png?v=4" alt="AlMulla Holding Group" width="284" height="99" />
+            </picture>
+          </a>
 
-    <main>
-      <section class="shell hero">
-        <div class="hero-grid">
-          <div class="eyebrow">Diversified holding company</div>
-          <h1>Building legacies.<br />Empowering futures.</h1>
-          <p class="lead">
-            AlMulla Holding Group invests across healthcare, hospitality, education, strategic
-            investment, and energy with a long-term view on quality and resilience.
-          </p>
-          <div class="actions">
-            <a class="btn primary" href="/contact-us">Get in touch</a>
-            <a class="btn" href="/about-us">About the group</a>
+          <nav class="main-nav" aria-label="Main navigation">
+            <a href="/">Home</a>
+            <a href="/about-us">Who We Are</a>
+            <a href="/contact-us">Get In Touch</a>
+          </nav>
+        </div>
+      </header>
+
+      <main class="site-content">
+        <div class="home-legacy">
+          <section class="legacy-hero" aria-labelledby="hero-title">
+            <div class="legacy-hero-media" aria-hidden="true">
+              <picture>
+                <source srcset="/hero-960.webp?v=4" type="image/webp" />
+                <img
+                  src="/hero-960.jpg?v=4"
+                  alt=""
+                  width="960"
+                  height="504"
+                  fetchpriority="high"
+                  decoding="async"
+                />
+              </picture>
+            </div>
+
+            <div class="legacy-hero-grid">
+              <div class="legacy-container">
+                <div class="legacy-hero-copy">
+                  <div class="legacy-hero-kicker">AlMulla Holding</div>
+                  <h1 id="hero-title" class="legacy-heading">
+                    <span>Building Legacies.</span>
+                    <span>Empowering Futures.</span>
+                  </h1>
+                  <span class="legacy-line" aria-hidden="true"></span>
+                  <p>
+                    AlMulla Holding Group is a diversified holding company committed to long-term
+                    value creation and sustainable growth across key sectors that shape tomorrow.
+                  </p>
+                  <a class="legacy-learn-link" href="/about-us">Learn More <span aria-hidden="true">-></span></a>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="businesses" class="portfolio-section">
+            <div class="legacy-container">
+              <div class="section-intro">
+                <div class="legacy-eyebrow">What We Do</div>
+                <h2 class="legacy-section-title">Our Portfolio</h2>
+              </div>
+
+              <div class="sector-grid">
+                <article class="legacy-sector-card">
+                  <div class="legacy-sector-media">
+                    <img
+                      src="/sector-healthcare.webp?v=4"
+                      alt="Healthcare"
+                      width="520"
+                      height="358"
+                      loading="lazy"
+                      fetchpriority="low"
+                      decoding="async"
+                    />
+                  </div>
+                  <div class="legacy-sector-body">
+                    <h3>Healthcare</h3>
+                    <p class="legacy-sector-copy">
+                      Delivering advanced healthcare services that improve lives and communities.
+                    </p>
+                  </div>
+                </article>
+
+                <article class="legacy-sector-card">
+                  <div class="legacy-sector-media">
+                    <img
+                      src="/sector-education.webp?v=4"
+                      alt="Education"
+                      width="520"
+                      height="358"
+                      loading="lazy"
+                      fetchpriority="low"
+                      decoding="async"
+                    />
+                  </div>
+                  <div class="legacy-sector-body">
+                    <h3>Education</h3>
+                    <p class="legacy-sector-copy">
+                      Supporting future generations through quality education and innovative learning.
+                    </p>
+                  </div>
+                </article>
+
+                <article class="legacy-sector-card">
+                  <div class="legacy-sector-media">
+                    <img
+                      src="/sector-hospitality.webp?v=4"
+                      alt="Hospitality"
+                      width="520"
+                      height="358"
+                      loading="lazy"
+                      fetchpriority="low"
+                      decoding="async"
+                    />
+                  </div>
+                  <div class="legacy-sector-body">
+                    <h3>Hospitality</h3>
+                    <p class="legacy-sector-copy">
+                      Creating exceptional experiences through world-class hospitality and leisure.
+                    </p>
+                  </div>
+                </article>
+
+                <article class="legacy-sector-card">
+                  <div class="legacy-sector-media">
+                    <img
+                      src="/sector-energy.webp?v=4"
+                      alt="Energy"
+                      width="520"
+                      height="358"
+                      loading="lazy"
+                      fetchpriority="low"
+                      decoding="async"
+                    />
+                  </div>
+                  <div class="legacy-sector-body">
+                    <h3>Energy</h3>
+                    <p class="legacy-sector-copy">
+                      Powering progress through resilient energy platforms across solar, oil, gas, and
+                      future-ready infrastructure.
+                    </p>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+
+      <footer class="footer-premium">
+        <div class="footer-grid">
+          <div>
+            <picture>
+              <source srcset="/logo.webp?v=4" type="image/webp" />
+              <img class="footer-logo" src="/logo.png?v=4" alt="AlMulla Holding Group" width="284" height="99" loading="lazy" />
+            </picture>
+            <p class="footer-copy">
+              A diversified holding group committed to building legacies and empowering future growth.
+            </p>
+            <p class="footer-small">(c) 2026 AlMulla Holding. All rights reserved.</p>
+          </div>
+
+          <div>
+            <h3 class="footer-heading">Quick Links</h3>
+            <div class="footer-links">
+              <a href="/">Home</a>
+              <a href="/about-us">About Us</a>
+              <a href="/contact-us">Contact Us</a>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="footer-heading">Contact Us</h3>
+            <div class="footer-links">
+              <a href="tel:+97142249662">04 224 9662</a>
+              <a href="mailto:info@almullaholding.com">info@almullaholding.com</a>
+            </div>
           </div>
         </div>
-
-        <div class="hero-card">
-          <picture>
-            <source srcset="/hero-960.webp" type="image/webp" />
-            <img
-              src="/hero-960.jpg"
-              alt="AlMulla Holding Group"
-              width="960"
-              height="504"
-              fetchpriority="high"
-              decoding="async"
-            />
-          </picture>
+        <div class="footer-bottom">
+          <span>Privacy Policy</span>
+          <span>|</span>
+          <span>Terms of Use</span>
         </div>
-      </section>
-
-      <section id="businesses" class="shell section">
-        <h2 class="section-title">Focused businesses</h2>
-        <div class="cards">
-          <article class="card">
-            <h3>Healthcare</h3>
-            <p>Premium healthcare ventures built around specialist partnerships and modern care.</p>
-          </article>
-          <article class="card">
-            <h3>Hospitality</h3>
-            <p>Calm, practical hospitality concepts for business travelers and families.</p>
-          </article>
-          <article class="card">
-            <h3>Education</h3>
-            <p>Future-ready education investments that support long-term community value.</p>
-          </article>
-          <article class="card">
-            <h3>Energy</h3>
-            <p>Resilient energy platforms spanning infrastructure and future-ready systems.</p>
-          </article>
-        </div>
-      </section>
-
-    </main>
+      </footer>
+    </div>
   </body>
 </html>

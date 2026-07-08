@@ -74,13 +74,13 @@ function Home() {
               src={heroAlmullaEtihadImg}
               alt=""
               className="h-full w-full object-cover"
-              srcSet={`${heroAlmullaEtihadImg960} 960w, ${heroAlmullaEtihadImg} 1672w`}
+              srcSet={`${heroAlmullaEtihadImg960} 960w, ${heroAlmullaEtihadImg} 1536w`}
               loading="eager"
               fetchPriority="high"
               decoding="async"
               sizes="100vw"
-              width={1672}
-              height={941}
+              width={1536}
+              height={864}
             />
             <div className="legacy-hero-grid mx-auto flex max-w-7xl items-center px-4 sm:px-6 lg:px-8">
               <div className="legacy-hero-copy reveal-up">
@@ -103,10 +103,7 @@ function Home() {
           </div>
         </section>
 
-        <section
-          id="businesses"
-          className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8"
-        >
+        <section id="businesses" className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-4xl text-center">
             <div className="legacy-eyebrow">What We Do</div>
             <h2 className="legacy-section-title mt-3">Our Portfolio</h2>

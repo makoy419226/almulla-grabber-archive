@@ -50,7 +50,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
             <AlmullaLogo />
           </Link>
 
-          <nav className="hidden items-center gap-5 md:flex" aria-label="Main navigation">
+          <nav className="hidden items-center gap-5 xl:flex" aria-label="Main navigation">
             <Link
               to="/"
               className={navLinkBase}
@@ -81,7 +81,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
           </nav>
 
           <button
-            className="mobile-menu-trigger md:hidden"
+            className="mobile-menu-trigger xl:hidden"
             onClick={() => setOpen(!open)}
             aria-label="Menu"
             aria-expanded={open}
@@ -97,7 +97,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
         <div
           ref={mobileMenuRef}
           id="mobile-navigation"
-          className="mobile-menu-overlay fixed inset-0 z-[80] bg-white md:hidden"
+          className="mobile-menu-overlay fixed inset-0 z-[80] bg-white xl:hidden"
         >
           <div className="flex h-full flex-col px-6 pb-8 pt-5 sm:px-10">
             <div className="flex items-start justify-between gap-6">

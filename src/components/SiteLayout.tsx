@@ -2,7 +2,6 @@ import { Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Mail, Menu, Phone, Send, X } from "lucide-react";
 import { AlmullaLogo } from "@/components/AlmullaLogo";
-import { SeoUpdater } from "@/components/SeoUpdater";
 
 const navLinkBase =
   "nav-hover-magnify inline-flex items-center rounded-md px-4 py-3 text-sm font-bold uppercase text-foreground/70 hover:text-primary";
@@ -43,8 +42,6 @@ export function SiteLayout({ children }: { children: ReactNode }) {
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground">
-      <SeoUpdater />
-
       <header ref={headerRef} className="site-header-shell sticky top-0 z-50">
         <div className="mx-auto flex h-[5.75rem] max-w-[104rem] items-center justify-between gap-7 px-4 sm:px-6 lg:px-10">
           <Link to="/" className="nav-hover-magnify shrink-0" aria-label="AlMulla Holding home">

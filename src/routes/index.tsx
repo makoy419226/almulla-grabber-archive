@@ -28,7 +28,6 @@ export const Route = createFileRoute("/")({
           "A diversified holding company focused on long-term value across healthcare, hospitality, education, and energy.",
       },
     ],
-    links: [{ rel: "preload", as: "image", href: heroAlmullaEtihadImg, fetchPriority: "high" }],
   }),
   component: Home,
 });
@@ -71,7 +70,7 @@ function Home() {
         <section className="legacy-hero">
           <div className="legacy-hero-media">
             <img
-              src={heroAlmullaEtihadImg}
+              src={heroAlmullaEtihadImg960}
               alt=""
               className="h-full w-full object-cover"
               srcSet={`${heroAlmullaEtihadImg960} 960w, ${heroAlmullaEtihadImg} 1536w`}

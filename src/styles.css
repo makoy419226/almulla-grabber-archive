@@ -74,7 +74,7 @@
   }
 
   html {
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
   }
 
   body {
@@ -162,11 +162,7 @@
     font-size: 0.85rem;
     font-weight: 700;
     letter-spacing: 0;
-    transition:
-      transform 260ms cubic-bezier(0.22, 1, 0.36, 1),
-      box-shadow 260ms ease,
-      background-color 260ms ease,
-      border-color 260ms ease;
+    transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease;
     box-shadow:
       inset 0 1px 0 color-mix(in oklab, white 34%, transparent),
       0 18px 42px -24px color-mix(in oklab, var(--bronze) 86%, transparent);
@@ -183,24 +179,15 @@
       transparent 52%
     );
     pointer-events: none;
-    transform: translateX(-120%);
-    transition: transform 560ms cubic-bezier(0.22, 1, 0.36, 1);
+    transform: none;
   }
 
   .btn-primary:hover {
-    transform: translateY(-2px) scale(1.012);
     background: linear-gradient(
       135deg,
       color-mix(in oklab, var(--gold) 82%, white),
       color-mix(in oklab, var(--bronze) 88%, var(--primary))
     );
-    box-shadow:
-      inset 0 1px 0 color-mix(in oklab, white 42%, transparent),
-      0 24px 56px -28px color-mix(in oklab, var(--bronze) 90%, transparent);
-  }
-
-  .btn-primary:hover::before {
-    transform: translateX(120%);
   }
 
   .liquid-glass {
@@ -212,17 +199,11 @@
       color-mix(in oklab, white 88%, transparent),
       color-mix(in oklab, white 62%, var(--secondary))
     );
-    box-shadow:
-      inset 0 1px 0 color-mix(in oklab, white 74%, transparent),
-      0 22px 60px -42px rgba(17, 26, 38, 0.5);
-    backdrop-filter: blur(22px) saturate(1.28);
-    -webkit-backdrop-filter: blur(22px) saturate(1.28);
+    box-shadow: inset 0 1px 0 color-mix(in oklab, white 74%, transparent);
   }
 
   .deploy-sync-header {
-    box-shadow:
-      0 0 0 1px color-mix(in oklab, var(--gold) 22%, transparent),
-      0 18px 52px -40px color-mix(in oklab, var(--bronze) 28%, transparent);
+    box-shadow: 0 0 0 1px color-mix(in oklab, var(--gold) 22%, transparent);
   }
 
   .site-header-tint {
@@ -253,11 +234,7 @@
         color-mix(in oklab, white 88%, transparent),
         color-mix(in oklab, white 72%, var(--ivory))
       );
-    box-shadow:
-      inset 0 1px 0 color-mix(in oklab, white 70%, transparent),
-      0 18px 48px -38px rgba(17, 26, 38, 0.34);
-    backdrop-filter: blur(18px) saturate(1.12);
-    -webkit-backdrop-filter: blur(18px) saturate(1.12);
+    box-shadow: inset 0 1px 0 color-mix(in oklab, white 70%, transparent);
   }
 
   .liquid-glass::before,
@@ -289,9 +266,9 @@
       color-mix(in oklab, var(--gold) 16%, transparent) 76%,
       transparent 88%
     );
-    opacity: 0.34;
-    transform: translateX(-30%) skewX(-10deg);
-    animation: glass-flow 8s ease-in-out infinite alternate;
+    opacity: 0.14;
+    transform: none;
+    animation: none;
   }
 
   .liquid-glass > *,
@@ -307,29 +284,12 @@
 
   .nav-hover-magnify {
     position: relative;
-    transform: translateZ(0);
-    transform-origin: center;
-    backface-visibility: hidden;
-    transition:
-      transform 280ms cubic-bezier(0.16, 1, 0.3, 1),
-      box-shadow 280ms ease,
-      background-color 240ms ease,
-      color 220ms ease,
-      border-color 240ms ease;
-    will-change: transform;
+    transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease;
   }
 
   .nav-hover-magnify:hover,
   .nav-hover-magnify:focus-visible {
-    transform: translateY(-1px) scale(1.022);
-    box-shadow:
-      inset 0 1px 0 color-mix(in oklab, white 74%, transparent),
-      0 16px 32px -24px rgba(31, 25, 20, 0.5);
-  }
-
-  .nav-hover-magnify:active {
-    transform: translateY(0) scale(0.995);
-    transition-duration: 160ms;
+    color: var(--primary);
   }
 
   .mobile-nav-link:hover,
@@ -367,21 +327,18 @@
   .mobile-menu-trigger:hover,
   .mobile-menu-trigger:focus-visible {
     color: color-mix(in oklab, var(--brand-red) 84%, var(--primary));
-    transform: translateY(-1px);
   }
 
   .mobile-menu-trigger[data-state="open"] svg {
-    animation: mobile-menu-trigger-dropdown 360ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    transform: none;
   }
 
   .mobile-nav-panel {
     transform-origin: top center;
-    animation: mobile-menu-in 420ms cubic-bezier(0.16, 1, 0.3, 1) both;
-    will-change: opacity, transform, filter;
   }
 
   .mobile-nav-panel nav > * {
-    animation: mobile-menu-item-in 420ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation: none;
   }
 
   .mobile-nav-panel nav > :nth-child(1) {
@@ -473,7 +430,7 @@
     border-color: color-mix(in oklab, var(--primary) 62%, var(--gold));
     background: color-mix(in oklab, white 86%, var(--champagne));
     color: color-mix(in oklab, var(--primary) 90%, black);
-    transform: scale(0.98);
+    transform: none;
   }
 
   .mobile-menu-links {
@@ -556,11 +513,11 @@
   .dropdown-nav-link:focus-visible .dropdown-nav-arrow {
     color: color-mix(in oklab, var(--primary) 80%, var(--gold));
     opacity: 0.86;
-    transform: translate(2px, -2px) scale(1.08);
+    transform: none;
   }
 
   .panel-shadow {
-    box-shadow: 0 18px 42px -34px rgba(31, 25, 20, 0.42);
+    box-shadow: none;
   }
 
   .section-eyebrow {
@@ -587,11 +544,7 @@
         color-mix(in oklab, white 82%, var(--champagne) 18%)
       ),
       var(--ivory);
-    box-shadow:
-      inset 0 1px 0 color-mix(in oklab, white 72%, transparent),
-      0 18px 44px -38px color-mix(in oklab, var(--bronze) 55%, transparent);
-    backdrop-filter: blur(18px) saturate(1.18);
-    -webkit-backdrop-filter: blur(18px) saturate(1.18);
+    box-shadow: inset 0 1px 0 color-mix(in oklab, white 72%, transparent);
   }
 
   .site-header-shell nav .nav-hover-magnify::after {
@@ -605,7 +558,7 @@
     content: "";
     transform: scaleX(0);
     transform-origin: left;
-    transition: transform 240ms cubic-bezier(0.16, 1, 0.3, 1);
+    transition: color 180ms ease;
   }
 
   .site-header-shell nav .nav-hover-magnify:hover::after,
@@ -629,17 +582,17 @@
 
   .nav-echo::after {
     content: attr(data-label);
-    transform: translateY(120%);
+    transform: none;
   }
 
   .nav-hover-magnify:hover .nav-echo > span,
   .nav-hover-magnify:focus-visible .nav-echo > span {
-    transform: translateY(-120%);
+    transform: none;
   }
 
   .nav-hover-magnify:hover .nav-echo::after,
   .nav-hover-magnify:focus-visible .nav-echo::after {
-    transform: translateY(0);
+    transform: none;
   }
 
   .home-legacy {
@@ -709,7 +662,7 @@
     overflow: hidden;
     clip-path: inset(0 0 0 0);
     background: color-mix(in oklab, var(--champagne) 86%, white);
-    animation: media-clip-in 360ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation: none;
   }
 
   .legacy-hero-media::before {
@@ -737,7 +690,7 @@
   .legacy-hero-media img {
     object-position: right center;
     filter: saturate(0.98) contrast(1.02);
-    animation: hero-media-drift 18s ease-in-out infinite alternate;
+    animation: none;
     transform-origin: center;
   }
 
@@ -1245,9 +1198,8 @@
   }
 
   .cinematic-media {
-    animation: cinematic-zoom 18s ease-in-out infinite alternate;
+    animation: none;
     transform-origin: center;
-    will-change: transform;
   }
 
   .btn-secondary {
@@ -1262,14 +1214,10 @@
     padding: 0.85rem 1.15rem;
     font-size: 0.85rem;
     font-weight: 700;
-    transition:
-      transform 220ms ease,
-      background-color 220ms ease,
-      border-color 220ms ease;
+    transition: background-color 180ms ease, border-color 180ms ease;
   }
 
   .btn-secondary:hover {
-    transform: translateY(-2px);
     border-color: color-mix(in oklab, var(--gold) 64%, white);
     background: color-mix(in oklab, white 18%, transparent);
   }
@@ -1303,24 +1251,24 @@
     border-radius: var(--radius);
     background: var(--ink);
     color: var(--primary-foreground);
-    box-shadow: 0 34px 90px -62px rgba(17, 26, 38, 0.7);
+    box-shadow: none;
   }
 
   .sector-card img {
-    transform: scale(1.01);
-    transition: transform 800ms cubic-bezier(0.22, 1, 0.36, 1);
+    transform: none;
+    transition: none;
   }
 
   .sector-card:hover img {
-    transform: scale(1.07);
+    transform: none;
   }
 
   .sector-card .sector-arrow {
-    transition: transform 220ms ease;
+    transition: none;
   }
 
   .sector-card:hover .sector-arrow {
-    transform: translate(0.25rem, -0.25rem);
+    transform: none;
   }
 
   .modern-input {
@@ -1344,82 +1292,56 @@
   .card-business {
     border-radius: calc(var(--radius) + 0.35rem);
     padding: 1rem;
-    transition:
-      transform 280ms cubic-bezier(0.22, 1, 0.36, 1),
-      box-shadow 280ms ease,
-      border-color 280ms ease;
+    transition: border-color 180ms ease, box-shadow 180ms ease;
   }
 
   .card-business:hover {
-    transform: translateY(-5px) scale(1.008);
     border-color: color-mix(in oklab, var(--gold) 40%, white);
-    box-shadow:
-      inset 0 1px 0 color-mix(in oklab, white 78%, transparent),
-      0 34px 86px -50px rgba(31, 25, 20, 0.62);
+    box-shadow: inset 0 1px 0 color-mix(in oklab, white 78%, transparent);
   }
 
   .fluid-morph {
-    transform: translateZ(0);
-    transition:
-      transform 280ms cubic-bezier(0.22, 1, 0.36, 1),
-      box-shadow 280ms ease,
-      border-color 280ms ease;
-    will-change: transform;
+    transition: border-color 180ms ease, box-shadow 180ms ease;
   }
 
   .fluid-morph:hover {
-    transform: translateY(-4px) scale(1.008);
+    transform: none;
   }
 
   .fluid-morph:active {
-    transform: translateY(-1px) scale(0.996);
-    transition-duration: 120ms;
+    transform: none;
   }
 
   .site-content :is(.surface-card, .metric-card, .card-business, a.inline-flex, button) {
-    transform: translateZ(0);
-    transform-origin: center;
-    backface-visibility: hidden;
-    transition:
-      transform 320ms cubic-bezier(0.16, 1, 0.3, 1),
-      box-shadow 320ms ease,
-      border-color 260ms ease,
-      background-color 240ms ease,
-      color 220ms ease;
-    will-change: transform;
+    transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease;
   }
 
   .site-content :is(.surface-card, .metric-card, .card-business):hover,
   .site-content :is(.surface-card, .metric-card, .card-business):focus-within {
-    transform: translateY(-3px) scale(1.012);
-    box-shadow:
-      inset 0 1px 0 color-mix(in oklab, white 72%, transparent),
-      0 28px 68px -48px rgba(31, 25, 20, 0.58);
+    box-shadow: inset 0 1px 0 color-mix(in oklab, white 72%, transparent);
   }
 
   .site-content :is(a.inline-flex, button):hover,
   .site-content :is(a.inline-flex, button):focus-visible {
-    transform: translateY(-2px) scale(1.025);
+    transform: none;
   }
 
   .site-content :is(.btn-primary, .btn-outline-legacy, .btn-light-legacy):hover,
   .site-content :is(.btn-primary, .btn-outline-legacy, .btn-light-legacy):focus-visible {
-    transform: translateY(-2px) scale(1.012);
+    transform: none;
   }
 
   .site-content :is(a.inline-flex, button):active {
-    transform: translateY(0) scale(0.992);
-    transition-duration: 150ms;
+    transform: none;
   }
 
   .glass-morph {
     transform-origin: top center;
-    animation: glass-morph-in 680ms cubic-bezier(0.16, 1, 0.3, 1);
-    will-change: opacity, transform, filter;
+    animation: none;
   }
 
   .morph-list li {
-    animation: list-morph-in 560ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation: none;
   }
 
   .morph-list li:nth-child(2) {
@@ -1439,7 +1361,7 @@
   }
 
   .reveal-up {
-    animation: reveal-up 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation: none;
   }
 
   .reveal-delay-1 {
@@ -1456,15 +1378,11 @@
 
   .motion-flip-bottom {
     transform-origin: center bottom;
-    transform-style: preserve-3d;
-    backface-visibility: hidden;
-    animation: motion-flip-bottom 1250ms ease-in-out both;
-    will-change: opacity, transform;
+    animation: none;
   }
 
   .motion-slide-bottom {
-    animation: motion-slide-bottom 1000ms ease-in-out both;
-    will-change: transform;
+    animation: none;
   }
 
   .motion-delay-1 {
@@ -1487,7 +1405,7 @@
 @keyframes reveal-up {
   from {
     opacity: 0;
-    transform: translateY(22px);
+    transform: translateY(12px);
   }
 
   to {
@@ -1553,19 +1471,16 @@
 @keyframes glass-morph-in {
   0% {
     opacity: 0;
-    filter: blur(10px);
-    transform: translateY(-14px) scale(0.975);
+    transform: translateY(-10px) scale(0.985);
   }
 
   72% {
     opacity: 1;
-    filter: blur(0);
-    transform: translateY(2px) scale(1.006);
+    transform: translateY(1px) scale(1.004);
   }
 
   100% {
     opacity: 1;
-    filter: blur(0);
     transform: translateY(0) scale(1);
   }
 }
@@ -1573,13 +1488,11 @@
 @keyframes list-morph-in {
   from {
     opacity: 0;
-    filter: blur(6px);
-    transform: translateX(14px) scale(0.985);
+    transform: translateX(10px) scale(0.99);
   }
 
   to {
     opacity: 1;
-    filter: blur(0);
     transform: translateX(0) scale(1);
   }
 }
@@ -1587,19 +1500,16 @@
 @keyframes mobile-menu-in {
   0% {
     opacity: 0;
-    filter: blur(10px);
-    transform: translateY(-16px) scale(0.965);
+    transform: translateY(-10px) scale(0.985);
   }
 
   68% {
     opacity: 1;
-    filter: blur(0);
-    transform: translateY(2px) scale(1.006);
+    transform: translateY(1px) scale(1.003);
   }
 
   100% {
     opacity: 1;
-    filter: blur(0);
     transform: translateY(0) scale(1);
   }
 }
@@ -1607,13 +1517,11 @@
 @keyframes mobile-menu-item-in {
   0% {
     opacity: 0;
-    filter: blur(4px);
-    transform: translateY(-10px) scale(0.985);
+    transform: translateY(-6px) scale(0.992);
   }
 
   100% {
     opacity: 1;
-    filter: blur(0);
     transform: translateY(0) scale(1);
   }
 }
@@ -1632,17 +1540,14 @@
 
 @keyframes mobile-menu-dropdown-in {
   0% {
-    filter: blur(8px);
-    transform: translateY(-1rem) scaleY(0.96);
+    transform: translateY(-0.75rem) scaleY(0.98);
   }
 
   70% {
-    filter: blur(0);
-    transform: translateY(0.12rem) scaleY(1.006);
+    transform: translateY(0.08rem) scaleY(1.002);
   }
 
   100% {
-    filter: blur(0);
     transform: translateY(0) scaleY(1);
   }
 }
@@ -1676,26 +1581,28 @@
 @keyframes motion-flip-bottom {
   0% {
     opacity: 0;
-    transform: perspective(1000px) rotateX(75deg) translateY(36px);
+    transform: translateY(20px);
   }
 
   72% {
     opacity: 1;
-    transform: perspective(1000px) rotateX(-6deg) translateY(-2px);
+    transform: translateY(-1px);
   }
 
   100% {
     opacity: 1;
-    transform: perspective(1000px) rotateX(0deg) translateY(0);
+    transform: translateY(0);
   }
 }
 
 @keyframes motion-slide-bottom {
   0% {
-    transform: translateY(48px);
+    opacity: 0;
+    transform: translateY(20px);
   }
 
   100% {
+    opacity: 1;
     transform: translateY(0);
   }
   }

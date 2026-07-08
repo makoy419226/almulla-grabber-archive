@@ -74,6 +74,12 @@ export const seoEntries: Record<string, SeoEntry> = {
     description:
       "Contact AlMulla Holding Group for business enquiries, partnerships, and corporate requests.",
   },
+  "/privacy-policy": {
+    path: "/privacy-policy",
+    title: "Privacy Policy - AlMulla Holding Group",
+    description:
+      "Learn how AlMulla Holding Group handles website data, enquiries, and cookie preferences.",
+  },
 };
 
 export const organizationJsonLd = {

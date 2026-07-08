@@ -3,37 +3,36 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contact Us - AlMulla Holding Group</title>
+    <title>Privacy Policy - AlMulla Holding Group</title>
     <meta
       name="description"
-      content="Get in touch with AlMulla Holding Group for business enquiries, partnerships, and corporate requests."
+      content="Privacy Policy for AlMulla Holding Group, including how website data, enquiries, and cookie preferences are handled."
     />
     <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#f8f1df" />
-    <link rel="canonical" href="https://almullaholding.com/contact-us/" />
+    <link rel="canonical" href="https://almullaholding.com/privacy-policy/" />
     <meta property="og:site_name" content="AlMulla Holding Group" />
-    <meta property="og:title" content="Contact AlMulla Holding Group" />
-    <meta property="og:description" content="Reach the AlMulla Holding Group team." />
+    <meta property="og:title" content="Privacy Policy - AlMulla Holding Group" />
+    <meta
+      property="og:description"
+      content="Learn how AlMulla Holding Group handles website data, enquiries, and cookie preferences."
+    />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://almullaholding.com/contact-us/" />
-    <meta property="og:image" content="https://almullaholding.com/contact-team-hero.webp" />
+    <meta property="og:url" content="https://almullaholding.com/privacy-policy/" />
+    <meta property="og:image" content="https://almullaholding.com/og-image-v2.jpg" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Contact AlMulla Holding Group" />
-    <meta name="twitter:description" content="Reach the AlMulla Holding Group team." />
-    <meta name="twitter:image" content="https://almullaholding.com/contact-team-hero.webp" />
+    <meta name="twitter:title" content="Privacy Policy - AlMulla Holding Group" />
+    <meta
+      name="twitter:description"
+      content="Learn how AlMulla Holding Group handles website data, enquiries, and cookie preferences."
+    />
+    <meta name="twitter:image" content="https://almullaholding.com/og-image-v2.jpg" />
     <link rel="manifest" href="/manifest.webmanifest?v=3" />
     <link rel="icon" href="/favicon.ico?v=3" sizes="any" />
     <link rel="shortcut icon" href="/favicon.ico?v=3" />
     <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png?v=3" />
     <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png?v=3" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=3" />
-    <link
-      rel="preload"
-      as="image"
-      href="/contact-team-hero.webp?v=5"
-      type="image/webp"
-      fetchpriority="high"
-    />
     <link rel="stylesheet" href="/cookie-consent.css?v=1" />
     <script src="/cookie-consent.js?v=1" defer></script>
     <style>
@@ -157,55 +156,27 @@
         transition: transform 180ms ease;
       }
 
-      .main-nav a[aria-current="page"],
       .main-nav a:hover,
       .main-nav a:focus-visible {
         color: var(--primary);
         outline: none;
       }
 
-      .main-nav a[aria-current="page"]::after,
       .main-nav a:hover::after,
       .main-nav a:focus-visible::after {
         transform: scaleX(1);
       }
 
-      .contact-hero {
-        position: relative;
-        isolation: isolate;
+      .policy-hero {
         overflow: hidden;
         border-bottom: 1px solid rgba(60, 42, 31, 0.15);
-        background: var(--primary);
+        background:
+          linear-gradient(90deg, rgba(188, 146, 40, 0.12), transparent 45%),
+          linear-gradient(135deg, #241b15, #4a2c20 58%, #4b1d22);
         color: var(--primary-foreground);
       }
 
-      .contact-hero img {
-        position: absolute;
-        inset: 0;
-        z-index: -2;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center;
-        opacity: 0.52;
-      }
-
-      .contact-hero::after {
-        position: absolute;
-        inset: 0;
-        z-index: -1;
-        background:
-          linear-gradient(
-            90deg,
-            rgba(36, 27, 21, 0.9),
-            rgba(60, 42, 31, 0.78),
-            rgba(60, 42, 31, 0.38)
-          ),
-          linear-gradient(180deg, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.34));
-        content: "";
-      }
-
-      .contact-hero-inner {
+      .policy-hero-inner {
         width: min(80rem, 100% - 2rem);
         margin: 0 auto;
         padding: clamp(5rem, 9vw, 7rem) 0;
@@ -226,28 +197,36 @@
       }
 
       .hero-copy {
-        max-width: 42rem;
+        max-width: 44rem;
         margin: 1.25rem auto 0;
-        color: rgba(255, 250, 240, 0.74);
+        color: rgba(255, 250, 240, 0.76);
         font-size: 1rem;
         line-height: 1.8;
       }
 
-      .contact-section {
-        width: min(80rem, 100% - 2rem);
-        margin: 0 auto;
-        padding: clamp(3.5rem, 7vw, 5rem) 0;
+      .last-updated {
+        margin: 1rem 0 0;
+        color: rgba(255, 250, 240, 0.58);
+        font-size: 0.875rem;
       }
 
-      .contact-card {
-        max-width: 48rem;
+      .policy-section {
+        width: min(64rem, 100% - 2rem);
         margin: 0 auto;
+        padding: clamp(3rem, 6vw, 4rem) 0;
+      }
+
+      .policy-grid {
+        display: grid;
+        gap: 1.25rem;
+      }
+
+      .policy-card {
         border: 1px solid var(--border);
         border-radius: var(--radius);
         background: rgba(255, 255, 255, 0.82);
-        padding: clamp(1.5rem, 4vw, 2.5rem);
+        padding: clamp(1.5rem, 4vw, 2rem);
         box-shadow: 0 28px 70px -56px rgba(43, 32, 24, 0.38);
-        text-align: center;
       }
 
       .section-eyebrow {
@@ -258,37 +237,39 @@
       }
 
       h2 {
-        margin: 1rem 0 0;
+        margin: 0;
         color: var(--primary);
-        font-size: clamp(2rem, 4vw, 2.75rem);
+        font-size: clamp(1.55rem, 3vw, 2rem);
+        line-height: 1.2;
+      }
+
+      .section-eyebrow + h2 {
+        margin-top: 1rem;
+      }
+
+      .policy-card p {
+        margin: 1rem 0 0;
+        color: rgba(43, 32, 24, 0.72);
+        font-size: 1rem;
+        line-height: 1.75;
       }
 
       .contact-grid {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 1rem;
-        margin: 2rem 0 0;
-        padding: 0;
-        list-style: none;
+        margin-top: 1.5rem;
       }
 
-      .contact-grid li {
+      .contact-grid a {
         display: grid;
-        min-height: 8rem;
+        min-height: 6rem;
         place-items: center;
-        gap: 0.75rem;
         border: 1px solid var(--border);
         border-radius: var(--radius);
         background: white;
         color: rgba(43, 32, 24, 0.78);
         font-size: 0.95rem;
-      }
-
-      .contact-label {
-        color: var(--gold);
-        font-size: 0.78rem;
-        font-weight: 900;
-        text-transform: uppercase;
       }
 
       .footer-premium {
@@ -411,46 +392,151 @@
           <nav class="main-nav" aria-label="Main navigation">
             <a href="/">Home</a>
             <a href="/about-us">Who We Are</a>
-            <a href="/contact-us/" aria-current="page">Get In Touch</a>
+            <a href="/contact-us/">Get In Touch</a>
           </nav>
         </div>
       </header>
 
       <main>
-        <section class="contact-hero" aria-labelledby="contact-title">
-          <img
-            src="/contact-team-hero.webp?v=5"
-            alt=""
-            width="1024"
-            height="1024"
-            fetchpriority="high"
-            decoding="async"
-            aria-hidden="true"
-          />
-          <div class="contact-hero-inner">
-            <div class="eyebrow">Contact</div>
-            <h1 id="contact-title">Get in touch with our team.</h1>
+        <section class="policy-hero" aria-labelledby="privacy-title">
+          <div class="policy-hero-inner">
+            <div class="eyebrow">Privacy</div>
+            <h1 id="privacy-title">Privacy Policy</h1>
             <p class="hero-copy">
-              For business enquiries, partnerships, or corporate requests, please contact us
-              directly.
+              This policy explains how AlMulla Holding Group handles information collected through
+              this website and related business enquiries.
             </p>
+            <p class="last-updated">Last updated: 8 July 2026</p>
           </div>
         </section>
 
-        <section class="contact-section">
-          <div class="contact-card">
-            <div class="section-eyebrow">Contact details</div>
-            <h2>Direct enquiries</h2>
-            <ul class="contact-grid">
-              <li>
-                <span class="contact-label">Phone</span>
-                <a href="tel:+97142249662">04 224 9662</a>
-              </li>
-              <li>
-                <span class="contact-label">Email</span>
+        <section class="policy-section">
+          <div class="policy-grid">
+            <article class="policy-card">
+              <div class="section-eyebrow">Overview</div>
+              <h2>Our commitment</h2>
+              <p>
+                AlMulla Holding Group respects your privacy and is committed to handling personal
+                information responsibly. This Privacy Policy applies to almullaholding.com and to
+                information submitted through website-related communications.
+              </p>
+              <p>
+                This website is intended for general corporate information and business enquiries.
+                Please avoid submitting sensitive personal information unless we specifically ask
+                for it.
+              </p>
+            </article>
+
+            <article class="policy-card">
+              <h2>Information We Collect</h2>
+              <p>
+                We may collect information you provide directly, such as your name, email address,
+                phone number, company details, and the content of enquiries you send to us.
+              </p>
+              <p>
+                When you use the website, we may also collect technical information such as browser
+                type, device information, pages visited, approximate location derived from network
+                data, and cookie preferences.
+              </p>
+            </article>
+
+            <article class="policy-card">
+              <h2>How We Use Information</h2>
+              <p>
+                We use information to respond to enquiries, manage business communications, operate
+                and secure the website, improve website content and performance, and meet legal or
+                regulatory obligations.
+              </p>
+              <p>
+                We do not sell personal information. Where marketing or analytics tools are used,
+                non-essential cookies are controlled through the cookie preference manager.
+              </p>
+            </article>
+
+            <article class="policy-card">
+              <h2>Cookies</h2>
+              <p>
+                Cookies are small files stored by your browser. We use functional cookies that are
+                necessary for basic website operation and may use analytical, preference, or
+                targeted cookies only according to your saved choices.
+              </p>
+              <p>
+                You can accept all cookies, reject non-essential cookies, or manage individual
+                categories at any time from the website footer.
+              </p>
+            </article>
+
+            <article class="policy-card">
+              <h2>Cookie Categories</h2>
+              <p>
+                Functional cookies are always active because they support security, consent storage,
+                and basic browsing features.
+              </p>
+              <p>
+                Analytical cookies help us understand website usage. Preference cookies remember
+                browsing choices. Targeted or advertising cookies support relevant campaign
+                measurement if such tools are enabled.
+              </p>
+            </article>
+
+            <article class="policy-card">
+              <h2>Sharing Information</h2>
+              <p>
+                We may share information with service providers, professional advisers, affiliated
+                entities, or public authorities where necessary for website operations, business
+                administration, legal compliance, or protection of rights.
+              </p>
+              <p>
+                Service providers are expected to process information only for the purposes we
+                specify and to apply appropriate safeguards.
+              </p>
+            </article>
+
+            <article class="policy-card">
+              <h2>Retention And Security</h2>
+              <p>
+                We keep personal information only for as long as needed for the purposes described
+                in this policy, unless a longer retention period is required or permitted by law.
+              </p>
+              <p>
+                We use reasonable technical and organisational measures to protect information, but
+                no website or email transmission can be guaranteed to be completely secure.
+              </p>
+            </article>
+
+            <article class="policy-card">
+              <h2>Your Choices And Rights</h2>
+              <p>
+                Depending on applicable law, you may have rights to request access, correction,
+                deletion, restriction, objection, or withdrawal of consent for certain uses of your
+                personal information.
+              </p>
+              <p>
+                You can change your cookie preferences at any time using the Manage Cookies control
+                in the footer.
+              </p>
+            </article>
+
+            <article class="policy-card">
+              <h2>Updates To This Policy</h2>
+              <p>
+                We may update this Privacy Policy from time to time. The updated version will be
+                posted on this page with a revised last updated date.
+              </p>
+            </article>
+
+            <article class="policy-card">
+              <div class="section-eyebrow">Contact</div>
+              <h2>Privacy enquiries</h2>
+              <p>
+                For questions about this Privacy Policy or privacy-related requests, contact AlMulla
+                Holding Group using the details below.
+              </p>
+              <div class="contact-grid">
                 <a href="mailto:info@almullaholding.com">info@almullaholding.com</a>
-              </li>
-            </ul>
+                <a href="tel:+97142249662">04 224 9662</a>
+              </div>
+            </article>
           </div>
         </section>
       </main>

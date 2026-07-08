@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as ContactUsRouteImport } from './routes/contact-us'
 import { Route as AboutUsRouteImport } from './routes/about-us'
 import { Route as IndexRouteImport } from './routes/index'
@@ -16,6 +17,11 @@ import { Route as BusinessesHospitalityRouteImport } from './routes/businesses.h
 import { Route as BusinessesHealthcareRouteImport } from './routes/businesses.healthcare'
 import { Route as BusinessesBusinessRouteImport } from './routes/businesses.$business'
 
+const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
+  id: '/privacy-policy',
+  path: '/privacy-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactUsRoute = ContactUsRouteImport.update({
   id: '/contact-us',
   path: '/contact-us',
@@ -51,6 +57,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about-us': typeof AboutUsRoute
   '/contact-us': typeof ContactUsRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
   '/businesses/$business': typeof BusinessesBusinessRoute
   '/businesses/healthcare': typeof BusinessesHealthcareRoute
   '/businesses/hospitality': typeof BusinessesHospitalityRoute
@@ -59,6 +66,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about-us': typeof AboutUsRoute
   '/contact-us': typeof ContactUsRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
   '/businesses/$business': typeof BusinessesBusinessRoute
   '/businesses/healthcare': typeof BusinessesHealthcareRoute
   '/businesses/hospitality': typeof BusinessesHospitalityRoute
@@ -68,6 +76,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about-us': typeof AboutUsRoute
   '/contact-us': typeof ContactUsRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
   '/businesses/$business': typeof BusinessesBusinessRoute
   '/businesses/healthcare': typeof BusinessesHealthcareRoute
   '/businesses/hospitality': typeof BusinessesHospitalityRoute
@@ -78,6 +87,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about-us'
     | '/contact-us'
+    | '/privacy-policy'
     | '/businesses/$business'
     | '/businesses/healthcare'
     | '/businesses/hospitality'
@@ -86,6 +96,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about-us'
     | '/contact-us'
+    | '/privacy-policy'
     | '/businesses/$business'
     | '/businesses/healthcare'
     | '/businesses/hospitality'
@@ -94,6 +105,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about-us'
     | '/contact-us'
+    | '/privacy-policy'
     | '/businesses/$business'
     | '/businesses/healthcare'
     | '/businesses/hospitality'
@@ -103,6 +115,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutUsRoute: typeof AboutUsRoute
   ContactUsRoute: typeof ContactUsRoute
+  PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   BusinessesBusinessRoute: typeof BusinessesBusinessRoute
   BusinessesHealthcareRoute: typeof BusinessesHealthcareRoute
   BusinessesHospitalityRoute: typeof BusinessesHospitalityRoute
@@ -110,6 +123,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/privacy-policy': {
+      id: '/privacy-policy'
+      path: '/privacy-policy'
+      fullPath: '/privacy-policy'
+      preLoaderRoute: typeof PrivacyPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact-us': {
       id: '/contact-us'
       path: '/contact-us'
@@ -159,6 +179,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutUsRoute: AboutUsRoute,
   ContactUsRoute: ContactUsRoute,
+  PrivacyPolicyRoute: PrivacyPolicyRoute,
   BusinessesBusinessRoute: BusinessesBusinessRoute,
   BusinessesHealthcareRoute: BusinessesHealthcareRoute,
   BusinessesHospitalityRoute: BusinessesHospitalityRoute,

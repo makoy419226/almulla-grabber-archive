@@ -36,7 +36,15 @@
     <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png?v=3" />
     <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png?v=3" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=3" />
-    <link rel="preload" as="image" href="/hero-1280.webp?v=5" type="image/webp" fetchpriority="high" />
+    <link
+      rel="preload"
+      as="image"
+      href="/hero-1280.webp?v=5"
+      type="image/webp"
+      fetchpriority="high"
+    />
+    <link rel="stylesheet" href="/cookie-consent.css?v=1" />
+    <script src="/cookie-consent.js?v=1" defer></script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -87,7 +95,12 @@
         background:
           radial-gradient(circle at 84% 8%, rgba(188, 146, 40, 0.14), transparent 32%),
           linear-gradient(180deg, #fbf2df 0%, var(--ivory) 45%, var(--champagne) 100%);
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-family:
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
         text-rendering: optimizeLegibility;
       }
 
@@ -194,9 +207,7 @@
 
       .home-legacy {
         overflow: hidden;
-        background:
-          linear-gradient(180deg, #f7ecd0 0%, #fffaf0 42%, #f4e8cb 100%),
-          var(--ivory);
+        background: linear-gradient(180deg, #f7ecd0 0%, #fffaf0 42%, #f4e8cb 100%), var(--ivory);
       }
 
       .legacy-hero {
@@ -539,7 +550,7 @@
         text-align: center;
       }
 
-      .footer-bottom span + span {
+      .footer-bottom > * + * {
         margin-left: 0.75rem;
       }
 
@@ -691,7 +702,13 @@
           <a class="logo-link" href="/" aria-label="AlMulla Holding home">
             <picture class="logo-picture">
               <source srcset="/logo.webp?v=5" type="image/webp" />
-              <img class="logo" src="/logo.png?v=5" alt="AlMulla Holding Group" width="284" height="99" />
+              <img
+                class="logo"
+                src="/logo.png?v=5"
+                alt="AlMulla Holding Group"
+                width="284"
+                height="99"
+              />
             </picture>
           </a>
 
@@ -733,7 +750,9 @@
                     AlMulla Holding Group is a diversified holding company committed to long-term
                     value creation and sustainable growth across key sectors that shape tomorrow.
                   </p>
-                  <a class="legacy-learn-link" href="/about-us">Learn More <span aria-hidden="true">-></span></a>
+                  <a class="legacy-learn-link" href="/about-us"
+                    >Learn More <span aria-hidden="true">-></span></a
+                  >
                 </div>
               </div>
             </div>
@@ -782,7 +801,8 @@
                   <div class="legacy-sector-body">
                     <h3>Education</h3>
                     <p class="legacy-sector-copy">
-                      Supporting future generations through quality education and innovative learning.
+                      Supporting future generations through quality education and innovative
+                      learning.
                     </p>
                   </div>
                 </article>
@@ -822,8 +842,8 @@
                   <div class="legacy-sector-body">
                     <h3>Energy</h3>
                     <p class="legacy-sector-copy">
-                      Powering progress through resilient energy platforms across solar, oil, gas, and
-                      future-ready infrastructure.
+                      Powering progress through resilient energy platforms across solar, oil, gas,
+                      and future-ready infrastructure.
                     </p>
                   </div>
                 </article>
@@ -838,10 +858,18 @@
           <div>
             <picture>
               <source srcset="/logo.webp?v=5" type="image/webp" />
-              <img class="footer-logo" src="/logo.png?v=5" alt="AlMulla Holding Group" width="284" height="99" loading="lazy" />
+              <img
+                class="footer-logo"
+                src="/logo.png?v=5"
+                alt="AlMulla Holding Group"
+                width="284"
+                height="99"
+                loading="lazy"
+              />
             </picture>
             <p class="footer-copy">
-              A diversified holding group committed to building legacies and empowering future growth.
+              A diversified holding group committed to building legacies and empowering future
+              growth.
             </p>
             <p class="footer-small">(c) 2026 AlMulla Holding. All rights reserved.</p>
           </div>
@@ -852,6 +880,7 @@
               <a href="/">Home</a>
               <a href="/about-us">About Us</a>
               <a href="/contact-us/">Contact Us</a>
+              <a href="/privacy-policy/">Privacy Policy</a>
             </div>
           </div>
 
@@ -864,9 +893,13 @@
           </div>
         </div>
         <div class="footer-bottom">
-          <span>Privacy Policy</span>
+          <a class="footer-legal-link" href="/privacy-policy/">Privacy Policy</a>
           <span>|</span>
           <span>Terms of Use</span>
+          <span>|</span>
+          <button type="button" class="footer-legal-button" data-cookie-preferences>
+            Manage Cookies
+          </button>
         </div>
       </footer>
     </div>

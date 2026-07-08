@@ -2,6 +2,8 @@ import { Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Mail, Menu, Phone, Send, X } from "lucide-react";
 import { AlmullaLogo } from "@/components/AlmullaLogo";
+import { CookieConsent } from "@/components/CookieConsent";
+import { openCookiePreferences } from "@/lib/cookie-consent";
 
 const navLinkBase =
   "nav-hover-magnify inline-flex items-center rounded-md px-4 py-3 text-sm font-bold uppercase text-foreground/70 hover:text-primary";
@@ -186,9 +188,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold uppercase text-primary-foreground">
-              Quick Links
-            </h3>
+            <h3 className="text-sm font-semibold uppercase text-primary-foreground">Quick Links</h3>
             <div className="mt-4 grid gap-3 text-sm">
               <Link to="/" className="text-primary-foreground/66 transition-colors hover:text-gold">
                 Home
@@ -205,13 +205,17 @@ export function SiteLayout({ children }: { children: ReactNode }) {
               >
                 Contact Us
               </Link>
+              <Link
+                to="/privacy-policy"
+                className="text-primary-foreground/66 transition-colors hover:text-gold"
+              >
+                Privacy Policy
+              </Link>
             </div>
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold uppercase text-primary-foreground">
-              Contact Us
-            </h3>
+            <h3 className="text-sm font-semibold uppercase text-primary-foreground">Contact Us</h3>
             <div className="mt-4 space-y-3 text-sm text-primary-foreground/66">
               <a
                 href="tel:+97142249662"
@@ -231,11 +235,18 @@ export function SiteLayout({ children }: { children: ReactNode }) {
           </div>
         </div>
         <div className="border-t border-white/10 px-4 py-4 text-center text-xs text-primary-foreground/44 sm:px-6 lg:px-8">
-          <span>Privacy Policy</span>
+          <Link to="/privacy-policy" className="footer-legal-link">
+            Privacy Policy
+          </Link>
           <span className="mx-3 text-primary-foreground/20">|</span>
           <span>Terms of Use</span>
+          <span className="mx-3 text-primary-foreground/20">|</span>
+          <button type="button" className="footer-legal-button" onClick={openCookiePreferences}>
+            Manage Cookies
+          </button>
         </div>
       </footer>
+      <CookieConsent />
     </div>
   );
 }

@@ -15,6 +15,7 @@ export const Route = createFileRoute("/about-us")({
       { property: "og:title", content: "About AlMulla Holding Group" },
       { property: "og:description", content: "Chairman's message and company overview." },
     ],
+    links: [{ rel: "preload", as: "image", href: chairmanImg }],
   }),
   component: About,
 });

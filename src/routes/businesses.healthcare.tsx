@@ -20,6 +20,7 @@ export const Route = createFileRoute("/businesses/healthcare")({
       },
       { property: "og:image", content: healthcareImg },
     ],
+    links: [{ rel: "preload", as: "image", href: healthcareImg }],
   }),
   component: Healthcare,
 });

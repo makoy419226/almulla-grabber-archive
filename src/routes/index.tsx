@@ -28,6 +28,15 @@ export const Route = createFileRoute("/")({
           "A diversified holding company focused on long-term value across healthcare, hospitality, education, and energy.",
       },
     ],
+    links: [
+      {
+        rel: "preload",
+        as: "image",
+        href: heroAlmullaEtihadImg960,
+        imagesrcset: `${heroAlmullaEtihadImg960} 960w, ${heroAlmullaEtihadImg} 1536w`,
+        imagesizes: "100vw",
+      },
+    ],
   }),
   component: Home,
 });

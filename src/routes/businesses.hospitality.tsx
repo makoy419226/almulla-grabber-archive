@@ -18,6 +18,7 @@ export const Route = createFileRoute("/businesses/hospitality")({
       { property: "og:description", content: "Upscale hotels for the conscious modern traveler." },
       { property: "og:image", content: hospitalityImg },
     ],
+    links: [{ rel: "preload", as: "image", href: hospitalityImg }],
   }),
   component: Hospitality,
 });

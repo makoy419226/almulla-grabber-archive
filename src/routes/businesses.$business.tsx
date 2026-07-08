@@ -132,7 +132,7 @@ const businessPages: Record<string, BusinessPageData> = {
       "Supporting future generations through strong learning environments, future-ready campuses, and long-term community value.",
     image: educationImg,
     imageSmall: educationImg900,
-    imageWidth: 1594,
+    imageWidth: 1536,
     introTitle: "Education platforms built around learning quality and future readiness.",
     introBody: [
       "Our education focus is shaped around the practical elements that define a strong learning environment: academic quality, campus experience, operational consistency, and relevance to the needs of students and families.",
@@ -195,7 +195,8 @@ const businessPages: Record<string, BusinessPageData> = {
     image: realEstateImg,
     imageSmall: realEstateImg900,
     imageWidth: 1600,
-    introTitle: "Real-estate strategy shaped by asset quality, demand durability, and disciplined execution.",
+    introTitle:
+      "Real-estate strategy shaped by asset quality, demand durability, and disciplined execution.",
     introBody: [
       "Our real-estate approach is grounded in assets that can perform across cycles. That means careful attention to site quality, tenant relevance, build standards, and a long-term operating plan from the outset.",
       "We focus on spaces that support how people live, work, and interact in modern urban environments. Strong real-estate performance is not driven by launches alone, but by asset quality and active stewardship after delivery.",
@@ -257,7 +258,8 @@ const businessPages: Record<string, BusinessPageData> = {
     image: energyImg,
     imageSmall: energyImg900,
     imageWidth: 1600,
-    introTitle: "Energy platforms built for reliability, infrastructure quality, and practical transition.",
+    introTitle:
+      "Energy platforms built for reliability, infrastructure quality, and practical transition.",
     introBody: [
       "Our energy outlook is built around systems that matter in the real economy: generation, supporting infrastructure, and the operational partnerships required to deliver reliability at scale.",
       "We recognize that the sector now spans both conventional and renewable models. A practical energy strategy balances resilience today with transition pathways that remain commercially sound.",
@@ -444,10 +446,14 @@ function BusinessPage() {
           <div className="mt-10 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
             {page.pillars.map((pillar, index) => {
               const Icon = pillar.icon;
-              const delayClass = ["reveal-delay-1", "reveal-delay-2", "reveal-delay-3", ""][index] ?? "";
+              const delayClass =
+                ["reveal-delay-1", "reveal-delay-2", "reveal-delay-3", ""][index] ?? "";
 
               return (
-                <div key={pillar.title} className={`surface-card reveal-up rounded-lg p-6 ${delayClass}`.trim()}>
+                <div
+                  key={pillar.title}
+                  className={`surface-card reveal-up rounded-lg p-6 ${delayClass}`.trim()}
+                >
                   <div className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-gold/14 text-primary">
                     <Icon className="h-5 w-5" />
                   </div>
@@ -498,10 +504,7 @@ function BusinessPage() {
               Contact us
               <ArrowUpRight className="h-4 w-4" />
             </Link>
-            <Link
-              to="/about-us"
-              className="btn-outline-legacy"
-            >
+            <Link to="/about-us" className="btn-outline-legacy">
               About the group
               <ArrowUpRight className="h-4 w-4" />
             </Link>
@@ -542,10 +545,7 @@ function BusinessPageNotFound() {
               Back home
               <ArrowUpRight className="h-4 w-4" />
             </Link>
-            <Link
-              to="/contact-us"
-              className="btn-outline-legacy"
-            >
+            <Link to="/contact-us" className="btn-outline-legacy">
               Contact us
             </Link>
           </div>

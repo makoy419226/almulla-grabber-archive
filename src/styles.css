@@ -341,6 +341,39 @@
       0 16px 34px -26px rgba(31, 25, 20, 0.58);
   }
 
+  .mobile-menu-trigger {
+    display: inline-flex;
+    width: 2.75rem;
+    height: 2.75rem;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: var(--primary);
+    box-shadow: none;
+    transition:
+      color 220ms ease,
+      transform 280ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .mobile-menu-trigger svg {
+    width: 1.75rem;
+    height: 1.75rem;
+    stroke-width: 2;
+    transition: transform 360ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .mobile-menu-trigger:hover,
+  .mobile-menu-trigger:focus-visible {
+    color: color-mix(in oklab, var(--brand-red) 84%, var(--primary));
+    transform: translateY(-1px);
+  }
+
+  .mobile-menu-trigger[data-state="open"] svg {
+    animation: mobile-menu-trigger-dropdown 360ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
   .mobile-nav-panel {
     transform-origin: top center;
     animation: mobile-menu-in 420ms cubic-bezier(0.16, 1, 0.3, 1) both;
@@ -385,7 +418,8 @@
 
   .mobile-menu-overlay {
     color: color-mix(in oklab, var(--ink) 94%, black);
-    animation: mobile-menu-sheet-in 360ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    transform-origin: top right;
+    animation: mobile-menu-dropdown-in 420ms cubic-bezier(0.16, 1, 0.3, 1) both;
   }
 
   .mobile-menu-logo {
@@ -835,6 +869,7 @@
   }
 
   .btn-outline-legacy:hover {
+    transform: translateY(-2px) scale(1.012);
     border-color: color-mix(in oklab, var(--gold) 74%, var(--bronze));
     background: color-mix(in oklab, white 68%, var(--gold) 16%);
     box-shadow: 0 18px 40px -32px color-mix(in oklab, var(--bronze) 65%, transparent);
@@ -940,7 +975,7 @@
   .legacy-sector-card h3 {
     color: white;
     font-family: var(--font-sans);
-    font-size: clamp(1.65rem, 3.2vw, 3rem);
+    font-size: clamp(1.65rem, 3vw, 3rem);
     font-weight: 800;
     line-height: 1;
     text-transform: uppercase;
@@ -1080,6 +1115,7 @@
   }
 
   .btn-light-legacy:hover {
+    transform: translateY(-2px) scale(1.012);
     background: color-mix(in oklab, var(--gold) 72%, white);
     box-shadow: 0 18px 40px -28px rgba(0, 0, 0, 0.46);
   }
@@ -1339,6 +1375,11 @@
     transform: translateY(-2px) scale(1.025);
   }
 
+  .site-content :is(.btn-primary, .btn-outline-legacy, .btn-light-legacy):hover,
+  .site-content :is(.btn-primary, .btn-outline-legacy, .btn-light-legacy):focus-visible {
+    transform: translateY(-2px) scale(1.012);
+  }
+
   .site-content :is(a.inline-flex, button):active {
     transform: translateY(0) scale(0.992);
     transition-duration: 150ms;
@@ -1562,6 +1603,40 @@
   }
 }
 
+@keyframes mobile-menu-dropdown-in {
+  0% {
+    opacity: 0;
+    filter: blur(8px);
+    transform: translateY(-1rem) scaleY(0.96);
+  }
+
+  70% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0.12rem) scaleY(1.006);
+  }
+
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0) scaleY(1);
+  }
+}
+
+@keyframes mobile-menu-trigger-dropdown {
+  0% {
+    transform: translateY(-0.45rem) scale(0.92);
+  }
+
+  70% {
+    transform: translateY(0.08rem) scale(1.04);
+  }
+
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
 @keyframes mobile-menu-link-in {
   from {
     opacity: 0;
@@ -1599,11 +1674,27 @@
   100% {
     transform: translateY(0);
   }
-}
+  }
 
-@media (max-width: 1023px) {
-  .legacy-hero {
-    min-height: clamp(31rem, 64vh, 42rem);
+  @media (min-width: 1024px) {
+    .legacy-sector-card {
+      min-height: clamp(24rem, 32vw, 30rem);
+    }
+
+    .legacy-sector-card h3 {
+      font-size: clamp(1.35rem, 1.9vw, 2rem);
+      line-height: 1.08;
+    }
+
+    .legacy-sector-copy {
+      font-size: 0.88rem;
+      line-height: 1.6;
+    }
+  }
+
+  @media (max-width: 1023px) {
+    .legacy-hero {
+      min-height: clamp(31rem, 64vh, 42rem);
     background: color-mix(in oklab, var(--ink) 90%, black);
   }
 
@@ -1670,21 +1761,25 @@
   }
 
   .legacy-sector-card {
-    min-height: 25rem;
+    min-height: clamp(14rem, 48vw, 18rem);
   }
 
   .legacy-sector-body {
-    padding: 1.35rem;
+    padding: clamp(0.85rem, 2.7vw, 1.2rem);
   }
 
   .legacy-sector-card h3 {
-    font-size: clamp(1.3rem, 6vw, 1.75rem);
+    font-size: clamp(1rem, 4.2vw, 1.55rem);
     line-height: 1.12;
   }
 
   .legacy-sector-copy {
-    font-size: 0.88rem;
-    line-height: 1.65;
+    display: -webkit-box;
+    overflow: hidden;
+    font-size: clamp(0.72rem, 2.6vw, 0.86rem);
+    line-height: 1.45;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
   }
 
   .legacy-cta {
@@ -1707,6 +1802,7 @@
   .glass-morph,
   .morph-list li,
   .mobile-menu-overlay,
+  .mobile-menu-trigger[data-state="open"] svg,
   .mobile-menu-link,
   .mobile-nav-panel,
   .mobile-nav-panel nav > *,
@@ -1727,6 +1823,8 @@
   .btn-primary,
   .btn-secondary,
   .nav-hover-magnify,
+  .mobile-menu-trigger,
+  .mobile-menu-trigger svg,
   .nav-echo > span,
   .nav-echo::after,
   .legacy-learn-link,

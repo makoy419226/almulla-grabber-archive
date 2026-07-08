@@ -186,7 +186,7 @@ function Healthcare() {
             </Link>
             <Link
               to="/about-us"
-              className="inline-flex items-center gap-2 rounded-md border border-primary/30 px-6 py-3 text-sm font-semibold text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
+              className="btn-outline-legacy"
             >
               About the group
               <ArrowUpRight className="w-4 h-4" />

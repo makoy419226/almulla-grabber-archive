@@ -94,7 +94,7 @@ function Home() {
             <h2 className="legacy-section-title mt-3">Our Portfolio</h2>
           </div>
 
-          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:gap-8">
+          <div className="mt-12 grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4 lg:gap-8">
             {sectors.map((sector) => (
               <article key={sector.title} className="legacy-sector-card">
                 <div className="legacy-sector-media">

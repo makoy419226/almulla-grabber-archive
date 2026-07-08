@@ -483,7 +483,7 @@ function BusinessPage() {
             </Link>
             <Link
               to="/about-us"
-              className="inline-flex items-center gap-2 rounded-md border border-primary/25 px-6 py-3 text-sm font-semibold text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
+              className="btn-outline-legacy"
             >
               About the group
               <ArrowUpRight className="h-4 w-4" />
@@ -527,7 +527,7 @@ function BusinessPageNotFound() {
             </Link>
             <Link
               to="/contact-us"
-              className="inline-flex items-center justify-center rounded-md border border-border bg-white/72 px-5 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-secondary"
+              className="btn-outline-legacy"
             >
               Contact us
             </Link>

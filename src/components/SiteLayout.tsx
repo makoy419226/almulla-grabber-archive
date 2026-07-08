@@ -80,11 +80,12 @@ export function SiteLayout({ children }: { children: ReactNode }) {
           </nav>
 
           <button
-            className="nav-hover-magnify inline-flex h-11 w-11 items-center justify-center rounded-full border border-primary/12 bg-white/70 text-primary shadow-sm md:hidden"
+            className="mobile-menu-trigger md:hidden"
             onClick={() => setOpen(!open)}
             aria-label="Menu"
             aria-expanded={open}
             aria-controls="mobile-navigation"
+            data-state={open ? "open" : "closed"}
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>

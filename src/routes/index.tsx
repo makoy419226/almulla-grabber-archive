@@ -38,7 +38,7 @@ const sectors = [
     title: "Healthcare",
     img: healthcareImg,
     imgSmall: healthcareImg900,
-    width: 1590,
+    width: 1536,
     body: "Delivering advanced healthcare services that improve lives and communities.",
   },
   {

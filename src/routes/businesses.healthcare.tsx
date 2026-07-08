@@ -184,10 +184,7 @@ function Healthcare() {
             <Link to="/contact-us" className="btn-primary">
               Get in touch
             </Link>
-            <Link
-              to="/about-us"
-              className="btn-outline-legacy"
-            >
+            <Link to="/about-us" className="btn-outline-legacy">
               About the group
               <ArrowUpRight className="w-4 h-4" />
             </Link>

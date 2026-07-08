@@ -70,7 +70,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
-export const Route = createRootRouteWithContext<{}>()({
+export const Route = createRootRouteWithContext<Record<string, never>>()({
   head: () => ({
     meta: [
       { charSet: "utf-8" },
@@ -94,12 +94,12 @@ export const Route = createRootRouteWithContext<{}>()({
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
-      { rel: "manifest", href: "/manifest.webmanifest?v=3" },
-      { rel: "icon", sizes: "any", href: "/favicon.ico?v=3" },
-      { rel: "shortcut icon", href: "/favicon.ico?v=3" },
-      { rel: "icon", type: "image/png", sizes: "192x192", href: "/favicon.png?v=3" },
-      { rel: "icon", type: "image/png", sizes: "512x512", href: "/favicon-512.png?v=3" },
-      { rel: "apple-touch-icon", sizes: "180x180", href: "/apple-touch-icon.png?v=3" },
+      { rel: "manifest", href: "/manifest.webmanifest" },
+      { rel: "icon", type: "image/png", sizes: "512x512", href: "/site-icon-512.png" },
+      { rel: "icon", type: "image/png", sizes: "192x192", href: "/site-icon-192.png" },
+      { rel: "icon", sizes: "any", href: "/favicon.ico" },
+      { rel: "shortcut icon", href: "/favicon.ico" },
+      { rel: "apple-touch-icon", sizes: "180x180", href: "/apple-touch-icon.png" },
       { rel: "stylesheet", href: appCss },
     ],
   }),

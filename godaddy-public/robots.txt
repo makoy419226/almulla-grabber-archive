@@ -4,6 +4,8 @@ Allow: /
 User-agent: Googlebot
 Allow: /favicon.ico
 Allow: /favicon.png
+Allow: /site-icon-192.png
+Allow: /site-icon-512.png
 Allow: /favicon-512.png
 Allow: /apple-touch-icon.png
 Allow: /manifest.webmanifest
@@ -12,6 +14,8 @@ Allow: /logo.png
 User-agent: Googlebot-Image
 Allow: /favicon.ico
 Allow: /favicon.png
+Allow: /site-icon-192.png
+Allow: /site-icon-512.png
 Allow: /favicon-512.png
 Allow: /apple-touch-icon.png
 Allow: /manifest.webmanifest

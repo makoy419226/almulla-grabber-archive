@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
-import chairmanImg from "@/assets/chairman.jpg";
+import chairmanImg from "@/assets/chairman-480.jpg";
 import { Check } from "lucide-react";
 
 export const Route = createFileRoute("/about-us")({

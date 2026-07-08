@@ -5,7 +5,7 @@ import educationImg900 from "@/assets/sector-education-900.jpg";
 import energyImg from "@/assets/sector-energy.jpg";
 import energyImg900 from "@/assets/sector-energy-900.jpg";
 import heroAlmullaEtihadImg from "@/assets/hero-almulla-etihad-burj.jpg";
-import heroAlmullaEtihadImg960 from "@/assets/hero-almulla-etihad-burj-960.jpg";
+import heroAlmullaEtihadImg720 from "@/assets/hero-almulla-etihad-burj-720.jpg";
 import healthcareImg from "@/assets/healthcare.jpg";
 import healthcareImg900 from "@/assets/healthcare-900.jpg";
 import hospitalityImg from "@/assets/hospitality.jpg";
@@ -32,8 +32,8 @@ export const Route = createFileRoute("/")({
       {
         rel: "preload",
         as: "image",
-        href: heroAlmullaEtihadImg960,
-        imagesrcset: `${heroAlmullaEtihadImg960} 960w, ${heroAlmullaEtihadImg} 1536w`,
+        href: heroAlmullaEtihadImg720,
+        imagesrcset: `${heroAlmullaEtihadImg720} 720w, ${heroAlmullaEtihadImg} 1536w`,
         imagesizes: "100vw",
       },
     ],
@@ -79,10 +79,10 @@ function Home() {
         <section className="legacy-hero">
           <div className="legacy-hero-media">
             <img
-              src={heroAlmullaEtihadImg960}
+              src={heroAlmullaEtihadImg720}
               alt=""
               className="h-full w-full object-cover"
-              srcSet={`${heroAlmullaEtihadImg960} 960w, ${heroAlmullaEtihadImg} 1536w`}
+              srcSet={`${heroAlmullaEtihadImg720} 720w, ${heroAlmullaEtihadImg} 1536w`}
               loading="eager"
               fetchPriority="high"
               decoding="async"

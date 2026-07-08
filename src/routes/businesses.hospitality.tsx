@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
 import { AlmullaLogo } from "@/components/AlmullaLogo";
-import hospitalityImg from "@/assets/hospitality.jpg";
+import hospitalityImg from "@/assets/hospitality-720.jpg";
 import dubaiImg from "@/assets/dubai.jpg";
 import { ArrowUpRight } from "lucide-react";
 

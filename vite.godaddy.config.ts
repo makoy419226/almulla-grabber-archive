@@ -1,4 +1,10 @@
 import { defineConfig } from "vite";
+import { fileURLToPath } from "node:url";
+
+const input = {
+  main: fileURLToPath(new URL("./godaddy/index.html", import.meta.url)),
+  contact: fileURLToPath(new URL("./godaddy/contact-us/index.html", import.meta.url)),
+};
 
 export default defineConfig({
   root: "godaddy",
@@ -6,5 +12,8 @@ export default defineConfig({
   build: {
     outDir: "../godaddy-dist",
     emptyOutDir: true,
+    rollupOptions: {
+      input,
+    },
   },
 });

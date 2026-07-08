@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us - AlMulla Holding Group</title>
+    <meta
+      name="description"
+      content="Get in touch with AlMulla Holding Group for business enquiries, partnerships, and corporate requests."
+    />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#f8f1df" />
+    <link rel="canonical" href="https://almullaholding.com/contact-us/" />
+    <meta property="og:site_name" content="AlMulla Holding Group" />
+    <meta property="og:title" content="Contact AlMulla Holding Group" />
+    <meta property="og:description" content="Reach the AlMulla Holding Group team." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://almullaholding.com/contact-us/" />
+    <meta property="og:image" content="https://almullaholding.com/contact-team-hero.webp" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Contact AlMulla Holding Group" />
+    <meta name="twitter:description" content="Reach the AlMulla Holding Group team." />
+    <meta name="twitter:image" content="https://almullaholding.com/contact-team-hero.webp" />
+    <link rel="manifest" href="/manifest.webmanifest?v=3" />
+    <link rel="icon" href="/favicon.ico?v=3" sizes="any" />
+    <link rel="shortcut icon" href="/favicon.ico?v=3" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png?v=3" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png?v=3" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=3" />
+    <link rel="preload" as="image" href="/contact-team-hero.webp?v=5" type="image/webp" fetchpriority="high" />
+    <style>
+      :root {
+        --background: #fbf7ed;
+        --ivory: #fffaf0;
+        --champagne: #f4e9cc;
+        --primary: #3c2a1f;
+        --primary-foreground: #fffaf0;
+        --foreground: #2b2018;
+        --muted-foreground: rgba(43, 32, 24, 0.68);
+        --gold: #bc9228;
+        --bronze: #73502d;
+        --brand-red: #800020;
+        --ink: #241b15;
+        --border: rgba(60, 42, 31, 0.14);
+        --radius: 0.5rem;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        background: var(--background);
+      }
+
+      body {
+        min-height: 100vh;
+        margin: 0;
+        color: var(--foreground);
+        background:
+          radial-gradient(circle at 84% 8%, rgba(188, 146, 40, 0.14), transparent 32%),
+          linear-gradient(180deg, #fbf2df 0%, var(--ivory) 45%, var(--champagne) 100%);
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        text-rendering: optimizeLegibility;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      .page {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+      }
+
+      .site-header-shell {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        border-bottom: 1px solid rgba(188, 146, 40, 0.18);
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(248, 241, 224, 0.92)),
+          var(--ivory);
+      }
+
+      .header-inner {
+        display: flex;
+        width: min(104rem, 100%);
+        height: 5.75rem;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.75rem;
+        margin: 0 auto;
+        padding: 0 2.5rem;
+      }
+
+      .logo-picture {
+        display: block;
+        width: clamp(8.5rem, 12vw, 11.7rem);
+      }
+
+      .logo,
+      .footer-logo {
+        width: 100%;
+        height: auto;
+      }
+
+      .main-nav {
+        display: flex;
+        align-items: center;
+        gap: 1.25rem;
+      }
+
+      .main-nav a {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        border-radius: var(--radius);
+        padding: 0.75rem 1rem;
+        color: rgba(43, 32, 24, 0.72);
+        font-size: 0.875rem;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+
+      .main-nav a::after {
+        position: absolute;
+        right: 0.75rem;
+        bottom: 0.3rem;
+        left: 0.75rem;
+        height: 2px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, var(--bronze), var(--gold));
+        content: "";
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 180ms ease;
+      }
+
+      .main-nav a[aria-current="page"],
+      .main-nav a:hover,
+      .main-nav a:focus-visible {
+        color: var(--primary);
+        outline: none;
+      }
+
+      .main-nav a[aria-current="page"]::after,
+      .main-nav a:hover::after,
+      .main-nav a:focus-visible::after {
+        transform: scaleX(1);
+      }
+
+      .contact-hero {
+        position: relative;
+        isolation: isolate;
+        overflow: hidden;
+        border-bottom: 1px solid rgba(60, 42, 31, 0.15);
+        background: var(--primary);
+        color: var(--primary-foreground);
+      }
+
+      .contact-hero img {
+        position: absolute;
+        inset: 0;
+        z-index: -2;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        opacity: 0.52;
+      }
+
+      .contact-hero::after {
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background:
+          linear-gradient(90deg, rgba(36, 27, 21, 0.9), rgba(60, 42, 31, 0.78), rgba(60, 42, 31, 0.38)),
+          linear-gradient(180deg, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.34));
+        content: "";
+      }
+
+      .contact-hero-inner {
+        width: min(80rem, 100% - 2rem);
+        margin: 0 auto;
+        padding: clamp(5rem, 9vw, 7rem) 0;
+        text-align: center;
+      }
+
+      .eyebrow {
+        color: var(--gold);
+        font-size: 0.875rem;
+        font-weight: 800;
+      }
+
+      h1 {
+        max-width: 56rem;
+        margin: 1rem auto 0;
+        font-size: clamp(2.5rem, 6vw, 4rem);
+        line-height: 1.05;
+      }
+
+      .hero-copy {
+        max-width: 42rem;
+        margin: 1.25rem auto 0;
+        color: rgba(255, 250, 240, 0.74);
+        font-size: 1rem;
+        line-height: 1.8;
+      }
+
+      .contact-section {
+        width: min(80rem, 100% - 2rem);
+        margin: 0 auto;
+        padding: clamp(3.5rem, 7vw, 5rem) 0;
+      }
+
+      .contact-card {
+        max-width: 48rem;
+        margin: 0 auto;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        background: rgba(255, 255, 255, 0.82);
+        padding: clamp(1.5rem, 4vw, 2.5rem);
+        box-shadow: 0 28px 70px -56px rgba(43, 32, 24, 0.38);
+        text-align: center;
+      }
+
+      .section-eyebrow {
+        color: var(--bronze);
+        font-size: 0.78rem;
+        font-weight: 900;
+        text-transform: uppercase;
+      }
+
+      h2 {
+        margin: 1rem 0 0;
+        color: var(--primary);
+        font-size: clamp(2rem, 4vw, 2.75rem);
+      }
+
+      .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+        margin: 2rem 0 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .contact-grid li {
+        display: grid;
+        min-height: 8rem;
+        place-items: center;
+        gap: 0.75rem;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        background: white;
+        color: rgba(43, 32, 24, 0.78);
+        font-size: 0.95rem;
+      }
+
+      .contact-label {
+        color: var(--gold);
+        font-size: 0.78rem;
+        font-weight: 900;
+        text-transform: uppercase;
+      }
+
+      .footer-premium {
+        margin-top: auto;
+        color: var(--primary-foreground);
+        background:
+          linear-gradient(90deg, rgba(188, 146, 40, 0.1), transparent 38%),
+          linear-gradient(135deg, #301d18, #4a2c20 52%, #211814);
+      }
+
+      .footer-grid {
+        display: grid;
+        width: min(80rem, 100% - 2rem);
+        grid-template-columns: 1.35fr 0.8fr 1fr;
+        gap: 2rem;
+        margin: 0 auto;
+        padding: 3rem 0;
+      }
+
+      .footer-logo-wrap {
+        display: block;
+        width: 9rem;
+      }
+
+      .footer-copy {
+        max-width: 20rem;
+        margin: 1.25rem 0 0;
+        color: rgba(255, 250, 240, 0.68);
+        font-size: 0.875rem;
+        line-height: 1.75;
+      }
+
+      .footer-small {
+        margin: 1.25rem 0 0;
+        color: rgba(255, 250, 240, 0.46);
+        font-size: 0.75rem;
+      }
+
+      .footer-heading {
+        margin: 0;
+        font-size: 0.875rem;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+      .footer-links {
+        display: grid;
+        gap: 0.75rem;
+        margin-top: 1rem;
+        color: rgba(255, 250, 240, 0.66);
+        font-size: 0.875rem;
+      }
+
+      .footer-links a:hover,
+      .footer-links a:focus-visible {
+        color: var(--gold);
+        outline: none;
+      }
+
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 1rem;
+        color: rgba(255, 250, 240, 0.44);
+        font-size: 0.75rem;
+        text-align: center;
+      }
+
+      .footer-bottom span + span {
+        margin-left: 0.75rem;
+      }
+
+      @media (max-width: 720px) {
+        .site-header-shell {
+          position: static;
+        }
+
+        .header-inner {
+          height: auto;
+          min-height: 5.25rem;
+          flex-wrap: wrap;
+          gap: 0.75rem;
+          padding: 0.9rem 1rem;
+        }
+
+        .main-nav {
+          width: 100%;
+          justify-content: space-between;
+          gap: 0.35rem;
+        }
+
+        .main-nav a {
+          padding: 0.5rem 0.25rem;
+          font-size: 0.75rem;
+        }
+
+        .contact-grid,
+        .footer-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="site-header-shell">
+        <div class="header-inner">
+          <a href="/" aria-label="AlMulla Holding home">
+            <picture class="logo-picture">
+              <source srcset="/logo.webp?v=5" type="image/webp" />
+              <img class="logo" src="/logo.png?v=5" alt="AlMulla Holding Group" width="284" height="99" />
+            </picture>
+          </a>
+
+          <nav class="main-nav" aria-label="Main navigation">
+            <a href="/">Home</a>
+            <a href="/about-us">Who We Are</a>
+            <a href="/contact-us/" aria-current="page">Get In Touch</a>
+          </nav>
+        </div>
+      </header>
+
+      <main>
+        <section class="contact-hero" aria-labelledby="contact-title">
+          <img
+            src="/contact-team-hero.webp?v=5"
+            alt=""
+            width="1024"
+            height="1024"
+            fetchpriority="high"
+            decoding="async"
+            aria-hidden="true"
+          />
+          <div class="contact-hero-inner">
+            <div class="eyebrow">Contact</div>
+            <h1 id="contact-title">Get in touch with our team.</h1>
+            <p class="hero-copy">
+              For business enquiries, partnerships, or corporate requests, please contact us directly.
+            </p>
+          </div>
+        </section>
+
+        <section class="contact-section">
+          <div class="contact-card">
+            <div class="section-eyebrow">Contact details</div>
+            <h2>Direct enquiries</h2>
+            <ul class="contact-grid">
+              <li>
+                <span class="contact-label">Phone</span>
+                <a href="tel:+97142249662">04 224 9662</a>
+              </li>
+              <li>
+                <span class="contact-label">Email</span>
+                <a href="mailto:info@almullaholding.com">info@almullaholding.com</a>
+              </li>
+            </ul>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer-premium">
+        <div class="footer-grid">
+          <div>
+            <picture class="footer-logo-wrap">
+              <source srcset="/logo.webp?v=5" type="image/webp" />
+              <img class="footer-logo" src="/logo.png?v=5" alt="AlMulla Holding Group" width="284" height="99" loading="lazy" />
+            </picture>
+            <p class="footer-copy">
+              A diversified holding group committed to building legacies and empowering future growth.
+            </p>
+            <p class="footer-small">(c) 2026 AlMulla Holding. All rights reserved.</p>
+          </div>
+
+          <div>
+            <h3 class="footer-heading">Quick Links</h3>
+            <div class="footer-links">
+              <a href="/">Home</a>
+              <a href="/about-us">About Us</a>
+              <a href="/contact-us/">Contact Us</a>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="footer-heading">Contact Us</h3>
+            <div class="footer-links">
+              <a href="tel:+97142249662">04 224 9662</a>
+              <a href="mailto:info@almullaholding.com">info@almullaholding.com</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>Privacy Policy</span>
+          <span>|</span>
+          <span>Terms of Use</span>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

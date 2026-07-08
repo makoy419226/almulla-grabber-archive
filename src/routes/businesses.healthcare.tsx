@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
 import { AlmullaLogo } from "@/components/AlmullaLogo";
 import { ArrowUpRight, HeartPulse, Stethoscope, Building2, Microscope } from "lucide-react";
-import healthcareImg from "@/assets/healthcare-720.jpg";
+import healthcareImg from "@/assets/healthcare.jpg";
 
 export const Route = createFileRoute("/businesses/healthcare")({
   head: () => ({

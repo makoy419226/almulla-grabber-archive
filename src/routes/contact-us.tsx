@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
+import contactTeamHero from "@/assets/contact-team-hero.webp";
 import { Mail, Phone } from "lucide-react";
 
 const contactEmail = "info@almullaholding.com";
@@ -14,6 +15,14 @@ export const Route = createFileRoute("/contact-us")({
       },
       { property: "og:title", content: "Contact AlMulla Holding Group" },
       { property: "og:description", content: "Reach the AlMulla Holding Group team." },
+      { property: "og:image", content: contactTeamHero },
+    ],
+    links: [
+      {
+        rel: "preload",
+        as: "image",
+        href: contactTeamHero,
+      },
     ],
   }),
   component: Contact,
@@ -22,8 +31,19 @@ export const Route = createFileRoute("/contact-us")({
 function Contact() {
   return (
     <SiteLayout>
-      <section className="page-hero border-b border-primary/15 bg-primary text-primary-foreground">
-        <div className="mx-auto max-w-7xl px-4 py-16 text-center sm:px-6 lg:px-8">
+      <section className="page-hero relative overflow-hidden border-b border-primary/15 bg-primary text-primary-foreground">
+        <img
+          src={contactTeamHero}
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover object-center opacity-52"
+          fetchPriority="high"
+          decoding="async"
+          width={1024}
+          height={1024}
+          aria-hidden
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(36,27,21,0.9),rgba(60,42,31,0.78),rgba(60,42,31,0.38))]" />
+        <div className="relative mx-auto max-w-7xl px-4 py-20 text-center sm:px-6 lg:px-8 lg:py-28">
           <div className="text-sm font-semibold text-[var(--gold)]">Contact</div>
           <h1 className="mt-4 max-w-4xl text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
             Get in touch with our team.

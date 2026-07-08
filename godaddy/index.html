@@ -36,7 +36,7 @@
     <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png?v=3" />
     <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png?v=3" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=3" />
-    <link rel="preload" as="image" href="/hero-960.webp?v=4" type="image/webp" fetchpriority="high" />
+    <link rel="preload" as="image" href="/hero-1280.webp?v=5" type="image/webp" fetchpriority="high" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -492,9 +492,7 @@
 
       .footer-logo {
         width: 9rem;
-        padding: 0.35rem 0.45rem;
-        border-radius: var(--radius);
-        background: rgba(255, 250, 240, 0.92);
+        height: auto;
       }
 
       .footer-copy {
@@ -616,6 +614,22 @@
         }
       }
 
+      @media (min-width: 1025px) {
+        .legacy-sector-card {
+          min-height: clamp(24rem, 32vw, 30rem);
+        }
+
+        .legacy-sector-card h3 {
+          font-size: clamp(1.35rem, 1.9vw, 2rem);
+          line-height: 1.08;
+        }
+
+        .legacy-sector-copy {
+          font-size: 0.88rem;
+          line-height: 1.6;
+        }
+      }
+
       @media (max-width: 720px) {
         .site-header-shell {
           position: static;
@@ -676,15 +690,15 @@
         <div class="header-inner">
           <a class="logo-link" href="/" aria-label="AlMulla Holding home">
             <picture class="logo-picture">
-              <source srcset="/logo.webp?v=4" type="image/webp" />
-              <img class="logo" src="/logo.png?v=4" alt="AlMulla Holding Group" width="284" height="99" />
+              <source srcset="/logo.webp?v=5" type="image/webp" />
+              <img class="logo" src="/logo.png?v=5" alt="AlMulla Holding Group" width="284" height="99" />
             </picture>
           </a>
 
           <nav class="main-nav" aria-label="Main navigation">
             <a href="/">Home</a>
             <a href="/about-us">Who We Are</a>
-            <a href="/contact-us">Get In Touch</a>
+            <a href="/contact-us/">Get In Touch</a>
           </nav>
         </div>
       </header>
@@ -694,12 +708,12 @@
           <section class="legacy-hero" aria-labelledby="hero-title">
             <div class="legacy-hero-media" aria-hidden="true">
               <picture>
-                <source srcset="/hero-960.webp?v=4" type="image/webp" />
+                <source srcset="/hero-1280.webp?v=5" type="image/webp" />
                 <img
-                  src="/hero-960.jpg?v=4"
+                  src="/hero-1280.jpg?v=5"
                   alt=""
-                  width="960"
-                  height="504"
+                  width="1280"
+                  height="720"
                   fetchpriority="high"
                   decoding="async"
                 />
@@ -736,10 +750,10 @@
                 <article class="legacy-sector-card">
                   <div class="legacy-sector-media">
                     <img
-                      src="/sector-healthcare.webp?v=4"
+                      src="/sector-healthcare.webp?v=5"
                       alt="Healthcare"
-                      width="520"
-                      height="358"
+                      width="900"
+                      height="502"
                       loading="lazy"
                       fetchpriority="low"
                       decoding="async"
@@ -756,10 +770,10 @@
                 <article class="legacy-sector-card">
                   <div class="legacy-sector-media">
                     <img
-                      src="/sector-education.webp?v=4"
+                      src="/sector-education.webp?v=5"
                       alt="Education"
-                      width="520"
-                      height="358"
+                      width="900"
+                      height="499"
                       loading="lazy"
                       fetchpriority="low"
                       decoding="async"
@@ -776,10 +790,10 @@
                 <article class="legacy-sector-card">
                   <div class="legacy-sector-media">
                     <img
-                      src="/sector-hospitality.webp?v=4"
+                      src="/sector-hospitality.webp?v=5"
                       alt="Hospitality"
-                      width="520"
-                      height="358"
+                      width="900"
+                      height="862"
                       loading="lazy"
                       fetchpriority="low"
                       decoding="async"
@@ -796,10 +810,10 @@
                 <article class="legacy-sector-card">
                   <div class="legacy-sector-media">
                     <img
-                      src="/sector-energy.webp?v=4"
+                      src="/sector-energy.webp?v=5"
                       alt="Energy"
-                      width="520"
-                      height="358"
+                      width="900"
+                      height="600"
                       loading="lazy"
                       fetchpriority="low"
                       decoding="async"
@@ -823,8 +837,8 @@
         <div class="footer-grid">
           <div>
             <picture>
-              <source srcset="/logo.webp?v=4" type="image/webp" />
-              <img class="footer-logo" src="/logo.png?v=4" alt="AlMulla Holding Group" width="284" height="99" loading="lazy" />
+              <source srcset="/logo.webp?v=5" type="image/webp" />
+              <img class="footer-logo" src="/logo.png?v=5" alt="AlMulla Holding Group" width="284" height="99" loading="lazy" />
             </picture>
             <p class="footer-copy">
               A diversified holding group committed to building legacies and empowering future growth.
@@ -837,7 +851,7 @@
             <div class="footer-links">
               <a href="/">Home</a>
               <a href="/about-us">About Us</a>
-              <a href="/contact-us">Contact Us</a>
+              <a href="/contact-us/">Contact Us</a>
             </div>
           </div>
 

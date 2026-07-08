@@ -1,7 +1,7 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
 import chairmanImg from "@/assets/chairman.jpg";
-import { ArrowUpRight, Check } from "lucide-react";
+import { Check } from "lucide-react";
 
 export const Route = createFileRoute("/about-us")({
   head: () => ({
@@ -22,35 +22,17 @@ export const Route = createFileRoute("/about-us")({
 function About() {
   return (
     <SiteLayout>
-      <section className="page-hero border-b border-primary/15 bg-primary text-primary-foreground">
-        <div className="mx-auto max-w-7xl px-4 py-16 text-center sm:px-6 lg:px-8">
-          <div className="text-sm font-semibold text-[var(--gold)]">About us</div>
-          <h1 className="mt-4 max-w-4xl text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
-            A focused holding group with a modern operating style.
-          </h1>
-          <p className="copy-center mt-5 max-w-2xl text-base leading-8 text-primary-foreground/72">
-            The group is chaired by Mr. Abdulla Mohamed Saeed AlMulla and structured around a
-            practical, long-term investment outlook.
-          </p>
-        </div>
-      </section>
-
       <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
         <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
           <div className="surface-card rounded-lg p-6 sm:p-8 lg:p-10">
             <div className="section-eyebrow">Chairman&apos;s message</div>
             <h2 className="mt-4 text-3xl font-semibold text-primary sm:text-4xl">
-              We keep the group focused, adaptable, and built for the long term.
+              Focused on quality, resilience, and long-term value.
             </h2>
             <div className="mt-6 space-y-5 text-sm leading-7 text-foreground/72 sm:text-base">
               <p>
-                In a fast-moving market, sustained value comes from clarity of focus and disciplined
-                execution. AlMulla Holding Group continues to build around sectors where quality,
-                trust, and service matter most.
-              </p>
-              <p>
-                The company is structured to support growth across healthcare and hospitality while
-                maintaining a modern operating mindset and consistent brand standards.
+                AlMulla Holding Group continues to build around sectors where quality, trust, and
+                service matter most.
               </p>
             </div>
 
@@ -94,33 +76,6 @@ function About() {
                 growth.
               </p>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-7xl px-4 pb-20 sm:px-6 lg:px-8">
-        <div className="surface-card grid gap-8 rounded-lg p-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:p-10">
-          <div className="text-center">
-            <div className="section-eyebrow">Next step</div>
-            <h3 className="mt-3 text-3xl font-semibold text-primary">
-              Explore the group or get in touch.
-            </h3>
-            <p className="copy-center mt-4 max-w-xl text-sm leading-7 text-foreground/65">
-              The site now uses a cleaner visual rhythm, modern spacing, and softer surfaces while
-              keeping the same core content.
-            </p>
-          </div>
-          <div className="flex flex-wrap justify-center gap-3">
-            <Link to="/contact-us" className="btn-primary">
-              Contact us
-              <ArrowUpRight className="h-4 w-4" />
-            </Link>
-            <Link
-              to="/"
-              className="inline-flex items-center justify-center rounded-md border border-border bg-white px-5 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-secondary"
-            >
-              Back home
-            </Link>
           </div>
         </div>
       </section>

@@ -64,8 +64,8 @@
   --ivory: oklch(0.988 0.009 86);
   --champagne: oklch(0.955 0.035 88);
   --charcoal: oklch(0.16 0.016 72);
-  --font-sans: "Manrope", "Inter", system-ui, sans-serif;
-  --font-serif: "Manrope", "Inter", system-ui, sans-serif;
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-serif: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 @layer base {
@@ -383,6 +383,103 @@
     animation-delay: 265ms;
   }
 
+  .mobile-menu-overlay {
+    color: color-mix(in oklab, var(--ink) 94%, black);
+    animation: mobile-menu-sheet-in 360ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .mobile-menu-logo {
+    display: inline-flex;
+    max-width: min(13rem, 58vw);
+    padding-top: 0.2rem;
+  }
+
+  .mobile-menu-logo img {
+    object-position: left center;
+  }
+
+  .mobile-menu-close {
+    display: inline-flex;
+    width: 5.75rem;
+    height: 5.75rem;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid color-mix(in oklab, var(--primary) 76%, var(--gold));
+    background: white;
+    color: color-mix(in oklab, var(--ink) 96%, black);
+    transition:
+      background-color 220ms ease,
+      color 220ms ease,
+      transform 280ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .mobile-menu-close:hover,
+  .mobile-menu-close:focus-visible {
+    background: color-mix(in oklab, var(--primary) 92%, black);
+    color: white;
+    transform: scale(0.98);
+  }
+
+  .mobile-menu-links {
+    display: grid;
+    gap: clamp(2.7rem, 7vh, 5.6rem);
+    margin-top: clamp(3rem, 7vh, 5.5rem);
+  }
+
+  .mobile-menu-link {
+    width: fit-content;
+    color: color-mix(in oklab, var(--ink) 94%, black);
+    font-size: clamp(1.38rem, 5.4vw, 2.35rem);
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    line-height: 1;
+    text-transform: uppercase;
+    animation: mobile-menu-link-in 480ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    transition:
+      color 220ms ease,
+      transform 280ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .mobile-menu-link:nth-child(2) {
+    animation-delay: 80ms;
+  }
+
+  .mobile-menu-link:nth-child(3) {
+    animation-delay: 160ms;
+  }
+
+  .mobile-menu-link:hover,
+  .mobile-menu-link:focus-visible {
+    color: var(--primary);
+    transform: translateX(0.45rem);
+  }
+
+  .mobile-menu-contact-title {
+    color: color-mix(in oklab, var(--ink) 94%, black);
+    font-size: clamp(1.25rem, 4.2vw, 2rem);
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    line-height: 1.2;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .mobile-menu-contact-action {
+    display: inline-flex;
+    justify-self: center;
+    color: color-mix(in oklab, var(--primary) 82%, var(--brand-red));
+    transition:
+      color 220ms ease,
+      transform 280ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .mobile-menu-contact-action:hover,
+  .mobile-menu-contact-action:focus-visible {
+    color: color-mix(in oklab, var(--gold) 78%, var(--bronze));
+    transform: translateY(-0.25rem);
+  }
+
   .dropdown-nav-link {
     transform-origin: center left;
   }
@@ -427,12 +524,12 @@
   }
 
   .site-header-shell {
-    border-bottom: 1px solid color-mix(in oklab, var(--gold) 24%, white);
+    border-bottom: 1px solid color-mix(in oklab, var(--gold) 18%, white);
     background:
       linear-gradient(
-        135deg,
-        color-mix(in oklab, white 84%, var(--champagne) 18%),
-        color-mix(in oklab, white 74%, var(--gold) 13%)
+        180deg,
+        color-mix(in oklab, white 91%, var(--champagne) 9%),
+        color-mix(in oklab, white 82%, var(--champagne) 18%)
       ),
       var(--ivory);
     box-shadow:
@@ -461,21 +558,45 @@
     transform: scaleX(1);
   }
 
+  .nav-echo {
+    position: relative;
+    display: grid;
+    height: 1.12em;
+    overflow: hidden;
+    line-height: 1.12;
+  }
+
+  .nav-echo > span,
+  .nav-echo::after {
+    grid-area: 1 / 1;
+    transition: transform 360ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .nav-echo::after {
+    content: attr(data-label);
+    transform: translateY(120%);
+  }
+
+  .nav-hover-magnify:hover .nav-echo > span,
+  .nav-hover-magnify:focus-visible .nav-echo > span {
+    transform: translateY(-120%);
+  }
+
+  .nav-hover-magnify:hover .nav-echo::after,
+  .nav-hover-magnify:focus-visible .nav-echo::after {
+    transform: translateY(0);
+  }
+
   .home-legacy {
     overflow: hidden;
     background:
-      radial-gradient(
-        circle at 80% 5%,
-        color-mix(in oklab, var(--gold) 19%, transparent),
-        transparent 34%
-      ),
       linear-gradient(
         180deg,
-        color-mix(in oklab, var(--champagne) 72%, white) 0%,
-        color-mix(in oklab, var(--ivory) 88%, var(--gold) 7%) 46%,
-        color-mix(in oklab, var(--champagne) 76%, white) 100%
+        color-mix(in oklab, var(--champagne) 82%, white) 0%,
+        color-mix(in oklab, var(--ivory) 94%, white) 42%,
+        color-mix(in oklab, var(--champagne) 78%, white) 100%
       ),
-      color-mix(in oklab, var(--champagne) 86%, white);
+      var(--ivory);
   }
 
   .site-content .home-legacy :is(h1, h2, h3, h4, p, .section-title, .section-eyebrow) {
@@ -491,89 +612,150 @@
   .legacy-hero {
     position: relative;
     isolation: isolate;
-    min-height: calc(100vh - 5rem);
-    background:
-      radial-gradient(
-        circle at 82% 22%,
-        color-mix(in oklab, var(--gold) 18%, transparent),
-        transparent 34%
-      ),
-      linear-gradient(
-        90deg,
-        color-mix(in oklab, white 95%, var(--ivory) 5%) 0%,
-        color-mix(in oklab, white 91%, var(--champagne) 9%) 28%,
-        color-mix(in oklab, white 68%, transparent) 44%,
-        transparent 64%
-      ),
-      linear-gradient(
-        180deg,
-        color-mix(in oklab, white 18%, transparent) 0%,
-        transparent 36%,
-        color-mix(in oklab, var(--primary) 10%, transparent) 100%
-      ),
-      var(--hero-image) right center / cover no-repeat;
+    min-height: clamp(32rem, 68vh, 45rem);
+    background: color-mix(in oklab, var(--ink) 90%, black);
   }
 
   .legacy-hero::before {
-    position: absolute;
-    inset: auto 0 0;
-    z-index: 1;
-    height: 14rem;
-    pointer-events: none;
-    background: linear-gradient(180deg, transparent, var(--background));
-    content: "";
+    content: none;
   }
 
   .legacy-hero-copy {
     position: relative;
-    z-index: 2;
-    width: min(45rem, 100%);
-    padding-top: clamp(2rem, 5vw, 5.5rem);
+    z-index: 3;
+    width: min(42rem, 100%);
+    padding-bottom: clamp(2.5rem, 6vw, 5rem);
+    padding-top: clamp(2.5rem, 6vw, 5rem);
+  }
+
+  .legacy-hero-kicker {
+    margin-bottom: 1.1rem;
+    color: color-mix(in oklab, var(--gold) 82%, white);
+    font-size: 0.76rem;
+    font-weight: 900;
+    text-transform: uppercase;
   }
 
   .legacy-hero-grid {
-    position: relative;
+    position: absolute;
+    inset: 0;
+    z-index: 3;
     width: 100%;
+  }
+
+  .legacy-hero-media {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    clip-path: inset(0 0 0 0);
+    animation: media-clip-in 900ms cubic-bezier(0.16, 1, 0.3, 1) 160ms both;
+  }
+
+  .legacy-hero-media::before {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    background:
+      linear-gradient(
+        90deg,
+        color-mix(in oklab, black 78%, transparent) 0%,
+        color-mix(in oklab, black 54%, transparent) 38%,
+        color-mix(in oklab, black 18%, transparent) 68%,
+        transparent 100%
+      ),
+      linear-gradient(
+        180deg,
+        color-mix(in oklab, black 16%, transparent) 0%,
+        transparent 45%,
+        color-mix(in oklab, black 32%, transparent) 100%
+      );
+    content: "";
+  }
+
+  .legacy-hero-media img {
+    object-position: right center;
+    filter: saturate(0.98) contrast(1.02);
+    animation: hero-media-drift 18s ease-in-out infinite alternate;
+    transform-origin: center;
   }
 
   .legacy-heading {
     display: grid;
-    gap: 0.08em;
-    color: color-mix(in oklab, var(--ink) 92%, black);
+    gap: 0.04em;
+    color: color-mix(in oklab, white 95%, var(--champagne));
     font-family: var(--font-sans);
-    font-size: clamp(3rem, 7vw, 7.1rem);
+    font-size: clamp(2rem, 3.8vw, 3.7rem);
     font-weight: 800;
-    line-height: 0.95;
+    line-height: 1.04;
     letter-spacing: 0;
     text-shadow: none;
   }
 
   .legacy-heading span:last-child {
-    color: color-mix(in oklab, var(--gold) 64%, var(--bronze));
+    color: color-mix(in oklab, var(--gold) 76%, white);
   }
 
   .legacy-line {
     display: block;
-    width: 5.4rem;
+    width: 4.6rem;
     height: 2px;
-    margin-top: 2.1rem;
-    background: linear-gradient(90deg, var(--primary), var(--gold));
+    margin-top: 1.45rem;
+    background: linear-gradient(90deg, var(--gold), transparent);
     box-shadow: none;
   }
 
   .legacy-hero-copy p {
-    color: color-mix(in oklab, var(--foreground) 72%, transparent);
+    color: color-mix(in oklab, white 78%, transparent);
     text-shadow: none;
+  }
+
+  .legacy-learn-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    margin-top: 1.75rem;
+    color: color-mix(in oklab, white 92%, var(--champagne));
+    font-size: 0.78rem;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+
+  .legacy-learn-link::after {
+    position: absolute;
+    right: 0;
+    bottom: -0.35rem;
+    left: 0;
+    height: 1px;
+    background: color-mix(in oklab, var(--gold) 72%, var(--bronze));
+    content: "";
+    transform: scaleX(0.28);
+    transform-origin: left;
+    transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .legacy-learn-link svg {
+    transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .legacy-learn-link:hover::after,
+  .legacy-learn-link:focus-visible::after {
+    transform: scaleX(1);
+  }
+
+  .legacy-learn-link:hover svg,
+  .legacy-learn-link:focus-visible svg {
+    transform: translate(0.2rem, -0.2rem);
   }
 
   @media (min-width: 1024px) {
     .legacy-hero-grid {
-      align-items: flex-start;
+      align-items: center;
     }
 
     .legacy-hero-copy {
       padding-right: clamp(1rem, 4vw, 3rem);
-      padding-top: clamp(3rem, 6vw, 6.5rem);
     }
   }
 
@@ -661,7 +843,7 @@
   .legacy-eyebrow {
     font-size: 0.76rem;
     font-weight: 900;
-    letter-spacing: 0.14em;
+    letter-spacing: 0;
     text-transform: uppercase;
     color: color-mix(in oklab, var(--brand-red) 88%, var(--primary));
   }
@@ -673,6 +855,7 @@
     font-weight: 800;
     line-height: 1.04;
     letter-spacing: 0;
+    text-transform: uppercase;
   }
 
   .legacy-leadership .legacy-eyebrow {
@@ -684,27 +867,35 @@
   }
 
   #businesses .legacy-section-title {
-    font-size: clamp(1.45rem, 2.95vw, 2.8rem);
+    font-size: clamp(1.9rem, 3.4vw, 3.25rem);
   }
 
   .legacy-sector-card {
-    --sector-media-height: clamp(10rem, 15vw, 13.5rem);
     position: relative;
     display: block;
     overflow: hidden;
-    min-height: 24.75rem;
-    border: 1px solid color-mix(in oklab, var(--border) 70%, white);
+    min-height: clamp(24rem, 38vw, 34rem);
+    border: 1px solid color-mix(in oklab, white 18%, transparent);
     border-radius: var(--radius);
-    background:
-      linear-gradient(180deg, color-mix(in oklab, white 94%, transparent), color-mix(in oklab, white 82%, var(--ivory))),
-      var(--card);
-    box-shadow:
-      inset 0 1px 0 color-mix(in oklab, white 82%, transparent),
-      0 20px 58px -46px color-mix(in oklab, var(--ink) 48%, transparent);
+    background: color-mix(in oklab, var(--ink) 88%, black);
+    box-shadow: 0 28px 70px -52px rgba(0, 0, 0, 0.72);
+    animation: portfolio-card-in 760ms cubic-bezier(0.16, 1, 0.3, 1) both;
     transition:
       transform 320ms cubic-bezier(0.16, 1, 0.3, 1),
       border-color 240ms ease,
       box-shadow 320ms ease;
+  }
+
+  .legacy-sector-card:nth-child(2) {
+    animation-delay: 90ms;
+  }
+
+  .legacy-sector-card:nth-child(3) {
+    animation-delay: 180ms;
+  }
+
+  .legacy-sector-card:nth-child(4) {
+    animation-delay: 270ms;
   }
 
   .legacy-sector-card::before {
@@ -714,31 +905,30 @@
     pointer-events: none;
     border-radius: inherit;
     background:
-      linear-gradient(180deg, color-mix(in oklab, white 36%, transparent), transparent 28%),
-      linear-gradient(135deg, color-mix(in oklab, var(--gold) 14%, transparent), transparent 36%);
+      linear-gradient(180deg, color-mix(in oklab, black 10%, transparent), transparent 30%),
+      linear-gradient(180deg, transparent 36%, color-mix(in oklab, black 82%, transparent) 100%),
+      linear-gradient(90deg, color-mix(in oklab, black 36%, transparent), transparent 56%);
     content: "";
-    opacity: 0.66;
+    opacity: 1;
   }
 
   .legacy-sector-card:hover,
   .legacy-sector-card:focus-visible {
     transform: translateY(-6px) scale(1.01);
-    border-color: color-mix(in oklab, var(--gold) 46%, white);
-    box-shadow:
-      inset 0 1px 0 color-mix(in oklab, white 78%, transparent),
-      0 34px 78px -50px color-mix(in oklab, var(--ink) 52%, transparent);
+    border-color: color-mix(in oklab, var(--gold) 54%, white);
+    box-shadow: 0 36px 86px -56px rgba(0, 0, 0, 0.86);
     outline: none;
   }
 
   .legacy-sector-media {
-    height: var(--sector-media-height);
+    position: absolute;
+    inset: 0;
     overflow: hidden;
-    border-bottom: 1px solid color-mix(in oklab, var(--gold) 22%, white);
   }
 
   .legacy-sector-media img {
-    object-position: left top;
-    transform-origin: left top;
+    object-position: center;
+    transform-origin: center;
     transition: transform 620ms cubic-bezier(0.16, 1, 0.3, 1);
   }
 
@@ -747,44 +937,45 @@
     transform: scale(1.07);
   }
 
-  .legacy-sector-icon {
-    position: absolute;
-    top: calc(var(--sector-media-height) - 1.8rem);
-    left: 1.15rem;
-    z-index: 3;
-    display: inline-flex;
-    width: 3.6rem;
-    height: 3.6rem;
-    align-items: center;
-    justify-content: center;
-    border: 4px solid color-mix(in oklab, white 88%, var(--champagne));
-    border-radius: var(--radius);
-    background: linear-gradient(
-      145deg,
-      color-mix(in oklab, var(--gold) 84%, white),
-      color-mix(in oklab, var(--bronze) 84%, var(--primary))
-    );
-    color: white;
-    box-shadow:
-      inset 0 1px 0 color-mix(in oklab, white 34%, transparent),
-      0 18px 36px -24px color-mix(in oklab, var(--bronze) 78%, transparent);
-  }
-
   .legacy-sector-card h3 {
-    color: color-mix(in oklab, var(--ink) 90%, black);
+    color: white;
     font-family: var(--font-sans);
-    font-size: clamp(1.2rem, 1.7vw, 1.45rem);
+    font-size: clamp(1.65rem, 3.2vw, 3rem);
     font-weight: 800;
+    line-height: 1;
+    text-transform: uppercase;
+    transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .legacy-sector-body {
-    padding: 2rem 1.2rem 1.35rem;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 3;
+    padding: clamp(1.35rem, 3vw, 2.25rem);
   }
 
   .legacy-sector-copy {
-    color: color-mix(in oklab, var(--foreground) 64%, transparent);
-    font-size: 0.84rem;
+    max-width: 30rem;
+    color: color-mix(in oklab, white 74%, transparent);
+    font-size: 0.95rem;
     line-height: 1.75;
+    opacity: 0.88;
+    transition:
+      opacity 320ms ease,
+      transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .legacy-sector-card:hover h3,
+  .legacy-sector-card:focus-visible h3 {
+    transform: translateY(-0.3rem);
+  }
+
+  .legacy-sector-card:hover .legacy-sector-copy,
+  .legacy-sector-card:focus-visible .legacy-sector-copy {
+    opacity: 1;
+    transform: translateY(-0.2rem);
   }
 
   .legacy-leadership {
@@ -1237,6 +1428,38 @@
   }
 }
 
+@keyframes media-clip-in {
+  from {
+    clip-path: inset(0 0 100% 0);
+  }
+
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes hero-media-drift {
+  from {
+    transform: scale(1.01);
+  }
+
+  to {
+    transform: scale(1.06) translateX(-1.25%);
+  }
+}
+
+@keyframes portfolio-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @keyframes cinematic-zoom {
   from {
     transform: scale(1);
@@ -1327,6 +1550,30 @@
   }
 }
 
+@keyframes mobile-menu-sheet-in {
+  from {
+    opacity: 0;
+    transform: translateY(-1.25rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes mobile-menu-link-in {
+  from {
+    opacity: 0;
+    transform: translateY(1.1rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @keyframes motion-flip-bottom {
   0% {
     opacity: 0;
@@ -1356,22 +1603,18 @@
 
 @media (max-width: 1023px) {
   .legacy-hero {
-    min-height: auto;
+    min-height: clamp(31rem, 64vh, 42rem);
+    background: color-mix(in oklab, var(--ink) 90%, black);
+  }
+
+  .legacy-hero-media::before {
     background:
       linear-gradient(
         180deg,
-        color-mix(in oklab, white 94%, var(--ivory) 6%) 0%,
-        color-mix(in oklab, white 84%, var(--champagne) 16%) 28%,
-        color-mix(in oklab, white 54%, transparent) 48%,
-        color-mix(in oklab, white 20%, transparent) 100%
-      ),
-      linear-gradient(
-        180deg,
-        color-mix(in oklab, white 6%, transparent) 0%,
-        transparent 50%,
-        color-mix(in oklab, var(--primary) 10%, transparent) 100%
-      ),
-      var(--hero-image) 62% center / cover no-repeat;
+        color-mix(in oklab, black 70%, transparent) 0%,
+        color-mix(in oklab, black 52%, transparent) 52%,
+        color-mix(in oklab, black 30%, transparent) 100%
+      );
   }
 
   .legacy-skyline {
@@ -1412,13 +1655,13 @@
   }
 
   .legacy-heading {
-    font-size: clamp(3.1rem, 15vw, 5rem);
+    font-size: clamp(2rem, 9vw, 3.4rem);
   }
 
   .legacy-hero-copy {
     width: 100%;
-    padding-top: 1.25rem;
-    padding-bottom: 2rem;
+    padding-bottom: 2.75rem;
+    padding-top: 2.75rem;
   }
 
   .legacy-monument {
@@ -1427,35 +1670,21 @@
   }
 
   .legacy-sector-card {
-    --sector-media-height: 7.5rem;
-    min-height: 18.75rem;
-  }
-
-  .legacy-sector-icon {
-    top: calc(var(--sector-media-height) - 1.35rem);
-    left: 0.7rem;
-    width: 2.7rem;
-    height: 2.7rem;
-    border-width: 3px;
-  }
-
-  .legacy-sector-icon svg {
-    width: 1.05rem;
-    height: 1.05rem;
+    min-height: 25rem;
   }
 
   .legacy-sector-body {
-    padding: 1.6rem 0.85rem 1rem;
+    padding: 1.35rem;
   }
 
   .legacy-sector-card h3 {
-    font-size: clamp(1rem, 4.8vw, 1.16rem);
+    font-size: clamp(1.3rem, 6vw, 1.75rem);
     line-height: 1.12;
   }
 
   .legacy-sector-copy {
-    font-size: 0.74rem;
-    line-height: 1.55;
+    font-size: 0.88rem;
+    line-height: 1.65;
   }
 
   .legacy-cta {
@@ -1471,9 +1700,14 @@
 
 @media (prefers-reduced-motion: reduce) {
   .reveal-up,
+  .legacy-hero-media,
+  .legacy-hero-media img,
+  .legacy-sector-card,
   .cinematic-media,
   .glass-morph,
   .morph-list li,
+  .mobile-menu-overlay,
+  .mobile-menu-link,
   .mobile-nav-panel,
   .mobile-nav-panel nav > *,
   .motion-flip-bottom,
@@ -1493,6 +1727,13 @@
   .btn-primary,
   .btn-secondary,
   .nav-hover-magnify,
+  .nav-echo > span,
+  .nav-echo::after,
+  .legacy-learn-link,
+  .legacy-learn-link::after,
+  .legacy-learn-link svg,
+  .legacy-sector-card h3,
+  .legacy-sector-copy,
   .dropdown-nav-arrow,
   .fluid-morph,
   .site-content .surface-card,

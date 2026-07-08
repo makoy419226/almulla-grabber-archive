@@ -11,7 +11,7 @@ export const Route = createFileRoute("/businesses/healthcare")({
       {
         name: "description",
         content:
-          "Chicago Healthcare invests in and operates premium healthcare ventures in Dubai, partnering with world-class medical experts.",
+          "Chicago Healthcare invests in and operates premium healthcare ventures, partnering with world-class medical experts.",
       },
       { property: "og:title", content: "Chicago Healthcare" },
       {
@@ -49,7 +49,7 @@ const pillars = [
   {
     icon: HeartPulse,
     title: "Community Impact",
-    body: "Programs that elevate standards of care across Dubai and the wider region.",
+    body: "Programs that elevate standards of care for the communities we serve.",
   },
 ];
 
@@ -112,7 +112,7 @@ function Healthcare() {
                 <p>
                   We bring the highest standards of service to our local communities through the
                   latest medical equipment and close partnerships with respected institutions —
-                  helping establish Dubai as a healthcare hub for the region.
+                  helping advance healthcare standards for the region.
                 </p>
               </div>
             </div>
@@ -177,7 +177,7 @@ function Healthcare() {
       <section className="bg-secondary">
         <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 py-20 sm:px-6 lg:grid-cols-2 lg:px-8 lg:py-24">
           <h2 className="text-3xl font-semibold leading-tight text-primary md:text-4xl">
-            Building Dubai's next chapter in healthcare — together with the region's most trusted
+            Building the next chapter in healthcare — together with the region&apos;s most trusted
             specialists.
           </h2>
           <div className="flex flex-wrap justify-center gap-4">

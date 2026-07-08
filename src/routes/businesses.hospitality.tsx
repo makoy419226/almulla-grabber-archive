@@ -95,7 +95,7 @@ function Hospitality() {
             <div className="grid gap-6 sm:grid-cols-2">
               <img
                 src={dubaiImg}
-                alt="Dubai"
+                alt="City skyline"
                 className="h-64 w-full rounded-lg object-cover shadow-lg"
                 loading="lazy"
                 width={800}

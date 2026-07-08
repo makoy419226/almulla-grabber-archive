@@ -81,31 +81,25 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "AlMulla Holding Group is a Dubai-based holding company with focused investments across strategic investment, healthcare, hospitality, real-estate, education, and energy.",
+          "AlMulla Holding Group is a diversified holding company with focused investments across strategic investment, healthcare, hospitality, education, and energy.",
       },
       { name: "application-name", content: SITE_NAME },
       { property: "og:site_name", content: SITE_NAME },
-      { property: "og:title", content: `${SITE_NAME} - Dubai Holding Company` },
+      { property: "og:title", content: `${SITE_NAME} - Diversified Holding Company` },
       {
         property: "og:description",
         content:
-          "A Dubai-based holding company with focused investments across strategic investment, healthcare, hospitality, real-estate, education, and energy.",
+          "A diversified holding company with focused investments across strategic investment, healthcare, hospitality, education, and energy.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
-      { rel: "icon", sizes: "any", href: "/favicon.ico" },
-      { rel: "shortcut icon", href: "/favicon.ico" },
+      { rel: "icon", sizes: "any", href: faviconUrl },
+      { rel: "shortcut icon", href: faviconUrl },
       { rel: "icon", type: "image/png", sizes: "64x64", href: faviconUrl },
       { rel: "apple-touch-icon", href: LOGO_URL },
       { rel: "stylesheet", href: appCss },
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap",
-      },
     ],
   }),
   shellComponent: RootShell,

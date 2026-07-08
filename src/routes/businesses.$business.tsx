@@ -174,18 +174,18 @@ const businessPages: Record<string, BusinessPageData> = {
     ],
     ctaTitle: "Explore education partnerships and growth opportunities.",
     ctaBody:
-      "Reach out for discussions around education ventures, campus development, or institutional partnerships in Dubai and the wider region.",
+      "Reach out for discussions around education ventures, campus development, or institutional partnerships.",
   },
   "real-estate": {
     slug: "real-estate",
     sector: "Real-estate",
     title: "Real-estate",
     description:
-      "Developing resilient real-estate assets built around quality locations, occupier demand, and long-term value.",
+      "Developing resilient real-estate assets built around site quality, occupier demand, and long-term value.",
     image: realEstateImg,
     introTitle: "Real-estate strategy shaped by asset quality, demand durability, and disciplined execution.",
     introBody: [
-      "Our real-estate approach is grounded in assets that can perform across cycles. That means careful attention to location quality, tenant relevance, build standards, and a long-term operating plan from the outset.",
+      "Our real-estate approach is grounded in assets that can perform across cycles. That means careful attention to site quality, tenant relevance, build standards, and a long-term operating plan from the outset.",
       "We focus on spaces that support how people live, work, and interact in modern urban environments. Strong real-estate performance is not driven by launches alone, but by asset quality and active stewardship after delivery.",
       "For the group, real-estate is a platform for dependable value creation, not speculative volume.",
     ],
@@ -194,7 +194,7 @@ const businessPages: Record<string, BusinessPageData> = {
     stats: [
       { value: "Mixed-use", label: "Portfolio orientation" },
       { value: "Income-led", label: "Value approach" },
-      { value: "Prime locations", label: "Site discipline" },
+      { value: "Prime sites", label: "Site discipline" },
     ],
     pillars: [
       {
@@ -204,8 +204,8 @@ const businessPages: Record<string, BusinessPageData> = {
       },
       {
         icon: Landmark,
-        title: "Location Discipline",
-        body: "Asset strength begins with locations that can retain demand, visibility, and utility over time.",
+        title: "Site Discipline",
+        body: "Asset strength begins with sites that can retain demand, visibility, and utility over time.",
       },
       {
         icon: Compass,

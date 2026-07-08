@@ -16,57 +16,63 @@ export type SeoEntry = {
 export const seoEntries: Record<string, SeoEntry> = {
   "/": {
     path: "/",
-    title: "AlMulla Holding Group - Dubai Holding Company",
+    title: "AlMulla Holding Group - Diversified Holding Company",
     description:
-      "AlMulla Holding Group is a Dubai-based holding company with focused investments across strategic investment, healthcare, hospitality, real-estate, education, and energy.",
+      "AlMulla Holding Group is a diversified holding company with focused investments across strategic investment, healthcare, hospitality, education, and energy.",
   },
   "/about-us": {
     path: "/about-us",
-    title: "About AlMulla Holding Group - Dubai Holding Company",
+    title: "About AlMulla Holding Group",
     description:
-      "Learn about AlMulla Holding Group, chaired by Mr. Abdulla Mohamed Saeed AlMulla and structured around disciplined, sector-focused long-term growth.",
+      "Learn about AlMulla Holding Group and its long-term approach to quality, resilience, and sector-focused growth.",
   },
   "/businesses/healthcare": {
     path: "/businesses/healthcare",
     title: "Chicago Healthcare - AlMulla Holding Group",
     description:
-      "Chicago Healthcare invests in and operates premium healthcare ventures in Dubai with leading medical specialists and modern facilities.",
+      "Chicago Healthcare invests in and operates premium healthcare ventures with leading medical specialists and modern facilities.",
+    robots: "noindex, follow",
   },
   "/businesses/strategic-investment": {
     path: "/businesses/strategic-investment",
     title: "Strategic Investment - AlMulla Holding Group",
     description:
       "Strategic Investment at AlMulla Holding Group focuses on disciplined capital allocation, regional partnerships, and long-term value creation across resilient sectors.",
+    robots: "noindex, follow",
   },
   "/businesses/education": {
     path: "/businesses/education",
     title: "Education - AlMulla Holding Group",
     description:
       "AlMulla Holding Group backs education ventures built around strong learning environments, future-ready campuses, and long-term community value.",
+    robots: "noindex, follow",
   },
   "/businesses/real-estate": {
     path: "/businesses/real-estate",
     title: "Real-estate - AlMulla Holding Group",
     description:
-      "AlMulla Holding Group develops and manages resilient real-estate assets shaped by quality locations, tenant experience, and durable demand.",
+      "AlMulla Holding Group develops and manages resilient real-estate assets shaped by site quality, tenant experience, and durable demand.",
+    robots: "noindex, follow",
   },
   "/businesses/energy": {
     path: "/businesses/energy",
     title: "Energy - AlMulla Holding Group",
     description:
       "AlMulla Holding Group invests in energy platforms spanning solar, infrastructure, and practical future-ready systems built for reliability and growth.",
+    robots: "noindex, follow",
   },
   "/businesses/hospitality": {
     path: "/businesses/hospitality",
     title: "AlMulla Hospitality - AlMulla Holding Group",
     description:
       "AlMulla Hospitality creates modern hotel and hospitality experiences for business travelers, families, and conscious lifestyle guests.",
+    robots: "noindex, follow",
   },
   "/contact-us": {
     path: "/contact-us",
-    title: "Contact AlMulla Holding Group - Business Bay, Dubai",
+    title: "Contact AlMulla Holding Group",
     description:
-      "Contact AlMulla Holding Group in Business Bay, Dubai for business enquiries, partnerships, and corporate requests.",
+      "Contact AlMulla Holding Group for business enquiries, partnerships, and corporate requests.",
   },
 };
 
@@ -77,15 +83,8 @@ export const organizationJsonLd = {
   url: SITE_ORIGIN,
   logo: LOGO_URL,
   image: DEFAULT_OG_IMAGE,
-  email: "info@almullaholding.co",
+  email: "info@almullaholding.com",
   telephone: "+97142249662",
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "Office no. 1405, Aspect Tower Zone B, Business Bay",
-    addressLocality: "Dubai",
-    postalCode: "413155",
-    addressCountry: "AE",
-  },
 };
 
 export const websiteJsonLd = {

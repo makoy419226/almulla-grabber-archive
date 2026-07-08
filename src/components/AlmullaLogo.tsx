@@ -37,6 +37,7 @@ export function AlmullaLogo({ className, compact = false }: AlmullaLogoProps) {
             src={logoImg}
             alt="AlMulla Holding"
             className="h-full w-full select-none object-contain"
+            decoding="async"
             draggable={false}
           />
         )}

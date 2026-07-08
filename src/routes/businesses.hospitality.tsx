@@ -98,6 +98,8 @@ function Hospitality() {
                 alt="City skyline"
                 className="h-64 w-full rounded-lg object-cover shadow-lg"
                 loading="lazy"
+                decoding="async"
+                sizes="(min-width: 640px) 50vw, 100vw"
                 width={800}
                 height={400}
               />
@@ -106,6 +108,8 @@ function Hospitality() {
                 alt="Hospitality"
                 className="h-64 w-full rounded-lg object-cover shadow-lg"
                 loading="lazy"
+                decoding="async"
+                sizes="(min-width: 640px) 50vw, 100vw"
                 width={800}
                 height={400}
               />

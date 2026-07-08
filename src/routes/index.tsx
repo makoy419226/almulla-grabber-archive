@@ -1,10 +1,15 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
 import educationImg from "@/assets/sector-education.jpg";
+import educationImg900 from "@/assets/sector-education-900.jpg";
 import energyImg from "@/assets/sector-energy.jpg";
+import energyImg900 from "@/assets/sector-energy-900.jpg";
 import heroAlmullaEtihadImg from "@/assets/hero-almulla-etihad-burj.jpg";
+import heroAlmullaEtihadImg960 from "@/assets/hero-almulla-etihad-burj-960.jpg";
 import healthcareImg from "@/assets/healthcare.jpg";
+import healthcareImg900 from "@/assets/healthcare-900.jpg";
 import hospitalityImg from "@/assets/hospitality.jpg";
+import hospitalityImg900 from "@/assets/hospitality-900.jpg";
 import { ArrowUpRight } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -23,6 +28,7 @@ export const Route = createFileRoute("/")({
           "A diversified holding company focused on long-term value across healthcare, hospitality, education, and energy.",
       },
     ],
+    links: [{ rel: "preload", as: "image", href: heroAlmullaEtihadImg, fetchPriority: "high" }],
   }),
   component: Home,
 });
@@ -31,21 +37,29 @@ const sectors = [
   {
     title: "Healthcare",
     img: healthcareImg,
+    imgSmall: healthcareImg900,
+    width: 1590,
     body: "Delivering advanced healthcare services that improve lives and communities.",
   },
   {
     title: "Education",
     img: educationImg,
+    imgSmall: educationImg900,
+    width: 1594,
     body: "Supporting future generations through quality education and innovative learning.",
   },
   {
     title: "Hospitality",
     img: hospitalityImg,
+    imgSmall: hospitalityImg900,
+    width: 862,
     body: "Creating exceptional experiences through world-class hospitality and leisure.",
   },
   {
     title: "Energy",
     img: energyImg,
+    imgSmall: energyImg900,
+    width: 1600,
     body: "Powering progress through resilient energy platforms across solar, oil, gas, and future-ready infrastructure.",
   },
 ];
@@ -60,7 +74,11 @@ function Home() {
               src={heroAlmullaEtihadImg}
               alt=""
               className="h-full w-full object-cover"
+              srcSet={`${heroAlmullaEtihadImg960} 960w, ${heroAlmullaEtihadImg} 1672w`}
               loading="eager"
+              fetchPriority="high"
+              decoding="async"
+              sizes="100vw"
               width={1672}
               height={941}
             />
@@ -102,7 +120,11 @@ function Home() {
                     src={sector.img}
                     alt={sector.title}
                     className="h-full w-full object-cover"
-                    loading="eager"
+                    srcSet={`${sector.imgSmall} 900w, ${sector.img} ${sector.width}w`}
+                    loading="lazy"
+                    fetchPriority="low"
+                    decoding="async"
+                    sizes="(min-width: 1024px) 25vw, 50vw"
                     width={900}
                     height={620}
                   />

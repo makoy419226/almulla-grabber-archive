@@ -61,6 +61,8 @@ function About() {
                 alt="Mr. Abdulla Mohamed Saeed AlMulla, Chairman"
                 className="h-[520px] w-full rounded-md object-cover"
                 loading="lazy"
+                decoding="async"
+                sizes="(min-width: 1024px) 45vw, 100vw"
                 width={900}
                 height={1100}
               />

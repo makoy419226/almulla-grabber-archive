@@ -2,9 +2,13 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
 import { AlmullaLogo } from "@/components/AlmullaLogo";
 import educationImg from "@/assets/sector-education.jpg";
+import educationImg900 from "@/assets/sector-education-900.jpg";
 import energyImg from "@/assets/sector-energy.jpg";
+import energyImg900 from "@/assets/sector-energy-900.jpg";
 import realEstateImg from "@/assets/sector-real-estate.jpg";
+import realEstateImg900 from "@/assets/sector-real-estate-900.jpg";
 import strategicInvestmentImg from "@/assets/sector-strategic-investment.jpg";
+import strategicInvestmentImg900 from "@/assets/sector-strategic-investment-900.jpg";
 import {
   ArrowUpRight,
   BookOpen,
@@ -45,6 +49,8 @@ type BusinessPageData = {
   title: string;
   description: string;
   image: string;
+  imageSmall: string;
+  imageWidth: number;
   introTitle: string;
   introBody: string[];
   quote: string;
@@ -63,6 +69,8 @@ const businessPages: Record<string, BusinessPageData> = {
     description:
       "Disciplined capital allocation across resilient sectors, regional partnerships, and long-term growth platforms.",
     image: strategicInvestmentImg,
+    imageSmall: strategicInvestmentImg900,
+    imageWidth: 1600,
     introTitle: "Capital deployed with patience, selectivity, and operating clarity.",
     introBody: [
       "Strategic Investment sits at the center of how the group allocates capital. The focus is not short-term activity, but durable opportunities where the operating model, market position, and partnership structure are strong enough to create lasting value.",
@@ -123,6 +131,8 @@ const businessPages: Record<string, BusinessPageData> = {
     description:
       "Supporting future generations through strong learning environments, future-ready campuses, and long-term community value.",
     image: educationImg,
+    imageSmall: educationImg900,
+    imageWidth: 1594,
     introTitle: "Education platforms built around learning quality and future readiness.",
     introBody: [
       "Our education focus is shaped around the practical elements that define a strong learning environment: academic quality, campus experience, operational consistency, and relevance to the needs of students and families.",
@@ -183,6 +193,8 @@ const businessPages: Record<string, BusinessPageData> = {
     description:
       "Developing resilient real-estate assets built around site quality, occupier demand, and long-term value.",
     image: realEstateImg,
+    imageSmall: realEstateImg900,
+    imageWidth: 1600,
     introTitle: "Real-estate strategy shaped by asset quality, demand durability, and disciplined execution.",
     introBody: [
       "Our real-estate approach is grounded in assets that can perform across cycles. That means careful attention to site quality, tenant relevance, build standards, and a long-term operating plan from the outset.",
@@ -243,6 +255,8 @@ const businessPages: Record<string, BusinessPageData> = {
     description:
       "Powering progress through resilient energy platforms across solar, infrastructure, and future-ready systems.",
     image: energyImg,
+    imageSmall: energyImg900,
+    imageWidth: 1600,
     introTitle: "Energy platforms built for reliability, infrastructure quality, and practical transition.",
     introBody: [
       "Our energy outlook is built around systems that matter in the real economy: generation, supporting infrastructure, and the operational partnerships required to deliver reliability at scale.",
@@ -407,7 +421,10 @@ function BusinessPage() {
                   src={page.image}
                   alt={page.title}
                   className="h-72 w-full object-cover"
+                  srcSet={`${page.imageSmall} 900w, ${page.image} ${page.imageWidth}w`}
                   loading="lazy"
+                  decoding="async"
+                  sizes="(min-width: 1024px) 40vw, 100vw"
                   width={1200}
                   height={800}
                 />

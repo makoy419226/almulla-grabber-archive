@@ -100,8 +100,8 @@ function Hospitality() {
                 loading="lazy"
                 decoding="async"
                 sizes="(min-width: 640px) 50vw, 100vw"
-                width={800}
-                height={400}
+                width={1069}
+                height={1024}
               />
               <img
                 src={hospitalityImg}

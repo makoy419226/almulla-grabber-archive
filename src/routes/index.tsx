@@ -52,7 +52,7 @@ const sectors = [
     title: "Hospitality",
     img: hospitalityImg,
     imgSmall: hospitalityImg900,
-    width: 862,
+    width: 1069,
     body: "Creating exceptional experiences through world-class hospitality and leisure.",
   },
   {

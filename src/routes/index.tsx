@@ -102,7 +102,7 @@ function Home() {
                     src={sector.img}
                     alt={sector.title}
                     className="h-full w-full object-cover"
-                    loading="lazy"
+                    loading="eager"
                     width={900}
                     height={620}
                   />

@@ -424,7 +424,7 @@
 
   .mobile-menu-logo {
     display: inline-flex;
-    max-width: min(13rem, 58vw);
+    max-width: min(11rem, 54vw);
     padding-top: 0.2rem;
   }
 
@@ -434,12 +434,12 @@
 
   .mobile-menu-close {
     display: inline-flex;
-    width: 5.75rem;
-    height: 5.75rem;
+    width: 3.25rem;
+    height: 3.25rem;
     flex: 0 0 auto;
     align-items: center;
     justify-content: center;
-    border: 2px solid color-mix(in oklab, var(--primary) 76%, var(--gold));
+    border: 1px solid color-mix(in oklab, var(--primary) 48%, var(--gold));
     background: white;
     color: color-mix(in oklab, var(--ink) 96%, black);
     transition:
@@ -457,16 +457,16 @@
 
   .mobile-menu-links {
     display: grid;
-    gap: clamp(2.7rem, 7vh, 5.6rem);
-    margin-top: clamp(3rem, 7vh, 5.5rem);
+    gap: clamp(1.35rem, 3.8vh, 2.6rem);
+    margin-top: clamp(2rem, 5vh, 3.5rem);
   }
 
   .mobile-menu-link {
     width: fit-content;
     color: color-mix(in oklab, var(--ink) 94%, black);
-    font-size: clamp(1.38rem, 5.4vw, 2.35rem);
-    font-weight: 500;
-    letter-spacing: 0.22em;
+    font-size: clamp(1rem, 3.8vw, 1.45rem);
+    font-weight: 700;
+    letter-spacing: 0.08em;
     line-height: 1;
     text-transform: uppercase;
     animation: mobile-menu-link-in 480ms cubic-bezier(0.16, 1, 0.3, 1) both;
@@ -491,9 +491,9 @@
 
   .mobile-menu-contact-title {
     color: color-mix(in oklab, var(--ink) 94%, black);
-    font-size: clamp(1.25rem, 4.2vw, 2rem);
-    font-weight: 500;
-    letter-spacing: 0.18em;
+    font-size: clamp(1rem, 3.5vw, 1.35rem);
+    font-weight: 700;
+    letter-spacing: 0.08em;
     line-height: 1.2;
     text-align: center;
     text-transform: uppercase;
@@ -647,7 +647,12 @@
     position: relative;
     isolation: isolate;
     min-height: clamp(32rem, 68vh, 45rem);
-    background: color-mix(in oklab, var(--ink) 90%, black);
+    background:
+      linear-gradient(
+        135deg,
+        color-mix(in oklab, var(--champagne) 88%, white),
+        color-mix(in oklab, var(--ivory) 86%, var(--gold) 8%)
+      );
   }
 
   .legacy-hero::before {
@@ -682,7 +687,8 @@
     inset: 0;
     overflow: hidden;
     clip-path: inset(0 0 0 0);
-    animation: media-clip-in 900ms cubic-bezier(0.16, 1, 0.3, 1) 160ms both;
+    background: color-mix(in oklab, var(--champagne) 86%, white);
+    animation: media-clip-in 360ms cubic-bezier(0.16, 1, 0.3, 1) both;
   }
 
   .legacy-hero-media::before {
@@ -912,9 +918,9 @@
     min-height: clamp(24rem, 38vw, 34rem);
     border: 1px solid color-mix(in oklab, white 18%, transparent);
     border-radius: var(--radius);
-    background: color-mix(in oklab, var(--ink) 88%, black);
+    background: color-mix(in oklab, var(--champagne) 82%, var(--ink) 10%);
     box-shadow: 0 28px 70px -52px rgba(0, 0, 0, 0.72);
-    animation: portfolio-card-in 760ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation: portfolio-card-in 360ms cubic-bezier(0.16, 1, 0.3, 1) both;
     transition:
       transform 320ms cubic-bezier(0.16, 1, 0.3, 1),
       border-color 240ms ease,
@@ -922,15 +928,15 @@
   }
 
   .legacy-sector-card:nth-child(2) {
-    animation-delay: 90ms;
+    animation-delay: 35ms;
   }
 
   .legacy-sector-card:nth-child(3) {
-    animation-delay: 180ms;
+    animation-delay: 70ms;
   }
 
   .legacy-sector-card:nth-child(4) {
-    animation-delay: 270ms;
+    animation-delay: 105ms;
   }
 
   .legacy-sector-card::before {
@@ -1735,6 +1741,10 @@
 }
 
 @media (max-width: 767px) {
+  .mobile-menu-overlay > div {
+    padding: 1.25rem 1.25rem 1.5rem;
+  }
+
   .site-header-shell {
     background:
       linear-gradient(

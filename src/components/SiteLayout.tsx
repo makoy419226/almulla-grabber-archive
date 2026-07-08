@@ -112,7 +112,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
                   aria-label="Close menu"
                   onClick={() => setOpen(false)}
                 >
-                  <X className="h-9 w-9" />
+                  <X className="h-6 w-6" />
                 </button>
               </div>
 
@@ -142,22 +142,22 @@ export function SiteLayout({ children }: { children: ReactNode }) {
                 </Link>
               </nav>
 
-              <div className="mt-auto border-t border-foreground/14 pt-8">
+              <div className="mt-auto border-t border-foreground/14 pt-6">
                 <p className="mobile-menu-contact-title">Let&apos;s Get In Touch</p>
-                <div className="mt-8 grid grid-cols-3 items-center text-primary">
+                <div className="mt-6 grid grid-cols-3 items-center text-primary">
                   <a
                     href="tel:+97142249662"
                     className="mobile-menu-contact-action"
                     aria-label="Call AlMulla Holding"
                   >
-                    <Phone className="h-8 w-8" />
+                    <Phone className="h-6 w-6" />
                   </a>
                   <a
                     href="mailto:info@almullaholding.com"
                     className="mobile-menu-contact-action"
                     aria-label="Email AlMulla Holding"
                   >
-                    <Mail className="h-8 w-8" />
+                    <Mail className="h-6 w-6" />
                   </a>
                   <Link
                     to="/contact-us"
@@ -165,7 +165,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
                     aria-label="Go to contact page"
                     onClick={() => setOpen(false)}
                   >
-                    <Send className="h-8 w-8" />
+                    <Send className="h-6 w-6" />
                   </Link>
                 </div>
               </div>

@@ -215,7 +215,7 @@
       .legacy-hero {
         position: relative;
         isolation: isolate;
-        min-height: clamp(32rem, 68vh, 45rem);
+        height: max(32rem, 56.25vw);
         background: linear-gradient(135deg, #f4e8cb, #fffaf0);
       }
 
@@ -252,8 +252,8 @@
       .legacy-hero-media img {
         width: 100%;
         height: 100%;
-        object-fit: cover;
-        object-position: right center;
+        object-fit: contain;
+        object-position: center bottom;
         filter: saturate(0.98) contrast(1.02);
         transform-origin: center;
       }
@@ -265,6 +265,7 @@
         display: flex;
         width: 100%;
         align-items: center;
+        justify-content: center;
       }
 
       .legacy-container {
@@ -276,20 +277,17 @@
         position: relative;
         z-index: 3;
         width: min(42rem, 100%);
-        padding: clamp(2.5rem, 6vw, 5rem) 0;
+        margin-right: auto;
+        margin-left: auto;
+        padding: clamp(2.5rem, 6vw, 5rem) 0 clamp(1.75rem, 5vw, 3.5rem);
+        transform: translateY(48%);
       }
 
-      .legacy-hero-kicker,
       .legacy-eyebrow {
         font-size: 0.76rem;
         font-weight: 900;
         letter-spacing: 0;
         text-transform: uppercase;
-      }
-
-      .legacy-hero-kicker {
-        margin-bottom: 1.1rem;
-        color: #e7c66c;
       }
 
       .legacy-heading {
@@ -303,16 +301,12 @@
         letter-spacing: 0;
       }
 
-      .legacy-heading span:last-child {
-        color: #d7b555;
+      .legacy-heading span {
+        white-space: nowrap;
       }
 
-      .legacy-line {
-        display: block;
-        width: 4.6rem;
-        height: 2px;
-        margin-top: 1.45rem;
-        background: linear-gradient(90deg, var(--gold), transparent);
+      .legacy-heading span:last-child {
+        color: #d7b555;
       }
 
       .legacy-hero-copy p {
@@ -321,36 +315,6 @@
         color: rgba(255, 250, 240, 0.78);
         font-size: 1rem;
         line-height: 2;
-      }
-
-      .legacy-learn-link {
-        position: relative;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.55rem;
-        margin-top: 1.75rem;
-        color: #fffaf0;
-        font-size: 0.78rem;
-        font-weight: 900;
-        text-transform: uppercase;
-      }
-
-      .legacy-learn-link::after {
-        position: absolute;
-        right: 0;
-        bottom: -0.35rem;
-        left: 0;
-        height: 1px;
-        background: linear-gradient(90deg, var(--gold), var(--bronze));
-        content: "";
-        transform: scaleX(0.28);
-        transform-origin: left;
-        transition: transform 220ms ease;
-      }
-
-      .legacy-learn-link:hover::after,
-      .legacy-learn-link:focus-visible::after {
-        transform: scaleX(1);
       }
 
       .portfolio-section {
@@ -444,6 +408,10 @@
       }
 
       .legacy-sector-body {
+        display: flex;
+        min-height: clamp(11rem, 14vw, 12.75rem);
+        flex-direction: column;
+        justify-content: flex-start;
         position: absolute;
         right: 0;
         bottom: 0;
@@ -463,12 +431,17 @@
       }
 
       .legacy-sector-copy {
+        display: -webkit-box;
         max-width: 30rem;
+        overflow: hidden;
         margin: 0.75rem 0 0;
         color: rgba(255, 255, 255, 0.74);
         font-size: 0.95rem;
         line-height: 1.75;
         opacity: 0.88;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        line-clamp: 3;
         transition:
           opacity 220ms ease,
           transform 220ms ease;
@@ -557,10 +530,6 @@
       }
 
       @media (prefers-reduced-motion: no-preference) {
-        .legacy-hero-media img {
-          animation: hero-media-drift 18s ease-in-out infinite alternate;
-        }
-
         .legacy-hero-copy {
           animation: reveal-up 460ms ease both;
         }
@@ -579,16 +548,6 @@
 
         .legacy-sector-card:nth-child(4) {
           animation-delay: 105ms;
-        }
-      }
-
-      @keyframes hero-media-drift {
-        from {
-          transform: scale(1);
-        }
-
-        to {
-          transform: scale(1.035) translate3d(-0.6%, 0, 0);
         }
       }
 
@@ -668,17 +627,51 @@
         }
 
         .legacy-hero {
-          min-height: 34rem;
+          height: max(34rem, 56.25vw);
+        }
+
+        .legacy-hero-media img {
+          object-fit: cover;
+          object-position: center bottom;
         }
 
         .legacy-hero-media::before {
           background:
-            linear-gradient(90deg, rgba(0, 0, 0, 0.82), rgba(0, 0, 0, 0.5), transparent),
-            linear-gradient(180deg, rgba(0, 0, 0, 0.1), transparent 44%, rgba(0, 0, 0, 0.52));
+            linear-gradient(
+              180deg,
+              rgba(0, 0, 0, 0.7) 0%,
+              rgba(0, 0, 0, 0.52) 52%,
+              rgba(0, 0, 0, 0.3) 100%
+            );
         }
 
         .legacy-container {
           width: min(100% - 2rem, 80rem);
+        }
+
+        .legacy-hero-copy {
+          container-type: inline-size;
+          width: min(24rem, 100%);
+          padding: 2rem 0;
+          text-align: center;
+          transform: translateY(clamp(0.85rem, 3.25vh, 1.75rem));
+        }
+
+        .legacy-heading {
+          gap: 0.08em;
+          font-size: clamp(1.35rem, 7.8cqw, 2.45rem);
+          line-height: 1.08;
+          text-align: center;
+          text-wrap: balance;
+        }
+
+        .legacy-hero-copy p {
+          max-width: 21rem;
+          margin: 1rem auto 0;
+          font-size: clamp(0.88rem, 3.6vw, 0.98rem);
+          line-height: 1.65;
+          text-align: center;
+          text-wrap: pretty;
         }
 
         .sector-grid {
@@ -688,6 +681,11 @@
 
         .legacy-sector-card {
           min-height: 23rem;
+        }
+
+        .legacy-sector-body {
+          min-height: 7.5rem;
+          padding: clamp(0.85rem, 2.7vw, 1.2rem);
         }
 
         .footer-grid {
@@ -756,19 +754,14 @@
             <div class="legacy-hero-grid">
               <div class="legacy-container">
                 <div class="legacy-hero-copy">
-                  <div class="legacy-hero-kicker">AlMulla Holding</div>
                   <h1 id="hero-title" class="legacy-heading">
                     <span>Building Legacies.</span>
                     <span>Empowering Futures.</span>
                   </h1>
-                  <span class="legacy-line" aria-hidden="true"></span>
                   <p>
                     AlMulla Holding Group is a diversified holding company committed to long-term
                     value creation and sustainable growth across key sectors that shape tomorrow.
                   </p>
-                  <a class="legacy-learn-link" href="/about-us"
-                    >Learn More <span aria-hidden="true">-></span></a
-                  >
                 </div>
               </div>
             </div>
@@ -858,8 +851,7 @@
                   <div class="legacy-sector-body">
                     <h3>Energy</h3>
                     <p class="legacy-sector-copy">
-                      Powering progress through resilient energy platforms across solar, oil, gas,
-                      and future-ready infrastructure.
+                      Powering progress through reliable energy platforms and solutions.
                     </p>
                   </div>
                 </article>

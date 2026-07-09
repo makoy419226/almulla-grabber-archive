@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
 import educationImg from "@/assets/sector-education.jpg";
 import educationImg900 from "@/assets/sector-education-900.jpg";
@@ -10,7 +10,6 @@ import healthcareImg from "@/assets/healthcare.jpg";
 import healthcareImg900 from "@/assets/healthcare-900.jpg";
 import hospitalityImg from "@/assets/hospitality.jpg";
 import hospitalityImg900 from "@/assets/hospitality-900.jpg";
-import { ArrowUpRight } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -33,8 +32,8 @@ export const Route = createFileRoute("/")({
         rel: "preload",
         as: "image",
         href: heroAlmullaEtihadImg720,
-        imagesrcset: `${heroAlmullaEtihadImg720} 720w, ${heroAlmullaEtihadImg} 1536w`,
-        imagesizes: "100vw",
+        imageSrcSet: `${heroAlmullaEtihadImg720} 720w, ${heroAlmullaEtihadImg} 1536w`,
+        imageSizes: "100vw",
       },
     ],
   }),
@@ -68,7 +67,7 @@ const sectors = [
     img: energyImg,
     imgSmall: energyImg900,
     width: 1600,
-    body: "Powering progress through resilient energy platforms across solar, oil, gas, and future-ready infrastructure.",
+    body: "Powering progress through reliable energy platforms and solutions.",
   },
 ];
 
@@ -81,7 +80,7 @@ function Home() {
             <img
               src={heroAlmullaEtihadImg720}
               alt=""
-              className="h-full w-full object-cover"
+              className="h-full w-full"
               srcSet={`${heroAlmullaEtihadImg720} 720w, ${heroAlmullaEtihadImg} 1536w`}
               loading="eager"
               fetchPriority="high"
@@ -90,22 +89,16 @@ function Home() {
               width={1536}
               height={864}
             />
-            <div className="legacy-hero-grid mx-auto flex max-w-7xl items-center px-4 sm:px-6 lg:px-8">
+            <div className="legacy-hero-grid mx-auto flex max-w-7xl px-4 sm:px-6 lg:px-8">
               <div className="legacy-hero-copy reveal-up">
-                <div className="legacy-hero-kicker">AlMulla Holding</div>
                 <h1 className="legacy-heading">
                   <span>Building Legacies.</span>
                   <span>Empowering Futures.</span>
                 </h1>
-                <span className="legacy-line" aria-hidden="true" />
                 <p className="mt-6 max-w-xl text-base leading-8">
                   AlMulla Holding Group is a diversified holding company committed to long-term
                   value creation and sustainable growth across key sectors that shape tomorrow.
                 </p>
-                <Link to="/about-us" className="legacy-learn-link">
-                  Learn More
-                  <ArrowUpRight className="h-4 w-4" />
-                </Link>
               </div>
             </div>
           </div>

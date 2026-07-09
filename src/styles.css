@@ -1,5 +1,8 @@
-@import "tailwindcss" source(none);
+@import "tailwindcss";
 @source "../src";
+@source not "../godaddy";
+@source not "../godaddy-public";
+@source not "../godaddy-dist";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
@@ -162,7 +165,10 @@
     font-size: 0.85rem;
     font-weight: 700;
     letter-spacing: 0;
-    transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease;
+    transition:
+      background-color 180ms ease,
+      border-color 180ms ease,
+      color 180ms ease;
     box-shadow:
       inset 0 1px 0 color-mix(in oklab, white 34%, transparent),
       0 18px 42px -24px color-mix(in oklab, var(--bronze) 86%, transparent);
@@ -228,12 +234,11 @@
     position: relative;
     overflow: hidden;
     border: 1px solid color-mix(in oklab, var(--border) 66%, white);
-    background:
-      linear-gradient(
-        145deg,
-        color-mix(in oklab, white 88%, transparent),
-        color-mix(in oklab, white 72%, var(--ivory))
-      );
+    background: linear-gradient(
+      145deg,
+      color-mix(in oklab, white 88%, transparent),
+      color-mix(in oklab, white 72%, var(--ivory))
+    );
     box-shadow: inset 0 1px 0 color-mix(in oklab, white 70%, transparent);
   }
 
@@ -284,7 +289,10 @@
 
   .nav-hover-magnify {
     position: relative;
-    transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease;
+    transition:
+      color 180ms ease,
+      background-color 180ms ease,
+      border-color 180ms ease;
   }
 
   .nav-hover-magnify:hover,
@@ -620,13 +628,12 @@
   .legacy-hero {
     position: relative;
     isolation: isolate;
-    min-height: clamp(32rem, 68vh, 45rem);
-    background:
-      linear-gradient(
-        135deg,
-        color-mix(in oklab, var(--champagne) 88%, white),
-        color-mix(in oklab, var(--ivory) 86%, var(--gold) 8%)
-      );
+    height: max(32rem, 56.25vw);
+    background: linear-gradient(
+      135deg,
+      color-mix(in oklab, var(--champagne) 88%, white),
+      color-mix(in oklab, var(--ivory) 86%, var(--gold) 8%)
+    );
   }
 
   .legacy-hero::before {
@@ -637,22 +644,19 @@
     position: relative;
     z-index: 3;
     width: min(42rem, 100%);
-    padding-bottom: clamp(2.5rem, 6vw, 5rem);
+    margin-right: auto;
+    margin-left: auto;
+    padding-bottom: clamp(1.75rem, 5vw, 3.5rem);
     padding-top: clamp(2.5rem, 6vw, 5rem);
-  }
-
-  .legacy-hero-kicker {
-    margin-bottom: 1.1rem;
-    color: color-mix(in oklab, var(--gold) 82%, white);
-    font-size: 0.76rem;
-    font-weight: 900;
-    text-transform: uppercase;
+    transform: translateY(48%);
   }
 
   .legacy-hero-grid {
     position: absolute;
     inset: 0;
     z-index: 3;
+    align-items: center;
+    justify-content: center;
     width: 100%;
   }
 
@@ -688,9 +692,11 @@
   }
 
   .legacy-hero-media img {
-    object-position: right center;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center bottom;
     filter: saturate(0.98) contrast(1.02);
-    animation: hero-media-drift 18s ease-in-out infinite alternate;
     transform-origin: center;
   }
 
@@ -706,17 +712,12 @@
     text-shadow: none;
   }
 
-  .legacy-heading span:last-child {
-    color: color-mix(in oklab, var(--gold) 76%, white);
+  .legacy-heading span {
+    white-space: nowrap;
   }
 
-  .legacy-line {
-    display: block;
-    width: 4.6rem;
-    height: 2px;
-    margin-top: 1.45rem;
-    background: linear-gradient(90deg, var(--gold), transparent);
-    box-shadow: none;
+  .legacy-heading span:last-child {
+    color: color-mix(in oklab, var(--gold) 76%, white);
   }
 
   .legacy-hero-copy p {
@@ -724,50 +725,7 @@
     text-shadow: none;
   }
 
-  .legacy-learn-link {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.55rem;
-    margin-top: 1.75rem;
-    color: color-mix(in oklab, white 92%, var(--champagne));
-    font-size: 0.78rem;
-    font-weight: 900;
-    text-transform: uppercase;
-  }
-
-  .legacy-learn-link::after {
-    position: absolute;
-    right: 0;
-    bottom: -0.35rem;
-    left: 0;
-    height: 1px;
-    background: color-mix(in oklab, var(--gold) 72%, var(--bronze));
-    content: "";
-    transform: scaleX(0.28);
-    transform-origin: left;
-    transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .legacy-learn-link svg {
-    transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .legacy-learn-link:hover::after,
-  .legacy-learn-link:focus-visible::after {
-    transform: scaleX(1);
-  }
-
-  .legacy-learn-link:hover svg,
-  .legacy-learn-link:focus-visible svg {
-    transform: translate(0.2rem, -0.2rem);
-  }
-
   @media (min-width: 1024px) {
-    .legacy-hero-grid {
-      align-items: center;
-    }
-
     .legacy-hero-copy {
       padding-right: clamp(1rem, 4vw, 3rem);
     }
@@ -817,10 +775,8 @@
     bottom: 21%;
     width: 61%;
     height: auto;
-    filter:
-      drop-shadow(0 20px 28px color-mix(in oklab, var(--primary) 35%, transparent))
-      sepia(0.14)
-      saturate(1.1);
+    filter: drop-shadow(0 20px 28px color-mix(in oklab, var(--primary) 35%, transparent))
+      sepia(0.14) saturate(1.1);
   }
 
   .btn-outline-legacy,
@@ -965,6 +921,10 @@
   }
 
   .legacy-sector-body {
+    display: flex;
+    min-height: clamp(11rem, 14vw, 12.75rem);
+    flex-direction: column;
+    justify-content: flex-start;
     position: absolute;
     right: 0;
     bottom: 0;
@@ -974,11 +934,16 @@
   }
 
   .legacy-sector-copy {
+    display: -webkit-box;
     max-width: 30rem;
+    overflow: hidden;
     color: color-mix(in oklab, white 74%, transparent);
     font-size: 0.95rem;
     line-height: 1.75;
     opacity: 0.88;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
     transition:
       opacity 320ms ease,
       transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
@@ -1063,13 +1028,12 @@
     gap: 2rem;
     overflow: hidden;
     border-radius: var(--radius);
-    background:
-      linear-gradient(
-        135deg,
-        color-mix(in oklab, var(--brand-red) 90%, black),
-        color-mix(in oklab, var(--primary) 70%, var(--teal)) 58%,
-        color-mix(in oklab, var(--ink) 78%, var(--primary))
-      );
+    background: linear-gradient(
+      135deg,
+      color-mix(in oklab, var(--brand-red) 90%, black),
+      color-mix(in oklab, var(--primary) 70%, var(--teal)) 58%,
+      color-mix(in oklab, var(--ink) 78%, var(--primary))
+    );
     color: var(--primary-foreground);
     padding: clamp(1.5rem, 4vw, 3rem);
     box-shadow: 0 28px 72px -52px color-mix(in oklab, var(--ink) 72%, transparent);
@@ -1467,13 +1431,12 @@
 
   .page-hero {
     overflow: hidden;
-    background:
-      linear-gradient(
-        135deg,
-        color-mix(in oklab, var(--ink) 70%, var(--primary)),
-        color-mix(in oklab, var(--primary) 68%, var(--teal)) 58%,
-        color-mix(in oklab, var(--brand-red) 55%, var(--primary))
-      );
+    background: linear-gradient(
+      135deg,
+      color-mix(in oklab, var(--ink) 70%, var(--primary)),
+      color-mix(in oklab, var(--primary) 68%, var(--teal)) 58%,
+      color-mix(in oklab, var(--brand-red) 55%, var(--primary))
+    );
   }
 
   .page-hero::after,
@@ -1482,7 +1445,11 @@
     inset: auto 0 0;
     height: 9rem;
     pointer-events: none;
-    background: linear-gradient(180deg, transparent, color-mix(in oklab, var(--background) 96%, transparent));
+    background: linear-gradient(
+      180deg,
+      transparent,
+      color-mix(in oklab, var(--background) 96%, transparent)
+    );
     content: "";
     z-index: 1;
   }
@@ -1535,7 +1502,9 @@
     padding: 0.85rem 1.15rem;
     font-size: 0.85rem;
     font-weight: 700;
-    transition: background-color 180ms ease, border-color 180ms ease;
+    transition:
+      background-color 180ms ease,
+      border-color 180ms ease;
   }
 
   .btn-secondary:hover {
@@ -1613,7 +1582,9 @@
   .card-business {
     border-radius: calc(var(--radius) + 0.35rem);
     padding: 1rem;
-    transition: border-color 180ms ease, box-shadow 180ms ease;
+    transition:
+      border-color 180ms ease,
+      box-shadow 180ms ease;
   }
 
   .card-business:hover {
@@ -1622,7 +1593,9 @@
   }
 
   .fluid-morph {
-    transition: border-color 180ms ease, box-shadow 180ms ease;
+    transition:
+      border-color 180ms ease,
+      box-shadow 180ms ease;
   }
 
   .fluid-morph:hover {
@@ -1634,7 +1607,10 @@
   }
 
   .site-content :is(.surface-card, .metric-card, .card-business, a.inline-flex, button) {
-    transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease;
+    transition:
+      background-color 180ms ease,
+      border-color 180ms ease,
+      color 180ms ease;
   }
 
   .site-content :is(.surface-card, .metric-card, .card-business):hover,
@@ -1748,16 +1724,6 @@
 
   to {
     clip-path: inset(0 0 0 0);
-  }
-}
-
-@keyframes hero-media-drift {
-  from {
-    transform: scale(1.01);
-  }
-
-  to {
-    transform: scale(1.06) translateX(-1.25%);
   }
 }
 
@@ -1932,38 +1898,56 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+@media (min-width: 1024px) {
+  .legacy-sector-card {
+    min-height: clamp(24rem, 32vw, 30rem);
   }
 
-  @media (min-width: 1024px) {
-    .legacy-sector-card {
-      min-height: clamp(24rem, 32vw, 30rem);
-    }
-
-    .legacy-sector-card h3 {
-      font-size: clamp(1.35rem, 1.9vw, 2rem);
-      line-height: 1.08;
-    }
-
-    .legacy-sector-copy {
-      font-size: 0.88rem;
-      line-height: 1.6;
-    }
+  .legacy-sector-card h3 {
+    font-size: clamp(1.35rem, 1.9vw, 2rem);
+    line-height: 1.08;
   }
 
-  @media (max-width: 1023px) {
-    .legacy-hero {
-      min-height: clamp(31rem, 64vh, 42rem);
+  .legacy-sector-copy {
+    font-size: 0.88rem;
+    line-height: 1.6;
+  }
+}
+
+@media (max-width: 1023px) {
+  .legacy-hero {
+    height: max(31rem, 56.25vw);
     background: color-mix(in oklab, var(--ink) 90%, black);
   }
 
+  .legacy-hero-media img {
+    object-fit: cover;
+    object-position: center bottom;
+  }
+
+  .site-content .home-legacy .legacy-hero-copy :is(.legacy-heading, p) {
+    text-align: center;
+    text-align-last: center;
+  }
+
+  .legacy-hero-copy {
+    transform: translateY(clamp(0.85rem, 3.25vh, 1.75rem));
+  }
+
+  .legacy-hero-copy p {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
   .legacy-hero-media::before {
-    background:
-      linear-gradient(
-        180deg,
-        color-mix(in oklab, black 70%, transparent) 0%,
-        color-mix(in oklab, black 52%, transparent) 52%,
-        color-mix(in oklab, black 30%, transparent) 100%
-      );
+    background: linear-gradient(
+      180deg,
+      color-mix(in oklab, black 70%, transparent) 0%,
+      color-mix(in oklab, black 52%, transparent) 52%,
+      color-mix(in oklab, black 30%, transparent) 100%
+    );
   }
 
   .legacy-skyline {
@@ -2008,13 +1992,27 @@
   }
 
   .legacy-heading {
-    font-size: clamp(2rem, 9vw, 3.4rem);
+    gap: 0.08em;
+    font-size: clamp(1.35rem, 7.8cqw, 2.45rem);
+    line-height: 1.08;
+    text-wrap: balance;
   }
 
   .legacy-hero-copy {
-    width: 100%;
-    padding-bottom: 2.75rem;
-    padding-top: 2.75rem;
+    container-type: inline-size;
+    width: min(24rem, 100%);
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+  }
+
+  .legacy-hero-copy p {
+    max-width: 21rem;
+    margin-top: 1rem;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: clamp(0.88rem, 3.6vw, 0.98rem);
+    line-height: 1.65;
+    text-wrap: pretty;
   }
 
   .legacy-monument {
@@ -2027,6 +2025,7 @@
   }
 
   .legacy-sector-body {
+    min-height: 7.5rem;
     padding: clamp(0.85rem, 2.7vw, 1.2rem);
   }
 
@@ -2036,12 +2035,8 @@
   }
 
   .legacy-sector-copy {
-    display: -webkit-box;
-    overflow: hidden;
     font-size: clamp(0.72rem, 2.6vw, 0.86rem);
     line-height: 1.45;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
   }
 
   .legacy-cta {
@@ -2122,9 +2117,6 @@
   .mobile-menu-trigger svg,
   .nav-echo > span,
   .nav-echo::after,
-  .legacy-learn-link,
-  .legacy-learn-link::after,
-  .legacy-learn-link svg,
   .legacy-sector-card h3,
   .legacy-sector-copy,
   .dropdown-nav-arrow,

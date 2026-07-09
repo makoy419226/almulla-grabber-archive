@@ -6,10 +6,10 @@ import energyImg from "@/assets/sector-energy.jpg";
 import energyImg900 from "@/assets/sector-energy-900.jpg";
 import heroAlmullaEtihadImg from "@/assets/hero-almulla-etihad-burj.jpg";
 import heroAlmullaEtihadImg720 from "@/assets/hero-almulla-etihad-burj-720.jpg";
-import healthcareImg from "@/assets/healthcare.jpg";
-import healthcareImg900 from "@/assets/healthcare-900.jpg";
-import hospitalityImg from "@/assets/hospitality.jpg";
-import hospitalityImg900 from "@/assets/hospitality-900.jpg";
+import healthcareImg from "@/assets/sector-healthcare.jpg";
+import healthcareImg900 from "@/assets/sector-healthcare-900.jpg";
+import hospitalityImg from "@/assets/sector-hospitality.jpg";
+import hospitalityImg900 from "@/assets/sector-hospitality-900.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -46,6 +46,7 @@ const sectors = [
     img: healthcareImg,
     imgSmall: healthcareImg900,
     width: 1536,
+    height: 1024,
     body: "Delivering advanced healthcare services that improve lives and communities.",
   },
   {
@@ -53,20 +54,23 @@ const sectors = [
     img: educationImg,
     imgSmall: educationImg900,
     width: 1536,
+    height: 1024,
     body: "Supporting future generations through quality education and innovative learning.",
   },
   {
     title: "Hospitality",
     img: hospitalityImg,
     imgSmall: hospitalityImg900,
-    width: 1069,
+    width: 1536,
+    height: 1024,
     body: "Creating exceptional experiences through world-class hospitality and leisure.",
   },
   {
     title: "Energy",
     img: energyImg,
     imgSmall: energyImg900,
-    width: 1600,
+    width: 1536,
+    height: 1024,
     body: "Powering progress through reliable energy platforms and solutions.",
   },
 ];
@@ -123,8 +127,8 @@ function Home() {
                     fetchPriority="low"
                     decoding="async"
                     sizes="(min-width: 1024px) 25vw, 50vw"
-                    width={900}
-                    height={620}
+                    width={sector.width}
+                    height={sector.height}
                   />
                 </div>
                 <div className="legacy-sector-body">

@@ -257,7 +257,7 @@ const businessPages: Record<string, BusinessPageData> = {
       "Powering progress through resilient energy platforms across solar, infrastructure, and future-ready systems.",
     image: energyImg,
     imageSmall: energyImg900,
-    imageWidth: 1600,
+    imageWidth: 1536,
     introTitle:
       "Energy platforms built for reliability, infrastructure quality, and practical transition.",
     introBody: [

@@ -645,7 +645,7 @@
     z-index: 3;
     width: min(42rem, 100%);
     margin-right: auto;
-    margin-left: auto;
+    margin-left: 0;
     padding-bottom: clamp(1.75rem, 5vw, 3.5rem);
     padding-top: clamp(2.5rem, 6vw, 5rem);
     transform: translateY(48%);
@@ -656,7 +656,7 @@
     inset: 0;
     z-index: 3;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     width: 100%;
   }
 
@@ -703,7 +703,7 @@
   .legacy-heading {
     display: grid;
     gap: 0.04em;
-    justify-items: center;
+    justify-items: start;
     color: color-mix(in oklab, white 95%, var(--champagne));
     font-family: var(--font-sans);
     font-size: clamp(2rem, 3.8vw, 3.7rem);
@@ -722,20 +722,22 @@
   }
 
   .legacy-hero-copy p {
+    margin-right: auto;
+    margin-left: 0;
     color: color-mix(in oklab, white 78%, transparent);
     text-shadow: none;
   }
 
   @media (min-width: 1024px) {
     .legacy-hero-grid {
-      align-items: flex-start;
+      align-items: center;
       justify-content: flex-start;
     }
 
     .legacy-hero-copy {
       margin-right: auto;
       margin-left: 0;
-      padding-top: clamp(7rem, 16vh, 10rem);
+      padding-top: 0;
       padding-bottom: 0;
       padding-right: clamp(1rem, 4vw, 3rem);
       padding-left: clamp(1rem, 4vw, 3rem);
@@ -872,9 +874,10 @@
   .legacy-sector-card {
     --sector-body-space: clamp(13rem, 15vw, 14.5rem);
     position: relative;
-    display: block;
+    display: flex;
+    flex-direction: column;
     overflow: hidden;
-    min-height: clamp(24rem, 38vw, 34rem);
+    min-height: 0;
     border: 1px solid color-mix(in oklab, var(--gold) 34%, white);
     border-radius: var(--radius);
     background: linear-gradient(
@@ -886,7 +889,7 @@
     box-shadow: 0 26px 64px -50px rgba(60, 42, 31, 0.54);
     animation: portfolio-card-in 360ms cubic-bezier(0.16, 1, 0.3, 1) both;
     content-visibility: auto;
-    contain-intrinsic-size: 1px 34rem;
+    contain-intrinsic-size: 1px 36rem;
     transition:
       transform 320ms cubic-bezier(0.16, 1, 0.3, 1),
       border-color 240ms ease,
@@ -906,17 +909,11 @@
   }
 
   .legacy-sector-card::before {
-    position: absolute;
-    inset: 0 0 var(--sector-body-space);
-    z-index: 2;
-    pointer-events: none;
-    border-radius: var(--radius) var(--radius) 0 0;
-    background:
-      linear-gradient(180deg, color-mix(in oklab, var(--ink) 16%, transparent), transparent 34%),
-      linear-gradient(180deg, transparent 46%, color-mix(in oklab, var(--ink) 34%, transparent) 100%),
-      linear-gradient(90deg, color-mix(in oklab, var(--bronze) 18%, transparent), transparent 58%);
-    content: "";
-    opacity: 1;
+    content: none;
+  }
+
+  .legacy-sector-media::after {
+    content: none;
   }
 
   .legacy-sector-card:hover,
@@ -928,13 +925,15 @@
   }
 
   .legacy-sector-media {
-    position: absolute;
-    inset: 0 0 var(--sector-body-space);
+    position: relative;
+    aspect-ratio: 3 / 2;
+    flex: none;
     overflow: hidden;
     background: transparent;
   }
 
   .legacy-sector-media img {
+    display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -963,11 +962,9 @@
     min-height: var(--sector-body-space);
     flex-direction: column;
     justify-content: flex-start;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    position: relative;
     z-index: 3;
+    flex: 1;
     padding: clamp(1.35rem, 3vw, 2.25rem);
   }
 
@@ -1935,7 +1932,7 @@
 
 @media (min-width: 1024px) {
   .legacy-sector-card {
-    min-height: clamp(25rem, 33vw, 31rem);
+    --sector-body-space: clamp(10.75rem, 12vw, 12rem);
   }
 
   .legacy-sector-card h3 {
@@ -1961,8 +1958,8 @@
   }
 
   .site-content .home-legacy .legacy-hero-copy :is(.legacy-heading, p) {
-    text-align: center;
-    text-align-last: center;
+    text-align: left;
+    text-align-last: auto;
   }
 
   .legacy-hero-copy {
@@ -1971,7 +1968,7 @@
 
   .legacy-hero-copy p {
     margin-right: auto;
-    margin-left: auto;
+    margin-left: 0;
   }
 
   .legacy-hero-media::before {
@@ -2042,7 +2039,7 @@
     max-width: 21rem;
     margin-top: 1rem;
     margin-right: auto;
-    margin-left: auto;
+    margin-left: 0;
     font-size: clamp(0.88rem, 3.6vw, 0.98rem);
     line-height: 1.65;
     text-wrap: pretty;
@@ -2055,7 +2052,6 @@
 
   .legacy-sector-card {
     --sector-body-space: 10rem;
-    min-height: clamp(23rem, 76vw, 26rem);
   }
 
   .legacy-sector-body {

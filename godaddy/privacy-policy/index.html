@@ -120,8 +120,7 @@
         width: clamp(8.5rem, 12vw, 11.7rem);
       }
 
-      .logo,
-      .footer-logo {
+      .logo {
         width: 100%;
         height: auto;
       }
@@ -293,7 +292,24 @@
 
       .footer-logo-wrap {
         display: block;
-        width: 9rem;
+        width: 2.25rem;
+        height: 3rem;
+        overflow: hidden;
+      }
+
+      .footer-logo-mark {
+        display: block;
+        width: 100%;
+        height: 142%;
+        background: var(--gold);
+        -webkit-mask-image: url("/logo-stacked-transparent.png?v=6");
+        -webkit-mask-position: top center;
+        -webkit-mask-repeat: no-repeat;
+        -webkit-mask-size: cover;
+        mask-image: url("/logo-stacked-transparent.png?v=6");
+        mask-position: top center;
+        mask-repeat: no-repeat;
+        mask-size: cover;
       }
 
       .footer-copy {
@@ -560,17 +576,9 @@
       <footer class="footer-premium">
         <div class="footer-grid">
           <div>
-            <picture class="footer-logo-wrap">
-              <source srcset="/logo.webp?v=5" type="image/webp" />
-              <img
-                class="footer-logo"
-                src="/logo.png?v=5"
-                alt="AlMulla Holding Group"
-                width="284"
-                height="99"
-                loading="lazy"
-              />
-            </picture>
+            <span class="footer-logo-wrap">
+              <span class="footer-logo-mark" role="img" aria-label="AlMulla Holding"></span>
+            </span>
             <p class="footer-copy">
               A diversified holding group committed to building legacies and empowering future
               growth.

@@ -7,11 +7,12 @@
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
-    "build:godaddy": "vite build --config vite.godaddy.config.ts",
+    "build:godaddy": "node scripts/build-godaddy-static.mjs",
+    "build:godaddy:react": "vite build --config vite.godaddy.config.ts",
     "build:dev": "vite build --mode development",
     "deploy": "npm run build && wrangler deploy",
     "preview": "vite preview",
-    "preview:godaddy": "vite preview --config vite.godaddy.config.ts",
+    "preview:godaddy": "npm run build:godaddy && node scripts/preview-godaddy-static.mjs",
     "lint": "eslint .",
     "format": "prettier --write ."
   },

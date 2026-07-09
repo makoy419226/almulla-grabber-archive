@@ -4,6 +4,10 @@ on:
   push:
   workflow_dispatch:
 
+concurrency:
+  group: godaddy-deploy
+  cancel-in-progress: true
+
 jobs:
   deploy:
     name: Build and upload static site
@@ -17,19 +21,27 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm
-
-      - name: Install dependencies
-        run: npm ci
 
       - name: Build GoDaddy static site
         run: npm run build:godaddy
 
-      - name: Validate generated hero alignment
+      - name: Validate GoDaddy static output
         run: |
-          grep -R -q 'legacy-hero-grid' godaddy-dist/assets
-          grep -R -q 'justify-content:flex-start' godaddy-dist/assets
-          grep -R -q 'text-align:left' godaddy-dist/assets
+          test -f godaddy-dist/index.html
+          test -f godaddy-dist/contact-us/index.html
+          test -f godaddy-dist/privacy-policy/index.html
+          grep -q 'legacy-hero-grid' godaddy-dist/index.html
+          grep -q 'hero-1280.webp' godaddy-dist/index.html
+          grep -q 'justify-content: flex-start' godaddy-dist/index.html
+          grep -q 'text-align: left' godaddy-dist/index.html
+          if grep -q 'src/godaddy-main.tsx\|id="root"\|/assets/index-' godaddy-dist/index.html; then
+            echo "Generated GoDaddy homepage contains the React app shell."
+            exit 1
+          fi
+          if test -d godaddy-dist/assets; then
+            echo "Generated GoDaddy upload contains bundled app assets."
+            exit 1
+          fi
 
       - name: Validate GoDaddy FTP secrets
         run: |

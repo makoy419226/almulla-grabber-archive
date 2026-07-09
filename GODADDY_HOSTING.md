@@ -68,4 +68,4 @@ Use an FTP account whose directory is the live site root:
 
 Because the FTP account starts inside `public_html`, `/` means the live website folder.
 
-The workflow runs on pushes to `main` and can also be started manually from GitHub Actions.
+The workflow runs on every push and can also be started manually from GitHub Actions.

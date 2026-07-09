@@ -1,6 +1,6 @@
 # GoDaddy Hosting Upload
 
-This project now has a static build for GoDaddy cPanel/shared hosting.
+This project has a static React build for GoDaddy cPanel/shared hosting.
 
 ## Build
 
@@ -19,7 +19,7 @@ Upload the contents of `godaddy-dist/` into the GoDaddy hosting document root, u
 
 ## Important Files
 
-- `index.html` is the static app entry.
+- `index.html` is the React app entry generated from `src/godaddy-main.tsx`.
 - `assets/` contains the compiled JavaScript, CSS, and images.
 - `.htaccess` rewrites direct route requests like `/about-us` back to `index.html`.
 

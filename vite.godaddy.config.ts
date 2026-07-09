@@ -1,20 +1,18 @@
 import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import tailwindcss from "@tailwindcss/vite";
+import tsconfigPaths from "vite-tsconfig-paths";
 import { fileURLToPath } from "node:url";
-
-const input = {
-  main: fileURLToPath(new URL("./godaddy/index.html", import.meta.url)),
-  contact: fileURLToPath(new URL("./godaddy/contact-us/index.html", import.meta.url)),
-  privacyPolicy: fileURLToPath(new URL("./godaddy/privacy-policy/index.html", import.meta.url)),
-};
 
 export default defineConfig({
   root: "godaddy",
   publicDir: "../godaddy-public",
+  plugins: [react(), tailwindcss(), tsconfigPaths()],
   build: {
     outDir: "../godaddy-dist",
     emptyOutDir: true,
     rollupOptions: {
-      input,
+      input: fileURLToPath(new URL("./godaddy/index.html", import.meta.url)),
     },
   },
 });

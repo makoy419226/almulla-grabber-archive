@@ -726,8 +726,23 @@
   }
 
   @media (min-width: 1024px) {
+    .legacy-hero-grid {
+      align-items: flex-end;
+    }
+
     .legacy-hero-copy {
+      padding-top: 0;
+      padding-bottom: clamp(3rem, 8vh, 5.5rem);
       padding-right: clamp(1rem, 4vw, 3rem);
+      padding-left: clamp(1rem, 4vw, 3rem);
+      text-align: center;
+      text-align-last: center;
+      transform: none;
+    }
+
+    .site-content .home-legacy .legacy-hero-copy :is(.legacy-heading, p) {
+      text-align: center;
+      text-align-last: center;
     }
   }
 

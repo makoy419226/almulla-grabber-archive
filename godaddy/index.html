@@ -529,6 +529,23 @@
         margin-left: 0.75rem;
       }
 
+      @media (min-width: 1024px) {
+        .legacy-hero-grid {
+          align-items: flex-end;
+        }
+
+        .legacy-hero-copy {
+          padding: 0 clamp(1rem, 4vw, 3rem) clamp(3rem, 8vh, 5.5rem);
+          text-align: center;
+          transform: none;
+        }
+
+        .legacy-heading,
+        .legacy-hero-copy p {
+          text-align: center;
+        }
+      }
+
       @media (prefers-reduced-motion: no-preference) {
         .legacy-hero-copy {
           animation: reveal-up 460ms ease both;

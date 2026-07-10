@@ -60,11 +60,12 @@ function Healthcare() {
       {/* Hero */}
       <section className="business-hero relative overflow-hidden bg-primary text-primary-foreground">
         <div
-          className="absolute inset-0 opacity-25"
+          className="business-hero-media absolute opacity-45"
           style={{
             backgroundImage: `url(${healthcareImg})`,
-            backgroundSize: "cover",
+            backgroundSize: "contain",
             backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
           }}
           aria-hidden
         />

@@ -108,25 +108,25 @@ function Home() {
           </div>
         </section>
 
-        <section id="businesses" className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
+        <section id="businesses" className="mx-auto max-w-5xl px-4 py-14 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-4xl text-center">
             <div className="legacy-eyebrow">What We Do</div>
             <h2 className="legacy-section-title mt-3">Our Portfolio</h2>
           </div>
 
-          <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:gap-8">
+          <div className="mx-auto mt-10 grid max-w-4xl grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6">
             {sectors.map((sector) => (
               <article key={sector.title} className="legacy-sector-card">
                 <div className="legacy-sector-media">
                   <img
                     src={sector.img}
                     alt={sector.title}
-                    className="h-full w-full object-contain"
+                    className="h-full w-full object-cover"
                     srcSet={`${sector.imgSmall} 900w, ${sector.img} ${sector.width}w`}
                     loading="lazy"
                     fetchPriority="low"
                     decoding="async"
-                    sizes="(min-width: 1024px) 50vw, (min-width: 640px) 50vw, 100vw"
+                    sizes="(min-width: 1024px) 420px, (min-width: 640px) 50vw, 100vw"
                     width={sector.width}
                     height={sector.height}
                   />

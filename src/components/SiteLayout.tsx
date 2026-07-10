@@ -3,7 +3,9 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Mail, Menu, Phone, Send, X } from "lucide-react";
 import { AlmullaLogo } from "@/components/AlmullaLogo";
 import { CookieConsent } from "@/components/CookieConsent";
+import { PrivacyPolicyModal } from "@/components/PrivacyPolicyModal";
 import { openCookiePreferences } from "@/lib/cookie-consent";
+import { PRIVACY_POLICY_OPEN_EVENT, openPrivacyPolicyModal } from "@/lib/privacy-policy";
 
 const navLinkBase =
   "nav-hover-magnify inline-flex items-center rounded-md px-4 py-3 text-sm font-bold uppercase text-foreground/70 hover:text-primary";
@@ -11,6 +13,8 @@ const navLinkBase =
 export function SiteLayout({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false);
   const [renderMobileMenu, setRenderMobileMenu] = useState(false);
+  const [privacyPolicyOpen, setPrivacyPolicyOpen] = useState(false);
+  const [renderPrivacyPolicyModal, setRenderPrivacyPolicyModal] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
 
@@ -62,6 +66,54 @@ export function SiteLayout({ children }: { children: ReactNode }) {
   }, [open, renderMobileMenu]);
 
   const closeMobileMenu = () => setOpen(false);
+
+  useEffect(() => {
+    const handleOpenPrivacyPolicy = () => {
+      setRenderPrivacyPolicyModal(true);
+      setPrivacyPolicyOpen(true);
+    };
+
+    window.addEventListener(PRIVACY_POLICY_OPEN_EVENT, handleOpenPrivacyPolicy);
+    return () => window.removeEventListener(PRIVACY_POLICY_OPEN_EVENT, handleOpenPrivacyPolicy);
+  }, []);
+
+  useEffect(() => {
+    if (privacyPolicyOpen) {
+      setRenderPrivacyPolicyModal(true);
+    }
+  }, [privacyPolicyOpen]);
+
+  useEffect(() => {
+    if (privacyPolicyOpen || !renderPrivacyPolicyModal) return;
+
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const timeout = window.setTimeout(
+      () => setRenderPrivacyPolicyModal(false),
+      prefersReducedMotion ? 0 : 300,
+    );
+
+    return () => window.clearTimeout(timeout);
+  }, [privacyPolicyOpen, renderPrivacyPolicyModal]);
+
+  useEffect(() => {
+    if (!renderPrivacyPolicyModal) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setPrivacyPolicyOpen(false);
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [renderPrivacyPolicyModal]);
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground">
@@ -237,12 +289,13 @@ export function SiteLayout({ children }: { children: ReactNode }) {
               >
                 Contact Us
               </Link>
-              <Link
-                to="/privacy-policy"
-                className="text-primary-foreground/66 transition-colors hover:text-gold"
+              <button
+                type="button"
+                className="border-0 bg-transparent p-0 text-left text-sm text-primary-foreground/66 transition-colors hover:text-gold"
+                onClick={openPrivacyPolicyModal}
               >
                 Privacy Policy
-              </Link>
+              </button>
             </div>
           </div>
 
@@ -267,9 +320,9 @@ export function SiteLayout({ children }: { children: ReactNode }) {
           </div>
         </div>
         <div className="border-t border-white/10 px-4 py-4 text-center text-xs text-primary-foreground/44 sm:px-6 lg:px-8">
-          <Link to="/privacy-policy" className="footer-legal-link">
+          <button type="button" className="footer-legal-button" onClick={openPrivacyPolicyModal}>
             Privacy Policy
-          </Link>
+          </button>
           <span className="mx-3 text-primary-foreground/20">|</span>
           <span>Terms of Use</span>
           <span className="mx-3 text-primary-foreground/20">|</span>
@@ -279,6 +332,13 @@ export function SiteLayout({ children }: { children: ReactNode }) {
         </div>
       </footer>
       <CookieConsent />
+      {renderPrivacyPolicyModal && (
+        <PrivacyPolicyModal
+          open={privacyPolicyOpen}
+          onClose={() => setPrivacyPolicyOpen(false)}
+          onExited={() => setRenderPrivacyPolicyModal(false)}
+        />
+      )}
     </div>
   );
 }

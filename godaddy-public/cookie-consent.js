@@ -1,6 +1,66 @@
 (() => {
   const storageKey = "almulla_cookie_consent_v1";
   const version = 1;
+  const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const closeAnimationMs = 320;
+
+  const privacyPolicySections = [
+    {
+      title: "Information We Collect",
+      body: [
+        "We may collect information you provide directly, such as your name, email address, phone number, company details, and the content of enquiries you send to us.",
+        "When you use the website, we may also collect technical information such as browser type, device information, pages visited, approximate location derived from network data, and cookie preferences.",
+      ],
+    },
+    {
+      title: "How We Use Information",
+      body: [
+        "We use information to respond to enquiries, manage business communications, operate and secure the website, improve website content and performance, and meet legal or regulatory obligations.",
+        "We do not sell personal information. Where marketing or analytics tools are used, non-essential cookies are controlled through the cookie preference manager.",
+      ],
+    },
+    {
+      title: "Cookies",
+      body: [
+        "Cookies are small files stored by your browser. We use functional cookies that are necessary for basic website operation and may use analytical, preference, or targeted cookies only according to your saved choices.",
+        "You can accept all cookies, reject non-essential cookies, or manage individual categories at any time from the website footer.",
+      ],
+    },
+    {
+      title: "Cookie Categories",
+      body: [
+        "Functional cookies are always active because they support security, consent storage, and basic browsing features.",
+        "Analytical cookies help us understand website usage. Preference cookies remember browsing choices. Targeted or advertising cookies support relevant campaign measurement if such tools are enabled.",
+      ],
+    },
+    {
+      title: "Sharing Information",
+      body: [
+        "We may share information with service providers, professional advisers, affiliated entities, or public authorities where necessary for website operations, business administration, legal compliance, or protection of rights.",
+        "Service providers are expected to process information only for the purposes we specify and to apply appropriate safeguards.",
+      ],
+    },
+    {
+      title: "Retention And Security",
+      body: [
+        "We keep personal information only for as long as needed for the purposes described in this policy, unless a longer retention period is required or permitted by law.",
+        "We use reasonable technical and organisational measures to protect information, but no website or email transmission can be guaranteed to be completely secure.",
+      ],
+    },
+    {
+      title: "Your Choices And Rights",
+      body: [
+        "Depending on applicable law, you may have rights to request access, correction, deletion, restriction, objection, or withdrawal of consent for certain uses of your personal information.",
+        "You can change your cookie preferences at any time using the Manage Cookies control in the footer.",
+      ],
+    },
+    {
+      title: "Updates To This Policy",
+      body: [
+        "We may update this Privacy Policy from time to time. The updated version will be posted on this page with a revised last updated date.",
+      ],
+    },
+  ];
 
   const categories = [
     {
@@ -80,7 +140,7 @@
     window.dispatchEvent(
       new CustomEvent("almulla-cookie-consent-change", { detail: nextPreferences }),
     );
-    clearRoot();
+    closeCurrentSurface(clearRoot);
   };
 
   const getRoot = () => {
@@ -98,12 +158,95 @@
     if (root) root.innerHTML = "";
   };
 
-  const closeModal = () => {
-    if (readPreferences()) {
-      clearRoot();
-    } else {
-      renderBanner();
+  const closeCurrentSurface = (afterClose) => {
+    const root = document.getElementById("cookie-consent-root");
+    const modalShell = root?.querySelector(".cookie-modal-shell, .privacy-modal-shell");
+
+    if (!modalShell) {
+      afterClose();
+      return;
     }
+
+    modalShell.dataset.state = "closed";
+    window.setTimeout(afterClose, reducedMotionQuery.matches ? 0 : closeAnimationMs);
+  };
+
+  const closeModal = () => {
+    closeCurrentSurface(() => {
+      if (readPreferences()) {
+        clearRoot();
+      } else {
+        renderBanner();
+      }
+    });
+  };
+
+  const closePrivacyPolicy = () => {
+    closeCurrentSurface(() => {
+      if (window.location.pathname.replace(/\/$/, "") === "/privacy-policy") {
+        window.location.href = "/";
+        return;
+      }
+
+      if (readPreferences()) {
+        clearRoot();
+      } else {
+        renderBanner();
+      }
+    });
+  };
+
+  const renderPrivacyPolicy = () => {
+    const root = getRoot();
+    const sectionMarkup = privacyPolicySections
+      .map(
+        (section) => `
+          <article class="privacy-modal-card">
+            <h3>${section.title}</h3>
+            ${section.body.map((paragraph) => `<p>${paragraph}</p>`).join("")}
+          </article>
+        `,
+      )
+      .join("");
+
+    root.innerHTML = `
+      <div class="privacy-modal-shell" role="presentation" data-state="open">
+        <div class="privacy-modal-backdrop" data-privacy-close></div>
+        <section class="privacy-modal" role="dialog" aria-modal="true" aria-labelledby="privacy-modal-title">
+          <div class="privacy-modal-header">
+            <div>
+              <p class="privacy-modal-kicker">Privacy</p>
+              <h2 id="privacy-modal-title">Privacy Policy</h2>
+              <p class="privacy-modal-intro">This policy explains how AlMulla Holding Group handles information collected through this website and related business enquiries.</p>
+              <p class="privacy-modal-updated">Last updated: 8 July 2026</p>
+            </div>
+            <button type="button" class="privacy-modal-close" aria-label="Close Privacy Policy" data-privacy-close>x</button>
+          </div>
+          <div class="privacy-modal-content">
+            <article class="privacy-modal-card">
+              <p class="section-eyebrow">Overview</p>
+              <h3>Our commitment</h3>
+              <p>AlMulla Holding Group respects your privacy and is committed to handling personal information responsibly. This Privacy Policy applies to almullaholding.com and to information submitted through website-related communications.</p>
+              <p>This website is intended for general corporate information and business enquiries. Please avoid submitting sensitive personal information unless we specifically ask for it.</p>
+            </article>
+            ${sectionMarkup}
+            <article class="privacy-modal-card">
+              <p class="section-eyebrow">Contact</p>
+              <h3>Privacy enquiries</h3>
+              <p>For questions about this Privacy Policy or privacy-related requests, contact AlMulla Holding Group using the details below.</p>
+              <div class="privacy-modal-contact">
+                <a href="mailto:info@almullaholding.com">info@almullaholding.com</a>
+                <a href="tel:+97142249662">04 224 9662</a>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    `;
+
+    root.querySelectorAll("[data-privacy-close]").forEach((element) => {
+      element.addEventListener("click", closePrivacyPolicy);
+    });
   };
 
   const renderBanner = () => {
@@ -114,7 +257,7 @@
         <div class="cookie-banner-copy">
           <h2>We use cookies</h2>
           <p>We use cookies to keep the website working, understand how it is used, and improve your browsing experience. You can manage your preferences at any time.</p>
-          <a class="cookie-text-link" href="/privacy-policy/">View our Privacy Policy</a>
+          <button type="button" class="cookie-text-link" data-privacy-policy>View our Privacy Policy</button>
         </div>
         <div class="cookie-banner-actions">
           <button type="button" class="cookie-action cookie-action-primary" data-cookie-accept>Accept All</button>
@@ -162,7 +305,7 @@
       : "";
 
     root.innerHTML = `
-      <div class="cookie-modal-shell" role="presentation">
+      <div class="cookie-modal-shell" role="presentation" data-state="open">
         <div class="cookie-modal-backdrop" data-cookie-close></div>
         <section class="cookie-modal" role="dialog" aria-modal="true" aria-labelledby="cookie-preferences-title">
           <div class="cookie-modal-header">
@@ -199,7 +342,7 @@
       element.addEventListener("click", () => {
         const key = element.getAttribute("data-cookie-toggle");
         draft[key] = !Boolean(draft[key]);
-        renderPreferences(draft);
+        element.setAttribute("aria-checked", String(Boolean(draft[key])));
       });
     });
   };
@@ -209,6 +352,14 @@
   };
 
   const init = () => {
+    document.addEventListener("click", (event) => {
+      const privacyLink = event.target.closest?.("[data-privacy-policy]");
+      if (privacyLink) {
+        event.preventDefault();
+        renderPrivacyPolicy();
+      }
+    });
+
     document.querySelectorAll("[data-cookie-preferences]").forEach((element) => {
       element.addEventListener("click", openPreferences);
     });
@@ -216,16 +367,23 @@
     document.addEventListener("keydown", (event) => {
       if (event.key === "Escape" && document.querySelector(".cookie-modal-shell")) {
         closeModal();
+      } else if (event.key === "Escape" && document.querySelector(".privacy-modal-shell")) {
+        closePrivacyPolicy();
       }
     });
 
     window.AlmullaCookieConsent = {
       getPreferences: readPreferences,
       openPreferences,
+      openPrivacyPolicy: renderPrivacyPolicy,
     };
 
     if (!readPreferences()) {
       renderBanner();
+    }
+
+    if (window.location.pathname.replace(/\/$/, "") === "/privacy-policy") {
+      renderPrivacyPolicy();
     }
   };
 

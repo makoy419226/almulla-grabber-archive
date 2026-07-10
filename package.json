@@ -5,7 +5,7 @@
   "type": "module",
   "packageManager": "npm@10.9.2",
   "scripts": {
-    "dev": "vite dev",
+    "dev": "npm run build:godaddy && vite dev",
     "build": "vite build",
     "build:godaddy": "node scripts/build-godaddy-static.mjs",
     "build:godaddy:react": "vite build --config vite.godaddy.config.ts",

@@ -1,7 +1,7 @@
-import { Link } from "@tanstack/react-router";
 import { Cookie, Settings, X } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { COOKIE_CONSENT_OPEN_EVENT } from "@/lib/cookie-consent";
+import { openPrivacyPolicyModal } from "@/lib/privacy-policy";
 
 const STORAGE_KEY = "almulla_cookie_consent_v1";
 const CONSENT_VERSION = 1;
@@ -98,6 +98,7 @@ export function CookieConsent() {
   const [hydrated, setHydrated] = useState(false);
   const [bannerOpen, setBannerOpen] = useState(false);
   const [preferencesOpen, setPreferencesOpen] = useState(false);
+  const [renderPreferencesModal, setRenderPreferencesModal] = useState(false);
   const [preferences, setPreferences] = useState<CookiePreferences>(() => defaultPreferences());
 
   const storedPreferences = useMemo(() => (hydrated ? readStoredPreferences() : null), [hydrated]);
@@ -139,6 +140,24 @@ export function CookieConsent() {
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [preferencesOpen]);
+
+  useEffect(() => {
+    if (preferencesOpen) {
+      setRenderPreferencesModal(true);
+    }
+  }, [preferencesOpen]);
+
+  useEffect(() => {
+    if (preferencesOpen || !renderPreferencesModal) return;
+
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const timeout = window.setTimeout(
+      () => setRenderPreferencesModal(false),
+      prefersReducedMotion ? 0 : 300,
+    );
+
+    return () => window.clearTimeout(timeout);
+  }, [preferencesOpen, renderPreferencesModal]);
 
   const savePreferences = (nextPreferences: CookiePreferences) => {
     persistPreferences(nextPreferences);
@@ -183,9 +202,9 @@ export function CookieConsent() {
               We use cookies to keep the website working, understand how it is used, and improve
               your browsing experience. You can manage your preferences at any time.
             </p>
-            <Link to="/privacy-policy" className="cookie-text-link">
+            <button type="button" className="cookie-text-link" onClick={openPrivacyPolicyModal}>
               View our Privacy Policy
-            </Link>
+            </button>
           </div>
           <div className="cookie-banner-actions">
             <button
@@ -214,8 +233,17 @@ export function CookieConsent() {
         </section>
       )}
 
-      {preferencesOpen && (
-        <div className="cookie-modal-shell" role="presentation">
+      {renderPreferencesModal && (
+        <div
+          className="cookie-modal-shell"
+          role="presentation"
+          data-state={preferencesOpen ? "open" : "closed"}
+          onAnimationEnd={(event) => {
+            if (event.currentTarget === event.target && !preferencesOpen) {
+              setRenderPreferencesModal(false);
+            }
+          }}
+        >
           <div className="cookie-modal-backdrop" onClick={() => setPreferencesOpen(false)} />
           <section
             className="cookie-modal"

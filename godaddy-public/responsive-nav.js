@@ -8,7 +8,7 @@
     { href: "/about-us", label: "Who We Are" },
     { href: "/#businesses", label: "What We Do" },
     { href: "/contact-us/", label: "Get In Touch" },
-    { href: "/privacy-policy/", label: "Privacy Policy" },
+    { href: "/privacy-policy/", label: "Privacy Policy", privacy: true },
   ];
 
   const buildMenu = () => {
@@ -19,7 +19,10 @@
     menu.setAttribute("hidden", "");
 
     const links = menuLinks
-      .map((link) => `<a href="${link.href}" data-menu-link>${link.label}</a>`)
+      .map(
+        (link) =>
+          `<a href="${link.href}" data-menu-link${link.privacy ? " data-privacy-policy" : ""}>${link.label}</a>`,
+      )
       .join("");
 
     menu.innerHTML = `

@@ -8,6 +8,11 @@ This project has a lightweight static build for GoDaddy cPanel/shared hosting.
 npm run build:godaddy
 ```
 
+For local development, `npm run dev` also refreshes `godaddy-dist/` once before starting the
+React dev server. It does not watch the static GoDaddy files after startup; run
+`npm run build:godaddy` again if you edit files under `godaddy/` or `godaddy-public/` while the dev
+server is already running.
+
 The script copies `godaddy/` pages and `godaddy-public/` assets into:
 
 ```text

@@ -20,6 +20,191 @@
   cursor: pointer;
 }
 
+.privacy-modal-shell {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  animation: cookie-modal-shell-in 240ms ease-out both;
+}
+
+.privacy-modal-shell[data-state="closed"] {
+  pointer-events: none;
+  animation: cookie-modal-shell-out 300ms ease-in both;
+}
+
+.privacy-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(22, 18, 14, 0.54);
+  animation: cookie-backdrop-in 260ms ease-out both;
+}
+
+.privacy-modal-shell[data-state="closed"] .privacy-modal-backdrop {
+  animation: cookie-backdrop-out 260ms ease-in both;
+}
+
+.privacy-modal {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 46rem);
+  max-height: min(44rem, calc(100dvh - 2rem));
+  overflow: auto;
+  border: 1px solid rgba(188, 146, 40, 0.32);
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, rgba(255, 250, 240, 0.99), rgba(244, 233, 204, 0.96));
+  padding: clamp(1.1rem, 3vw, 1.65rem);
+  box-shadow: 0 34px 90px -46px rgba(0, 0, 0, 0.66);
+  transform-origin: center;
+  animation: cookie-modal-in 380ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  will-change: transform, opacity;
+}
+
+.privacy-modal-shell[data-state="closed"] .privacy-modal {
+  animation: cookie-modal-out 260ms cubic-bezier(0.7, 0, 0.84, 0) both;
+}
+
+.privacy-modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  animation: cookie-modal-item-in 360ms cubic-bezier(0.16, 1, 0.3, 1) 80ms both;
+}
+
+.privacy-modal-kicker,
+.privacy-modal-card .section-eyebrow {
+  margin: 0 0 0.35rem;
+  color: var(--brand-red);
+  font-size: 0.76rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.privacy-modal h2,
+.privacy-modal h3 {
+  margin: 0;
+  color: var(--primary);
+}
+
+.privacy-modal h2 {
+  font-size: clamp(1.45rem, 4vw, 2rem);
+  line-height: 1.12;
+}
+
+.privacy-modal h3 {
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.privacy-modal-intro,
+.privacy-modal-updated,
+.privacy-modal-card p {
+  margin: 0.45rem 0 0;
+  color: rgba(43, 32, 24, 0.68);
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+.privacy-modal-updated {
+  color: rgba(43, 32, 24, 0.52);
+  font-size: 0.8rem;
+}
+
+.privacy-modal-close {
+  display: inline-flex;
+  width: 2.5rem;
+  height: 2.5rem;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(60, 42, 31, 0.16);
+  border-radius: var(--radius);
+  background: white;
+  color: var(--primary);
+  cursor: pointer;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.privacy-modal-close:hover,
+.privacy-modal-close:focus-visible {
+  border-color: rgba(188, 146, 40, 0.8);
+  outline: none;
+  transform: rotate(90deg);
+}
+
+.privacy-modal-content {
+  display: grid;
+  gap: 0.8rem;
+  margin-top: 1.25rem;
+}
+
+.privacy-modal-card {
+  border: 1px solid rgba(60, 42, 31, 0.12);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.72);
+  padding: 1rem;
+  animation: cookie-modal-item-in 360ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.privacy-modal-card:nth-child(1) {
+  animation-delay: 130ms;
+}
+
+.privacy-modal-card:nth-child(2) {
+  animation-delay: 180ms;
+}
+
+.privacy-modal-card:nth-child(3) {
+  animation-delay: 230ms;
+}
+
+.privacy-modal-card:nth-child(4) {
+  animation-delay: 280ms;
+}
+
+.privacy-modal-card:nth-child(n + 5) {
+  animation-delay: 330ms;
+}
+
+.privacy-modal-contact {
+  display: grid;
+  gap: 0.65rem;
+  margin-top: 0.9rem;
+}
+
+.privacy-modal-contact a {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 1px solid rgba(60, 42, 31, 0.16);
+  border-radius: var(--radius);
+  background: white;
+  color: var(--brand-red);
+  font-size: 0.86rem;
+  font-weight: 800;
+  transition:
+    border-color 180ms ease,
+    color 180ms ease,
+    transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.privacy-modal-contact a:hover,
+.privacy-modal-contact a:focus-visible {
+  border-color: rgba(188, 146, 40, 0.8);
+  color: var(--primary);
+  outline: none;
+  transform: translateY(-1px);
+}
+
 .cookie-banner {
   position: fixed;
   right: 1rem;
@@ -37,6 +222,7 @@
   background: linear-gradient(135deg, rgba(255, 250, 240, 0.98), rgba(244, 233, 204, 0.96));
   padding: 1rem;
   box-shadow: 0 26px 70px -42px rgba(0, 0, 0, 0.52);
+  animation: cookie-banner-in 420ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .cookie-banner-icon {
@@ -73,10 +259,15 @@
 
 .cookie-text-link {
   display: inline-flex;
+  border: 0;
+  background: transparent;
+  padding: 0;
   margin-top: 0.35rem;
   color: var(--brand-red);
   font-size: 0.85rem;
   font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
 }
 
 .cookie-text-link:hover,
@@ -105,6 +296,11 @@
   font-weight: 800;
   line-height: 1;
   cursor: pointer;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .cookie-action-primary {
@@ -128,6 +324,7 @@
 .cookie-action:focus-visible {
   border-color: rgba(188, 146, 40, 0.8);
   outline: none;
+  transform: translateY(-1px);
 }
 
 .cookie-modal-shell {
@@ -137,12 +334,23 @@
   display: grid;
   place-items: center;
   padding: 1rem;
+  animation: cookie-modal-shell-in 240ms ease-out both;
+}
+
+.cookie-modal-shell[data-state="closed"] {
+  pointer-events: none;
+  animation: cookie-modal-shell-out 300ms ease-in both;
 }
 
 .cookie-modal-backdrop {
   position: absolute;
   inset: 0;
   background: rgba(22, 18, 14, 0.54);
+  animation: cookie-backdrop-in 260ms ease-out both;
+}
+
+.cookie-modal-shell[data-state="closed"] .cookie-modal-backdrop {
+  animation: cookie-backdrop-out 260ms ease-in both;
 }
 
 .cookie-modal {
@@ -156,6 +364,13 @@
   background: linear-gradient(135deg, rgba(255, 250, 240, 0.99), rgba(244, 233, 204, 0.96));
   padding: clamp(1.1rem, 3vw, 1.6rem);
   box-shadow: 0 34px 90px -46px rgba(0, 0, 0, 0.66);
+  transform-origin: center;
+  animation: cookie-modal-in 380ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  will-change: transform, opacity;
+}
+
+.cookie-modal-shell[data-state="closed"] .cookie-modal {
+  animation: cookie-modal-out 260ms cubic-bezier(0.7, 0, 0.84, 0) both;
 }
 
 .cookie-modal-header {
@@ -163,6 +378,7 @@
   align-items: flex-start;
   justify-content: space-between;
   gap: 1rem;
+  animation: cookie-modal-item-in 360ms cubic-bezier(0.16, 1, 0.3, 1) 80ms both;
 }
 
 .cookie-modal-kicker {
@@ -190,6 +406,18 @@
   background: white;
   color: var(--primary);
   cursor: pointer;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cookie-icon-button:hover,
+.cookie-icon-button:focus-visible {
+  border-color: rgba(188, 146, 40, 0.8);
+  outline: none;
+  transform: rotate(90deg);
 }
 
 .cookie-category-list {
@@ -207,6 +435,23 @@
   border-radius: var(--radius);
   background: rgba(255, 255, 255, 0.72);
   padding: 1rem;
+  animation: cookie-modal-item-in 360ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.cookie-category:nth-child(1) {
+  animation-delay: 130ms;
+}
+
+.cookie-category:nth-child(2) {
+  animation-delay: 180ms;
+}
+
+.cookie-category:nth-child(3) {
+  animation-delay: 230ms;
+}
+
+.cookie-category:nth-child(4) {
+  animation-delay: 280ms;
 }
 
 .cookie-category h3 {
@@ -230,6 +475,10 @@
   background: rgba(60, 42, 31, 0.1);
   padding: 0.12rem;
   cursor: pointer;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .cookie-switch span {
@@ -239,7 +488,7 @@
   border-radius: 999px;
   background: white;
   box-shadow: 0 3px 9px -5px rgba(0, 0, 0, 0.62);
-  transition: transform 180ms ease;
+  transition: transform 240ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .cookie-switch[aria-checked="true"] {
@@ -258,6 +507,104 @@
 
 .cookie-modal-actions {
   margin-top: 1.25rem;
+  animation: cookie-modal-item-in 360ms cubic-bezier(0.16, 1, 0.3, 1) 330ms both;
+}
+
+.cookie-last-updated {
+  animation: cookie-modal-item-in 360ms cubic-bezier(0.16, 1, 0.3, 1) 380ms both;
+}
+
+@keyframes cookie-banner-in {
+  from {
+    opacity: 0;
+    transform: translateY(1rem) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes cookie-modal-shell-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes cookie-modal-shell-out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes cookie-backdrop-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes cookie-backdrop-out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes cookie-modal-in {
+  0% {
+    opacity: 0;
+    transform: translateY(1rem) scale(0.97);
+  }
+
+  72% {
+    opacity: 1;
+    transform: translateY(-0.08rem) scale(1.004);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes cookie-modal-out {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(0.7rem) scale(0.985);
+  }
+}
+
+@keyframes cookie-modal-item-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.55rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (max-width: 720px) {
@@ -294,7 +641,28 @@
 @media (prefers-reduced-motion: reduce) {
   .footer-legal-link,
   .footer-legal-button,
+  .cookie-banner,
+  .cookie-modal-shell,
+  .cookie-modal-backdrop,
+  .cookie-modal,
+  .cookie-modal-header,
+  .cookie-category,
+  .cookie-modal-actions,
+  .cookie-last-updated,
+  .privacy-modal-shell,
+  .privacy-modal-backdrop,
+  .privacy-modal,
+  .privacy-modal-header,
+  .privacy-modal-card,
+  .privacy-modal-close,
+  .privacy-modal-contact a,
+  .cookie-action,
+  .cookie-icon-button,
+  .cookie-switch,
   .cookie-switch span {
+    animation: none;
+    opacity: 1;
+    transform: none;
     transition: none;
   }
 }

@@ -34,10 +34,10 @@
       type="image/webp"
       fetchpriority="high"
     />
-    <link rel="stylesheet" href="/cookie-consent.css?v=5" />
-    <link rel="stylesheet" href="/responsive-nav.css?v=3" />
-    <script src="/cookie-consent.js?v=5" defer></script>
-    <script src="/responsive-nav.js?v=3" defer></script>
+    <link rel="stylesheet" href="/cookie-consent.css?v=6" />
+    <link rel="stylesheet" href="/responsive-nav.css?v=4" />
+    <script src="/cookie-consent.js?v=6" defer></script>
+    <script src="/responsive-nav.js?v=4" defer></script>
     <style>
       :root {
         --background: #fbf7ed;
@@ -508,7 +508,12 @@
               <a href="/">Home</a>
               <a href="/about-us">About Us</a>
               <a href="/contact-us/">Contact Us</a>
-              <a href="/privacy-policy/" data-privacy-policy aria-haspopup="dialog">
+              <a
+                href="/privacy-policy/"
+                data-privacy-policy
+                aria-haspopup="dialog"
+                onclick="if (window.AlmullaCookieConsent && window.AlmullaCookieConsent.openPrivacyPolicy) { event.preventDefault(); event.stopPropagation(); window.AlmullaCookieConsent.openPrivacyPolicy(); }"
+              >
                 Privacy Policy
               </a>
             </div>
@@ -528,6 +533,7 @@
             href="/privacy-policy/"
             data-privacy-policy
             aria-haspopup="dialog"
+            onclick="if (window.AlmullaCookieConsent && window.AlmullaCookieConsent.openPrivacyPolicy) { event.preventDefault(); event.stopPropagation(); window.AlmullaCookieConsent.openPrivacyPolicy(); }"
           >
             Privacy Policy
           </a>
@@ -539,6 +545,7 @@
             class="footer-legal-button"
             data-cookie-preferences
             aria-haspopup="dialog"
+            onclick="if (window.AlmullaCookieConsent && window.AlmullaCookieConsent.openPreferences) { event.preventDefault(); event.stopPropagation(); window.AlmullaCookieConsent.openPreferences(); }"
           >
             Manage Cookies
           </button>

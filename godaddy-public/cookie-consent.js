@@ -163,6 +163,16 @@
   const isPrivacyPolicyRoute = () =>
     window.location.pathname.replace(/\/$/, "") === "/privacy-policy";
 
+  const getClosestElement = (target, selector) => {
+    const element =
+      target && target.nodeType === 1
+        ? target
+        : target && target.parentElement
+          ? target.parentElement
+          : null;
+    return element && typeof element.closest === "function" ? element.closest(selector) : null;
+  };
+
   const lockPageScroll = () => {
     if (pageScrollLocked) return;
     previousBodyOverflow = document.body.style.overflow;
@@ -178,7 +188,9 @@
 
   const closeCurrentSurface = (afterClose) => {
     const root = document.getElementById("cookie-consent-root");
-    const modalShell = root?.querySelector(".cookie-modal-shell, .privacy-modal-shell");
+    const modalShell = root
+      ? root.querySelector(".cookie-modal-shell, .privacy-modal-shell")
+      : null;
 
     if (!modalShell) {
       unlockPageScroll();
@@ -375,16 +387,26 @@
     renderPreferences(readPreferences() || defaultPreferences());
   };
 
+  const openPrivacyPolicy = () => {
+    renderPrivacyPolicy();
+  };
+
+  window.AlmullaCookieConsent = {
+    getPreferences: readPreferences,
+    openPreferences,
+    openPrivacyPolicy,
+  };
+
   const init = () => {
     if (isPrivacyPolicyRoute()) {
       document.documentElement.classList.add("privacy-modal-route");
     }
 
     document.addEventListener("click", (event) => {
-      const privacyLink = event.target.closest?.("[data-privacy-policy]");
+      const privacyLink = getClosestElement(event.target, "[data-privacy-policy]");
       if (privacyLink) {
         event.preventDefault();
-        renderPrivacyPolicy();
+        openPrivacyPolicy();
       }
     });
 
@@ -399,12 +421,6 @@
         closePrivacyPolicy();
       }
     });
-
-    window.AlmullaCookieConsent = {
-      getPreferences: readPreferences,
-      openPreferences,
-      openPrivacyPolicy: renderPrivacyPolicy,
-    };
 
     if (!readPreferences()) {
       renderBanner();

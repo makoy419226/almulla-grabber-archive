@@ -21,7 +21,7 @@
     const links = menuLinks
       .map(
         (link) =>
-          `<a href="${link.href}" data-menu-link${link.privacy ? ' data-privacy-policy aria-haspopup="dialog"' : ""}>${link.label}</a>`,
+          `<a href="${link.href}" data-menu-link${link.privacy ? ' data-privacy-policy aria-haspopup="dialog" onclick="if (window.AlmullaCookieConsent && window.AlmullaCookieConsent.openPrivacyPolicy) { event.preventDefault(); event.stopPropagation(); window.AlmullaCookieConsent.openPrivacyPolicy(); }"' : ""}>${link.label}</a>`,
       )
       .join("");
 
@@ -72,7 +72,10 @@
         menu.removeAttribute("hidden");
         window.requestAnimationFrame(() => {
           menu.dataset.open = "true";
-          menu.querySelector("[data-menu-close]")?.focus();
+          const closeButton = menu.querySelector("[data-menu-close]");
+          if (closeButton) {
+            closeButton.focus();
+          }
         });
       } else {
         menu.dataset.open = "false";

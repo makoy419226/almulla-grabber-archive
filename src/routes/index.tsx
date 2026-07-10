@@ -109,13 +109,16 @@ function Home() {
           </div>
         </section>
 
-        <section id="businesses" className="mx-auto max-w-5xl px-4 py-14 sm:px-6 lg:px-8">
+        <section
+          id="businesses"
+          className="mx-auto max-w-[92rem] px-4 py-16 sm:px-6 lg:px-8 xl:py-24"
+        >
           <div className="mx-auto max-w-4xl text-center">
             <div className="legacy-eyebrow">What We Do</div>
             <h2 className="legacy-section-title mt-3">Our Portfolio</h2>
           </div>
 
-          <div className="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-5 xl:max-w-4xl xl:grid-cols-2 xl:gap-6">
+          <div className="mx-auto mt-12 grid max-w-2xl grid-cols-1 gap-6 xl:mt-16 xl:max-w-[92rem] xl:grid-cols-2 xl:gap-10">
             {sectors.map((sector) => (
               <article key={sector.title} className="legacy-sector-card">
                 <div className="legacy-sector-media">
@@ -127,7 +130,7 @@ function Home() {
                     loading="lazy"
                     fetchPriority="low"
                     decoding="async"
-                    sizes="(min-width: 1280px) 420px, 100vw"
+                    sizes="(min-width: 1280px) 700px, 100vw"
                     width={sector.width}
                     height={sector.height}
                   />

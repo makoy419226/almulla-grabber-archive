@@ -115,7 +115,7 @@ function Home() {
         >
           <div className="mx-auto max-w-4xl text-center">
             <div className="legacy-eyebrow">What We Do</div>
-            <h2 className="legacy-section-title mt-3">Our Portfolio</h2>
+            <h2 className="legacy-section-title mt-3">Sectors That Shape Tomorrow</h2>
           </div>
 
           <div className="mx-auto mt-12 grid max-w-2xl grid-cols-1 gap-6 xl:mt-16 xl:max-w-[92rem] xl:grid-cols-2 xl:gap-10">

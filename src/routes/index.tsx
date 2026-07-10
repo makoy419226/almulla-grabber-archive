@@ -121,7 +121,7 @@ function Home() {
                   <img
                     src={sector.img}
                     alt={sector.title}
-                    className="h-full w-full object-cover"
+                    className="h-full w-full object-contain"
                     srcSet={`${sector.imgSmall} 900w, ${sector.img} ${sector.width}w`}
                     loading="lazy"
                     fetchPriority="low"

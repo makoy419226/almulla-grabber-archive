@@ -422,7 +422,7 @@ function BusinessPage() {
                 <img
                   src={page.image}
                   alt={page.title}
-                  className="h-72 w-full object-cover"
+                  className="h-72 w-full object-contain"
                   srcSet={`${page.imageSmall} 900w, ${page.image} ${page.imageWidth}w`}
                   loading="lazy"
                   decoding="async"

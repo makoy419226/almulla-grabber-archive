@@ -117,7 +117,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground">
-      <header ref={headerRef} className="site-header-shell sticky top-0 z-50">
+      <header ref={headerRef} className="site-header-shell relative z-50">
         <div className="mx-auto flex h-[5.75rem] max-w-[104rem] items-center justify-between gap-7 px-4 sm:px-6 lg:px-10">
           <Link to="/" className="nav-hover-magnify shrink-0" aria-label="AlMulla Holding home">
             <AlmullaLogo />

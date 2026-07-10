@@ -6,6 +6,7 @@ import energyImg from "@/assets/sector-energy.jpg";
 import energyImg900 from "@/assets/sector-energy-900.jpg";
 import heroAlmullaEtihadImg from "@/assets/hero-almulla-etihad-burj.jpg";
 import heroAlmullaEtihadImg720 from "@/assets/hero-almulla-etihad-burj-720.jpg";
+import heroAlmullaEtihadImg960 from "@/assets/hero-almulla-etihad-burj-960.jpg";
 import healthcareImg from "@/assets/sector-healthcare.jpg";
 import healthcareImg900 from "@/assets/sector-healthcare-900.jpg";
 import hospitalityImg from "@/assets/sector-hospitality.jpg";
@@ -32,7 +33,7 @@ export const Route = createFileRoute("/")({
         rel: "preload",
         as: "image",
         href: heroAlmullaEtihadImg720,
-        imageSrcSet: `${heroAlmullaEtihadImg720} 720w, ${heroAlmullaEtihadImg} 1536w`,
+        imageSrcSet: `${heroAlmullaEtihadImg720} 720w, ${heroAlmullaEtihadImg960} 960w, ${heroAlmullaEtihadImg} 1536w`,
         imageSizes: "100vw",
       },
     ],
@@ -85,13 +86,13 @@ function Home() {
               src={heroAlmullaEtihadImg720}
               alt=""
               className="h-full w-full"
-              srcSet={`${heroAlmullaEtihadImg720} 720w, ${heroAlmullaEtihadImg} 1536w`}
+              srcSet={`${heroAlmullaEtihadImg720} 720w, ${heroAlmullaEtihadImg960} 960w, ${heroAlmullaEtihadImg} 1536w`}
               loading="eager"
               fetchPriority="high"
               decoding="async"
               sizes="100vw"
               width={1536}
-              height={864}
+              height={1024}
             />
             <div className="legacy-hero-grid flex px-4 sm:px-6 lg:px-8">
               <div className="legacy-hero-copy reveal-up">

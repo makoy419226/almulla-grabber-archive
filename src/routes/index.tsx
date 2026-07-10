@@ -114,7 +114,7 @@ function Home() {
             <h2 className="legacy-section-title mt-3">Our Portfolio</h2>
           </div>
 
-          <div className="mx-auto mt-10 grid max-w-4xl grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6">
+          <div className="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-5 xl:max-w-4xl xl:grid-cols-2 xl:gap-6">
             {sectors.map((sector) => (
               <article key={sector.title} className="legacy-sector-card">
                 <div className="legacy-sector-media">
@@ -126,7 +126,7 @@ function Home() {
                     loading="lazy"
                     fetchPriority="low"
                     decoding="async"
-                    sizes="(min-width: 1024px) 420px, (min-width: 640px) 50vw, 100vw"
+                    sizes="(min-width: 1280px) 420px, 100vw"
                     width={sector.width}
                     height={sector.height}
                   />

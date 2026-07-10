@@ -659,7 +659,8 @@
   .legacy-hero {
     position: relative;
     isolation: isolate;
-    height: max(32rem, 56.25vw);
+    aspect-ratio: 16 / 9;
+    height: auto;
     background: linear-gradient(
       135deg,
       color-mix(in oklab, var(--champagne) 88%, white),
@@ -674,19 +675,20 @@
   .legacy-hero-copy {
     position: relative;
     z-index: 3;
+    container-type: inline-size;
     width: min(42rem, 100%);
     margin-right: auto;
     margin-left: 0;
-    padding-bottom: clamp(1.75rem, 5vw, 3.5rem);
-    padding-top: clamp(2.5rem, 6vw, 5rem);
-    transform: translateY(48%);
+    padding-bottom: clamp(1.25rem, 5vh, 3.5rem);
+    padding-top: clamp(1.25rem, 5vh, 3.5rem);
+    transform: none;
   }
 
   .legacy-hero-grid {
     position: absolute;
     inset: 0;
     z-index: 3;
-    align-items: center;
+    align-items: flex-end;
     justify-content: flex-start;
     width: 100%;
   }
@@ -726,9 +728,9 @@
     box-sizing: border-box;
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    object-position: center top;
-    padding-top: clamp(0.5rem, 1vw, 1rem);
+    object-fit: cover;
+    object-position: center;
+    padding-top: 0;
     filter: saturate(0.98) contrast(1.02);
     transform-origin: center;
   }
@@ -739,7 +741,7 @@
     justify-items: start;
     color: color-mix(in oklab, white 95%, var(--champagne));
     font-family: var(--font-sans);
-    font-size: clamp(2rem, 3.8vw, 3.7rem);
+    font-size: clamp(1.75rem, 8.5cqw, 3.7rem);
     font-weight: 800;
     line-height: 1.04;
     letter-spacing: 0;
@@ -758,6 +760,8 @@
     margin-right: auto;
     margin-left: 0;
     color: color-mix(in oklab, white 78%, transparent);
+    font-size: clamp(0.85rem, 2.8cqw, 1rem);
+    line-height: clamp(1.45rem, 4.8cqw, 2rem);
     text-shadow: none;
   }
 
@@ -2422,15 +2426,37 @@
   }
 }
 
+@media (max-width: 1279px) {
+  .legacy-sector-card {
+    min-height: clamp(15rem, 54vw, 24rem);
+  }
+
+  .legacy-sector-body {
+    padding: clamp(0.9rem, 3vw, 1.4rem);
+  }
+
+  .legacy-sector-card h3 {
+    max-width: 10ch;
+    font-size: clamp(1.45rem, 6vw, 2.15rem);
+    line-height: 1.08;
+  }
+
+  .legacy-sector-copy {
+    max-width: min(32rem, 92%);
+    font-size: clamp(0.82rem, 2.6vw, 0.98rem);
+    line-height: 1.5;
+  }
+}
+
 @media (max-width: 1023px) {
   .legacy-hero {
-    height: max(31rem, 56.25vw);
-    background: color-mix(in oklab, var(--ink) 90%, black);
+    aspect-ratio: 16 / 9;
+    min-height: 0;
   }
 
   .legacy-hero-media img {
-    object-fit: contain;
-    object-position: center top;
+    object-fit: cover;
+    object-position: center;
   }
 
   .site-content .home-legacy .legacy-hero-copy :is(.legacy-heading, p) {
@@ -2439,7 +2465,7 @@
   }
 
   .legacy-hero-copy {
-    transform: translateY(clamp(0.85rem, 3.25vh, 1.75rem));
+    transform: none;
   }
 
   .legacy-hero-copy p {
@@ -2499,25 +2525,25 @@
 
   .legacy-heading {
     gap: 0.08em;
-    font-size: clamp(1.35rem, 7.8cqw, 2.45rem);
+    font-size: clamp(1.25rem, 9cqw, 2.2rem);
     line-height: 1.08;
     text-wrap: balance;
   }
 
   .legacy-hero-copy {
     container-type: inline-size;
-    width: min(24rem, 100%);
-    padding-bottom: 2rem;
-    padding-top: 2rem;
+    width: min(22rem, 100%);
+    padding-bottom: clamp(0.9rem, 3vh, 1.5rem);
+    padding-top: clamp(0.9rem, 3vh, 1.5rem);
   }
 
   .legacy-hero-copy p {
-    max-width: 21rem;
-    margin-top: 1rem;
+    max-width: 20rem;
+    margin-top: 0.65rem;
     margin-right: auto;
     margin-left: 0;
-    font-size: clamp(0.88rem, 3.6vw, 0.98rem);
-    line-height: 1.65;
+    font-size: clamp(0.76rem, 4cqw, 0.92rem);
+    line-height: 1.5;
     text-wrap: pretty;
   }
 

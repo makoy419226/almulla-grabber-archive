@@ -1,6 +1,6 @@
 # GoDaddy Hosting Upload
 
-This project has a lightweight static build for GoDaddy cPanel/shared hosting.
+This project deploys a browser-only React build to GoDaddy cPanel/shared hosting.
 
 ## Build
 
@@ -8,12 +8,12 @@ This project has a lightweight static build for GoDaddy cPanel/shared hosting.
 npm run build:godaddy
 ```
 
-For local development, `npm run dev` also refreshes `godaddy-dist/` once before starting the
-React dev server. It does not watch the static GoDaddy files after startup; run
-`npm run build:godaddy` again if you edit files under `godaddy/` or `godaddy-public/` while the dev
-server is already running.
+For local development, `npm run dev` also refreshes `godaddy-dist/` once before starting the React
+dev server. The deployed GoDaddy build now uses the same React routes and components as local
+development, so edits under `src/` are included after `npm run build:godaddy`.
 
-The script copies `godaddy/` pages and `godaddy-public/` assets into:
+The script builds the React app with `vite.godaddy.config.ts`, copies shared public assets, adds
+GoDaddy SPA fallback files, and writes the output into:
 
 ```text
 godaddy-dist/
@@ -24,8 +24,9 @@ Upload the contents of `godaddy-dist/` into the GoDaddy hosting document root, u
 
 ## Important Files
 
-- `index.html` is committed static HTML, so the homepage does not wait for the React app bundle.
-- `contact-us/` and `privacy-policy/` contain static page HTML.
+- `godaddy-react/index.html` is the lightweight React app shell used for GoDaddy.
+- `src/godaddy-main.tsx` mounts the same TanStack Router app used in local development.
+- `scripts/prepare-godaddy-react-dist.mjs` writes fallback `index.html` files for deployed routes.
 - Shared assets, `.htaccess`, `robots.txt`, and `sitemap.xml` come from `godaddy-public/`.
 
 ## GoDaddy cPanel Steps
@@ -49,8 +50,8 @@ The repository includes a GitHub Actions workflow at:
 .github/workflows/deploy-godaddy.yml
 ```
 
-It runs `npm run build:godaddy` on every push, validates that the output is still static,
-and uploads `godaddy-dist/` to GoDaddy by FTP.
+It runs `npm ci`, builds the React GoDaddy app with `npm run build:godaddy`, validates the output,
+and uploads `godaddy-dist/` to GoDaddy by FTP on every push.
 
 Add these secrets in GitHub:
 
@@ -60,7 +61,7 @@ GODADDY_FTP_USERNAME
 GODADDY_FTP_PASSWORD
 ```
 
-The workflow uploads the built site to:
+The workflow uploads the built React site to:
 
 ```text
 /
@@ -74,4 +75,5 @@ Use an FTP account whose directory is the live site root:
 
 Because the FTP account starts inside `public_html`, `/` means the live website folder.
 
-The workflow runs on every push and can also be started manually from GitHub Actions.
+The workflow runs on every push and can also be started manually from GitHub Actions. Local changes
+deploy only after they are committed and pushed to GitHub.

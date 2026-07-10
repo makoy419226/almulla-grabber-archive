@@ -34,10 +34,10 @@
       type="image/webp"
       fetchpriority="high"
     />
-    <link rel="stylesheet" href="/cookie-consent.css?v=6" />
-    <link rel="stylesheet" href="/responsive-nav.css?v=4" />
-    <script src="/cookie-consent.js?v=6" defer></script>
-    <script src="/responsive-nav.js?v=4" defer></script>
+    <link rel="stylesheet" href="/site-preferences.css?v=1" />
+    <link rel="stylesheet" href="/responsive-nav.css?v=5" />
+    <script src="/site-preferences.js?v=1" defer></script>
+    <script src="/responsive-nav.js?v=5" defer></script>
     <style>
       :root {
         --background: #fbf7ed;
@@ -512,7 +512,7 @@
                 href="/privacy-policy/"
                 data-privacy-policy
                 aria-haspopup="dialog"
-                onclick="if (window.AlmullaCookieConsent && window.AlmullaCookieConsent.openPrivacyPolicy) { event.preventDefault(); event.stopPropagation(); window.AlmullaCookieConsent.openPrivacyPolicy(); }"
+                onclick="if (window.AlmullaSitePreferences && window.AlmullaSitePreferences.openPrivacyPolicy) { event.preventDefault(); event.stopPropagation(); window.AlmullaSitePreferences.openPrivacyPolicy(); }"
               >
                 Privacy Policy
               </a>
@@ -533,7 +533,7 @@
             href="/privacy-policy/"
             data-privacy-policy
             aria-haspopup="dialog"
-            onclick="if (window.AlmullaCookieConsent && window.AlmullaCookieConsent.openPrivacyPolicy) { event.preventDefault(); event.stopPropagation(); window.AlmullaCookieConsent.openPrivacyPolicy(); }"
+            onclick="if (window.AlmullaSitePreferences && window.AlmullaSitePreferences.openPrivacyPolicy) { event.preventDefault(); event.stopPropagation(); window.AlmullaSitePreferences.openPrivacyPolicy(); }"
           >
             Privacy Policy
           </a>
@@ -544,8 +544,9 @@
             type="button"
             class="footer-legal-button"
             data-cookie-preferences
+            data-site-preferences
             aria-haspopup="dialog"
-            onclick="if (window.AlmullaCookieConsent && window.AlmullaCookieConsent.openPreferences) { event.preventDefault(); event.stopPropagation(); window.AlmullaCookieConsent.openPreferences(); }"
+            onclick="if (window.AlmullaSitePreferences && window.AlmullaSitePreferences.openPreferences) { event.preventDefault(); event.stopPropagation(); window.AlmullaSitePreferences.openPreferences(); }"
           >
             Manage Cookies
           </button>

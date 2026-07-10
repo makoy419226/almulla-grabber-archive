@@ -3,6 +3,8 @@
   const version = 1;
   const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
   const closeAnimationMs = 320;
+  let pageScrollLocked = false;
+  let previousBodyOverflow = "";
 
   const privacyPolicySections = [
     {
@@ -158,17 +160,37 @@
     if (root) root.innerHTML = "";
   };
 
+  const isPrivacyPolicyRoute = () =>
+    window.location.pathname.replace(/\/$/, "") === "/privacy-policy";
+
+  const lockPageScroll = () => {
+    if (pageScrollLocked) return;
+    previousBodyOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    pageScrollLocked = true;
+  };
+
+  const unlockPageScroll = () => {
+    if (!pageScrollLocked) return;
+    document.body.style.overflow = previousBodyOverflow;
+    pageScrollLocked = false;
+  };
+
   const closeCurrentSurface = (afterClose) => {
     const root = document.getElementById("cookie-consent-root");
     const modalShell = root?.querySelector(".cookie-modal-shell, .privacy-modal-shell");
 
     if (!modalShell) {
+      unlockPageScroll();
       afterClose();
       return;
     }
 
     modalShell.dataset.state = "closed";
-    window.setTimeout(afterClose, reducedMotionQuery.matches ? 0 : closeAnimationMs);
+    window.setTimeout(() => {
+      unlockPageScroll();
+      afterClose();
+    }, reducedMotionQuery.matches ? 0 : closeAnimationMs);
   };
 
   const closeModal = () => {
@@ -183,7 +205,7 @@
 
   const closePrivacyPolicy = () => {
     closeCurrentSurface(() => {
-      if (window.location.pathname.replace(/\/$/, "") === "/privacy-policy") {
+      if (isPrivacyPolicyRoute()) {
         window.location.href = "/";
         return;
       }
@@ -197,6 +219,7 @@
   };
 
   const renderPrivacyPolicy = () => {
+    lockPageScroll();
     const root = getRoot();
     const sectionMarkup = privacyPolicySections
       .map(
@@ -257,11 +280,11 @@
         <div class="cookie-banner-copy">
           <h2>We use cookies</h2>
           <p>We use cookies to keep the website working, understand how it is used, and improve your browsing experience. You can manage your preferences at any time.</p>
-          <button type="button" class="cookie-text-link" data-privacy-policy>View our Privacy Policy</button>
+          <button type="button" class="cookie-text-link" data-privacy-policy aria-haspopup="dialog">View our Privacy Policy</button>
         </div>
         <div class="cookie-banner-actions">
           <button type="button" class="cookie-action cookie-action-primary" data-cookie-accept>Accept All</button>
-          <button type="button" class="cookie-action cookie-action-muted" data-cookie-manage>Manage Cookies</button>
+          <button type="button" class="cookie-action cookie-action-muted" data-cookie-manage aria-haspopup="dialog">Manage Cookies</button>
           <button type="button" class="cookie-action cookie-action-muted" data-cookie-reject>Reject All</button>
         </div>
       </section>
@@ -279,6 +302,7 @@
   };
 
   const renderPreferences = (draft) => {
+    lockPageScroll();
     const root = getRoot();
     const categoryMarkup = categories
       .map((category) => {
@@ -352,6 +376,10 @@
   };
 
   const init = () => {
+    if (isPrivacyPolicyRoute()) {
+      document.documentElement.classList.add("privacy-modal-route");
+    }
+
     document.addEventListener("click", (event) => {
       const privacyLink = event.target.closest?.("[data-privacy-policy]");
       if (privacyLink) {
@@ -382,7 +410,7 @@
       renderBanner();
     }
 
-    if (window.location.pathname.replace(/\/$/, "") === "/privacy-policy") {
+    if (isPrivacyPolicyRoute()) {
       renderPrivacyPolicy();
     }
   };

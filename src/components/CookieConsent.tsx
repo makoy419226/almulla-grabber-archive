@@ -131,6 +131,9 @@ export function CookieConsent() {
   useEffect(() => {
     if (!preferencesOpen) return;
 
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         setPreferencesOpen(false);
@@ -138,7 +141,10 @@ export function CookieConsent() {
     };
 
     document.addEventListener("keydown", handleKeyDown);
-    return () => document.removeEventListener("keydown", handleKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", handleKeyDown);
+    };
   }, [preferencesOpen]);
 
   useEffect(() => {
@@ -202,7 +208,12 @@ export function CookieConsent() {
               We use cookies to keep the website working, understand how it is used, and improve
               your browsing experience. You can manage your preferences at any time.
             </p>
-            <button type="button" className="cookie-text-link" onClick={openPrivacyPolicyModal}>
+            <button
+              type="button"
+              className="cookie-text-link"
+              aria-haspopup="dialog"
+              onClick={openPrivacyPolicyModal}
+            >
               View our Privacy Policy
             </button>
           </div>
@@ -217,6 +228,7 @@ export function CookieConsent() {
             <button
               type="button"
               className="cookie-action cookie-action-muted"
+              aria-haspopup="dialog"
               onClick={() => setPreferencesOpen(true)}
             >
               <Settings className="h-4 w-4" />

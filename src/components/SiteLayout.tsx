@@ -292,6 +292,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
               <button
                 type="button"
                 className="border-0 bg-transparent p-0 text-left text-sm text-primary-foreground/66 transition-colors hover:text-gold"
+                aria-haspopup="dialog"
                 onClick={openPrivacyPolicyModal}
               >
                 Privacy Policy
@@ -320,13 +321,23 @@ export function SiteLayout({ children }: { children: ReactNode }) {
           </div>
         </div>
         <div className="border-t border-white/10 px-4 py-4 text-center text-xs text-primary-foreground/44 sm:px-6 lg:px-8">
-          <button type="button" className="footer-legal-button" onClick={openPrivacyPolicyModal}>
+          <button
+            type="button"
+            className="footer-legal-button"
+            aria-haspopup="dialog"
+            onClick={openPrivacyPolicyModal}
+          >
             Privacy Policy
           </button>
           <span className="mx-3 text-primary-foreground/20">|</span>
           <span>Terms of Use</span>
           <span className="mx-3 text-primary-foreground/20">|</span>
-          <button type="button" className="footer-legal-button" onClick={openCookiePreferences}>
+          <button
+            type="button"
+            className="footer-legal-button"
+            aria-haspopup="dialog"
+            onClick={openCookiePreferences}
+          >
             Manage Cookies
           </button>
         </div>

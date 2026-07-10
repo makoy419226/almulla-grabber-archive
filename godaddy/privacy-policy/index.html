@@ -33,10 +33,13 @@
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="shortcut icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="stylesheet" href="/cookie-consent.css?v=3" />
-    <link rel="stylesheet" href="/responsive-nav.css?v=1" />
-    <script src="/cookie-consent.js?v=3" defer></script>
-    <script src="/responsive-nav.js?v=1" defer></script>
+    <script>
+      document.documentElement.classList.add("privacy-modal-route");
+    </script>
+    <link rel="stylesheet" href="/cookie-consent.css?v=5" />
+    <link rel="stylesheet" href="/responsive-nav.css?v=3" />
+    <script src="/cookie-consent.js?v=5" defer></script>
+    <script src="/responsive-nav.js?v=3" defer></script>
     <style>
       :root {
         --background: #fbf7ed;
@@ -431,7 +434,7 @@
         </div>
       </header>
 
-      <main>
+      <main class="privacy-policy-route-shell">
         <section class="policy-hero" aria-labelledby="privacy-title">
           <div class="policy-hero-inner">
             <div class="eyebrow">Privacy</div>
@@ -594,7 +597,9 @@
               <a href="/">Home</a>
               <a href="/about-us">About Us</a>
               <a href="/contact-us/">Contact Us</a>
-              <a href="/privacy-policy/" data-privacy-policy>Privacy Policy</a>
+              <a href="/privacy-policy/" data-privacy-policy aria-haspopup="dialog">
+                Privacy Policy
+              </a>
             </div>
           </div>
 
@@ -607,11 +612,23 @@
           </div>
         </div>
         <div class="footer-bottom">
-          <a class="footer-legal-link" href="/privacy-policy/" data-privacy-policy>Privacy Policy</a>
+          <a
+            class="footer-legal-link"
+            href="/privacy-policy/"
+            data-privacy-policy
+            aria-haspopup="dialog"
+          >
+            Privacy Policy
+          </a>
           <span>|</span>
           <span>Terms of Use</span>
           <span>|</span>
-          <button type="button" class="footer-legal-button" data-cookie-preferences>
+          <button
+            type="button"
+            class="footer-legal-button"
+            data-cookie-preferences
+            aria-haspopup="dialog"
+          >
             Manage Cookies
           </button>
         </div>

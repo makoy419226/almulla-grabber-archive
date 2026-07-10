@@ -21,7 +21,7 @@
     const links = menuLinks
       .map(
         (link) =>
-          `<a href="${link.href}" data-menu-link${link.privacy ? " data-privacy-policy" : ""}>${link.label}</a>`,
+          `<a href="${link.href}" data-menu-link${link.privacy ? ' data-privacy-policy aria-haspopup="dialog"' : ""}>${link.label}</a>`,
       )
       .join("");
 

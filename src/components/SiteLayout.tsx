@@ -10,11 +10,18 @@ const navLinkBase =
 
 export function SiteLayout({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false);
+  const [renderMobileMenu, setRenderMobileMenu] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!open) return;
+    if (open) {
+      setRenderMobileMenu(true);
+    }
+  }, [open]);
+
+  useEffect(() => {
+    if (!renderMobileMenu) return;
 
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
@@ -40,7 +47,21 @@ export function SiteLayout({ children }: { children: ReactNode }) {
       document.removeEventListener("pointerdown", handlePointerDown);
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [open]);
+  }, [open, renderMobileMenu]);
+
+  useEffect(() => {
+    if (open || !renderMobileMenu) return;
+
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const timeout = window.setTimeout(
+      () => setRenderMobileMenu(false),
+      prefersReducedMotion ? 0 : 320,
+    );
+
+    return () => window.clearTimeout(timeout);
+  }, [open, renderMobileMenu]);
+
+  const closeMobileMenu = () => setOpen(false);
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground">
@@ -93,19 +114,30 @@ export function SiteLayout({ children }: { children: ReactNode }) {
         </div>
       </header>
 
-      {open && (
+      {renderMobileMenu && (
         <div
           ref={mobileMenuRef}
           id="mobile-navigation"
-          className="mobile-menu-overlay fixed inset-0 z-[80] bg-white xl:hidden"
+          className="mobile-menu-overlay fixed inset-0 z-[80] xl:hidden"
+          data-state={open ? "open" : "closed"}
+          onAnimationEnd={(event) => {
+            if (event.currentTarget === event.target && !open) {
+              setRenderMobileMenu(false);
+            }
+          }}
         >
-          <div className="flex h-full flex-col px-6 pb-8 pt-5 sm:px-10">
+          <div
+            className="flex h-full flex-col px-6 pb-8 pt-5 sm:px-10"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Site navigation"
+          >
             <div className="flex items-start justify-between gap-6">
               <Link
                 to="/"
                 className="mobile-menu-logo"
                 aria-label="AlMulla Holding home"
-                onClick={() => setOpen(false)}
+                onClick={closeMobileMenu}
               >
                 <AlmullaLogo />
               </Link>
@@ -113,7 +145,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
                 type="button"
                 className="mobile-menu-close"
                 aria-label="Close menu"
-                onClick={() => setOpen(false)}
+                onClick={closeMobileMenu}
               >
                 <X className="h-6 w-6" />
               </button>
@@ -124,24 +156,24 @@ export function SiteLayout({ children }: { children: ReactNode }) {
                 to="/about-us"
                 className="mobile-menu-link"
                 activeProps={{ className: "text-primary" }}
-                onClick={() => setOpen(false)}
+                onClick={closeMobileMenu}
               >
                 Who We Are
               </Link>
-              <a href="/#businesses" className="mobile-menu-link" onClick={() => setOpen(false)}>
+              <a href="/#businesses" className="mobile-menu-link" onClick={closeMobileMenu}>
                 What We Do
               </a>
               <Link
                 to="/contact-us"
                 className="mobile-menu-link"
                 activeProps={{ className: "text-primary" }}
-                onClick={() => setOpen(false)}
+                onClick={closeMobileMenu}
               >
                 Get In Touch
               </Link>
             </nav>
 
-            <div className="mt-auto border-t border-foreground/14 pt-6">
+            <div className="mobile-menu-contact mt-auto border-t border-foreground/14 pt-6">
               <p className="mobile-menu-contact-title">Let&apos;s Get In Touch</p>
               <div className="mt-6 grid grid-cols-3 items-center text-primary">
                 <a
@@ -162,7 +194,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
                   to="/contact-us"
                   className="mobile-menu-contact-action"
                   aria-label="Go to contact page"
-                  onClick={() => setOpen(false)}
+                  onClick={closeMobileMenu}
                 >
                   <Send className="h-6 w-6" />
                 </Link>

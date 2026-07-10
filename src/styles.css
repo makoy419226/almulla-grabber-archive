@@ -338,7 +338,7 @@
   }
 
   .mobile-menu-trigger[data-state="open"] svg {
-    transform: none;
+    animation: mobile-menu-trigger-dropdown 420ms cubic-bezier(0.16, 1, 0.3, 1) both;
   }
 
   .mobile-nav-panel {
@@ -382,6 +382,28 @@
   }
 
   .mobile-menu-overlay {
+    background: color-mix(in oklab, var(--ink) 62%, transparent);
+    color: color-mix(in oklab, var(--ink) 94%, black);
+    min-height: 100vh;
+    min-height: 100dvh;
+    isolation: isolate;
+    animation: mobile-menu-backdrop-in 260ms ease-out both;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+  .mobile-menu-overlay[data-state="closed"] {
+    pointer-events: none;
+    animation: mobile-menu-backdrop-out 300ms ease-in both;
+  }
+
+  .mobile-menu-overlay > div {
+    width: min(28rem, 100%);
+    max-width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+    margin-left: auto;
+    overflow-y: auto;
     background:
       linear-gradient(
         180deg,
@@ -390,21 +412,27 @@
         color-mix(in oklab, var(--gold) 16%, white) 100%
       ),
       #fff;
-    background-color: #fff;
-    color: color-mix(in oklab, var(--ink) 94%, black);
-    opacity: 1;
-    min-height: 100vh;
-    min-height: 100dvh;
-    isolation: isolate;
-    transform: none;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
+    box-shadow: -28px 0 72px -46px rgba(0, 0, 0, 0.62);
+    animation: mobile-menu-sidebar-in 420ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    will-change: transform;
   }
 
-  .mobile-menu-overlay > div {
-    background: transparent;
-    min-height: 100vh;
-    min-height: 100dvh;
+  .mobile-menu-overlay[data-state="closed"] > div {
+    animation: mobile-menu-sidebar-out 260ms cubic-bezier(0.7, 0, 0.84, 0) both;
+  }
+
+  .mobile-menu-overlay[data-state="open"] .mobile-menu-logo,
+  .mobile-menu-overlay[data-state="open"] .mobile-menu-close,
+  .mobile-menu-overlay[data-state="open"] .mobile-menu-contact {
+    animation: mobile-menu-item-in 440ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .mobile-menu-overlay[data-state="open"] .mobile-menu-close {
+    animation-delay: 80ms;
+  }
+
+  .mobile-menu-overlay[data-state="open"] .mobile-menu-contact {
+    animation-delay: 190ms;
   }
 
   .mobile-menu-logo {
@@ -544,6 +572,9 @@
   }
 
   .site-header-shell {
+    position: sticky;
+    top: 0;
+    z-index: 50;
     border-bottom: 1px solid color-mix(in oklab, var(--gold) 18%, white);
     background:
       linear-gradient(
@@ -1837,6 +1868,55 @@
   }
 }
 
+@keyframes mobile-menu-backdrop-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes mobile-menu-backdrop-out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes mobile-menu-sidebar-in {
+  0% {
+    opacity: 0.88;
+    transform: translateX(100%);
+  }
+
+  72% {
+    opacity: 1;
+    transform: translateX(-0.35rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes mobile-menu-sidebar-out {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  to {
+    opacity: 0.9;
+    transform: translateX(100%);
+  }
+}
+
 @keyframes mobile-menu-item-in {
   0% {
     opacity: 0;
@@ -2117,7 +2197,11 @@
   .glass-morph,
   .morph-list li,
   .mobile-menu-overlay,
+  .mobile-menu-overlay > div,
   .mobile-menu-trigger[data-state="open"] svg,
+  .mobile-menu-logo,
+  .mobile-menu-close,
+  .mobile-menu-contact,
   .mobile-menu-link,
   .mobile-nav-panel,
   .mobile-nav-panel nav > *,

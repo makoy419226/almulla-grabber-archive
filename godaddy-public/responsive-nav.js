@@ -1,5 +1,7 @@
 (() => {
   const desktopQuery = window.matchMedia("(min-width: 1280px)");
+  const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const closeAnimationMs = 320;
 
   const menuLinks = [
     { href: "/", label: "Home" },
@@ -56,17 +58,29 @@
 
     const menu = buildMenu();
     const closeTargets = menu.querySelectorAll("[data-menu-close], [data-menu-link]");
+    let hideTimer = 0;
 
     const setOpen = (open) => {
-      menu.dataset.open = String(open);
+      window.clearTimeout(hideTimer);
       toggle.setAttribute("aria-expanded", String(open));
       document.body.classList.toggle("site-menu-open", open);
 
       if (open) {
         menu.removeAttribute("hidden");
-        menu.querySelector("[data-menu-close]")?.focus();
+        window.requestAnimationFrame(() => {
+          menu.dataset.open = "true";
+          menu.querySelector("[data-menu-close]")?.focus();
+        });
       } else {
-        menu.setAttribute("hidden", "");
+        menu.dataset.open = "false";
+        hideTimer = window.setTimeout(
+          () => {
+            if (menu.dataset.open !== "true") {
+              menu.setAttribute("hidden", "");
+            }
+          },
+          reducedMotionQuery.matches ? 0 : closeAnimationMs
+        );
       }
     };
 

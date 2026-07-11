@@ -380,7 +380,7 @@ function Home() {
             <h2 className="legacy-section-title mt-3">Sectors That Shape Tomorrow</h2>
           </div>
 
-          <div className="mx-auto mt-12 grid max-w-2xl grid-cols-1 gap-6 xl:mt-16 xl:max-w-[92rem] xl:grid-cols-2 xl:gap-10">
+          <div className="mx-auto mt-10 grid w-full max-w-2xl grid-cols-1 gap-5 sm:mt-12 sm:gap-6 xl:mt-16 xl:max-w-[92rem] xl:grid-cols-2 xl:gap-10">
             {sectors.map((sector) => (
               <button
                 key={sector.title}
@@ -412,124 +412,124 @@ function Home() {
             ))}
           </div>
         </section>
+      </div>
 
-        {selectedSector ? (
+      {selectedSector ? (
+        <div
+          className="sector-popover-shell"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="sector-popover-title"
+          data-state={isSectorPopoverClosing ? "closing" : "open"}
+        >
+          <button
+            type="button"
+            className="sector-popover-backdrop"
+            aria-label="Close sector details"
+            onClick={closeSectorPopover}
+          />
           <div
-            className="sector-popover-shell"
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="sector-popover-title"
+            className="sector-popover-panel"
+            role="document"
+            data-scrolled={isSectorPopoverScrolled ? "true" : "false"}
             data-state={isSectorPopoverClosing ? "closing" : "open"}
           >
             <button
               type="button"
-              className="sector-popover-backdrop"
+              className="sector-popover-close"
               aria-label="Close sector details"
+              disabled={isSectorPopoverClosing}
               onClick={closeSectorPopover}
-            />
-            <div
-              className="sector-popover-panel"
-              role="document"
-              data-scrolled={isSectorPopoverScrolled ? "true" : "false"}
-              data-state={isSectorPopoverClosing ? "closing" : "open"}
             >
-              <button
-                type="button"
-                className="sector-popover-close"
-                aria-label="Close sector details"
-                disabled={isSectorPopoverClosing}
-                onClick={closeSectorPopover}
-              >
-                <X className="h-5 w-5" />
-              </button>
+              <X className="h-5 w-5" />
+            </button>
+
+            <div
+              className="sector-popover-media"
+              style={
+                {
+                  "--sector-popover-image": `url(${selectedSector.img})`,
+                } as SectorPopoverImageStyle
+              }
+            >
+              <img
+                src={selectedSector.img}
+                alt=""
+                srcSet={`${selectedSector.imgSmall} 900w, ${selectedSector.img} ${selectedSector.width}w`}
+                sizes="(min-width: 1024px) 42vw, 100vw"
+                loading="lazy"
+                decoding="async"
+                width={selectedSector.width}
+                height={selectedSector.height}
+              />
+              <div className="sector-popover-media-overlay">
+                <div className="legacy-eyebrow">Sector</div>
+                <h3 id="sector-popover-title">{selectedSector.title}</h3>
+                <p>{selectedSector.body}</p>
+                <span>Scroll down to view details</span>
+              </div>
+            </div>
+
+            <div className="sector-popover-content" onScroll={handleSectorContentScroll}>
+              <p>{selectedSector.detail}</p>
+
+              <div className="sector-popover-stats" aria-label={`${selectedSector.title} stats`}>
+                {selectedSector.stats.map((stat) => (
+                  <div className="sector-popover-stat" key={stat.label}>
+                    <strong>{stat.value}</strong>
+                    <span>{stat.label}</span>
+                  </div>
+                ))}
+              </div>
 
               <div
-                className="sector-popover-media"
-                style={
-                  {
-                    "--sector-popover-image": `url(${selectedSector.img})`,
-                  } as SectorPopoverImageStyle
-                }
+                className="sector-popover-focus"
+                aria-label={`${selectedSector.title} focus areas`}
               >
-                <img
-                  src={selectedSector.img}
-                  alt=""
-                  srcSet={`${selectedSector.imgSmall} 900w, ${selectedSector.img} ${selectedSector.width}w`}
-                  sizes="(min-width: 1024px) 42vw, 100vw"
-                  loading="lazy"
-                  decoding="async"
-                  width={selectedSector.width}
-                  height={selectedSector.height}
-                />
-                <div className="sector-popover-media-overlay">
-                  <div className="legacy-eyebrow">Sector</div>
-                  <h3 id="sector-popover-title">{selectedSector.title}</h3>
-                  <p>{selectedSector.body}</p>
-                  <span>Scroll down to view details</span>
+                {selectedSector.focus.map((item) => (
+                  <span key={item}>{item}</span>
+                ))}
+              </div>
+
+              <div className="sector-popover-section">
+                <div className="sector-popover-section-kicker">Overview</div>
+                <h4>{selectedSector.introTitle}</h4>
+                <div className="sector-popover-copy">
+                  {selectedSector.introBody.map((paragraph) => (
+                    <p key={paragraph}>{paragraph}</p>
+                  ))}
                 </div>
               </div>
 
-              <div className="sector-popover-content" onScroll={handleSectorContentScroll}>
-                <p>{selectedSector.detail}</p>
+              <blockquote className="sector-popover-callout">{selectedSector.quote}</blockquote>
 
-                <div className="sector-popover-stats" aria-label={`${selectedSector.title} stats`}>
-                  {selectedSector.stats.map((stat) => (
-                    <div className="sector-popover-stat" key={stat.label}>
-                      <strong>{stat.value}</strong>
-                      <span>{stat.label}</span>
-                    </div>
+              <div className="sector-popover-section">
+                <div className="sector-popover-section-kicker">Core priorities</div>
+                <div className="sector-popover-list">
+                  {selectedSector.pillars.map((pillar) => (
+                    <article className="sector-popover-list-item" key={pillar.title}>
+                      <h5>{pillar.title}</h5>
+                      <p>{pillar.body}</p>
+                    </article>
                   ))}
                 </div>
+              </div>
 
-                <div
-                  className="sector-popover-focus"
-                  aria-label={`${selectedSector.title} focus areas`}
-                >
-                  {selectedSector.focus.map((item) => (
-                    <span key={item}>{item}</span>
+              <div className="sector-popover-section">
+                <div className="sector-popover-section-kicker">Focus areas</div>
+                <div className="sector-popover-list">
+                  {selectedSector.focusAreas.map((area) => (
+                    <article className="sector-popover-list-item" key={area.title}>
+                      <h5>{area.title}</h5>
+                      <p>{area.body}</p>
+                    </article>
                   ))}
-                </div>
-
-                <div className="sector-popover-section">
-                  <div className="sector-popover-section-kicker">Overview</div>
-                  <h4>{selectedSector.introTitle}</h4>
-                  <div className="sector-popover-copy">
-                    {selectedSector.introBody.map((paragraph) => (
-                      <p key={paragraph}>{paragraph}</p>
-                    ))}
-                  </div>
-                </div>
-
-                <blockquote className="sector-popover-callout">{selectedSector.quote}</blockquote>
-
-                <div className="sector-popover-section">
-                  <div className="sector-popover-section-kicker">Core priorities</div>
-                  <div className="sector-popover-list">
-                    {selectedSector.pillars.map((pillar) => (
-                      <article className="sector-popover-list-item" key={pillar.title}>
-                        <h5>{pillar.title}</h5>
-                        <p>{pillar.body}</p>
-                      </article>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="sector-popover-section">
-                  <div className="sector-popover-section-kicker">Focus areas</div>
-                  <div className="sector-popover-list">
-                    {selectedSector.focusAreas.map((area) => (
-                      <article className="sector-popover-list-item" key={area.title}>
-                        <h5>{area.title}</h5>
-                        <p>{area.body}</p>
-                      </article>
-                    ))}
-                  </div>
                 </div>
               </div>
             </div>
           </div>
-        ) : null}
-      </div>
+        </div>
+      ) : null}
     </SiteLayout>
   );
 }

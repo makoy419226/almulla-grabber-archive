@@ -59,15 +59,23 @@ function Contact() {
           <div className="section-eyebrow">Contact details</div>
           <h2 className="mt-4 text-3xl font-semibold text-primary">Direct enquiries</h2>
           <ul className="data-center mt-8 grid gap-5 text-sm text-foreground sm:grid-cols-2">
-            <li className="flex min-h-32 flex-col items-center justify-center gap-3 rounded-md border border-border bg-white px-4 py-5">
-              <Phone className="h-5 w-5 shrink-0 text-[var(--gold)]" />
-              <a href="tel:+97142249662" className="transition-colors hover:text-primary">
+            <li>
+              <a
+                href="tel:+97142249662"
+                className="flex min-h-32 flex-col items-center justify-center gap-3 rounded-md border border-border bg-white px-4 py-5 transition-colors hover:text-primary"
+                aria-label="Call AlMulla Holding at 04 224 9662"
+              >
+                <Phone className="h-5 w-5 shrink-0 text-[var(--gold)]" />
                 04 224 9662
               </a>
             </li>
-            <li className="flex min-h-32 flex-col items-center justify-center gap-3 rounded-md border border-border bg-white px-4 py-5">
-              <Mail className="h-5 w-5 shrink-0 text-[var(--gold)]" />
-              <a href={`mailto:${contactEmail}`} className="transition-colors hover:text-primary">
+            <li>
+              <a
+                href={`mailto:${contactEmail}`}
+                className="flex min-h-32 flex-col items-center justify-center gap-3 rounded-md border border-border bg-white px-4 py-5 transition-colors hover:text-primary"
+                aria-label={`Email AlMulla Holding at ${contactEmail}`}
+              >
+                <Mail className="h-5 w-5 shrink-0 text-[var(--gold)]" />
                 {contactEmail}
               </a>
             </li>

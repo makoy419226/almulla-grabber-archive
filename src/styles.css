@@ -740,6 +740,11 @@
     animation: kenburns-top 5s linear reverse backwards;
   }
 
+  .scale-in-ver-top {
+    -webkit-animation: scale-in-ver-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    animation: scale-in-ver-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
+
   .legacy-heading {
     display: grid;
     gap: 0.04em;
@@ -2525,6 +2530,34 @@
   }
 }
 
+@-webkit-keyframes scale-in-ver-top {
+  0% {
+    -webkit-transform: scaleY(0);
+    -webkit-transform-origin: 100% 0%;
+    opacity: 1;
+  }
+
+  100% {
+    -webkit-transform: scaleY(1);
+    -webkit-transform-origin: 100% 0%;
+    opacity: 1;
+  }
+}
+
+@keyframes scale-in-ver-top {
+  0% {
+    transform: scaleY(0);
+    transform-origin: 100% 0%;
+    opacity: 1;
+  }
+
+  100% {
+    transform: scaleY(1);
+    transform-origin: 100% 0%;
+    opacity: 1;
+  }
+}
+
 @keyframes media-clip-in {
   from {
     clip-path: inset(0 0 100% 0);
@@ -3193,6 +3226,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .reveal-up,
+  .scale-in-ver-top,
   .cookie-banner,
   .cookie-modal-shell,
   .cookie-modal-backdrop,

@@ -341,7 +341,7 @@ function Home() {
 
   return (
     <SiteLayout>
-      <div className="home-legacy">
+      <div className="home-legacy scale-in-ver-top">
         <section className="legacy-hero">
           <div className="legacy-hero-media">
             <img

@@ -2,6 +2,7 @@ User-agent: *
 Allow: /
 
 User-agent: Googlebot
+Allow: /favicon-48x48.png
 Allow: /favicon.ico
 Allow: /site-icon-192.png
 Allow: /site-icon-512.png
@@ -10,6 +11,7 @@ Allow: /manifest.webmanifest
 Allow: /logo.png
 
 User-agent: Googlebot-Image
+Allow: /favicon-48x48.png
 Allow: /favicon.ico
 Allow: /site-icon-192.png
 Allow: /site-icon-512.png

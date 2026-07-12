@@ -2,8 +2,8 @@ export const SITE_ORIGIN = "https://almullaholding.com";
 export const SITE_NAME = "AlMulla Holding Group";
 export const SITE_SHORT_NAME = "Almullah";
 export const DEFAULT_OG_IMAGE = `${SITE_ORIGIN}/og-image-v2.jpg`;
-export const LOGO_URL = `${SITE_ORIGIN}/logo.png`;
-export const FAVICON_URL = `${SITE_ORIGIN}/site-icon-512.png`;
+export const LOGO_URL = `${SITE_ORIGIN}/site-icon-512.png`;
+export const FAVICON_URL = `${SITE_ORIGIN}/favicon-48x48.png`;
 
 export type SeoEntry = {
   path: string;
@@ -90,8 +90,8 @@ export const organizationJsonLd = {
   logo: {
     "@type": "ImageObject",
     url: LOGO_URL,
-    width: 284,
-    height: 99,
+    width: 512,
+    height: 512,
   },
   image: DEFAULT_OG_IMAGE,
   email: "info@almullaholding.com",

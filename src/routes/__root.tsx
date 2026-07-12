@@ -10,7 +10,14 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
-import { SITE_NAME } from "../lib/seo";
+import {
+  DEFAULT_OG_IMAGE,
+  FAVICON_URL,
+  SITE_NAME,
+  SITE_ORIGIN,
+  organizationJsonLd,
+  websiteJsonLd,
+} from "../lib/seo";
 
 function NotFoundComponent() {
   return (
@@ -91,10 +98,17 @@ export const Route = createRootRouteWithContext<Record<string, never>>()({
           "A diversified holding company with focused investments across strategic investment, healthcare, hospitality, education, and energy.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: `${SITE_ORIGIN}/` },
+      { property: "og:image", content: DEFAULT_OG_IMAGE },
+      { property: "og:image:alt", content: SITE_NAME },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: DEFAULT_OG_IMAGE },
+      { "script:ld+json": organizationJsonLd },
+      { "script:ld+json": websiteJsonLd },
     ],
     links: [
       { rel: "manifest", href: "/manifest.webmanifest" },
+      { rel: "icon", type: "image/png", sizes: "48x48", href: FAVICON_URL },
       { rel: "icon", type: "image/png", sizes: "512x512", href: "/site-icon-512.png" },
       { rel: "icon", type: "image/png", sizes: "192x192", href: "/site-icon-192.png" },
       { rel: "icon", sizes: "any", href: "/favicon.ico" },

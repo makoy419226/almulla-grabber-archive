@@ -118,13 +118,13 @@ export function SiteLayout({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground">
       <header ref={headerRef} className="site-header-shell sticky top-0 z-50">
-        <div className="mx-auto flex h-[5.75rem] max-w-[104rem] items-center justify-between gap-7 px-4 sm:px-6 lg:px-10">
-          <Link to="/" className="nav-hover-magnify shrink-0" aria-label="AlMulla Holding home">
+        <div className="flex h-[5.75rem] w-full items-center gap-7 px-4 sm:px-6 lg:px-10">
+          <Link to="/" className="shrink-0" aria-label="AlMulla Holding home">
             <AlmullaLogo />
           </Link>
 
           <nav
-            className="ml-auto hidden items-center justify-end gap-5 text-right xl:flex"
+            className="ml-auto hidden items-center justify-end gap-5 text-right md:flex"
             aria-label="Main navigation"
           >
             <Link
@@ -157,7 +157,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
           </nav>
 
           <button
-            className="mobile-menu-trigger ml-auto xl:hidden"
+            className="mobile-menu-trigger ml-auto md:hidden"
             onClick={() => setOpen(!open)}
             aria-label="Menu"
             aria-expanded={open}
@@ -173,7 +173,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
         <div
           ref={mobileMenuRef}
           id="mobile-navigation"
-          className="mobile-menu-overlay fixed inset-0 z-[80] xl:hidden"
+          className="mobile-menu-overlay fixed inset-0 z-[80] md:hidden"
           data-state={open ? "open" : "closed"}
           onAnimationEnd={(event) => {
             if (event.currentTarget === event.target && !open) {

@@ -607,31 +607,20 @@
 
   .nav-echo {
     position: relative;
-    display: grid;
-    height: 1.12em;
-    overflow: hidden;
+    display: inline-block;
     line-height: 1.12;
-  }
-
-  .nav-echo > span,
-  .nav-echo::after {
-    grid-area: 1 / 1;
-    transition: transform 360ms cubic-bezier(0.16, 1, 0.3, 1);
+    transform: scale(1);
+    transform-origin: center;
+    transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .nav-echo::after {
-    content: attr(data-label);
-    transform: none;
+    display: none;
   }
 
-  .nav-hover-magnify:hover .nav-echo > span,
-  .nav-hover-magnify:focus-visible .nav-echo > span {
-    transform: none;
-  }
-
-  .nav-hover-magnify:hover .nav-echo::after,
-  .nav-hover-magnify:focus-visible .nav-echo::after {
-    transform: none;
+  .nav-hover-magnify:hover .nav-echo,
+  .nav-hover-magnify:focus-visible .nav-echo {
+    transform: scale(1.1);
   }
 
   .home-legacy {

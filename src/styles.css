@@ -1032,7 +1032,7 @@
     margin-right: auto;
     margin-left: 0;
     max-width: 12ch;
-    color: color-mix(in oklab, white 96%, var(--champagne));
+    color: color-mix(in oklab, var(--gold) 88%, white);
     font-family: var(--font-sans);
     font-size: 2rem;
     font-weight: 500;

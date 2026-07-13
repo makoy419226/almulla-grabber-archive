@@ -315,8 +315,8 @@ const businessPages: Record<string, BusinessPageData> = {
 };
 
 export const Route = createFileRoute("/businesses/$business")({
-  head: ({ loaderData, params }) => {
-    const page = loaderData ?? businessPages[params.business];
+  head: ({ params }) => {
+    const page = businessPages[params.business];
 
     if (!page) {
       return {
@@ -347,14 +347,15 @@ export const Route = createFileRoute("/businesses/$business")({
       throw notFound();
     }
 
-    return page;
+    return { business: params.business };
   },
   component: BusinessPage,
   notFoundComponent: BusinessPageNotFound,
 });
 
 function BusinessPage() {
-  const page = Route.useLoaderData();
+  const { business } = Route.useParams();
+  const page = businessPages[business]!;
 
   return (
     <SiteLayout>

@@ -1254,9 +1254,7 @@
     opacity: 0.24;
   }
 
-  .site-content
-    .sector-popover-media-overlay
-    :is(h3, p, .legacy-eyebrow) {
+  .site-content .sector-popover-media-overlay :is(h3, p, .legacy-eyebrow) {
     margin-right: 0;
     margin-left: 0;
     text-align: left;
@@ -2223,8 +2221,7 @@
     border: 0;
     border-radius: var(--radius);
     background-color: color-mix(in oklab, var(--champagne) 62%, var(--primary) 12%);
-    box-shadow:
-      0 22px 72px -54px color-mix(in oklab, var(--primary) 62%, transparent);
+    box-shadow: 0 22px 72px -54px color-mix(in oklab, var(--primary) 62%, transparent);
   }
 
   .business-hero h1,
@@ -3259,7 +3256,1328 @@
   }
 }
 
+.header-experience-button {
+  position: relative;
+  display: inline-flex;
+  min-height: 2.65rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  overflow: hidden;
+  border: 1px solid color-mix(in oklab, var(--gold) 58%, var(--bronze));
+  border-radius: 999px;
+  background:
+    linear-gradient(135deg, color-mix(in oklab, white 86%, var(--gold) 14%), white), var(--ivory);
+  box-shadow:
+    inset 0 1px 0 color-mix(in oklab, white 88%, transparent),
+    0 12px 30px -24px color-mix(in oklab, var(--bronze) 70%, transparent);
+  color: color-mix(in oklab, var(--primary) 88%, black);
+  padding: 0.55rem 0.8rem;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  text-align: center;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition:
+    color 220ms ease,
+    border-color 220ms ease,
+    box-shadow 260ms ease,
+    transform 260ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.header-experience-button::before {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    110deg,
+    transparent 18%,
+    color-mix(in oklab, white 58%, transparent),
+    transparent 64%
+  );
+  content: "";
+  pointer-events: none;
+  transform: translateX(-110%);
+  transition: transform 520ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.header-experience-button:hover,
+.header-experience-button:focus-visible {
+  border-color: color-mix(in oklab, var(--gold) 84%, var(--bronze));
+  box-shadow:
+    inset 0 1px 0 color-mix(in oklab, white 92%, transparent),
+    0 16px 34px -22px color-mix(in oklab, var(--bronze) 82%, transparent);
+  color: var(--primary);
+  outline: none;
+  transform: translateY(-2px);
+}
+
+.header-experience-button:hover::before,
+.header-experience-button:focus-visible::before {
+  transform: translateX(110%);
+}
+
+.header-experience-icon {
+  position: relative;
+  display: inline-flex;
+  width: 1.45rem;
+  height: 1.45rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(
+    145deg,
+    var(--gold),
+    color-mix(in oklab, var(--bronze) 82%, var(--primary))
+  );
+  box-shadow: inset 0 1px 0 color-mix(in oklab, white 48%, transparent);
+  color: white;
+  transition: transform 260ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.header-experience-icon svg {
+  width: 0.7rem;
+  height: 0.7rem;
+  fill: currentColor;
+  transform: translateX(0.04rem);
+}
+
+.header-experience-button:hover .header-experience-icon,
+.header-experience-button:focus-visible .header-experience-icon {
+  transform: translateX(0.12rem) scale(1.06);
+}
+
+.header-experience-button-mobile {
+  width: fit-content;
+  min-height: 3.25rem;
+  padding: 0.7rem 1rem;
+  font-size: 0.76rem;
+  animation: mobile-menu-link-in 480ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.sectors-experience-page {
+  min-height: 100vh;
+  min-height: 100svh;
+  overflow: clip;
+  background: var(--ink);
+}
+
+.sectors-experience {
+  position: relative;
+  height: 400vh;
+  height: 400svh;
+  background: var(--ink);
+  scroll-margin-top: 0;
+  outline: none;
+}
+
+.sectors-experience-exit {
+  position: absolute;
+  top: max(1.25rem, env(safe-area-inset-top));
+  left: clamp(1rem, 3vw, 2.5rem);
+  z-index: 8;
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  width: 2.75rem;
+  border: 1px solid color-mix(in oklab, white 24%, var(--gold));
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--ink) 58%, transparent);
+  color: color-mix(in oklab, white 86%, var(--champagne));
+  padding: 0;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  backdrop-filter: blur(14px);
+  transition:
+    border-color 220ms ease,
+    background-color 220ms ease,
+    color 220ms ease,
+    transform 220ms ease;
+}
+
+.sectors-experience-exit svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.sectors-experience-exit:hover,
+.sectors-experience-exit:focus-visible {
+  border-color: var(--gold);
+  background: color-mix(in oklab, var(--gold) 18%, var(--ink));
+  color: white;
+  outline: none;
+  transform: translateX(-0.15rem);
+}
+
+.sectors-experience:focus-visible .sectors-experience-sticky {
+  box-shadow: inset 0 0 0 2px color-mix(in oklab, var(--gold) 82%, white);
+}
+
+.sectors-experience-sticky {
+  position: sticky;
+  top: 0;
+  isolation: isolate;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  background: color-mix(in oklab, var(--ink) 94%, var(--primary));
+  color: white;
+}
+
+.sectors-experience-background,
+.sectors-experience-background::after,
+.sectors-experience-atmosphere {
+  position: absolute;
+  inset: 0;
+}
+
+.sectors-experience-background {
+  z-index: -4;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 42%, #173451 0%, #0a1728 42%, #050b14 100%), var(--ink);
+  perspective: 95rem;
+  perspective-origin: center;
+  transform-style: preserve-3d;
+}
+
+.sectors-experience-webgl {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 600ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sectors-experience[data-webgl-ready="true"] .sectors-experience-webgl {
+  opacity: 1;
+}
+
+.sectors-experience-loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  color: color-mix(in oklab, white 72%, var(--champagne));
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transform: translate(-50%, -50%);
+}
+
+.sectors-experience-loading span {
+  width: 0.55rem;
+  height: 0.55rem;
+  border: 1px solid color-mix(in oklab, var(--gold) 84%, white);
+  border-radius: 50%;
+  box-shadow: 0 0 1rem color-mix(in oklab, var(--gold) 54%, transparent);
+  animation: sectors-experience-loading 1.1s ease-in-out infinite alternate;
+}
+
+@keyframes sectors-experience-loading {
+  to {
+    background: var(--gold);
+    transform: scale(1.35);
+  }
+}
+
+.sectors-experience-enhancement-status {
+  position: absolute;
+  top: max(1.25rem, env(safe-area-inset-top));
+  left: 50%;
+  z-index: 7;
+  display: grid;
+  width: min(27rem, calc(100vw - 9rem));
+  grid-template-columns: minmax(3rem, 5rem) minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.7rem;
+  border: 1px solid color-mix(in oklab, white 14%, transparent);
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--ink) 78%, transparent);
+  box-shadow: 0 0.75rem 2rem color-mix(in oklab, black 28%, transparent);
+  color: color-mix(in oklab, white 80%, var(--champagne));
+  padding: 0.55rem 0.8rem;
+  font-size: 0.62rem;
+  font-weight: 750;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  text-transform: uppercase;
+  transform: translateX(-50%);
+  backdrop-filter: blur(14px);
+  pointer-events: none;
+  animation: sectors-experience-enhancement-in 420ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.sectors-experience-enhancement-status > i {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  height: 2px;
+  border-radius: 999px;
+  background: color-mix(in oklab, white 14%, transparent);
+}
+
+.sectors-experience-enhancement-status > i > b {
+  position: absolute;
+  inset: 0 auto 0 0;
+  max-width: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--bronze), color-mix(in oklab, var(--gold) 72%, white));
+  box-shadow: 0 0 0.7rem color-mix(in oklab, var(--gold) 62%, transparent);
+  transition: width 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sectors-experience-enhancement-status > span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sectors-experience-enhancement-status > strong {
+  color: color-mix(in oklab, var(--gold) 88%, white);
+  font: inherit;
+  font-variant-numeric: tabular-nums;
+}
+
+.sectors-experience-enhancement-status[data-phase="ready"] > i > b {
+  background: color-mix(in oklab, #72f2cc 70%, white);
+}
+
+@keyframes sectors-experience-enhancement-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -0.55rem);
+  }
+}
+
+.sectors-experience-background video {
+  position: absolute;
+  inset: -5%;
+  width: 110%;
+  height: 110%;
+  object-fit: cover;
+  --camera-x: 0vw;
+  --camera-y: 0vh;
+  --camera-z: 0rem;
+  --camera-angle: 0deg;
+  --camera-tilt: 0deg;
+  --camera-scale: 1.16;
+  --camera-opacity: 0;
+  --camera-blur: 0px;
+  --camera-clip-inset: 0%;
+  clip-path: inset(var(--camera-clip-inset) 0 var(--camera-clip-inset) 0);
+  opacity: var(--camera-opacity);
+  filter: blur(var(--camera-blur)) saturate(0.9) contrast(1.12) brightness(0.54);
+  transform: translate3d(var(--camera-x), var(--camera-y), var(--camera-z))
+    rotateY(var(--camera-angle)) rotateX(var(--camera-tilt)) scale(var(--camera-scale));
+  transform-origin: center;
+  transition:
+    clip-path 70ms linear,
+    opacity 70ms linear,
+    transform 80ms linear,
+    filter 80ms linear;
+  will-change: clip-path, opacity, transform, filter;
+}
+
+.sectors-experience-background video[data-active="true"] {
+  filter: blur(var(--camera-blur)) saturate(0.98) contrast(1.13) brightness(0.56);
+}
+
+.sectors-experience-background::after {
+  z-index: 10;
+  background:
+    radial-gradient(
+      ellipse at center,
+      transparent 38%,
+      color-mix(in oklab, var(--ink) 22%, transparent) 72%,
+      color-mix(in oklab, var(--ink) 64%, transparent) 100%
+    ),
+    linear-gradient(
+      180deg,
+      color-mix(in oklab, var(--ink) 52%, transparent),
+      transparent 24% 68%,
+      color-mix(in oklab, var(--ink) 74%, transparent)
+    );
+  content: "";
+}
+
+.sectors-experience-gate {
+  position: absolute;
+  inset: 0;
+  z-index: 12;
+  overflow: hidden;
+  background:
+    linear-gradient(
+      90deg,
+      color-mix(in oklab, #ff334d 12%, transparent),
+      transparent 12%,
+      transparent 88%,
+      color-mix(in oklab, #26c6ff 12%, transparent)
+    ),
+    radial-gradient(ellipse at center, color-mix(in oklab, white 7%, transparent), transparent 58%);
+  opacity: var(--gate-opacity);
+  pointer-events: none;
+}
+
+.sectors-experience-gate::before,
+.sectors-experience-gate::after {
+  position: absolute;
+  right: 0;
+  left: 0;
+  height: 1px;
+  background: color-mix(in oklab, var(--gold) 74%, white);
+  box-shadow:
+    0 -1px 12px color-mix(in oklab, #ff334d 52%, transparent),
+    0 1px 12px color-mix(in oklab, #26c6ff 48%, transparent);
+  content: "";
+  transform: translateY(-50%);
+}
+
+.sectors-experience-gate::before {
+  top: var(--gate-inset);
+}
+
+.sectors-experience-gate::after {
+  bottom: var(--gate-inset);
+  transform: translateY(50%);
+}
+
+.sectors-experience-entry {
+  position: absolute;
+  inset: 0;
+  z-index: 13;
+  overflow: hidden;
+  opacity: var(--entry-opacity);
+  pointer-events: none;
+}
+
+.sectors-experience-entry::before {
+  position: absolute;
+  inset: -2px;
+  background:
+    linear-gradient(
+      90deg,
+      color-mix(in oklab, var(--ink) 78%, transparent),
+      transparent 30% 70%,
+      color-mix(in oklab, var(--ink) 78%, transparent)
+    ),
+    linear-gradient(
+      180deg,
+      color-mix(in oklab, black 62%, transparent),
+      transparent 28% 66%,
+      color-mix(in oklab, black 72%, transparent)
+    );
+  backdrop-filter: blur(var(--entry-blur));
+  content: "";
+}
+
+.sectors-experience-entry::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(52vw, 48rem);
+  height: min(72vh, 52rem);
+  border: 1px solid color-mix(in oklab, var(--gold) 54%, white 24%);
+  box-shadow:
+    0 0 0 1px color-mix(in oklab, white 9%, transparent),
+    0 0 4rem color-mix(in oklab, var(--gold) 13%, transparent),
+    inset 0 0 3rem color-mix(in oklab, black 26%, transparent);
+  content: "";
+  transform: translate(-50%, -50%) scale(var(--entry-scale));
+  transform-origin: center;
+  will-change: transform;
+}
+
+.sectors-experience-atmosphere {
+  z-index: -2;
+  background:
+    radial-gradient(
+      circle at 72% 48%,
+      color-mix(in oklab, var(--gold) 20%, transparent),
+      transparent 25%
+    ),
+    radial-gradient(circle at 68% 54%, color-mix(in oklab, white 8%, transparent), transparent 38%);
+  opacity: 0.9;
+  pointer-events: none;
+  transition: opacity 500ms ease;
+}
+
+.sectors-experience-atmosphere::before,
+.sectors-experience-atmosphere::after {
+  position: absolute;
+  content: "";
+  pointer-events: none;
+}
+
+.sectors-experience-atmosphere::before {
+  inset: -28%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.52'/%3E%3C/svg%3E");
+  background-size: 11rem 11rem;
+  mix-blend-mode: soft-light;
+  opacity: 0.055;
+}
+
+.sectors-experience-atmosphere::after {
+  right: -8%;
+  bottom: -12%;
+  left: auto;
+  width: min(58vw, 52rem);
+  height: 78%;
+  background: radial-gradient(
+    ellipse at center,
+    color-mix(in oklab, var(--gold) 16%, transparent),
+    transparent 66%
+  );
+  filter: blur(28px);
+  opacity: 0.28;
+}
+
+.sectors-experience-hint {
+  position: absolute;
+  bottom: max(1.6rem, env(safe-area-inset-bottom));
+  left: clamp(1rem, 3vw, 2.5rem);
+  z-index: 5;
+  display: flex;
+  min-height: 2.75rem;
+  align-items: center;
+  border-left: 2px solid color-mix(in oklab, var(--gold) 82%, white);
+  background: linear-gradient(90deg, color-mix(in oklab, var(--ink) 62%, transparent), transparent);
+  color: white;
+  padding: 0.55rem 1.4rem 0.55rem 0.8rem;
+  font-size: clamp(0.72rem, 1vw, 0.86rem);
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  line-height: 1;
+  text-transform: uppercase;
+  text-shadow: 0 2px 18px color-mix(in oklab, black 72%, transparent);
+  backdrop-filter: blur(8px);
+  pointer-events: none;
+}
+
+.sectors-experience-hint span {
+  animation: sectors-experience-hint-in 500ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes sectors-experience-hint-in {
+  from {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateX(-1rem);
+  }
+}
+
+.sectors-experience-overview {
+  position: absolute;
+  bottom: clamp(5.2rem, 10vh, 7.5rem);
+  left: clamp(1.25rem, 5vw, 5rem);
+  z-index: 5;
+  width: min(34rem, calc(100vw - 10rem));
+  pointer-events: none;
+}
+
+.sectors-experience-overview article {
+  position: relative;
+  overflow: hidden;
+  border-left: 2px solid color-mix(in oklab, var(--gold) 88%, white);
+  background: linear-gradient(
+    90deg,
+    color-mix(in oklab, var(--ink) 84%, transparent),
+    color-mix(in oklab, var(--ink) 54%, transparent) 72%,
+    transparent
+  );
+  box-shadow: -1.4rem 0 3.2rem color-mix(in oklab, black 18%, transparent);
+  padding: 1.05rem 1.6rem 1.15rem 1.35rem;
+  animation: sectors-experience-overview-in 380ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.sectors-experience-overview-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.48rem;
+  margin: 0;
+  color: color-mix(in oklab, var(--gold) 90%, white);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.sectors-experience-overview-meta i {
+  width: 2rem;
+  height: 1px;
+  margin-inline: 0.15rem;
+  background: color-mix(in oklab, var(--gold) 60%, transparent);
+}
+
+.site-content .sectors-experience-overview h1,
+.sectors-experience-page .sectors-experience-overview h1 {
+  max-width: 10ch;
+  margin: 0.6rem 0 0;
+  color: color-mix(in oklab, var(--gold) 84%, #fff4d2);
+  font-size: clamp(2.75rem, 4.8vw, 4.6rem);
+  font-weight: 520;
+  letter-spacing: -0.045em;
+  line-height: 0.96;
+  text-align: left;
+  text-shadow: 0 0.15rem 1.7rem color-mix(in oklab, black 58%, transparent);
+  text-wrap: balance;
+}
+
+.site-content .sectors-experience-overview-body,
+.sectors-experience-page .sectors-experience-overview-body {
+  max-width: 33rem;
+  margin: 0.85rem 0 0;
+  color: white;
+  font-size: clamp(1rem, 1.2vw, 1.12rem);
+  line-height: 1.55;
+  text-align: left;
+  text-shadow: 0 0.12rem 1.2rem color-mix(in oklab, black 74%, transparent);
+  text-wrap: pretty;
+}
+
+.sectors-experience-overview-notes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 1rem;
+  margin: 0.9rem 0 0;
+  padding: 0;
+  color: color-mix(in oklab, white 80%, var(--champagne));
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.35;
+  list-style: none;
+}
+
+.sectors-experience-overview-notes li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
+}
+
+.sectors-experience-overview-notes li::before {
+  width: 0.3rem;
+  height: 0.3rem;
+  border: 1px solid color-mix(in oklab, var(--gold) 86%, white);
+  border-radius: 50%;
+  content: "";
+}
+
+@keyframes sectors-experience-overview-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.65rem);
+  }
+}
+
+.sectors-experience-layout {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  width: min(100%, 100rem);
+  height: 100%;
+  margin: 0 auto;
+  padding: clamp(7rem, 13vh, 9rem) clamp(2rem, 6vw, 6rem) clamp(6.5rem, 12vh, 8rem);
+}
+
+.sectors-experience-copy {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  align-content: center;
+  min-width: 0;
+}
+
+.sectors-experience-kicker {
+  position: absolute;
+  top: clamp(0rem, 4vh, 3rem);
+  left: 0;
+  color: color-mix(in oklab, var(--gold) 88%, white);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.sectors-experience-sector {
+  grid-area: 1 / 1;
+  align-self: center;
+  max-width: 37rem;
+  --copy-opacity: 0;
+  --copy-y: 13vh;
+  --copy-scale: 0.955;
+  --copy-blur: 8px;
+  opacity: var(--copy-opacity);
+  pointer-events: none;
+  transform: translate3d(0, var(--copy-y), 0) scale(var(--copy-scale));
+  transition:
+    opacity 80ms linear,
+    transform 90ms linear,
+    filter 90ms linear;
+  filter: blur(var(--copy-blur));
+  will-change: opacity, transform, filter;
+}
+
+.sectors-experience-sector[data-active="true"] {
+  pointer-events: auto;
+}
+
+.sectors-experience-number {
+  color: color-mix(in oklab, var(--gold) 88%, white);
+  font-size: clamp(0.86rem, 1.2vw, 1.05rem);
+  font-weight: 700;
+  letter-spacing: 0.22em;
+}
+
+.site-content .sectors-experience-sector h2 {
+  max-width: 10ch;
+  margin: 0.6rem 0 0;
+  color: white;
+  font-size: clamp(3.3rem, 6.8vw, 7.2rem);
+  font-weight: 640;
+  letter-spacing: -0.055em;
+  line-height: 0.92;
+  text-align: left;
+  text-align-last: auto;
+  text-wrap: balance;
+}
+
+.site-content .sectors-experience-sector p {
+  max-width: 34rem;
+  margin-top: clamp(1.3rem, 2.4vh, 2rem);
+  color: color-mix(in oklab, white 78%, var(--champagne));
+  font-size: clamp(0.96rem, 1.35vw, 1.15rem);
+  line-height: 1.7;
+  text-align: left;
+  text-align-last: auto;
+}
+
+.sectors-experience-link {
+  display: inline-flex;
+  width: fit-content;
+  min-height: 3rem;
+  align-items: center;
+  gap: 0.65rem;
+  margin-top: clamp(1.35rem, 3vh, 2.2rem);
+  border: 1px solid color-mix(in oklab, var(--gold) 62%, transparent);
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--ink) 36%, transparent);
+  color: color-mix(in oklab, var(--gold) 84%, white);
+  padding: 0.75rem 1.05rem;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  backdrop-filter: blur(12px);
+  transition:
+    background-color 220ms ease,
+    border-color 220ms ease,
+    color 220ms ease,
+    transform 240ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sectors-experience-link svg {
+  width: 1rem;
+  height: 1rem;
+  transition: transform 240ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sectors-experience-link:hover,
+.sectors-experience-link:focus-visible {
+  border-color: var(--gold);
+  background: color-mix(in oklab, var(--gold) 18%, var(--ink));
+  color: white;
+  outline: none;
+  transform: translateY(-2px);
+}
+
+.sectors-experience-link:hover svg,
+.sectors-experience-link:focus-visible svg {
+  transform: translate(0.16rem, -0.16rem);
+}
+
+.sectors-experience-scene {
+  display: none;
+}
+
+.sectors-experience-prism {
+  position: relative;
+  z-index: 2;
+  width: clamp(14rem, 25vw, 24rem);
+  aspect-ratio: 0.78;
+  transform-style: preserve-3d;
+  transform: rotateX(-7deg) rotateY(var(--sector-rotation));
+  transition: transform 980ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.sectors-experience-face {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border: 1px solid color-mix(in oklab, var(--gold) 62%, white 18%);
+  border-radius: 0.35rem;
+  background: color-mix(in oklab, var(--ink) 74%, var(--primary));
+  box-shadow:
+    inset 0 1px 0 color-mix(in oklab, white 34%, transparent),
+    0 38px 90px -54px black;
+  backface-visibility: hidden;
+  transform: translateZ(clamp(7rem, 12.5vw, 12rem));
+}
+
+.sectors-experience-face:nth-child(2) {
+  transform: rotateY(90deg) translateZ(clamp(7rem, 12.5vw, 12rem));
+}
+
+.sectors-experience-face:nth-child(3) {
+  transform: rotateY(180deg) translateZ(clamp(7rem, 12.5vw, 12rem));
+}
+
+.sectors-experience-face:nth-child(4) {
+  transform: rotateY(270deg) translateZ(clamp(7rem, 12.5vw, 12rem));
+}
+
+.sectors-experience-face::after {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(145deg, color-mix(in oklab, white 18%, transparent), transparent 34%),
+    linear-gradient(180deg, transparent 45%, color-mix(in oklab, var(--ink) 82%, transparent));
+  content: "";
+}
+
+.sectors-experience-face img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.78) contrast(1.08);
+}
+
+.sectors-experience-face span {
+  position: absolute;
+  right: 1.2rem;
+  bottom: 1rem;
+  z-index: 1;
+  color: color-mix(in oklab, var(--gold) 88%, white);
+  font-size: clamp(2rem, 4vw, 4rem);
+  font-weight: 300;
+  line-height: 1;
+}
+
+.sectors-experience-orbit {
+  position: absolute;
+  border: 1px solid color-mix(in oklab, var(--gold) 34%, transparent);
+  border-radius: 50%;
+  transform: rotateX(68deg) rotateZ(var(--sector-orbit-rotation));
+  transition: transform 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sectors-experience-orbit-outer {
+  width: min(38vw, 36rem);
+  aspect-ratio: 1;
+  box-shadow: 0 0 70px -42px var(--gold);
+}
+
+.sectors-experience-orbit-inner {
+  width: min(29vw, 27rem);
+  aspect-ratio: 1;
+  border-color: color-mix(in oklab, white 20%, transparent);
+}
+
+.sectors-experience-shadow {
+  position: absolute;
+  bottom: 12%;
+  width: min(30vw, 28rem);
+  height: 3.5rem;
+  border-radius: 50%;
+  background: color-mix(in oklab, black 76%, transparent);
+  filter: blur(22px);
+  transform: translateY(2rem);
+}
+
+.sectors-experience-progress {
+  position: absolute;
+  top: 50%;
+  right: clamp(1rem, 2.8vw, 2.5rem);
+  z-index: 5;
+  display: grid;
+  gap: 0.55rem;
+  transform: translateY(-50%);
+}
+
+.sectors-experience-progress button {
+  display: grid;
+  grid-template-columns: 0.7rem;
+  width: 2.75rem;
+  min-height: 2.75rem;
+  justify-content: center;
+  align-items: center;
+  border: 0;
+  background: transparent;
+  color: color-mix(in oklab, white 52%, transparent);
+  padding: 0.3rem;
+  font: inherit;
+  cursor: pointer;
+  transition: color 220ms ease;
+}
+
+.sectors-experience-progress button::after {
+  width: 0.42rem;
+  height: 0.42rem;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  content: "";
+  transition:
+    background-color 220ms ease,
+    box-shadow 220ms ease,
+    transform 220ms ease;
+}
+
+.sectors-experience-progress button span {
+  font-size: 0.62rem;
+}
+
+.sectors-experience-progress button[data-active="true"] {
+  color: color-mix(in oklab, var(--gold) 88%, white);
+}
+
+.sectors-experience-progress button[data-active="true"]::after {
+  background: currentColor;
+  box-shadow: 0 0 18px color-mix(in oklab, var(--gold) 74%, transparent);
+  transform: scale(1.35);
+}
+
+.sectors-experience-progress button:focus-visible {
+  border-radius: 0.25rem;
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.sectors-experience-controls {
+  position: absolute;
+  bottom: max(1.2rem, env(safe-area-inset-bottom));
+  left: 50%;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  transform: translateX(-50%);
+}
+
+.sectors-experience-next,
+.sectors-experience-previous {
+  display: inline-flex;
+  min-height: 2.85rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid color-mix(in oklab, white 25%, var(--gold));
+  background: color-mix(in oklab, var(--ink) 58%, transparent);
+  color: white;
+  font: inherit;
+  cursor: pointer;
+  backdrop-filter: blur(14px);
+  transition:
+    border-color 220ms ease,
+    background-color 220ms ease,
+    transform 220ms ease;
+}
+
+.sectors-experience-next {
+  width: 2.85rem;
+  border-radius: 999px;
+  padding: 0;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.sectors-experience-previous {
+  width: 2.85rem;
+  border-radius: 50%;
+}
+
+.sectors-experience-next svg,
+.sectors-experience-previous svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.sectors-experience-next:not(:disabled) svg {
+  animation: sectors-experience-arrow 1.8s ease-in-out infinite;
+}
+
+.sectors-experience-next:hover:not(:disabled),
+.sectors-experience-next:focus-visible,
+.sectors-experience-previous:hover:not(:disabled),
+.sectors-experience-previous:focus-visible {
+  border-color: var(--gold);
+  background: color-mix(in oklab, var(--gold) 18%, var(--ink));
+  outline: none;
+  transform: translateY(-2px);
+}
+
+.sectors-experience-next:disabled,
+.sectors-experience-previous:disabled {
+  cursor: default;
+  opacity: 0.55;
+}
+
+.sectors-experience-status {
+  position: absolute;
+  right: clamp(1.4rem, 4vw, 4rem);
+  bottom: max(1.65rem, env(safe-area-inset-bottom));
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: color-mix(in oklab, white 54%, transparent);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+}
+
+.sectors-experience-status i {
+  position: relative;
+  display: block;
+  width: 4rem;
+  height: 1px;
+  overflow: hidden;
+  background: color-mix(in oklab, white 20%, transparent);
+}
+
+.sectors-experience-status i::after {
+  position: absolute;
+  inset: 0;
+  background: var(--gold);
+  content: "";
+  transform: scaleX(var(--sector-progress));
+  transform-origin: left;
+  transition: transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sectors-experience[data-entering="true"] .sectors-experience-prism {
+  animation: sectors-experience-enter 850ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes sectors-experience-arrow {
+  0%,
+  100% {
+    transform: translateY(-0.12rem);
+  }
+  50% {
+    transform: translateY(0.18rem);
+  }
+}
+
+@keyframes sectors-experience-enter {
+  from {
+    opacity: 0;
+    transform: translateY(3rem) rotateX(-16deg) rotateY(-45deg) scale(0.82);
+  }
+}
+
+@media (max-width: 1023px) {
+  .sectors-experience-layout {
+    grid-template-columns: minmax(0, 1fr);
+    padding-right: clamp(3.5rem, 8vw, 5rem);
+    padding-left: clamp(1.5rem, 5vw, 3.5rem);
+  }
+
+  .sectors-experience-prism {
+    width: clamp(11rem, 24vw, 16rem);
+  }
+
+  .sectors-experience-face {
+    transform: translateZ(clamp(5.5rem, 12vw, 8rem));
+  }
+
+  .sectors-experience-face:nth-child(2) {
+    transform: rotateY(90deg) translateZ(clamp(5.5rem, 12vw, 8rem));
+  }
+
+  .sectors-experience-face:nth-child(3) {
+    transform: rotateY(180deg) translateZ(clamp(5.5rem, 12vw, 8rem));
+  }
+
+  .sectors-experience-face:nth-child(4) {
+    transform: rotateY(270deg) translateZ(clamp(5.5rem, 12vw, 8rem));
+  }
+}
+
+@media (max-width: 767px) {
+  .header-experience-button-mobile {
+    min-height: 3rem;
+  }
+
+  .sectors-experience-sticky {
+    min-height: 100dvh;
+  }
+
+  .sectors-experience-exit {
+    top: max(0.85rem, env(safe-area-inset-top));
+    width: 2.55rem;
+    min-height: 2.55rem;
+    padding: 0;
+  }
+
+  .sectors-experience-enhancement-status {
+    top: max(0.9rem, env(safe-area-inset-top));
+    width: calc(100vw - 7.5rem);
+    grid-template-columns: 2.8rem minmax(0, 1fr) auto;
+    gap: 0.5rem;
+    padding: 0.5rem 0.65rem;
+    font-size: 0.56rem;
+    letter-spacing: 0.07em;
+  }
+
+  .sectors-experience-background::after {
+    background:
+      linear-gradient(
+        180deg,
+        color-mix(in oklab, var(--ink) 62%, transparent),
+        transparent 24% 66%,
+        color-mix(in oklab, var(--ink) 86%, transparent)
+      ),
+      radial-gradient(
+        ellipse at center,
+        transparent 40%,
+        color-mix(in oklab, var(--ink) 48%, transparent)
+      );
+  }
+
+  .sectors-experience-overview {
+    right: 4rem;
+    bottom: max(4.7rem, calc(env(safe-area-inset-bottom) + 4rem));
+    left: 1rem;
+    width: auto;
+  }
+
+  .sectors-experience-overview article {
+    padding: 0.9rem 0.85rem 0.95rem 1rem;
+  }
+
+  .sectors-experience-overview-meta {
+    gap: 0.38rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+  }
+
+  .sectors-experience-overview-meta i {
+    width: 1.2rem;
+  }
+
+  .site-content .sectors-experience-overview h1,
+  .sectors-experience-page .sectors-experience-overview h1 {
+    margin-top: 0.48rem;
+    font-size: clamp(2.35rem, 12vw, 3.55rem);
+  }
+
+  .site-content .sectors-experience-overview-body,
+  .sectors-experience-page .sectors-experience-overview-body {
+    margin-top: 0.68rem;
+    font-size: 1rem;
+    line-height: 1.46;
+  }
+
+  .sectors-experience-overview-notes {
+    gap: 0.4rem 0.75rem;
+    margin-top: 0.72rem;
+    font-size: 0.75rem;
+  }
+
+  .sectors-experience-layout {
+    display: block;
+    padding: max(6.6rem, calc(env(safe-area-inset-top) + 6rem)) 1.2rem
+      max(6.3rem, calc(env(safe-area-inset-bottom) + 5.5rem));
+  }
+
+  .sectors-experience-copy {
+    display: grid;
+    height: 100%;
+    align-content: end;
+  }
+
+  .sectors-experience-kicker {
+    top: 0;
+  }
+
+  .sectors-experience-sector {
+    align-self: end;
+    max-width: min(31rem, 90vw);
+  }
+
+  .site-content .sectors-experience-sector h2 {
+    max-width: 11ch;
+    font-size: clamp(2.7rem, 14vw, 4.8rem);
+  }
+
+  .site-content .sectors-experience-sector p {
+    max-width: min(27rem, 88vw);
+    margin-top: 0.9rem;
+    font-size: clamp(0.84rem, 3.6vw, 1rem);
+    line-height: 1.55;
+  }
+
+  .sectors-experience-link {
+    min-height: 2.7rem;
+    margin-top: 1rem;
+    padding: 0.65rem 0.9rem;
+    font-size: 0.7rem;
+  }
+
+  .sectors-experience-scene {
+    position: absolute;
+    top: 18%;
+    right: 8%;
+    width: 44vw;
+    height: 33vh;
+    height: 33svh;
+    opacity: 0.76;
+    perspective: 750px;
+  }
+
+  .sectors-experience-prism {
+    width: clamp(7.5rem, 30vw, 10.5rem);
+  }
+
+  .sectors-experience-face {
+    transform: translateZ(clamp(3.75rem, 15vw, 5.25rem));
+  }
+
+  .sectors-experience-face:nth-child(2) {
+    transform: rotateY(90deg) translateZ(clamp(3.75rem, 15vw, 5.25rem));
+  }
+
+  .sectors-experience-face:nth-child(3) {
+    transform: rotateY(180deg) translateZ(clamp(3.75rem, 15vw, 5.25rem));
+  }
+
+  .sectors-experience-face:nth-child(4) {
+    transform: rotateY(270deg) translateZ(clamp(3.75rem, 15vw, 5.25rem));
+  }
+
+  .sectors-experience-orbit-outer {
+    width: 52vw;
+  }
+
+  .sectors-experience-orbit-inner {
+    display: none;
+  }
+
+  .sectors-experience-shadow {
+    width: 42vw;
+  }
+
+  .sectors-experience-progress {
+    top: 39%;
+    right: 0.7rem;
+  }
+
+  .sectors-experience-progress button {
+    grid-template-columns: 0.65rem;
+  }
+
+  .sectors-experience-controls {
+    bottom: max(0.85rem, env(safe-area-inset-bottom));
+  }
+
+  .sectors-experience-status {
+    right: 0.9rem;
+    bottom: max(1.3rem, env(safe-area-inset-bottom));
+  }
+
+  .sectors-experience-status i {
+    width: 2.2rem;
+  }
+}
+
+@media (max-width: 420px) and (max-height: 740px) {
+  .sectors-experience-overview {
+    bottom: max(4rem, calc(env(safe-area-inset-bottom) + 3.5rem));
+  }
+
+  .sectors-experience-overview-notes {
+    display: none;
+  }
+
+  .sectors-experience-scene {
+    top: 16%;
+    height: 27svh;
+  }
+
+  .site-content .sectors-experience-sector h2 {
+    font-size: clamp(2.3rem, 12vw, 3.5rem);
+  }
+
+  .site-content .sectors-experience-sector p {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+}
+
+@media (orientation: landscape) and (max-height: 560px) {
+  .sectors-experience-overview {
+    bottom: 1rem;
+    left: 4.5rem;
+    width: min(29rem, 58vw);
+  }
+
+  .sectors-experience-overview article {
+    padding-block: 0.65rem;
+  }
+
+  .site-content .sectors-experience-overview h1,
+  .sectors-experience-page .sectors-experience-overview h1 {
+    font-size: clamp(2rem, 7vw, 3rem);
+  }
+
+  .site-content .sectors-experience-overview-body,
+  .sectors-experience-page .sectors-experience-overview-body {
+    display: -webkit-box;
+    overflow: hidden;
+    margin-top: 0.5rem;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .sectors-experience-overview-notes {
+    display: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .sectors-experience {
+    height: 100vh;
+    height: 100svh;
+  }
+
+  .sectors-experience-sticky {
+    position: relative;
+  }
+
+  .sectors-experience-enhancement-status {
+    animation: none;
+  }
+
+  .sectors-experience-enhancement-status > i > b {
+    transition: none;
+  }
+
   .reveal-up,
   .scale-in-ver-top,
   .cookie-banner,
@@ -3298,7 +4616,10 @@
   .mobile-nav-panel,
   .mobile-nav-panel nav > *,
   .motion-flip-bottom,
-  .motion-slide-bottom {
+  .motion-slide-bottom,
+  .sectors-experience-loading span,
+  .sectors-experience-overview article,
+  .sectors-experience-hint span {
     animation: none;
     opacity: 1;
     transform: none;
@@ -3365,5 +4686,60 @@
   .sector-card:hover img,
   .sector-card:hover .sector-arrow {
     transform: none;
+  }
+
+  .header-experience-button,
+  .header-experience-button::before,
+  .header-experience-icon,
+  .sectors-experience-webgl,
+  .sectors-experience-background video,
+  .sectors-experience-sector,
+  .sectors-experience-link,
+  .sectors-experience-link svg,
+  .sectors-experience-progress button,
+  .sectors-experience-progress button::after,
+  .sectors-experience-next,
+  .sectors-experience-previous,
+  .sectors-experience-status i::after {
+    animation: none;
+    transition-duration: 0.12s;
+  }
+
+  .sectors-experience-exit {
+    transition: none;
+  }
+
+  .sectors-experience-gate {
+    display: none;
+  }
+
+  .sectors-experience-entry {
+    display: none;
+  }
+
+  .sectors-experience-prism,
+  .sectors-experience-orbit,
+  .sectors-experience-shadow {
+    display: none;
+  }
+
+  .sectors-experience-background video,
+  .sectors-experience-sector {
+    clip-path: inset(50% 0);
+    opacity: 0;
+    transform: none;
+    filter: none;
+  }
+
+  .sectors-experience-background video[data-active="true"],
+  .sectors-experience-sector[data-active="true"] {
+    clip-path: none;
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+
+  .sectors-experience-background video[data-active="true"] {
+    filter: brightness(0.46) saturate(0.8);
   }
 }

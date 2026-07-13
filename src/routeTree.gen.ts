@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SectorsExperienceRouteImport } from './routes/sectors-experience'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as ContactUsRouteImport } from './routes/contact-us'
 import { Route as AboutUsRouteImport } from './routes/about-us'
@@ -17,6 +18,11 @@ import { Route as BusinessesHospitalityRouteImport } from './routes/businesses.h
 import { Route as BusinessesHealthcareRouteImport } from './routes/businesses.healthcare'
 import { Route as BusinessesBusinessRouteImport } from './routes/businesses.$business'
 
+const SectorsExperienceRoute = SectorsExperienceRouteImport.update({
+  id: '/sectors-experience',
+  path: '/sectors-experience',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
   id: '/privacy-policy',
   path: '/privacy-policy',
@@ -58,6 +64,7 @@ export interface FileRoutesByFullPath {
   '/about-us': typeof AboutUsRoute
   '/contact-us': typeof ContactUsRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
+  '/sectors-experience': typeof SectorsExperienceRoute
   '/businesses/$business': typeof BusinessesBusinessRoute
   '/businesses/healthcare': typeof BusinessesHealthcareRoute
   '/businesses/hospitality': typeof BusinessesHospitalityRoute
@@ -67,6 +74,7 @@ export interface FileRoutesByTo {
   '/about-us': typeof AboutUsRoute
   '/contact-us': typeof ContactUsRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
+  '/sectors-experience': typeof SectorsExperienceRoute
   '/businesses/$business': typeof BusinessesBusinessRoute
   '/businesses/healthcare': typeof BusinessesHealthcareRoute
   '/businesses/hospitality': typeof BusinessesHospitalityRoute
@@ -77,6 +85,7 @@ export interface FileRoutesById {
   '/about-us': typeof AboutUsRoute
   '/contact-us': typeof ContactUsRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
+  '/sectors-experience': typeof SectorsExperienceRoute
   '/businesses/$business': typeof BusinessesBusinessRoute
   '/businesses/healthcare': typeof BusinessesHealthcareRoute
   '/businesses/hospitality': typeof BusinessesHospitalityRoute
@@ -88,6 +97,7 @@ export interface FileRouteTypes {
     | '/about-us'
     | '/contact-us'
     | '/privacy-policy'
+    | '/sectors-experience'
     | '/businesses/$business'
     | '/businesses/healthcare'
     | '/businesses/hospitality'
@@ -97,6 +107,7 @@ export interface FileRouteTypes {
     | '/about-us'
     | '/contact-us'
     | '/privacy-policy'
+    | '/sectors-experience'
     | '/businesses/$business'
     | '/businesses/healthcare'
     | '/businesses/hospitality'
@@ -106,6 +117,7 @@ export interface FileRouteTypes {
     | '/about-us'
     | '/contact-us'
     | '/privacy-policy'
+    | '/sectors-experience'
     | '/businesses/$business'
     | '/businesses/healthcare'
     | '/businesses/hospitality'
@@ -116,6 +128,7 @@ export interface RootRouteChildren {
   AboutUsRoute: typeof AboutUsRoute
   ContactUsRoute: typeof ContactUsRoute
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
+  SectorsExperienceRoute: typeof SectorsExperienceRoute
   BusinessesBusinessRoute: typeof BusinessesBusinessRoute
   BusinessesHealthcareRoute: typeof BusinessesHealthcareRoute
   BusinessesHospitalityRoute: typeof BusinessesHospitalityRoute
@@ -123,6 +136,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/sectors-experience': {
+      id: '/sectors-experience'
+      path: '/sectors-experience'
+      fullPath: '/sectors-experience'
+      preLoaderRoute: typeof SectorsExperienceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/privacy-policy': {
       id: '/privacy-policy'
       path: '/privacy-policy'
@@ -180,6 +200,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutUsRoute: AboutUsRoute,
   ContactUsRoute: ContactUsRoute,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
+  SectorsExperienceRoute: SectorsExperienceRoute,
   BusinessesBusinessRoute: BusinessesBusinessRoute,
   BusinessesHealthcareRoute: BusinessesHealthcareRoute,
   BusinessesHospitalityRoute: BusinessesHospitalityRoute,

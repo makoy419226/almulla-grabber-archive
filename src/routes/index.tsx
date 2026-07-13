@@ -45,6 +45,7 @@ export const Route = createFileRoute("/")({
 
 const sectors = [
   {
+    slug: "healthcare",
     title: "Healthcare",
     img: healthcareImg,
     imgSmall: healthcareImg900,
@@ -100,6 +101,7 @@ const sectors = [
     ],
   },
   {
+    slug: "education",
     title: "Education",
     img: educationImg,
     imgSmall: educationImg900,
@@ -156,6 +158,7 @@ const sectors = [
     ],
   },
   {
+    slug: "hospitality",
     title: "Hospitality",
     img: hospitalityImg,
     imgSmall: hospitalityImg900,
@@ -210,6 +213,7 @@ const sectors = [
     ],
   },
   {
+    slug: "energy",
     title: "Energy",
     img: energyImg,
     imgSmall: energyImg900,

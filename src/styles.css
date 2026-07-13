@@ -1239,9 +1239,6 @@
     color: color-mix(in oklab, white 92%, var(--champagne));
     text-shadow: 0 12px 28px color-mix(in oklab, var(--ink) 74%, transparent);
     animation: sector-popover-overlay-in 520ms 160ms cubic-bezier(0.16, 1, 0.3, 1) both;
-    transition:
-      opacity 260ms ease,
-      transform 260ms ease;
   }
 
   .sector-popover-panel[data-scrolled="true"] .sector-popover-media {
@@ -1255,13 +1252,6 @@
 
   .sector-popover-panel[data-scrolled="true"] .sector-popover-media::after {
     opacity: 0.24;
-  }
-
-  .sector-popover-panel[data-scrolled="true"] .sector-popover-media-overlay {
-    animation: none;
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(-0.75rem);
   }
 
   .site-content
@@ -1320,6 +1310,11 @@
     padding: clamp(1.25rem, 3vw, 2.3rem);
     animation: sector-popover-content-slide 520ms 210ms cubic-bezier(0.16, 1, 0.3, 1) both;
     will-change: opacity, transform;
+  }
+
+  .sector-popover-panel[data-scrolled="true"] .sector-popover-content {
+    -webkit-mask-image: linear-gradient(to bottom, transparent, black 2.5rem, black 100%);
+    mask-image: linear-gradient(to bottom, transparent, black 2.5rem, black 100%);
   }
 
   .site-content

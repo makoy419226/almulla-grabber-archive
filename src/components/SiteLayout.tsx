@@ -3,14 +3,12 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Mail, Menu, Phone, Send, X } from "lucide-react";
 import { AlmullaLogo } from "@/components/AlmullaLogo";
 import { CookieConsent } from "@/components/CookieConsent";
-import { HeaderExperienceButton } from "@/components/HeaderExperienceButton";
 import { PrivacyPolicyModal } from "@/components/PrivacyPolicyModal";
 import { openCookiePreferences } from "@/lib/cookie-consent";
-import { SECTORS_EXPERIENCE_ENABLED } from "@/lib/feature-flags";
 import { PRIVACY_POLICY_OPEN_EVENT, openPrivacyPolicyModal } from "@/lib/privacy-policy";
 
 const navLinkBase =
-  "nav-hover-magnify inline-flex items-center rounded-md px-2 py-3 text-xs font-bold uppercase text-foreground/70 hover:text-primary lg:px-3 xl:px-4 xl:text-sm";
+  "nav-hover-magnify inline-flex items-center rounded-md px-4 py-3 text-sm font-bold uppercase text-foreground/70 hover:text-primary";
 
 export function SiteLayout({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false);
@@ -126,7 +124,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
           </Link>
 
           <nav
-            className="ml-auto hidden items-center justify-end gap-1 text-right md:flex lg:gap-3 xl:gap-5"
+            className="ml-auto hidden items-center justify-end gap-5 text-right md:flex"
             aria-label="Main navigation"
           >
             <Link
@@ -138,7 +136,6 @@ export function SiteLayout({ children }: { children: ReactNode }) {
                 <span>Home</span>
               </span>
             </Link>
-            {SECTORS_EXPERIENCE_ENABLED && <HeaderExperienceButton />}
             <Link
               to="/about-us"
               className={navLinkBase}
@@ -210,9 +207,6 @@ export function SiteLayout({ children }: { children: ReactNode }) {
             </div>
 
             <nav className="mobile-menu-links" aria-label="Mobile navigation">
-              {SECTORS_EXPERIENCE_ENABLED && (
-                <HeaderExperienceButton mobile onNavigate={closeMobileMenu} />
-              )}
               <Link
                 to="/about-us"
                 className="mobile-menu-link"

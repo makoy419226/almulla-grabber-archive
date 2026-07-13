@@ -663,7 +663,7 @@
 
   .legacy-hero-copy {
     position: absolute;
-    top: 45%;
+    top: 54%;
     left: clamp(1rem, 3.65vw, 3.5rem);
     z-index: 3;
     container-type: inline-size;

@@ -673,14 +673,16 @@
   }
 
   .legacy-hero-copy {
-    position: relative;
+    position: absolute;
+    top: 45%;
+    left: clamp(1rem, 3.65vw, 3.5rem);
     z-index: 3;
     container-type: inline-size;
-    width: min(42rem, 100%);
+    width: min(42rem, 32vw);
     margin-right: auto;
     margin-left: 0;
-    padding-bottom: clamp(1.25rem, 5vh, 3.5rem);
-    padding-top: clamp(1.25rem, 5vh, 3.5rem);
+    padding-bottom: 0;
+    padding-top: 0;
     transform: none;
   }
 
@@ -796,7 +798,7 @@
 
   @media (min-width: 1024px) {
     .legacy-hero-grid {
-      align-items: center;
+      align-items: flex-end;
       justify-content: flex-start;
     }
 
@@ -805,8 +807,8 @@
       margin-left: 0;
       padding-top: 0;
       padding-bottom: 0;
-      padding-right: clamp(1rem, 4vw, 3rem);
-      padding-left: clamp(1rem, 4vw, 3rem);
+      padding-right: 0;
+      padding-left: 0;
       text-align: left;
       text-align-last: auto;
       transform: none;
@@ -1066,6 +1068,7 @@
 
   .legacy-sector-copy {
     max-width: 28rem;
+    min-height: 2lh;
     color: color-mix(in oklab, white 78%, transparent);
     font-size: 0.86rem;
     font-weight: 400;
@@ -3064,6 +3067,7 @@
   }
 
   .legacy-hero-copy {
+    width: min(28rem, 46vw);
     transform: none;
   }
 
@@ -3073,12 +3077,19 @@
   }
 
   .legacy-hero-media::before {
-    background: linear-gradient(
-      180deg,
-      color-mix(in oklab, black 70%, transparent) 0%,
-      color-mix(in oklab, black 52%, transparent) 52%,
-      color-mix(in oklab, black 30%, transparent) 100%
-    );
+    background:
+      linear-gradient(
+        90deg,
+        color-mix(in oklab, black 62%, transparent) 0%,
+        color-mix(in oklab, black 34%, transparent) 72%,
+        transparent 100%
+      ),
+      linear-gradient(
+        180deg,
+        color-mix(in oklab, black 24%, transparent) 0%,
+        transparent 45%,
+        color-mix(in oklab, black 44%, transparent) 100%
+      );
   }
 
   .legacy-skyline {
@@ -3157,25 +3168,25 @@
 
   .legacy-heading {
     gap: 0.08em;
-    font-size: clamp(1.25rem, 9cqw, 2.2rem);
+    font-size: clamp(1rem, 6.5cqw, 1.7rem);
     line-height: 1.08;
     text-wrap: balance;
   }
 
   .legacy-hero-copy {
     container-type: inline-size;
-    width: min(22rem, 100%);
-    padding-bottom: clamp(0.9rem, 3vh, 1.5rem);
-    padding-top: clamp(0.9rem, 3vh, 1.5rem);
+    width: min(20rem, 78vw);
+    padding-bottom: clamp(0.55rem, 2.5vw, 1rem);
+    padding-top: 0;
   }
 
   .legacy-hero-copy p {
-    max-width: 20rem;
-    margin-top: 0.65rem;
+    max-width: 18rem;
+    margin-top: 0.45rem;
     margin-right: auto;
     margin-left: 0;
-    font-size: clamp(0.76rem, 4cqw, 0.92rem);
-    line-height: 1.5;
+    font-size: clamp(0.62rem, 3.2cqw, 0.78rem);
+    line-height: 1.35;
     text-wrap: pretty;
   }
 

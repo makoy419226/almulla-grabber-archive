@@ -12,7 +12,6 @@ import strategicInvestmentImg900 from "@/assets/sector-strategic-investment-900.
 import {
   ArrowUpRight,
   BookOpen,
-  BriefcaseBusiness,
   Building2,
   Compass,
   Factory,

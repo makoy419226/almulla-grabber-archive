@@ -1,0 +1,1 @@
+var e=`/assets/chairman-CYhGnSr2.jpg`;export{e as t};

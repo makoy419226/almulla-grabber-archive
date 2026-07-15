@@ -1,0 +1,1 @@
+var e=`/assets/hospitality-B5TXJBYs.jpg`;export{e as t};

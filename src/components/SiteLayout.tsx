@@ -232,7 +232,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
               <p className="mobile-menu-contact-title">Let&apos;s Get In Touch</p>
               <div className="mt-6 grid grid-cols-3 items-center text-primary">
                 <a
-                  href="tel:+97142249662"
+                  href="tel:+97142249688"
                   className="mobile-menu-contact-action"
                   aria-label="Call AlMulla Holding"
                 >
@@ -304,11 +304,11 @@ export function SiteLayout({ children }: { children: ReactNode }) {
             <h3 className="text-sm font-semibold uppercase text-primary-foreground">Contact Us</h3>
             <div className="mt-4 space-y-3 text-sm text-primary-foreground/66">
               <a
-                href="tel:+97142249662"
+                href="tel:+97142249688"
                 className="flex items-center gap-3 transition-colors hover:text-gold"
               >
                 <Phone className="h-4 w-4 text-gold" />
-                04 224 9662
+                04 2249688
               </a>
               <a
                 href="mailto:info@almullaholding.com"

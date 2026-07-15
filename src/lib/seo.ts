@@ -1,7 +1,7 @@
 export const SITE_ORIGIN = "https://almullaholding.com";
 export const SITE_NAME = "AlMulla Holding Group";
 export const SITE_SHORT_NAME = "Almullah";
-export const DEFAULT_OG_IMAGE = `${SITE_ORIGIN}/og-image-v2.jpg`;
+export const DEFAULT_OG_IMAGE = `${SITE_ORIGIN}/og-image-v3.jpg`;
 export const LOGO_URL = `${SITE_ORIGIN}/site-icon-512.png`;
 export const FAVICON_URL = `${SITE_ORIGIN}/favicon-48x48.png`;
 
@@ -95,7 +95,7 @@ export const organizationJsonLd = {
   },
   image: DEFAULT_OG_IMAGE,
   email: "info@almullaholding.com",
-  telephone: "+97142249662",
+  telephone: "+97142249688",
 };
 
 export const websiteJsonLd = {

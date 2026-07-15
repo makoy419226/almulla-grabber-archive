@@ -63,12 +63,12 @@ function Contact() {
             <ul className="data-center mt-8 grid gap-5 text-sm text-foreground sm:grid-cols-2">
               <li>
                 <a
-                  href="tel:+97142249662"
+                  href="tel:+97142249688"
                   className="flex min-h-32 flex-col items-center justify-center gap-3 rounded-md border border-border bg-white px-4 py-5 transition-colors hover:text-primary"
-                  aria-label="Call AlMulla Holding at 04 224 9662"
+                  aria-label="Call AlMulla Holding at 04 2249688"
                 >
                   <Phone className="h-5 w-5 shrink-0 text-[var(--gold)]" />
-                  04 224 9662
+                  04 2249688
                 </a>
               </li>
               <li>

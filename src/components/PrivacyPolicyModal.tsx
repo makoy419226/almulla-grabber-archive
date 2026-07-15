@@ -78,9 +78,9 @@ export function PrivacyPolicyModal({ open, onClose, onExited }: PrivacyPolicyMod
                 <Mail className="h-4 w-4" />
                 info@almullaholding.com
               </a>
-              <a href="tel:+97142249662">
+              <a href="tel:+97142249688">
                 <Phone className="h-4 w-4" />
-                04 224 9662
+                04 2249688
               </a>
             </div>
           </article>

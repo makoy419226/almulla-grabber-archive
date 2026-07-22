@@ -48,8 +48,8 @@ const sectors = [
     title: "Healthcare",
     img: healthcareImg,
     imgSmall: healthcareImg900,
-    width: 1536,
-    height: 1024,
+    width: 1323,
+    height: 1189,
     body: "Delivering advanced healthcare services that improve lives and communities.",
     detail:
       "Healthcare investments are shaped around trusted clinical partners, modern facilities, and services that raise the standard of care for the communities they serve.",

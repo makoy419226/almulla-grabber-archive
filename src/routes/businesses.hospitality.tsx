@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
 import { AlmullaLogo } from "@/components/AlmullaLogo";
-import hospitalityImg from "@/assets/hospitality.jpg";
+import hospitalityImg from "@/assets/hospitality.png";
 import dubaiImg from "@/assets/dubai.jpg";
 import { ArrowUpRight } from "lucide-react";
 
@@ -112,8 +112,8 @@ function Hospitality() {
                 loading="lazy"
                 decoding="async"
                 sizes="(min-width: 640px) 50vw, 100vw"
-                width={800}
-                height={400}
+                width={1323}
+                height={1189}
               />
             </div>
 

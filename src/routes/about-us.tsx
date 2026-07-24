@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
-import chairmanImg from "@/assets/chairman-480.jpg";
+import chairmanImg from "@/assets/chairman-1600.jpg";
 import { Check } from "lucide-react";
 
 export const Route = createFileRoute("/about-us")({
@@ -60,12 +60,12 @@ function About() {
               <img
                 src={chairmanImg}
                 alt="Mr. Abdulla Mohamed Saeed AlMulla, Chairman"
-                className="h-[520px] w-full rounded-md object-cover"
+                className="h-auto w-full rounded-md"
                 loading="lazy"
                 decoding="async"
                 sizes="(min-width: 1024px) 45vw, 100vw"
-                width={900}
-                height={1100}
+                width={1600}
+                height={1067}
               />
             </div>
 

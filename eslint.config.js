@@ -15,6 +15,7 @@ export default tseslint.config(
       "godaddy-upload",
       ".output",
       ".tanstack",
+      ".vercel",
       ".vinxi",
       ".wrangler",
       "node_modules",
@@ -48,7 +49,7 @@ export default tseslint.config(
       "react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
       "@typescript-eslint/no-unused-vars": [
         "error",
-        { "argsIgnorePattern": "^_", "varsIgnorePattern": "^_" },
+        { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
       ],
     },
   },

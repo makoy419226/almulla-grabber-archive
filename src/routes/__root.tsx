@@ -6,7 +6,7 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import {
@@ -103,10 +103,8 @@ export const Route = createRootRouteWithContext<Record<string, never>>()({
     ],
     links: [
       { rel: "manifest", href: "/manifest.webmanifest" },
-      { rel: "icon", type: "image/png", sizes: "48x48", href: FAVICON_URL },
-      { rel: "icon", type: "image/png", sizes: "512x512", href: "/site-icon-512.png" },
-      { rel: "icon", type: "image/png", sizes: "192x192", href: "/site-icon-192.png" },
-      { rel: "icon", sizes: "any", href: "/favicon.ico" },
+      { rel: "icon", type: "image/png", sizes: "192x192", href: FAVICON_URL },
+      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
       { rel: "shortcut icon", href: "/favicon.ico" },
       { rel: "apple-touch-icon", sizes: "180x180", href: "/apple-touch-icon.png" },
       { rel: "stylesheet", href: appCss },

@@ -131,7 +131,7 @@ const businessPages: Record<string, BusinessPageData> = {
       "Supporting future generations through strong learning environments, future-ready campuses, and long-term community value.",
     image: educationImg,
     imageSmall: educationImg900,
-    imageWidth: 1536,
+    imageWidth: 1535,
     introTitle: "Education platforms built around learning quality and future readiness.",
     introBody: [
       "Our education focus is shaped around the practical elements that define a strong learning environment: academic quality, campus experience, operational consistency, and relevance to the needs of students and families.",

@@ -103,7 +103,7 @@ const sectors = [
     title: "Education",
     img: educationImg,
     imgSmall: educationImg900,
-    width: 1536,
+    width: 1535,
     height: 1024,
     body: "Supporting future generations through quality education and innovative learning.",
     detail:

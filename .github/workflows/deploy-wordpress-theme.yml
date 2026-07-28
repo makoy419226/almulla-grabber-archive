@@ -1,0 +1,48 @@
+name: Deploy WordPress theme
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: wordpress-theme-deploy
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Upload AlMulla WordPress theme
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.2"
+
+      - name: Validate theme
+        run: |
+          test -f wordpress-theme/almulla-holding/style.css
+          test -f wordpress-theme/almulla-holding/functions.php
+          test -f wordpress-theme/almulla-holding/front-page.php
+          grep -q "Theme Name: AlMulla Holding" wordpress-theme/almulla-holding/style.css
+          find wordpress-theme/almulla-holding -name '*.php' -print0 | xargs -0 -n1 php -l
+
+      - name: Validate WordPress FTP secrets
+        run: |
+          test -n "${{ secrets.WORDPRESS_FTP_SERVER }}" || (echo "Missing WORDPRESS_FTP_SERVER" && exit 1)
+          test -n "${{ secrets.WORDPRESS_FTP_USERNAME }}" || (echo "Missing WORDPRESS_FTP_USERNAME" && exit 1)
+          test -n "${{ secrets.WORDPRESS_FTP_PASSWORD }}" || (echo "Missing WORDPRESS_FTP_PASSWORD" && exit 1)
+          test -n "${{ secrets.WORDPRESS_THEME_DIR }}" || (echo "Missing WORDPRESS_THEME_DIR" && exit 1)
+
+      - name: Upload theme to WordPress hosting
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.WORDPRESS_FTP_SERVER }}
+          username: ${{ secrets.WORDPRESS_FTP_USERNAME }}
+          password: ${{ secrets.WORDPRESS_FTP_PASSWORD }}
+          protocol: ftp
+          port: 21
+          local-dir: ./wordpress-theme/almulla-holding/
+          server-dir: ${{ secrets.WORDPRESS_THEME_DIR }}

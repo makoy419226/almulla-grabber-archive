@@ -1,0 +1,94 @@
+/*
+Theme Name: AlMulla Holding
+Theme URI: https://almullaholding.co/
+Author: AlMulla Holding Group
+Description: Custom editable WordPress theme migrated from the AlMulla Holding React website.
+Version: 1.0.0
+Requires at least: 6.4
+Requires PHP: 8.0
+Text Domain: almulla-holding
+GitHub Theme URI: https://github.com/makoy419226/almulla-grabber-archive
+Primary Branch: main
+*/
+
+:root {
+  --almulla-brown: #3d2a20;
+  --almulla-brown-deep: #251b16;
+  --almulla-gold: #c89b43;
+  --almulla-cream: #f8f2e5;
+  --almulla-ink: #29231f;
+  --almulla-border: #dfd3bd;
+  --almulla-white: #fff;
+  --almulla-shadow: 0 24px 60px rgba(57, 37, 25, .12);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  color: var(--almulla-ink);
+  background: linear-gradient(180deg, #fbf7ed, #f6eddc);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.65;
+}
+a { color: inherit; }
+img { display: block; max-width: 100%; }
+.screen-reader-text { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+.almulla-container { width: min(1180px, calc(100% - 40px)); margin-inline: auto; }
+.site-header {
+  position: sticky; top: 0; z-index: 50;
+  border-bottom: 1px solid rgba(61,42,32,.12);
+  background: rgba(255,255,255,.94);
+  backdrop-filter: blur(14px);
+}
+.header-inner { min-height: 90px; display: flex; align-items: center; gap: 30px; }
+.custom-logo-link img, .default-logo { width: auto; max-height: 58px; }
+.site-title { color: var(--almulla-brown); font-size: 1.25rem; font-weight: 800; text-decoration: none; }
+.primary-nav { margin-left: auto; }
+.primary-nav ul { display: flex; align-items: center; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.primary-nav a { display: block; padding: 13px 15px; color: #564b43; font-size: .82rem; font-weight: 750; text-decoration: none; text-transform: uppercase; }
+.primary-nav a:hover { color: var(--almulla-gold); }
+.menu-toggle { display: none; margin-left: auto; padding: 10px 14px; border: 1px solid var(--almulla-border); border-radius: 6px; background: white; }
+.hero { position: relative; min-height: 650px; display: grid; align-items: end; overflow: hidden; color: white; }
+.hero-image, .hero-overlay { position: absolute; inset: 0; width: 100%; height: 100%; }
+.hero-image { object-fit: cover; }
+.hero-overlay { background: linear-gradient(90deg, rgba(31,21,16,.9), rgba(48,31,22,.58), rgba(0,0,0,.15)); }
+.hero-content { position: relative; z-index: 2; padding-block: 110px; }
+.hero h1 { max-width: 820px; margin: 0; font-size: clamp(3rem, 7vw, 6.6rem); line-height: .98; letter-spacing: -.055em; }
+.hero p { max-width: 620px; margin: 28px 0 0; color: rgba(255,255,255,.82); font-size: 1.08rem; }
+.section { padding-block: 92px; }
+.eyebrow { color: var(--almulla-gold); font-size: .78rem; font-weight: 800; letter-spacing: .16em; text-align: center; text-transform: uppercase; }
+.section-title { max-width: 800px; margin: 12px auto 0; color: var(--almulla-brown); font-size: clamp(2.3rem, 5vw, 4rem); line-height: 1.08; text-align: center; }
+.sector-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 30px; margin-top: 55px; }
+.sector-card { overflow: hidden; border: 1px solid var(--almulla-border); border-radius: 10px; background: white; box-shadow: var(--almulla-shadow); }
+.sector-card img { width: 100%; aspect-ratio: 16/10; object-fit: cover; }
+.sector-body { padding: 28px; }
+.sector-body h3 { margin: 0; color: var(--almulla-brown); font-size: 1.65rem; }
+.sector-body p { margin: 10px 0 0; color: #71665e; }
+.page-hero { padding: 100px 0 70px; color: white; background: var(--almulla-brown); text-align: center; }
+.page-hero h1 { margin: 8px 0 0; font-size: clamp(2.7rem, 6vw, 5rem); line-height: 1.05; }
+.content-card { padding: clamp(26px,5vw,60px); border: 1px solid var(--almulla-border); border-radius: 10px; background: white; box-shadow: var(--almulla-shadow); }
+.content-card h2 { color: var(--almulla-brown); }
+.about-grid, .contact-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 34px; align-items: start; }
+.chairman-photo { overflow: hidden; padding: 8px; border: 1px solid var(--almulla-border); border-radius: 10px; background: white; }
+.chairman-photo img { width: 100%; border-radius: 6px; }
+.contact-item { display: block; padding: 26px; border: 1px solid var(--almulla-border); border-radius: 8px; background: #fffdf8; text-align: center; text-decoration: none; }
+.site-footer { padding: 55px 0; color: rgba(255,255,255,.72); background: var(--almulla-brown-deep); }
+.footer-grid { display: grid; grid-template-columns: 1.3fr .7fr 1fr; gap: 40px; }
+.site-footer h2, .site-footer h3 { color: white; }
+.site-footer a { text-decoration: none; }
+.site-footer a:hover { color: var(--almulla-gold); }
+.footer-menu { margin: 0; padding: 0; list-style: none; }
+.entry-content > * { max-width: 780px; margin-inline: auto; }
+.entry-content > .alignwide { max-width: 1180px; }
+.entry-content > .alignfull { max-width: none; }
+
+@media (max-width: 800px) {
+  .menu-toggle { display: block; }
+  .primary-nav { display: none; position: absolute; top: 90px; left: 0; right: 0; padding: 18px 20px; border-bottom: 1px solid var(--almulla-border); background: white; }
+  .primary-nav.is-open { display: block; }
+  .primary-nav ul { align-items: stretch; flex-direction: column; }
+  .sector-grid, .about-grid, .contact-grid, .footer-grid { grid-template-columns: 1fr; }
+  .hero { min-height: 560px; }
+  .section { padding-block: 64px; }
+}

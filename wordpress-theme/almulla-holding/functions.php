@@ -10,6 +10,7 @@ if (!defined('ABSPATH')) {
 }
 
 define('ALMULLA_THEME_VERSION', '1.0.0');
+define('ALMULLA_PUBLIC_ORIGIN', 'https://almullaholding.com');
 
 function almulla_setup(): void {
     load_theme_textdomain('almulla-holding', get_template_directory() . '/languages');
@@ -162,17 +163,41 @@ function almulla_image_url(string $setting, string $fallback): string {
 }
 
 function almulla_canonical(): void {
-    if (is_singular()) {
-        $url = get_permalink();
-    } elseif (is_front_page()) {
-        $url = home_url('/');
+    if (is_front_page()) {
+        $url = ALMULLA_PUBLIC_ORIGIN . '/';
+    } elseif (is_singular()) {
+        $path = (string) wp_parse_url(get_permalink(), PHP_URL_PATH);
+        $url = ALMULLA_PUBLIC_ORIGIN . ($path ?: '/');
     } else {
         return;
     }
     echo '<link rel="canonical" href="' . esc_url($url) . '">' . "\n";
     echo '<meta property="og:url" content="' . esc_url($url) . '">' . "\n";
 }
+remove_action('wp_head', 'rel_canonical');
 add_action('wp_head', 'almulla_canonical', 2);
+
+function almulla_brand_metadata(): void {
+    $logo_url = ALMULLA_PUBLIC_ORIGIN . '/site-icon-512.png';
+    $site_name = get_bloginfo('name') ?: 'AlMulla Holding Group';
+    $schema = [
+        '@context' => 'https://schema.org',
+        '@type'    => 'Organization',
+        'name'     => $site_name,
+        'url'      => ALMULLA_PUBLIC_ORIGIN . '/',
+        'logo'     => [
+            '@type'  => 'ImageObject',
+            'url'    => $logo_url,
+            'width'  => 512,
+            'height' => 512,
+        ],
+    ];
+
+    echo '<link rel="icon" type="image/png" sizes="512x512" href="' . esc_url($logo_url) . '">' . "\n";
+    echo '<link rel="apple-touch-icon" href="' . esc_url($logo_url) . '">' . "\n";
+    echo '<script type="application/ld+json">' . wp_json_encode($schema, JSON_UNESCAPED_SLASHES) . '</script>' . "\n";
+}
+add_action('wp_head', 'almulla_brand_metadata', 3);
 
 function almulla_activate(): void {
     $pages = [

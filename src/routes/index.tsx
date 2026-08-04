@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useCallback, useEffect, useRef, useState, type CSSProperties, type UIEvent } from "react";
-import { SiteLayout } from "@/components/SiteLayout";
+import { OPEN_MOBILE_MENU_EVENT, SiteLayout } from "@/components/SiteLayout";
 import educationImg from "@/assets/sector-education.jpg";
 import educationImg900 from "@/assets/sector-education-900.jpg";
 import energyImg from "@/assets/sector-energy.jpg";
@@ -12,7 +12,7 @@ import healthcareImg from "@/assets/sector-healthcare.jpg";
 import healthcareImg900 from "@/assets/sector-healthcare-900.jpg";
 import hospitalityImg from "@/assets/sector-hospitality.jpg";
 import hospitalityImg900 from "@/assets/sector-hospitality-900.jpg";
-import { ArrowLeft, Menu, X } from "lucide-react";
+import { ArrowLeft, Menu } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -276,20 +276,17 @@ type SectorFullscreenImageStyle = CSSProperties & {
 function Home() {
   const [selectedSector, setSelectedSector] = useState<Sector | null>(null);
   const [isSectorViewScrolled, setIsSectorViewScrolled] = useState(false);
-  const [isSectorMenuOpen, setIsSectorMenuOpen] = useState(false);
   const sectorTriggerRef = useRef<HTMLButtonElement | null>(null);
 
   const openSectorView = (sector: Sector, trigger: HTMLButtonElement) => {
     sectorTriggerRef.current = trigger;
     setIsSectorViewScrolled(false);
-    setIsSectorMenuOpen(false);
     setSelectedSector(sector);
   };
 
   const closeSectorView = useCallback(() => {
     setSelectedSector(null);
     setIsSectorViewScrolled(false);
-    setIsSectorMenuOpen(false);
     window.requestAnimationFrame(() => sectorTriggerRef.current?.focus());
   }, []);
 
@@ -299,8 +296,7 @@ function Home() {
     const previousOverflow = document.body.style.overflow;
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        if (isSectorMenuOpen) {
-          setIsSectorMenuOpen(false);
+        if (document.getElementById("mobile-navigation")) {
           return;
         }
 
@@ -315,7 +311,7 @@ function Home() {
       document.body.style.overflow = previousOverflow;
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [closeSectorView, isSectorMenuOpen, selectedSector]);
+  }, [closeSectorView, selectedSector]);
 
   const handleSectorContentScroll = (event: UIEvent<HTMLDivElement>) => {
     const nextScrolled = event.currentTarget.scrollTop > 8;
@@ -419,38 +415,28 @@ function Home() {
                 <ArrowLeft className="h-5 w-5" aria-hidden />
                 Go back
               </button>
-              <div className="sector-fullscreen-menu">
-                <button
-                  type="button"
-                  className="sector-fullscreen-menu-trigger"
-                  aria-label={isSectorMenuOpen ? "Close site navigation" : "Open site navigation"}
-                  aria-expanded={isSectorMenuOpen}
-                  aria-controls="sector-fullscreen-navigation"
-                  onClick={() => setIsSectorMenuOpen((open) => !open)}
-                >
-                  {isSectorMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-                </button>
-                {isSectorMenuOpen ? (
-                  <nav
-                    id="sector-fullscreen-navigation"
-                    className="sector-fullscreen-menu-panel"
-                    aria-label="Site navigation"
-                  >
-                    <Link to="/" onClick={closeSectorView}>
-                      Home
-                    </Link>
-                    <Link to="/about-us" onClick={closeSectorView}>
-                      Who We Are
-                    </Link>
-                    <a href="/#businesses" onClick={closeSectorView}>
-                      What We Do
-                    </a>
-                    <Link to="/contact-us" onClick={closeSectorView}>
-                      Get In Touch
-                    </Link>
-                  </nav>
-                ) : null}
-              </div>
+              <nav
+                className="sector-fullscreen-desktop-nav hidden md:flex"
+                aria-label="Site navigation"
+              >
+                <Link to="/" onClick={closeSectorView}>
+                  Home
+                </Link>
+                <Link to="/about-us" onClick={closeSectorView}>
+                  Who We Are
+                </Link>
+                <Link to="/contact-us" onClick={closeSectorView}>
+                  Get In Touch
+                </Link>
+              </nav>
+              <button
+                type="button"
+                className="mobile-menu-trigger md:hidden"
+                aria-label="Open site navigation"
+                onClick={() => window.dispatchEvent(new Event(OPEN_MOBILE_MENU_EVENT))}
+              >
+                <Menu className="h-5 w-5" />
+              </button>
             </header>
 
             <div

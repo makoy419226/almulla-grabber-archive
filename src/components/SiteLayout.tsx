@@ -9,6 +9,7 @@ import { PRIVACY_POLICY_OPEN_EVENT, openPrivacyPolicyModal } from "@/lib/privacy
 
 const navLinkBase =
   "nav-hover-magnify inline-flex items-center rounded-md px-4 py-3 text-sm font-bold uppercase text-foreground/70 hover:text-primary";
+export const OPEN_MOBILE_MENU_EVENT = "almulla:open-mobile-menu";
 
 export function SiteLayout({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false);
@@ -23,6 +24,13 @@ export function SiteLayout({ children }: { children: ReactNode }) {
       setRenderMobileMenu(true);
     }
   }, [open]);
+
+  useEffect(() => {
+    const openMobileMenu = () => setOpen(true);
+
+    window.addEventListener(OPEN_MOBILE_MENU_EVENT, openMobileMenu);
+    return () => window.removeEventListener(OPEN_MOBILE_MENU_EVENT, openMobileMenu);
+  }, []);
 
   useEffect(() => {
     if (!renderMobileMenu) return;

@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useCallback, useEffect, useRef, useState, type CSSProperties, type UIEvent } from "react";
 import { SiteLayout } from "@/components/SiteLayout";
 import educationImg from "@/assets/sector-education.jpg";
@@ -12,7 +12,7 @@ import healthcareImg from "@/assets/sector-healthcare.jpg";
 import healthcareImg900 from "@/assets/sector-healthcare-900.jpg";
 import hospitalityImg from "@/assets/sector-hospitality.jpg";
 import hospitalityImg900 from "@/assets/sector-hospitality-900.jpg";
-import { X } from "lucide-react";
+import { ArrowLeft, Menu, X } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -269,50 +269,28 @@ const sectors = [
 ];
 
 type Sector = (typeof sectors)[number];
-type SectorPopoverImageStyle = CSSProperties & {
-  "--sector-popover-image": string;
+type SectorFullscreenImageStyle = CSSProperties & {
+  "--sector-fullscreen-image": string;
 };
-const SECTOR_POPOVER_CLOSE_MS = 280;
 
 function Home() {
   const [selectedSector, setSelectedSector] = useState<Sector | null>(null);
-  const [isSectorPopoverScrolled, setIsSectorPopoverScrolled] = useState(false);
-  const [isSectorPopoverClosing, setIsSectorPopoverClosing] = useState(false);
-  const closeSectorPopoverTimer = useRef<number | null>(null);
+  const [isSectorViewScrolled, setIsSectorViewScrolled] = useState(false);
+  const [isSectorMenuOpen, setIsSectorMenuOpen] = useState(false);
+  const sectorTriggerRef = useRef<HTMLButtonElement | null>(null);
 
-  const openSectorPopover = (sector: Sector) => {
-    if (closeSectorPopoverTimer.current) {
-      window.clearTimeout(closeSectorPopoverTimer.current);
-      closeSectorPopoverTimer.current = null;
-    }
-
-    setIsSectorPopoverClosing(false);
+  const openSectorView = (sector: Sector, trigger: HTMLButtonElement) => {
+    sectorTriggerRef.current = trigger;
+    setIsSectorViewScrolled(false);
+    setIsSectorMenuOpen(false);
     setSelectedSector(sector);
   };
 
-  const closeSectorPopover = useCallback(() => {
-    if (!selectedSector || isSectorPopoverClosing) return;
-
-    setIsSectorPopoverClosing(true);
-
-    closeSectorPopoverTimer.current = window.setTimeout(() => {
-      setSelectedSector(null);
-      setIsSectorPopoverClosing(false);
-      setIsSectorPopoverScrolled(false);
-      closeSectorPopoverTimer.current = null;
-    }, SECTOR_POPOVER_CLOSE_MS);
-  }, [isSectorPopoverClosing, selectedSector]);
-
-  useEffect(() => {
-    setIsSectorPopoverScrolled(false);
-  }, [selectedSector]);
-
-  useEffect(() => {
-    return () => {
-      if (closeSectorPopoverTimer.current) {
-        window.clearTimeout(closeSectorPopoverTimer.current);
-      }
-    };
+  const closeSectorView = useCallback(() => {
+    setSelectedSector(null);
+    setIsSectorViewScrolled(false);
+    setIsSectorMenuOpen(false);
+    window.requestAnimationFrame(() => sectorTriggerRef.current?.focus());
   }, []);
 
   useEffect(() => {
@@ -321,7 +299,12 @@ function Home() {
     const previousOverflow = document.body.style.overflow;
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        closeSectorPopover();
+        if (isSectorMenuOpen) {
+          setIsSectorMenuOpen(false);
+          return;
+        }
+
+        closeSectorView();
       }
     };
 
@@ -332,11 +315,11 @@ function Home() {
       document.body.style.overflow = previousOverflow;
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [closeSectorPopover, selectedSector]);
+  }, [closeSectorView, isSectorMenuOpen, selectedSector]);
 
   const handleSectorContentScroll = (event: UIEvent<HTMLDivElement>) => {
     const nextScrolled = event.currentTarget.scrollTop > 8;
-    setIsSectorPopoverScrolled((current) => (current === nextScrolled ? current : nextScrolled));
+    setIsSectorViewScrolled((current) => (current === nextScrolled ? current : nextScrolled));
   };
 
   return (
@@ -386,9 +369,8 @@ function Home() {
                 key={sector.title}
                 type="button"
                 className="legacy-sector-card"
-                onClick={() => openSectorPopover(sector)}
-                aria-haspopup="dialog"
-                aria-label={`Open ${sector.title} sector details`}
+                onClick={(event) => openSectorView(sector, event.currentTarget)}
+                aria-label={`View ${sector.title} sector`}
               >
                 <div className="legacy-sector-media">
                   <img
@@ -415,41 +397,68 @@ function Home() {
       </div>
 
       {selectedSector ? (
-        <div
-          className="sector-popover-shell"
+        <section
+          className="sector-fullscreen-shell"
           role="dialog"
           aria-modal="true"
-          aria-labelledby="sector-popover-title"
-          data-state={isSectorPopoverClosing ? "closing" : "open"}
+          aria-labelledby="sector-fullscreen-title"
         >
-          <button
-            type="button"
-            className="sector-popover-backdrop"
-            aria-label="Close sector details"
-            onClick={closeSectorPopover}
-          />
           <div
-            className="sector-popover-panel"
+            className="sector-fullscreen-panel"
             role="document"
-            data-scrolled={isSectorPopoverScrolled ? "true" : "false"}
-            data-state={isSectorPopoverClosing ? "closing" : "open"}
+            data-scrolled={isSectorViewScrolled ? "true" : "false"}
+            onScroll={handleSectorContentScroll}
           >
-            <button
-              type="button"
-              className="sector-popover-close"
-              aria-label="Close sector details"
-              disabled={isSectorPopoverClosing}
-              onClick={closeSectorPopover}
-            >
-              <X className="h-5 w-5" />
-            </button>
+            <header className="sector-fullscreen-toolbar">
+              <button
+                type="button"
+                className="sector-fullscreen-back"
+                onClick={closeSectorView}
+                autoFocus
+              >
+                <ArrowLeft className="h-5 w-5" aria-hidden />
+                Go back
+              </button>
+              <div className="sector-fullscreen-menu">
+                <button
+                  type="button"
+                  className="sector-fullscreen-menu-trigger"
+                  aria-label={isSectorMenuOpen ? "Close site navigation" : "Open site navigation"}
+                  aria-expanded={isSectorMenuOpen}
+                  aria-controls="sector-fullscreen-navigation"
+                  onClick={() => setIsSectorMenuOpen((open) => !open)}
+                >
+                  {isSectorMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+                </button>
+                {isSectorMenuOpen ? (
+                  <nav
+                    id="sector-fullscreen-navigation"
+                    className="sector-fullscreen-menu-panel"
+                    aria-label="Site navigation"
+                  >
+                    <Link to="/" onClick={closeSectorView}>
+                      Home
+                    </Link>
+                    <Link to="/about-us" onClick={closeSectorView}>
+                      Who We Are
+                    </Link>
+                    <a href="/#businesses" onClick={closeSectorView}>
+                      What We Do
+                    </a>
+                    <Link to="/contact-us" onClick={closeSectorView}>
+                      Get In Touch
+                    </Link>
+                  </nav>
+                ) : null}
+              </div>
+            </header>
 
             <div
-              className="sector-popover-media"
+              className="sector-fullscreen-media"
               style={
                 {
-                  "--sector-popover-image": `url(${selectedSector.img})`,
-                } as SectorPopoverImageStyle
+                  "--sector-fullscreen-image": `url(${selectedSector.img})`,
+                } as SectorFullscreenImageStyle
               }
             >
               <img
@@ -462,73 +471,80 @@ function Home() {
                 width={selectedSector.width}
                 height={selectedSector.height}
               />
-              <div className="sector-popover-media-overlay">
+              <div className="sector-fullscreen-media-overlay">
                 <div className="legacy-eyebrow">Sector</div>
-                <h3 id="sector-popover-title">{selectedSector.title}</h3>
+                <h3 id="sector-fullscreen-title">{selectedSector.title}</h3>
                 <p>{selectedSector.body}</p>
                 <span>Scroll down to view details</span>
               </div>
             </div>
 
-            <div className="sector-popover-content" onScroll={handleSectorContentScroll}>
-              <p>{selectedSector.detail}</p>
+            <div className="sector-fullscreen-content">
+              <div className="sector-fullscreen-content-inner">
+                <p>{selectedSector.detail}</p>
 
-              <div className="sector-popover-stats" aria-label={`${selectedSector.title} stats`}>
-                {selectedSector.stats.map((stat) => (
-                  <div className="sector-popover-stat" key={stat.label}>
-                    <strong>{stat.value}</strong>
-                    <span>{stat.label}</span>
+                <div
+                  className="sector-fullscreen-stats"
+                  aria-label={`${selectedSector.title} stats`}
+                >
+                  {selectedSector.stats.map((stat) => (
+                    <div className="sector-fullscreen-stat" key={stat.label}>
+                      <strong>{stat.value}</strong>
+                      <span>{stat.label}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <div
+                  className="sector-fullscreen-focus"
+                  aria-label={`${selectedSector.title} focus areas`}
+                >
+                  {selectedSector.focus.map((item) => (
+                    <span key={item}>{item}</span>
+                  ))}
+                </div>
+
+                <div className="sector-fullscreen-section">
+                  <div className="sector-fullscreen-section-kicker">Overview</div>
+                  <h4>{selectedSector.introTitle}</h4>
+                  <div className="sector-fullscreen-copy">
+                    {selectedSector.introBody.map((paragraph) => (
+                      <p key={paragraph}>{paragraph}</p>
+                    ))}
                   </div>
-                ))}
-              </div>
-
-              <div
-                className="sector-popover-focus"
-                aria-label={`${selectedSector.title} focus areas`}
-              >
-                {selectedSector.focus.map((item) => (
-                  <span key={item}>{item}</span>
-                ))}
-              </div>
-
-              <div className="sector-popover-section">
-                <div className="sector-popover-section-kicker">Overview</div>
-                <h4>{selectedSector.introTitle}</h4>
-                <div className="sector-popover-copy">
-                  {selectedSector.introBody.map((paragraph) => (
-                    <p key={paragraph}>{paragraph}</p>
-                  ))}
                 </div>
-              </div>
 
-              <blockquote className="sector-popover-callout">{selectedSector.quote}</blockquote>
+                <blockquote className="sector-fullscreen-callout">
+                  {selectedSector.quote}
+                </blockquote>
 
-              <div className="sector-popover-section">
-                <div className="sector-popover-section-kicker">Core priorities</div>
-                <div className="sector-popover-list">
-                  {selectedSector.pillars.map((pillar) => (
-                    <article className="sector-popover-list-item" key={pillar.title}>
-                      <h5>{pillar.title}</h5>
-                      <p>{pillar.body}</p>
-                    </article>
-                  ))}
+                <div className="sector-fullscreen-section">
+                  <div className="sector-fullscreen-section-kicker">Core priorities</div>
+                  <div className="sector-fullscreen-list">
+                    {selectedSector.pillars.map((pillar) => (
+                      <article className="sector-fullscreen-list-item" key={pillar.title}>
+                        <h5>{pillar.title}</h5>
+                        <p>{pillar.body}</p>
+                      </article>
+                    ))}
+                  </div>
                 </div>
-              </div>
 
-              <div className="sector-popover-section">
-                <div className="sector-popover-section-kicker">Focus areas</div>
-                <div className="sector-popover-list">
-                  {selectedSector.focusAreas.map((area) => (
-                    <article className="sector-popover-list-item" key={area.title}>
-                      <h5>{area.title}</h5>
-                      <p>{area.body}</p>
-                    </article>
-                  ))}
+                <div className="sector-fullscreen-section">
+                  <div className="sector-fullscreen-section-kicker">Focus areas</div>
+                  <div className="sector-fullscreen-list">
+                    {selectedSector.focusAreas.map((area) => (
+                      <article className="sector-fullscreen-list-item" key={area.title}>
+                        <h5>{area.title}</h5>
+                        <p>{area.body}</p>
+                      </article>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </section>
       ) : null}
     </SiteLayout>
   );

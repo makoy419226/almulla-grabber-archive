@@ -3,24 +3,15 @@ import { SiteLayout } from "@/components/SiteLayout";
 import { AlmullaLogo } from "@/components/AlmullaLogo";
 import { ArrowUpRight, HeartPulse, Stethoscope, Building2, Microscope } from "lucide-react";
 import healthcareImg from "@/assets/healthcare.jpg";
+import { createSeoHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/businesses/healthcare")({
   head: () => ({
-    meta: [
-      { title: "Chicago Healthcare — AlMulla Holding Group" },
-      {
-        name: "description",
-        content:
-          "Chicago Healthcare invests in and operates premium healthcare ventures, partnering with world-class medical experts.",
-      },
-      { property: "og:title", content: "Chicago Healthcare" },
-      {
-        property: "og:description",
-        content: "Quality healthcare projects with top medical experts.",
-      },
-      { property: "og:image", content: healthcareImg },
+    ...createSeoHead("/businesses/healthcare"),
+    links: [
+      ...createSeoHead("/businesses/healthcare").links,
+      { rel: "preload", as: "image", href: healthcareImg },
     ],
-    links: [{ rel: "preload", as: "image", href: healthcareImg }],
   }),
   component: Healthcare,
 });

@@ -31,42 +31,36 @@ export const seoEntries: Record<string, SeoEntry> = {
     title: "Chicago Healthcare - AlMulla Holding Group",
     description:
       "Chicago Healthcare invests in and operates premium healthcare ventures with leading medical specialists and modern facilities.",
-    robots: "noindex, follow",
   },
   "/businesses/strategic-investment": {
     path: "/businesses/strategic-investment",
     title: "Strategic Investment - AlMulla Holding Group",
     description:
       "Strategic Investment at AlMulla Holding Group focuses on disciplined capital allocation, regional partnerships, and long-term value creation across resilient sectors.",
-    robots: "noindex, follow",
   },
   "/businesses/education": {
     path: "/businesses/education",
     title: "Education - AlMulla Holding Group",
     description:
       "AlMulla Holding Group backs education ventures built around strong learning environments, future-ready campuses, and long-term community value.",
-    robots: "noindex, follow",
   },
   "/businesses/real-estate": {
     path: "/businesses/real-estate",
     title: "Real-estate - AlMulla Holding Group",
     description:
       "AlMulla Holding Group develops and manages resilient real-estate assets shaped by site quality, tenant experience, and durable demand.",
-    robots: "noindex, follow",
   },
   "/businesses/energy": {
     path: "/businesses/energy",
     title: "Energy - AlMulla Holding Group",
     description:
       "AlMulla Holding Group invests in energy platforms spanning solar, infrastructure, and practical future-ready systems built for reliability and growth.",
-    robots: "noindex, follow",
   },
   "/businesses/hospitality": {
     path: "/businesses/hospitality",
     title: "AlMulla Hospitality - AlMulla Holding Group",
     description:
       "AlMulla Hospitality creates modern hotel and hospitality experiences for business travelers, families, and conscious lifestyle guests.",
-    robots: "noindex, follow",
   },
   "/contact-us": {
     path: "/contact-us",
@@ -126,4 +120,28 @@ export function getSeoEntry(pathname: string): SeoEntry {
       robots: "noindex, follow",
     }
   );
+}
+
+export function createSeoHead(pathname: string) {
+  const seo = getSeoEntry(pathname);
+  const canonical = absoluteUrl(seo.path);
+  const image = seo.image ?? DEFAULT_OG_IMAGE;
+
+  return {
+    meta: [
+      { title: seo.title },
+      { name: "description", content: seo.description },
+      { name: "robots", content: seo.robots ?? "index, follow" },
+      { name: "author", content: SITE_NAME },
+      { property: "og:title", content: seo.title },
+      { property: "og:description", content: seo.description },
+      { property: "og:url", content: canonical },
+      { property: "og:image", content: image },
+      { property: "og:image:alt", content: SITE_NAME },
+      { name: "twitter:title", content: seo.title },
+      { name: "twitter:description", content: seo.description },
+      { name: "twitter:image", content: image },
+    ],
+    links: [{ rel: "canonical", href: canonical }],
+  };
 }

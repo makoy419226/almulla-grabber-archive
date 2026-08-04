@@ -13,24 +13,13 @@ import healthcareImg900 from "@/assets/sector-healthcare-900.jpg";
 import hospitalityImg from "@/assets/sector-hospitality.jpg";
 import hospitalityImg900 from "@/assets/sector-hospitality-900.jpg";
 import { ArrowLeft, Menu } from "lucide-react";
+import { createSeoHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/")({
   head: () => ({
-    meta: [
-      { title: "AlMulla Holding Group — Diversified Holding Company" },
-      {
-        name: "description",
-        content:
-          "AlMulla Holding Group is a diversified holding company building long-term value across healthcare, hospitality, education, and energy.",
-      },
-      { property: "og:title", content: "AlMulla Holding Group" },
-      {
-        property: "og:description",
-        content:
-          "A diversified holding company focused on long-term value across healthcare, hospitality, education, and energy.",
-      },
-    ],
+    ...createSeoHead("/"),
     links: [
+      ...createSeoHead("/").links,
       {
         rel: "preload",
         as: "image",

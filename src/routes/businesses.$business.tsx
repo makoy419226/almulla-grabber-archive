@@ -25,6 +25,7 @@ import {
   Zap,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import { createSeoHead } from "@/lib/seo";
 
 type Stat = {
   value: string;
@@ -318,26 +319,10 @@ export const Route = createFileRoute("/businesses/$business")({
     const page = businessPages[params.business];
 
     if (!page) {
-      return {
-        meta: [
-          { title: "Business Page Not Found — AlMulla Holding Group" },
-          {
-            name: "description",
-            content: "This AlMulla Holding Group business page is not available.",
-          },
-        ],
-      };
+      return createSeoHead(`/businesses/${params.business}`);
     }
 
-    return {
-      meta: [
-        { title: `${page.title} — AlMulla Holding Group` },
-        { name: "description", content: page.description },
-        { property: "og:title", content: `${page.title} — AlMulla Holding Group` },
-        { property: "og:description", content: page.description },
-        { property: "og:image", content: page.image },
-      ],
-    };
+    return createSeoHead(`/businesses/${params.business}`);
   },
   loader: ({ params }) => {
     const page = businessPages[params.business];

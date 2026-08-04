@@ -2,24 +2,10 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { PrivacyPolicyModal } from "@/components/PrivacyPolicyModal";
 import { SiteLayout } from "@/components/SiteLayout";
+import { createSeoHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/privacy-policy")({
-  head: () => ({
-    meta: [
-      { title: "Privacy Policy - AlMulla Holding Group" },
-      {
-        name: "description",
-        content:
-          "Privacy Policy for AlMulla Holding Group, including how website data, enquiries, and cookie preferences are handled.",
-      },
-      { property: "og:title", content: "Privacy Policy - AlMulla Holding Group" },
-      {
-        property: "og:description",
-        content:
-          "Learn how AlMulla Holding Group handles website data, enquiries, and cookie preferences.",
-      },
-    ],
-  }),
+  head: () => createSeoHead("/privacy-policy"),
   component: PrivacyPolicy,
 });
 

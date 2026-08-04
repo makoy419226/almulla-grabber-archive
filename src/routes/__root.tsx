@@ -10,13 +10,13 @@ import { type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import {
-  DEFAULT_OG_IMAGE,
   FAVICON_URL,
   SITE_NAME,
-  SITE_ORIGIN,
   organizationJsonLd,
   websiteJsonLd,
+  createSeoHead,
 } from "../lib/seo";
+import { SeoUpdater } from "../components/SeoUpdater";
 
 function NotFoundComponent() {
   return (
@@ -78,30 +78,16 @@ export const Route = createRootRouteWithContext<Record<string, never>>()({
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { name: "theme-color", content: "#ffffff" },
-      { title: SITE_NAME },
-      {
-        name: "description",
-        content:
-          "AlMulla Holding Group is a diversified holding company with focused investments across strategic investment, healthcare, hospitality, education, and energy.",
-      },
+      ...createSeoHead("/").meta,
       { name: "application-name", content: SITE_NAME },
       { property: "og:site_name", content: SITE_NAME },
-      { property: "og:title", content: `${SITE_NAME} - Diversified Holding Company` },
-      {
-        property: "og:description",
-        content:
-          "A diversified holding company with focused investments across strategic investment, healthcare, hospitality, education, and energy.",
-      },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: `${SITE_ORIGIN}/` },
-      { property: "og:image", content: DEFAULT_OG_IMAGE },
-      { property: "og:image:alt", content: SITE_NAME },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:image", content: DEFAULT_OG_IMAGE },
       { "script:ld+json": organizationJsonLd },
       { "script:ld+json": websiteJsonLd },
     ],
     links: [
+      ...createSeoHead("/").links,
       { rel: "manifest", href: "/manifest.webmanifest" },
       { rel: "icon", type: "image/png", sizes: "192x192", href: FAVICON_URL },
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
@@ -131,5 +117,10 @@ function RootShell({ children }: { children: ReactNode }) {
 }
 
 function RootComponent() {
-  return <Outlet />;
+  return (
+    <>
+      <SeoUpdater />
+      <Outlet />
+    </>
+  );
 }

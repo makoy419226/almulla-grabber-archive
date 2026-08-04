@@ -4,21 +4,15 @@ import { AlmullaLogo } from "@/components/AlmullaLogo";
 import hospitalityImg from "@/assets/hospitality.png";
 import dubaiImg from "@/assets/dubai.jpg";
 import { ArrowUpRight } from "lucide-react";
+import { createSeoHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/businesses/hospitality")({
   head: () => ({
-    meta: [
-      { title: "AlMulla Hospitality — AlMulla Holding Group" },
-      {
-        name: "description",
-        content:
-          "AlMulla Hospitality creates upscale, conscious-lifestyle hotel experiences across the Cliftonwood family of brands.",
-      },
-      { property: "og:title", content: "AlMulla Hospitality" },
-      { property: "og:description", content: "Upscale hotels for the conscious modern traveler." },
-      { property: "og:image", content: hospitalityImg },
+    ...createSeoHead("/businesses/hospitality"),
+    links: [
+      ...createSeoHead("/businesses/hospitality").links,
+      { rel: "preload", as: "image", href: hospitalityImg },
     ],
-    links: [{ rel: "preload", as: "image", href: hospitalityImg }],
   }),
   component: Hospitality,
 });

@@ -2,20 +2,12 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
 import chairmanImg from "@/assets/chairman-1600.jpg";
 import { Check } from "lucide-react";
+import { createSeoHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/about-us")({
   head: () => ({
-    meta: [
-      { title: "About Us — AlMulla Holding Group" },
-      {
-        name: "description",
-        content:
-          "Learn about AlMulla Holding Group and a message from Chairman Mr. Abdulla Mohamed Saeed AlMulla.",
-      },
-      { property: "og:title", content: "About AlMulla Holding Group" },
-      { property: "og:description", content: "Chairman's message and company overview." },
-    ],
-    links: [{ rel: "preload", as: "image", href: chairmanImg }],
+    ...createSeoHead("/about-us"),
+    links: [...createSeoHead("/about-us").links, { rel: "preload", as: "image", href: chairmanImg }],
   }),
   component: About,
 });

@@ -2,22 +2,15 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
 import contactTeamHero from "@/assets/contact-team-hero.webp";
 import { Mail, Phone } from "lucide-react";
+import { createSeoHead } from "@/lib/seo";
 
 const contactEmail = "info@almullaholding.com";
 
 export const Route = createFileRoute("/contact-us")({
   head: () => ({
-    meta: [
-      { title: "Contact Us — AlMulla Holding Group" },
-      {
-        name: "description",
-        content: "Get in touch with AlMulla Holding Group for business enquiries and requests.",
-      },
-      { property: "og:title", content: "Contact AlMulla Holding Group" },
-      { property: "og:description", content: "Reach the AlMulla Holding Group team." },
-      { property: "og:image", content: contactTeamHero },
-    ],
+    ...createSeoHead("/contact-us"),
     links: [
+      ...createSeoHead("/contact-us").links,
       {
         rel: "preload",
         as: "image",
